@@ -1,6 +1,7 @@
 // import { Navigate} from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
+import Alert from '@mui/material/Alert';
 
 export const Register = ({ isLoggedIn }) => {
     const [username, setUsername] = useState("");
@@ -37,10 +38,12 @@ export const Register = ({ isLoggedIn }) => {
   return (
     <div className="Register">
     <h2>register</h2>
-        {error && <div className="error">{error}</div>}
+
+      {error && <Alert severity="error">{error}. <strong>Please Try Again.</strong></Alert>}
+  
 
     <form onSubmit={handleRegistration}>
-
+      <div>
         <label htmlFor='reg-email'>Email: </label>
           <input
             type='text'
@@ -72,14 +75,8 @@ export const Register = ({ isLoggedIn }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br></br>
-          <label htmlFor='password'>Enter your e-mail: </label>
-          <input
-            type='text'
-            className='text-input'
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        
+          </div>
           < button color="primary" type='submit'>Register</button>
       </form>
     </div>
