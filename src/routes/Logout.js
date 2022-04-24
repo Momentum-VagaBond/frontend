@@ -1,37 +1,47 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
-import { useState } from "react";
+import { Navigate } from 'react-router-dom';
 
-export const Logout = ({isLoggedIn, token, setAuth,}) => {
+export const Logout = ({token, setAuth, isLoggedIn}) => {
+    const [status, setStatus] = useState(null);
 
-    const handleLogOut = (event) => {
-    console.log('Handle Log Out Called');
-    event.preventDefault();
-    axios
-        .post("https://momentum-vagabond.herokuapp.com/auth/token/logout/",
-        {},
-        {headers: {Authorization: `Token ${token}`}
-    })
-        .then((res) => {
-        console.log(res);
+    const handleLogOut = () => {
+        console.log("logout");
+        axios
+          .post(
+            'https://momentum-vagabond.herokuapp.com/auth/token/logout/',
+            {},
+            {
+              headers: { Authorization: `Token ${token}` },
+            }
+          )
+          .then((res) => {
+            setAuth(null, null);
+            localStorage.clear();
+          })
+        //   .catch((e) => {
+        //     console.log(e);
+        //     setStatus(e.status);
+        //     setAuth(null, null);
+        //   });
+      };
+    
+      if (status === 401) {
         setAuth(null, null);
-    })
-    .catch((e) => {
-        console.log(e);
-        setAuth(null, null);
-    });
-    };
+      }
 
-//   const isLoggedIn = username && token;
+    if (!isLoggedIn) {
+        return <Navigate to="/login" />
+    }
 
     return (
     <div className='auth-buttons'>
     <form
-        className='mr-4 pr-5 field is-grouped is-grouped-right'
+        className='logout-form'
         onSubmit={handleLogOut}
     >
     <button
-        className='button is-danger is-small is-dark mb-3'
+        className='submitButt'
         type='submit'>
         Log Out
     </button>

@@ -1,6 +1,8 @@
-// import { Navigate} from 'react-router-dom'
+import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 export const Register = ({ isLoggedIn }) => {
     const [username, setUsername] = useState("");
@@ -34,44 +36,49 @@ export const Register = ({ isLoggedIn }) => {
   //   console.log("Registered!")
   //   return <Navigate to='/login' />
   // }
+
+
   return (
     <div className="Register">
     <h2>register</h2>
         {error && <div className="error">{error}</div>}
 
+    <Box component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '20ch' },
+          }}>
+
     <form onSubmit={handleRegistration}>
 
         <label htmlFor='reg-email'>Email: </label>
-          <input
-            type='text'
-            className='text-input'
-            id='reg-email'
-            required
-            value={email}
+          <TextField id="filled-basic"
+            label="Email"
+            variant="filled"
+            className='reg-email'
+            required value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
 
         <label htmlFor='reg-username'>Choose a Username: </label>
-        <input
-            type='text'
-            className='text-input'
-            id='reg-username'
-            required
-            value={username}
+        <TextField id="filled-basic"
+            label="Username"
+            variant="filled"
+            className='reg-username'
+            required value={username}
             onChange={(e) => setUsername(e.target.value)}
         />
 
           <br></br>
 
         <label htmlFor='password'>Choose a Password: </label>
-        <input
-            type='password'
+        <TextField id="filled-basic"
+            label="Password"
+            variant="filled"
             className='password-reg'
-            required
-            value={password}
+            required value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <br></br>
+          {/* <br></br>
           <label htmlFor='password'>Enter your e-mail: </label>
           <input
             type='text'
@@ -79,9 +86,10 @@ export const Register = ({ isLoggedIn }) => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
+          /> */}
           < button color="primary" type='submit'>Register</button>
       </form>
+      </Box>
     </div>
   );
 }
