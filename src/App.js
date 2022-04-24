@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Register } from './routes/Register';
 import { Login } from './routes/Login'
+import { Logout } from './routes/Logout'
 import useLocalStorageState from 'use-local-storage-state';
 
 const App = () => {
   //use local storage to keep this token hanging around
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
-  console.log(token)
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -23,14 +23,18 @@ const isLoggedIn = username && token
       <Router>
         <Routes>
         <Route
-            path="/register"
-            element={<Register isLoggedIn={isLoggedIn} setAuth={setAuth} setToken={setToken}/>}
-          />
+          path="/register"
+          element={<Register isLoggedIn={isLoggedIn} setAuth={setAuth} setToken={setToken}/>}
+        />
         <Route
           path="/login"
           element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
-        />  
-          <Route path="/home"></Route>
+        />
+        <Route
+          path="/logout"
+          element={<Logout setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
+        />
+          {/* <Route path="/home"></Route> */}
         </Routes>
       </Router>
     </div>

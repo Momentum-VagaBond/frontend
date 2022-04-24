@@ -1,4 +1,4 @@
-import { Navigate} from 'react-router-dom'
+// import { Navigate} from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -8,8 +8,9 @@ export const Register = ({ isLoggedIn }) => {
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
     const [isRegistered, setIsRegistered] = useState(false);
+
     const handleRegistration = (e) => {
-    console.log("making post");
+      console.log("making post");
     e.preventDefault();
     setError("");
     console.log(username, password, email);
@@ -37,19 +38,33 @@ export const Register = ({ isLoggedIn }) => {
     <div className="Register">
     <h2>register</h2>
         {error && <div className="error">{error}</div>}
+
     <form onSubmit={handleRegistration}>
-          <label htmlFor='reg-username'>Choose a Username: </label>
+
+        <label htmlFor='reg-email'>Email: </label>
           <input
+            type='text'
+            className='text-input'
+            id='reg-email'
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+        <label htmlFor='reg-username'>Choose a Username: </label>
+        <input
             type='text'
             className='text-input'
             id='reg-username'
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          />
+        />
+
           <br></br>
-          <label htmlFor='password'>Choose a Password: </label>
-          <input
+
+        <label htmlFor='password'>Choose a Password: </label>
+        <input
             type='password'
             className='password-reg'
             required
