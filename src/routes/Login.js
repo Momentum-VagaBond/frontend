@@ -44,9 +44,10 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
             console.log(password);
             console.log(token);
 
-        // if (isLoggedIn) {
-        //     return <Navigate to="/userquestions" />
-        // }
+        if (isLoggedIn) {
+            return <Navigate to="/userquestions" />
+        }
+        
         if (isLoading) {
             return <CircularProgress />
                 }
