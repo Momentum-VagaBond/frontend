@@ -1,19 +1,23 @@
-import { Navigate} from 'react-router-dom'
+// import { Navigate} from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
 
 export const Register = ({ isLoggedIn }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [error, setError] = useState("");
     const [isRegistered, setIsRegistered] = useState(false);
+
     const handleRegistration = (e) => {
-    console.log("making post");
+      console.log("making post");
     e.preventDefault();
-    setError("");
+      setError("");
     console.log(username, password);
+
       axios
-        .post("https://dj-questionbox.herokuapp.com/api/auth/users/", {
+        .post("https://momentum-vagabond.herokuapp.com/auth/users/", {
+          email: email,
           username: username,
           password: password,
         })
@@ -35,26 +39,42 @@ export const Register = ({ isLoggedIn }) => {
     <div className="Register">
     <h2>register</h2>
         {error && <div className="error">{error}</div>}
+
     <form onSubmit={handleRegistration}>
-          <label htmlFor='reg-username'>Choose a Username: </label>
+
+        <label htmlFor='reg-email'>Email: </label>
           <input
+            type='text'
+            className='text-input'
+            id='reg-email'
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+        <label htmlFor='reg-username'>Choose a Username: </label>
+        <input
             type='text'
             className='text-input'
             id='reg-username'
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          />
+        />
+
           <br></br>
-          <label htmlFor='password'>Choose a Password: </label>
-          <input
+
+        <label htmlFor='password'>Choose a Password: </label>
+        <input
             type='password'
             className='password-reg'
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
-          < button color="primary" type='submit'>Register</button>
+        />
+
+        <button color="primary" type='submit'>Register</button>
+
       </form>
     </div>
   );
