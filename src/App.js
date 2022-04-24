@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Register } from './routes/Register';
-import { Login } from './routes/Login'
-import { Logout } from './routes/Logout'
-import { NewTrip } from './routes/NewTrip'
-import { Navbar } from './components/Navbar'
 import { Login } from './routes/Login';
 import { Logout } from './routes/Logout';
+import NewTrip from './routes/NewTrip';
+import { Navbar } from './components/Navbar';
 import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import useLocalStorageState from 'use-local-storage-state';

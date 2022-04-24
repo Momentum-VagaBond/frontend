@@ -3,32 +3,47 @@ import axios from "axios";
 import { Navigate } from 'react-router-dom';
 
 export const Logout = ({token, setAuth, isLoggedIn}) => {
-    const [status, setStatus] = useState(null);
 
     const handleLogOut = () => {
-        console.log("logout");
+    const options = {
+        method: "POST",
+        url: 'https://momentum-vagabond.herokuapp.com/auth/token/logout/',
+        headers:{
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`,
+        },
+        data: {
+            token:`${token}`,
+            },
+        };
+
         axios
-          .post(
-            'https://momentum-vagabond.herokuapp.com/auth/token/logout/',
-            {},
-            {
-              headers: { Authorization: `Token ${token}` },
-            }
-          )
-          .then((res) => {
-            setAuth(null, null);
-            localStorage.clear();
-          })
+            .request(options)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+
+        localStorage.setItem("username", "");
+        localStorage.setItem("token", "");
+        setAuth("", "");
+        };
+
+        //   .then((res) => {
+        //     setAuth(null, null);
+        //     localStorage.clear();
+        //   })
         //   .catch((e) => {
         //     console.log(e);
         //     setStatus(e.status);
         //     setAuth(null, null);
         //   });
-      };
     
-      if (status === 401) {
-        setAuth(null, null);
-      }
+    //   if (status === 401) {
+    //     setAuth(null, null);
+    //   }
 
     if (!isLoggedIn) {
         return <Navigate to="/login" />
@@ -36,15 +51,11 @@ export const Logout = ({token, setAuth, isLoggedIn}) => {
 
     return (
     <div className='auth-buttons'>
-    <form
-        className='logout-form'
-        onSubmit={handleLogOut}
-    >
-    <button
-        className='submitButt'
-        type='submit'>
-        Log Out
-    </button>
-    </form>
-</div>
-    )}
+    <div className="field-controls">
+        <button className="Logout"
+        onClick={() => handleLogOut()}>
+            Logout
+        </button>
+    </div>
+    </div>
+)}

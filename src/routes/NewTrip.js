@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { SettingsInputAntennaSharp } from "@mui/icons-material";
 
 
-export const NewTrip = ({token, setAuth}) => {
+export default function NewTrip({token, isLoggedIn}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [duration, setDuration] = useState("");
@@ -23,19 +24,19 @@ export const NewTrip = ({token, setAuth}) => {
     axios
     .post("https://momentum-vagabond.herokuapp.com/api/trips/",
     {
-        headers: {Authorization: `Token ${token}`},
+        "title": title,
+        "location": location,
+        "duration": duration,
     },
     {
-        title: "title",
-        location: "location",
-        duration: "duration",
-    })
-    .then((response) => {
+        headers: {Authorization: `Token ${token}`}
+    }
+    )
+    .then(response => {
         console.log(response.data);
     setTitle('')
     setLocation('')
     setDuration('')
-    // setSubmit(true)
     })
     .catch((e) => setError(e.message))
     }
@@ -43,6 +44,10 @@ export const NewTrip = ({token, setAuth}) => {
     if (isSubmit) {
         console.log("Submitted!")
     // return <Navigate to='/' />
+    }
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" />
     }
 
     return (

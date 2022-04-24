@@ -46,7 +46,8 @@ export const Register = ({ isLoggedIn }) => {
       {error && <Alert severity="error">{error}. <strong>Please Try Again.</strong></Alert>}
   
 
-    <Box component="form"
+    <Box
+    // component="form"
           sx={{
             '& > :not(style)': { m: 1, width: '20ch' },
           }}>
@@ -91,6 +92,7 @@ export const Register = ({ isLoggedIn }) => {
             onChange={(e) => setEmail(e.target.value)}
           /> */}
           < button color="primary" type='submit'>Register</button>
+        </div>
       </form>
       </Box>
     </div>
