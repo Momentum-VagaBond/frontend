@@ -5,8 +5,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 // import Box from '@mui/material/Box';
 import { Navigate } from "react-router-dom";
 
+
 export const Login = ({ setAuth, isLoggedIn, token }) => {
-    const loginURL = "https://momentum-vagabond.herokuapp.com/auth/token/login/";
+    const loginURL = "https://momentum-vagabond.herokuapp.com/auth/token/login";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -32,13 +33,13 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
             console.log(token);
 
         // if (isLoggedIn) {
-        // return <Navigate to='/' />
-        //     }
+        //     return <Navigate to="/userquestions" />
+        // }
         if (isLoading) {
-        return <CircularProgress />
-            }
-    }
-
+            return <CircularProgress />
+                }
+        }
+        
     return (
     <div className="loginDiv">
 
