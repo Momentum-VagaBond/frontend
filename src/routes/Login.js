@@ -34,7 +34,7 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
                 password: password,
             })
             .then((response) => {
-                console.log(response.data.username);
+                console.log(response.data);
                 console.log(response.data.auth_token);
                 setAuth(username, response.data.auth_token);
                 setIsLoading(false);
@@ -42,7 +42,7 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
             .catch((e) => setError(e.message));
             console.log(username);
             console.log(password);
-            console.log(token);
+            // console.log({token});
 
         // if (isLoggedIn) {
         //     return <Navigate to="/userquestions" />

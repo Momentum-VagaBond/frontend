@@ -11,8 +11,8 @@ import { NavigateBeforeRounded } from '@mui/icons-material';
 
 const App = () => {
   //use local storage to keep this token hanging around
-  const [token, setToken] = useLocalStorageState('Token', '')
-  const [username, setUsername] = useLocalStorageState('Username', '')
+  const [token, setToken] = useLocalStorageState('vagaBondToken', '')
+  const [username, setUsername] = useLocalStorageState('vagaBondUsername', '')
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('loggedUserPk', '')
 
   const setAuth = (username, token) => {

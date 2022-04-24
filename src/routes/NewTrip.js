@@ -33,7 +33,7 @@ export default function NewTrip({token, isLoggedIn}) {
     }
     )
     .then(response => {
-        console.log(response.data);
+        console.log(response.data.auth_token);
     setTitle('')
     setLocation('')
     setDuration('')
