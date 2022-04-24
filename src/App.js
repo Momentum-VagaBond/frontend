@@ -4,6 +4,10 @@ import { Login } from './routes/Login'
 import { Logout } from './routes/Logout'
 import { NewTrip } from './routes/NewTrip'
 import { Navbar } from './components/Navbar'
+import { Login } from './routes/Login';
+import { Logout } from './routes/Logout';
+import Profile from './routes/Profile';
+import AllTrips from './routes/AllTrips';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
 
@@ -44,6 +48,14 @@ const isLoggedIn = username && token
         <Route
           path="/login"
           element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} loggedUserPk={loggedUserPk} setLoggedUserPk={setLoggedUserPk} />}
+        />
+        <Route
+          path="/profile"
+          element={<Profile token={token} username={username} />}
+        />
+        <Route
+          path="/trips"
+          element={<AllTrips token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/logout"

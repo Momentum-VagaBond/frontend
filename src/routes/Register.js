@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
 
 export const Register = ({ isLoggedIn }) => {
     const [username, setUsername] = useState("");
@@ -41,7 +42,9 @@ export const Register = ({ isLoggedIn }) => {
   return (
     <div className="Register">
     <h2>register</h2>
-        {error && <div className="error">{error}</div>}
+
+      {error && <Alert severity="error">{error}. <strong>Please Try Again.</strong></Alert>}
+  
 
     <Box component="form"
           sx={{
@@ -49,7 +52,7 @@ export const Register = ({ isLoggedIn }) => {
           }}>
 
     <form onSubmit={handleRegistration}>
-
+      <div>
         <label htmlFor='reg-email'>Email: </label>
           <TextField id="filled-basic"
             label="Email"
