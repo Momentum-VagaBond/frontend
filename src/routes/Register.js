@@ -5,17 +5,19 @@ import axios from 'axios';
 export const Register = ({ isLoggedIn }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [error, setError] = useState("");
     const [isRegistered, setIsRegistered] = useState(false);
     const handleRegistration = (e) => {
     console.log("making post");
     e.preventDefault();
     setError("");
-    console.log(username, password);
+    console.log(username, password, email);
       axios
-        .post("https://dj-questionbox.herokuapp.com/api/auth/users/", {
+        .post("https://momentum-vagabond.herokuapp.com/auth/users/", {
           username: username,
           password: password,
+          email: email,
         })
         .then((res) => {
           console.log(res.data);
@@ -53,6 +55,15 @@ export const Register = ({ isLoggedIn }) => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <br></br>
+          <label htmlFor='password'>Enter your e-mail: </label>
+          <input
+            type='text'
+            className='text-input'
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           < button color="primary" type='submit'>Register</button>
       </form>
