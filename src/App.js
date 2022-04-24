@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Register } from './routes/Register';
-import { Login } from './routes/Login'
-import { Logout } from './routes/Logout'
+import { Login } from './routes/Login';
+import { Logout } from './routes/Logout';
+import Profile from './routes/Profile';
+import AllTrips from './routes/AllTrips';
 import useLocalStorageState from 'use-local-storage-state';
 
 const App = () => {
@@ -29,6 +31,14 @@ const isLoggedIn = username && token
         <Route
           path="/login"
           element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
+        />
+        <Route
+          path="/profile"
+          element={<Profile token={token} username={username} />}
+        />
+        <Route
+          path="/trips"
+          element={<AllTrips token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/logout"
