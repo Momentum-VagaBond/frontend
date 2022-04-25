@@ -2,27 +2,42 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Register } from './routes/Register';
 import { Login } from './routes/Login';
 import { Logout } from './routes/Logout';
+import NewTrip from './routes/NewTrip';
+import { Navbar } from './components/Navbar';
 import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import useLocalStorageState from 'use-local-storage-state';
+import { NavigateBeforeRounded } from '@mui/icons-material';
 
 const App = () => {
   //use local storage to keep this token hanging around
-  const [token, setToken] = useLocalStorageState('Token', '')
-  const [username, setUsername] = useLocalStorageState('Username', '')
+  const [token, setToken] = useLocalStorageState('vagaBondToken', '')
+  const [username, setUsername] = useLocalStorageState('vagaBondUsername', '')
+  // const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('loggedUserPk', '')
 
   const setAuth = (username, token) => {
     setToken(token)
     setUsername(username)
   }
 
+  // const getLoggedUserPk = (pk) =>
+  // setLoggedUserPk(pk)
+
 const isLoggedIn = username && token
 
 
   return (
     <div className="App">
-      <h1>Hello are you there?</h1>
+      <h1>NavaBond</h1>
       <Router>
+
+        <Navbar
+          isLoggedIn={isLoggedIn}
+          token={token}
+          setToken={setToken}
+          setUsername={setUsername}
+          />
+
         <Routes>
         <Route
           path="/register"
@@ -42,8 +57,13 @@ const isLoggedIn = username && token
         />
         <Route
           path="/logout"
-          element={<Logout setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
+          element={<Logout setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
+        <Route
+          path="/newtrip"
+          element={<NewTrip setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
+        />
+
           {/* <Route path="/home"></Route> */}
         </Routes>
       </Router>

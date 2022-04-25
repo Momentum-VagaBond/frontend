@@ -1,40 +1,61 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
-import { useState } from "react";
+import { Navigate } from 'react-router-dom';
 
-export const Logout = ({isLoggedIn, token, setAuth,}) => {
+export const Logout = ({token, setAuth, isLoggedIn}) => {
 
-    const handleLogOut = (event) => {
-    console.log('Handle Log Out Called');
-    event.preventDefault();
-    axios
-        .post("https://momentum-vagabond.herokuapp.com/auth/token/logout/",
-        {},
-        {headers: {Authorization: `Token ${token}`}
-    })
-        .then((res) => {
-        console.log(res);
-        setAuth(null, null);
-    })
-    .catch((e) => {
-        console.log(e);
-        setAuth(null, null);
-    });
-    };
+    const handleLogOut = () => {
+    const options = {
+        method: "POST",
+        url: 'https://momentum-vagabond.herokuapp.com/auth/token/logout/',
+        headers:{
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`,
+        },
+        data: {
+            token:`${token}`,
+            },
+        };
 
-//   const isLoggedIn = username && token;
+        axios
+            .request(options)
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+
+        localStorage.setItem("username", "");
+        localStorage.setItem("token", "");
+        setAuth("", "");
+        };
+
+        //   .then((res) => {
+        //     setAuth(null, null);
+        //     localStorage.clear();
+        //   })
+        //   .catch((e) => {
+        //     console.log(e);
+        //     setStatus(e.status);
+        //     setAuth(null, null);
+        //   });
+    
+    //   if (status === 401) {
+    //     setAuth(null, null);
+    //   }
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" />
+    }
 
     return (
     <div className='auth-buttons'>
-    <form
-        className='mr-4 pr-5 field is-grouped is-grouped-right'
-        onSubmit={handleLogOut}
-    >
-    <button
-        className='button is-danger is-small is-dark mb-3'
-        type='submit'>
-        Log Out
-    </button>
-    </form>
-</div>
-    )}
+    <div className="field-controls">
+        <button className="Logout"
+        onClick={() => handleLogOut()}>
+            Logout
+        </button>
+    </div>
+    </div>
+)}
