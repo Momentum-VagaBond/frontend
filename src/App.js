@@ -13,15 +13,15 @@ const App = () => {
   //use local storage to keep this token hanging around
   const [token, setToken] = useLocalStorageState('vagaBondToken', '')
   const [username, setUsername] = useLocalStorageState('vagaBondUsername', '')
-  const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('loggedUserPk', '')
+  // const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('loggedUserPk', '')
 
   const setAuth = (username, token) => {
     setToken(token)
     setUsername(username)
   }
 
-  const getLoggedUserPk = (pk) =>
-  setLoggedUserPk(pk)
+  // const getLoggedUserPk = (pk) =>
+  // setLoggedUserPk(pk)
 
 const isLoggedIn = username && token
 
@@ -45,7 +45,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/login"
-          element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} loggedUserPk={loggedUserPk} setLoggedUserPk={setLoggedUserPk} />}
+          element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/profile"
@@ -57,11 +57,11 @@ const isLoggedIn = username && token
         />
         <Route
           path="/logout"
-          element={<Logout setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
+          element={<Logout setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/newtrip"
-          element={<NewTrip setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} loggedUserPk={loggedUserPk} />}
+          element={<NewTrip setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
 
           {/* <Route path="/home"></Route> */}
