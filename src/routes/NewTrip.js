@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
+import { FormGroup } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { SettingsInputAntennaSharp } from "@mui/icons-material";
 
 
-export default function NewTrip({token, isLoggedIn}) {
+export default function NewTrip({token, isLoggedIn, username, setUsername}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [duration, setDuration] = useState("");
-    // const [user, setUser] = useState("");
-    // const [userFirstName, setUserFirstName] = ("");
-    // const [userLastName, setUserLastName] = ("");
     const [error, setError] = useState("");
     const [isSubmit, setSubmit] = useState(false);
 
@@ -33,7 +31,7 @@ export default function NewTrip({token, isLoggedIn}) {
     }
     )
     .then(response => {
-        console.log(response.data.auth_token);
+        console.log(response.data);
     setTitle('')
     setLocation('')
     setDuration('')
@@ -51,7 +49,7 @@ export default function NewTrip({token, isLoggedIn}) {
     }
 
     return (
-        
+
         <Box
         // component="form"
         sx={{
@@ -61,40 +59,45 @@ export default function NewTrip({token, isLoggedIn}) {
         autoComplete="off"
         >
     {error && <div className="error">{error}</div>}
+    <h1>New Trip!</h1>
     <form onSubmit={handleSubmit}>
-    
-    <label htmlFor='reg-title'>Title: </label>
+
+    <FormGroup>
+        <label htmlFor='reg-title'>Title: </label>
         <TextField id="filled-basic"
-        label="Title"
-        variant="filled"
-        className='reg-title'
-        required value={title}
-        onChange={(e) => setTitle(e.target.value)}
+            label="Title"
+            variant="filled"
+            className='tripTitle'
+            required value={title}
+            onChange={(e) => setTitle(e.target.value)}
         />
-    
-    <label htmlFor='reg-location'>Location: </label>
-    <TextField id="filled-basic"
-        label="Location"
-        variant="filled"
-        className='reg-location'
-        required value={location}
-        onChange={(e) => setLocation(e.target.value)}
-    />
-    
-        <br></br>
-    
-    <label htmlFor='duration'>Duration </label>
-    <TextField id="filled-basic"
-        label="Duration"
-        variant="filled"
-        className='password-reg'
-        required value={duration}
-        onChange={(e) => setDuration(e.target.value)}
-    />
+    </FormGroup>
+
+    <FormGroup>
+        <label htmlFor='reg-location'>Location: </label>
+        <TextField id="filled-basic"
+            label="Location"
+            variant="filled"
+            className='tripLocation'
+            required value={location}
+            onChange={(e) => setLocation(e.target.value)}
+        />
+    </FormGroup>
+
+    <FormGroup>
+        <label htmlFor='duration'>Duration: </label>
+        <TextField id="filled-basic"
+            label="Duration"
+            variant="filled"
+            className='tripDuration'
+            required value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+        />
+    </FormGroup>
 
     < button type='submit'>Submit</button>
     </form>
     
     </Box>
     );
-    }
+}

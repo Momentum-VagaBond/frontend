@@ -8,6 +8,7 @@ import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
+import { Box } from '@mui/material';
 
 const App = () => {
   //use local storage to keep this token hanging around
@@ -28,10 +29,16 @@ const isLoggedIn = username && token
 
   return (
     <div className="App">
-      <h1>NavaBond</h1>
+
+      <Box
+      component="img"
+      alt="VagaBond Logo"
+      src="VagaBond2.png"
+      />
+
       <Router>
 
-        <Navbar
+      <Navbar
           isLoggedIn={isLoggedIn}
           token={token}
           setToken={setToken}

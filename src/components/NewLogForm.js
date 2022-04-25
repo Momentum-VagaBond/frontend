@@ -1,8 +1,21 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import axios from "axios";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export default function NewLogForm() {
+export default function NewLogForm({token, isLoggedIn, username, setUsername}) {
+    const [trip, setTrip] = useState("");
+    const [location, setLocation] = useState("");
+    const [details, setDetails] = useState("");
+    const [latitude, setLatitude] = useState("");
+    const [longitude, setLongitude] = useState("");
+    const [error, setError] = useState("");
+    const [isSubmit, setSubmit] = useState(false);
+
+    const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
+        console.log(location, trip, details, latitude, longitude);
 
     return (
     <Box

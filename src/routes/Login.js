@@ -44,14 +44,14 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
             console.log(password);
             // console.log({token});
 
-        // if (isLoggedIn) {
-        //     return <Navigate to="/userquestions" />
-        // }
+        if (isLoggedIn) {
+            return <Navigate to="/trips" />
+        }
         if (isLoading) {
             return <CircularProgress />
                 }
         }
-        
+
   return (
     <div className="loginDiv">
     <Container component="main" maxWidth="xs">
@@ -102,11 +102,9 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
             </button>
         </div>
     </form>
-    {/* <div className="regButt">
-        <Link to='/user'>Register</Link>
-    </div> */}
+
     </Box>
     </Container>
     </div>
     )
-    };
+}
