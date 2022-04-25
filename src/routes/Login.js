@@ -136,4 +136,4 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
     </Container>
     </div>
     )
-    };
+}
