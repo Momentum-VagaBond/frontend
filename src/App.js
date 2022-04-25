@@ -12,8 +12,10 @@ import { Box } from '@mui/material';
 
 const App = () => {
   //use local storage to keep this token hanging around
-  const [token, setToken] = useLocalStorageState('vagaBondToken', '')
-  const [username, setUsername] = useLocalStorageState('vagaBondUsername', '')
+  // const [token, setToken] = useLocalStorageState('vagaBondToken', '')
+  // const [username, setUsername] = useLocalStorageState('vagaBondUsername', '')
+  const [token, setToken] = useLocalStorageState('Token', '')
+  const [username, setUsername] = useLocalStorageState('Username', '')
   // const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('loggedUserPk', '')
 
   const setAuth = (username, token) => {
@@ -48,7 +50,7 @@ const isLoggedIn = username && token
         <Routes>
         <Route
           path="/register"
-          element={<Register isLoggedIn={isLoggedIn} setAuth={setAuth} setToken={setToken}/>}
+          element={<Register isLoggedIn={isLoggedIn} setAuth={setAuth} username={username} token={token} setToken={setToken}/>}
         />
         <Route
           path="/login"

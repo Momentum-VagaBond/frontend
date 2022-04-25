@@ -1,6 +1,7 @@
 import * as React from 'react';
 import axios from "axios";
 import { useState } from "react";
+import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -14,8 +15,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Navigate } from "react-router-dom";
+
 
 
 export const Login = ({ setAuth, isLoggedIn, token }) => {
@@ -24,6 +26,7 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -38,20 +41,25 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
                 console.log(response.data.auth_token);
                 setAuth(username, response.data.auth_token);
                 setIsLoading(false);
+                console.log(token);
+                console.log(isLoggedIn)
             })
             .catch((e) => setError(e.message));
-            console.log(username);
-            console.log(password);
-            // console.log({token});
+            console.log(error);
+            
+
+        navigate("/trips")
+        }
 
         if (isLoggedIn) {
             return <Navigate to="/trips" />
         }
-        if (isLoading) {
-            return <CircularProgress />
-                }
-        }
-
+      //had to disable isLoading because it was getting stuck when navigating here after loging out
+        // if (isLoading) {
+        //   return <CircularProgress />
+        //     }
+        
+        
   return (
     <div className="loginDiv">
     <Container component="main" maxWidth="xs">
@@ -71,38 +79,59 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-    <form onSubmit={handleLogin}>
-    <div className="usernameInput">
-        <label className="usernameLabel">
-            Username
-        </label>
-        <input
+    <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1}}>
+        <TextField 
+            margin="normal"
+            required
+            fullWidth
+            label="Username"
+            name="username"
+            autoComplete="username"
+            autoFocus
             type="text"
             id="username"
-            required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
         />
-    </div>
-    <div className="passwordDiv">
-        <label className="passwordLabel">
-            Password
-        </label>
-        <input
+        <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="Password"
+            name="password"
+            autoComplete="password"
+            autoFocus
             type="password"
             id="password"
-            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
         />
-        </div>
-        <div className="submitButton">
-            <button type="submit">
-                Log in
-            </button>
-        </div>
-    </form>
-
+        <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+        />
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            >
+          Sign In
+        </Button>
+        <Grid container>
+              <Grid item xs >
+              <Link componenet={RouterLink} to="/register" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+              <Grid item>
+                
+              </Grid>
+            </Grid>
+    </Box>
+    {/* <div className="reg">
+        <Link to='/user'>Register</Link>
+    </div> */}
     </Box>
     </Container>
     </div>
