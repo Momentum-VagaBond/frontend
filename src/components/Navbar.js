@@ -44,7 +44,7 @@ export const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            LOGO
+            VagaBond
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -81,16 +81,21 @@ export const Navbar = () => {
                 <Link to="/newtrip">New Trip</Link>
               </MenuItem>
 
+              <MenuItem>
+                <Link to="/trips">All Trips</Link>
+              </MenuItem>
+
             </Menu>
           </Box>
-          <Typography
+          {/* <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
-          </Typography>
+            VagaBond
+          </Typography> */}
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {/* {routes.map((route) => (
               <Button
@@ -125,6 +130,10 @@ export const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Link to="/profile">Profile</Link>
+            </MenuItem>
+
             <MenuItem onClick={handleCloseUserMenu}>
               <Link to="/logout">Log Out</Link>
             </MenuItem>
