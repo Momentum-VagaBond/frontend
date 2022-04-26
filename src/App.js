@@ -73,7 +73,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/logout"
-          element={<Logout setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
+          element={<Logout token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/newtrip"
@@ -84,7 +84,7 @@ const isLoggedIn = username && token
           element={<NewLog setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
-          path="/mytrips"
+          path="/users/2/mytrips/"
           element={<MyTrips setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
           {/* <Route path="/home"></Route> */}
