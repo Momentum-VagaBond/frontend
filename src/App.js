@@ -9,6 +9,7 @@ import { Navbar } from './components/Navbar';
 import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import MyTrips from './routes/MyTrips';
+import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
 import { Box } from '@mui/material';
@@ -86,6 +87,10 @@ const isLoggedIn = username && token
         <Route
           path="/users/2/mytrips/"
           element={<MyTrips setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
+        />
+        <Route
+          path="/logcard"
+          element={<LogCard setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
           {/* <Route path="/home"></Route> */}
         </Routes>
