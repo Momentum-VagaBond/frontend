@@ -9,6 +9,7 @@ import { Navbar } from './components/Navbar';
 import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import MyTrips from './routes/MyTrips';
+import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
 import { Box } from '@mui/material';
@@ -17,11 +18,8 @@ import { Box } from '@mui/material';
 const App = () => {
   
   //use local storage to keep this token hanging around
-  // const [token, setToken] = useLocalStorageState('vagaBondToken', '')
-  // const [username, setUsername] = useLocalStorageState('vagaBondUsername', '')
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
-  // const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('loggedUserPk', '')
   const [registerSuccess, setRegisterSuccess] = useState("")
 
   const setAuth = (username, token) => {
@@ -41,7 +39,7 @@ const isLoggedIn = username && token
       <Box
       component="img"
       alt="VagaBond Logo"
-      src="VagaBond2.png"
+      src="assts/VagaBond2.png"
       />
 
       <Router>
@@ -89,6 +87,10 @@ const isLoggedIn = username && token
         <Route
           path="/users/2/mytrips/"
           element={<MyTrips setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
+        />
+        <Route
+          path="/logcard"
+          element={<LogCard setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
           {/* <Route path="/home"></Route> */}
         </Routes>
