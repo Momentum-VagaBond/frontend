@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import { Card } from '@mui/material';
+import { Container } from '@mui/material';
 
 export const Logout = ({token, setAuth, isLoggedIn}) => {
 
@@ -51,14 +52,22 @@ export const Logout = ({token, setAuth, isLoggedIn}) => {
     }
 
     return (
-    <div className='auth-buttons'>
+    <div className="logout">
+        
     <div className="field-controls">
-        <Card variant="outlined">
+        <Container component="main" maxWidth="xs">
+
+        <Card variant="outlined" sx={{
+            mt: 20,
+            pl: 21,
+        }}>
+            <h1>Logout</h1>
         <button className="Logout"
         onClick={() => handleLogOut()}>
             Logout
         </button>
         </Card>
+        </Container>
     </div>
     </div>
 )}

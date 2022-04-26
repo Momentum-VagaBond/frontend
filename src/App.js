@@ -4,15 +4,18 @@ import { useState } from 'react';
 import { Login } from './routes/Login';
 import { Logout } from './routes/Logout';
 import NewTrip from './routes/NewTrip';
+import NewLog from './routes/NewLog';
 import { Navbar } from './components/Navbar';
 import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
+import MyTrips from './routes/MyTrips';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
 import { Box } from '@mui/material';
 
 
 const App = () => {
+  
   //use local storage to keep this token hanging around
   // const [token, setToken] = useLocalStorageState('vagaBondToken', '')
   // const [username, setUsername] = useLocalStorageState('vagaBondUsername', '')
@@ -56,6 +59,10 @@ const isLoggedIn = username && token
           element={<Register isLoggedIn={isLoggedIn} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} setAuth={setAuth} username={username} token={token} setToken={setToken}/>}
         />
         <Route
+          path="/"
+          element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
+        />
+        <Route
           path="/login"
           element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
@@ -75,7 +82,14 @@ const isLoggedIn = username && token
           path="/newtrip"
           element={<NewTrip setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
-
+        <Route
+          path="/newlog"
+          element={<NewLog setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
+        />
+        <Route
+          path="/users/2/mytrips/"
+          element={<MyTrips setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
+        />
           {/* <Route path="/home"></Route> */}
         </Routes>
       </Router>

@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import { SettingsInputAntennaSharp } from "@mui/icons-material";
 
 
-export default function NewTrip({token, isLoggedIn, username, setUsername}) {
+export default function NewTrip({token, isLoggedIn}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [duration, setDuration] = useState("");
@@ -95,7 +95,7 @@ export default function NewTrip({token, isLoggedIn, username, setUsername}) {
         />
     </FormGroup>
 
-    < button type='submit'>Submit</button>
+    <button type='submit'>Submit</button>
     </form>
     
     </Box>

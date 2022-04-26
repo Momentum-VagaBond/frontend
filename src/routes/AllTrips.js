@@ -15,7 +15,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
 
-const AllTrips = ({token}) => {
+const AllTrips = ({token, map}) => {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ return (
 <Container maxWidth="xs">
   <h1>This is a test list of ALL trips</h1>
 </Container>
+
 <Container component="main" maxWidth="xs">
   {trips.map((trip, key) =>
     <Card sx={{
@@ -41,9 +42,7 @@ return (
       // flexDirection: 'column',
       // // alignItems: 'center', 
       // border: 1
-    }}
-      
-    >
+    }}>
       <p>pk: {trip.pk}</p>
       <p>title: {trip.title}</p>
       <p>location: {trip.location}</p>
@@ -52,7 +51,6 @@ return (
       <p>username: {trip.username}</p>
       <p>first name: {trip.user_first_name}</p>
       <p>last name: {trip.user_last_name}</p>
-
     </Card>
     )}
   </Container>
