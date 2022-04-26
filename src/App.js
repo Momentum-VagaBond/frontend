@@ -12,7 +12,7 @@ import MyTrips from './routes/MyTrips';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
-import { Box } from '@mui/material';
+import { Example } from './NavBar/Example'
 
 
 const App = () => {
@@ -38,7 +38,7 @@ const isLoggedIn = username && token
 
       <Router>
 
-      <Navbar
+      <Example
           isLoggedIn={isLoggedIn}
           token={token}
           setToken={setToken}
