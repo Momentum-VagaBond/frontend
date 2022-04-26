@@ -51,9 +51,6 @@ export default function NewLog({token}) {
     // return <Navigate to='/' />
     }
 
-    // if (!isLoggedIn) {
-    //     return <Navigate to="/login" />
-    // }
 
 
 

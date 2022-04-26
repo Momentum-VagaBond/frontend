@@ -47,7 +47,7 @@ export default function LogCard() {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            K
           </Avatar>
         }
         action={
@@ -55,20 +55,18 @@ export default function LogCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title="Landed in New Orleans!"
+        subheader="May 14, 2022"
       />
       <CardMedia
         component="img"
         height="194"
-        image="/static/images/cards/paella.jpg"
-        alt="Paella dish"
+        image="src/assets/TravelStock.jpg"
+        alt="temp stock photo"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+            Had a very luxurious flight down to the Big Easy!
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

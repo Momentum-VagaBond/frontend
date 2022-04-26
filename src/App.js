@@ -36,12 +36,6 @@ const isLoggedIn = username && token
   return (
     <div className="App">
 
-      <Box
-      component="img"
-      alt="VagaBond Logo"
-      src="assts/VagaBond2.png"
-      />
-
       <Router>
 
       <Navbar
