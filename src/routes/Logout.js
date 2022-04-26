@@ -3,6 +3,8 @@ import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import { Card } from '@mui/material';
 import { Container } from '@mui/material';
+import { Button } from '@mui/material';
+import { Box } from '@mui/system';
 
 export const Logout = ({token, setAuth, isLoggedIn}) => {
 
@@ -55,19 +57,27 @@ export const Logout = ({token, setAuth, isLoggedIn}) => {
     <div className="logout">
         
     <div className="field-controls">
-        <Container component="main" maxWidth="xs">
 
-        <Card variant="outlined" sx={{
-            mt: 20,
-            pl: 21,
-        }}>
+    <Container component="main" sx={{ mt: 4 }} maxWidth="xs">
+        <Box
+        sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        }}
+        >
             <h1>Logout</h1>
-        <button className="Logout"
+        <Button className="Logout"
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
         onClick={() => handleLogOut()}>
             Logout
-        </button>
-        </Card>
-        </Container>
+        </Button>
+        </Box>
+    </Container>
     </div>
     </div>
 )}
