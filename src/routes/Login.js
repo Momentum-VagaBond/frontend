@@ -2,25 +2,15 @@ import * as React from 'react';
 import axios from "axios";
 import { useState } from "react";
 import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
-import CircularProgress from '@mui/material/CircularProgress';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { AlertTitle, TextField, Alert, Container, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CircularProgress } from '@mui/material';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 
-export const Login = ({ setAuth, isLoggedIn, token }) => {
+export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, setRegisterSuccess }) => {
     const loginURL = "https://momentum-vagabond.herokuapp.com/auth/token/login";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -41,7 +31,8 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
                 console.log(response.data.auth_token);
                 setAuth(username, response.data.auth_token);
                 setIsLoading(false);
-                console.log(token);
+                setRegisterSuccess("")
+                console.log(token); 
                 console.log(isLoggedIn)
             })
             .catch((e) => setError(e.message));
@@ -62,8 +53,13 @@ export const Login = ({ setAuth, isLoggedIn, token }) => {
         
   return (
     <div className="loginDiv">
-    <Container component="main" maxWidth="xs">
+    <Container component="main" sx={{ mt: 4 }} maxWidth="xs">
       {error && <div className="errorDiv">{error}</div>}
+      {registerSuccess && 
+        <Alert severity="success">
+          <AlertTitle>Registration Succesful!</AlertTitle>
+            Please login below to get started!
+        </Alert>}
       <CssBaseline />
         <Box
           sx={{

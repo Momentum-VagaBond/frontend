@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Register } from './routes/Register';
+import { useState } from 'react';
 import { Login } from './routes/Login';
 import { Logout } from './routes/Logout';
 import NewTrip from './routes/NewTrip';
@@ -10,6 +11,7 @@ import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
 import { Box } from '@mui/material';
 
+
 const App = () => {
   //use local storage to keep this token hanging around
   // const [token, setToken] = useLocalStorageState('vagaBondToken', '')
@@ -17,6 +19,7 @@ const App = () => {
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
   // const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('loggedUserPk', '')
+  const [registerSuccess, setRegisterSuccess] = useState("")
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -50,11 +53,11 @@ const isLoggedIn = username && token
         <Routes>
         <Route
           path="/register"
-          element={<Register isLoggedIn={isLoggedIn} setAuth={setAuth} username={username} token={token} setToken={setToken}/>}
+          element={<Register isLoggedIn={isLoggedIn} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} setAuth={setAuth} username={username} token={token} setToken={setToken}/>}
         />
         <Route
           path="/login"
-          element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
+          element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/profile"
