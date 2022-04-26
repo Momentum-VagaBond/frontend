@@ -46,11 +46,13 @@ return (
       <p>pk: {trip.pk}</p>
       <p>title: {trip.title}</p>
       <p>location: {trip.location}</p>
-      <p>duration: {trip.duration}</p>
+      {/* <p>duration: {trip.duration}</p> */}
       <p>user: {trip.user}</p>
       <p>username: {trip.username}</p>
       <p>first name: {trip.user_first_name}</p>
       <p>last name: {trip.user_last_name}</p>
+      <p>begin: {trip.begin}</p>
+      <p>end: {trip.end}</p>
     </Card>
     )}
   </Container>

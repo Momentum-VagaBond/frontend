@@ -36,12 +36,6 @@ const isLoggedIn = username && token
   return (
     <div className="App">
 
-      <Box
-      component="img"
-      alt="VagaBond Logo"
-      src="assts/VagaBond2.png"
-      />
-
       <Router>
 
       <Navbar
@@ -78,14 +72,14 @@ const isLoggedIn = username && token
         />
         <Route
           path="/newtrip"
-          element={<NewTrip setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
+          element={<NewTrip setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
         <Route
           path="/newlog"
           element={<NewLog setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
-          path="/users/2/mytrips/"
+          path="/users/1/mytrips/"
           element={<MyTrips setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
         <Route

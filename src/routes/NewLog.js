@@ -3,7 +3,11 @@ import axios from "axios";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { FormGroup } from '@mui/material';
-import { Navigate } from 'react-router-dom';
+import { Card } from '@mui/material';
+import { CardHeader } from '@mui/material';
+import { IconButton } from '@mui/material';
+import { Button } from '@mui/material';
+import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
 export default function NewLog({token}) {
     // const [trip, setTrip] = useState("");
@@ -20,7 +24,7 @@ export default function NewLog({token}) {
         console.log(location, details, latitude, longitude);
 
     axios
-    .post("https://momentum-vagabond.herokuapp.com/api/users/2/2/log/",
+    .post("https://momentum-vagabond.herokuapp.com/api/users/1/1/log/",
     {
         "location": location,
         // "trip": trip,
@@ -51,9 +55,6 @@ export default function NewLog({token}) {
     // return <Navigate to='/' />
     }
 
-    // if (!isLoggedIn) {
-    //     return <Navigate to="/login" />
-    // }
 
 
 
@@ -72,6 +73,10 @@ export default function NewLog({token}) {
 
     <div>
 
+    <Card
+        variant="outlined"
+        sx={{ maxWidth: 345 }}
+    >
     <FormGroup>
         <label htmlFor='reg-location'>Location: </label>
         <TextField id="filled-basic"
@@ -82,17 +87,6 @@ export default function NewLog({token}) {
             onChange={(e) => setLocation(e.target.value)}
         />
     </FormGroup>
-
-    {/* <FormGroup>
-        <label htmlFor='reg-trip'>Trip: </label>
-        <TextField id="filled-basic"
-            label="Trip"
-            variant="filled"
-            className='tripTrip'
-            required value={trip}
-            onChange={(e) => setTrip(e.target.value)}
-        />
-    </FormGroup> */}
 
     <FormGroup>
         <label htmlFor='reg-details'>Details: </label>
@@ -127,20 +121,12 @@ export default function NewLog({token}) {
         />
     </FormGroup>
 
-        {/* <TextField
-            id="filled-search"
-            label="Search field"
-            type="search"
-            variant="filled"
-        />
-        <TextField
-            id="filled-helperText"
-            label="Helper text"
-            defaultValue="Default Value"
-            helperText="Some important text"
-            variant="filled"
-        /> */}
-    <button type='submit'>Submit</button>
+    <IconButton type='submit'>
+        <AddLocationAltTwoToneIcon />
+    </IconButton>
+        Log your pin!
+
+    </Card>
     </div>
     </form>
 

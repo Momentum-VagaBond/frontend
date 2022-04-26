@@ -11,6 +11,8 @@ export default function NewTrip({token, isLoggedIn}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [duration, setDuration] = useState("");
+    const [begin, setBegin] = useState("");
+    const [end, setEnd] = useState("");
     const [error, setError] = useState("");
     const [isSubmit, setSubmit] = useState(false);
 
@@ -25,6 +27,8 @@ export default function NewTrip({token, isLoggedIn}) {
         "title": title,
         "location": location,
         "duration": duration,
+        "begin": begin,
+        "end": end,
     },
     {
         headers: {Authorization: `Token ${token}`}
@@ -35,6 +39,8 @@ export default function NewTrip({token, isLoggedIn}) {
     setTitle('')
     setLocation('')
     setDuration('')
+    setBegin('')
+    setEnd('')
     })
     .catch((e) => setError(e.message))
     }
@@ -92,6 +98,28 @@ export default function NewTrip({token, isLoggedIn}) {
             className='tripDuration'
             required value={duration}
             onChange={(e) => setDuration(e.target.value)}
+        />
+    </FormGroup>
+
+    <FormGroup>
+        <label htmlFor='begin'>Begin: </label>
+        <TextField id="filled-basic"
+            label="day-month-year"
+            variant="filled"
+            className='tripBegin'
+            required value={begin}
+            onChange={(e) => setBegin(e.target.value)}
+        />
+    </FormGroup>
+
+    <FormGroup>
+        <label htmlFor='end'>End: </label>
+        <TextField id="filled-basic"
+            label="day-month-year"
+            variant="filled"
+            className='tripEnd'
+            required value={end}
+            onChange={(e) => setEnd(e.target.value)}
         />
     </FormGroup>
 
