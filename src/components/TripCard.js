@@ -6,7 +6,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function TripCard() {
+
+
+export default function TripCard(pk, title, location, user, username, user_first_name, user_last_name, begin, end) {
     return (
 
     <Card sx={{ maxWidth: 345 }}>
@@ -19,18 +21,25 @@ export default function TripCard() {
     />
     
     <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        {/* <Typography gutterBottom variant="h5" component="div"> */}
             Trip
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-        </Typography>
+        {/* </Typography> */}
+        {/* <Typography variant="body2" color="text.secondary"> */}
+            {pk}
+            {title}
+            {location}
+            {username}
+            {user}
+            {user_first_name}
+            {user_last_name}
+            {begin}
+            {end}
+        {/* </Typography> */}
     </CardContent>
 
     <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Make favorite</Button>
+        <Button size="small">Trip details</Button>
     </CardActions>
 
     </Card>
