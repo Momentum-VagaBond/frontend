@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import { FormGroup } from '@mui/material';
+import { Container, FormGroup } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import { SettingsInputAntennaSharp } from "@mui/icons-material";
+import { AlignHorizontalCenter, CenterFocusStrong, SettingsInputAntennaSharp } from "@mui/icons-material";
 
 
 export default function NewTrip({token, isLoggedIn}) {
@@ -55,7 +55,15 @@ export default function NewTrip({token, isLoggedIn}) {
     }
 
     return (
-
+        <Container
+        sx={{
+            my: 8,
+            mx: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        }}
+        >
         <Box
         // component="form"
         sx={{
@@ -127,5 +135,6 @@ export default function NewTrip({token, isLoggedIn}) {
     </form>
     
     </Box>
+    </Container>
     );
 }

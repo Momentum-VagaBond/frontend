@@ -27,7 +27,6 @@ export default function NewLog({token}) {
     .post("https://momentum-vagabond.herokuapp.com/api/users/1/1/log/",
     {
         "location": location,
-        // "trip": trip,
         "details": details,
         "latitude": latitude,
         "longitude": longitude,
@@ -60,7 +59,6 @@ export default function NewLog({token}) {
 
     return (
         <Box
-            // component="form"
         sx={{
             '& .MuiTextField-root': { m: 1, width: '25ch' },
         }}
@@ -75,7 +73,13 @@ export default function NewLog({token}) {
 
     <Card
         variant="outlined"
-        sx={{ maxWidth: 345 }}
+        sx={{ 
+            my: 8,
+            mx: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            maxWidth: 345 }}
     >
     <FormGroup>
         <label htmlFor='reg-location'>Location: </label>

@@ -10,10 +10,9 @@ import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import TripDetail from './routes/TripDetail';
 import MyTrips from './routes/MyTrips';
-import LogCard from './components/LogCard';
+import { LogCard } from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
-import { Box } from '@mui/material';
 
 
 const App = () => {

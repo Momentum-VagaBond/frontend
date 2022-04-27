@@ -13,19 +13,27 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-export default function LogGrid() {
+// TRIP DETAIL PAGE! //
+
+export const LogGrid = ({ logCards}) => {
     return (
     <div>
     <Stack
+        component="main"
         direction="column"
         divider={<Divider orientation="horizontal" flexItem />}
         spacing={2}
+        maxWidth="xs"
     >
         {/* need to map through the logcards here */}
-        <LogCard />
+        {logCards.map((logCard, key) =>
+        <LogCard 
+
+        />
+        )}
+        {/* <Item>(Log goes here)</Item>
         <Item>(Log goes here)</Item>
-        <Item>(Log goes here)</Item>
-        <Item>(Log goes here)</Item>
+        <Item>(Log goes here)</Item> */}
     </Stack>
     </div>
 );
