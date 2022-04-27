@@ -147,7 +147,7 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, setRegister
         </Button>
         <Grid container>
               <Grid item xs >
-              <Link componenet={RouterLink} to="/register" variant="body2">
+              <Link component={RouterLink} to="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

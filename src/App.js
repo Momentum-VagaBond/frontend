@@ -61,7 +61,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/profile"
-          element={<Profile token={token} username={username} />}
+          element={<Profile setAuth={setAuth} token={token} username={username} />}
         />
         <Route
           path="/trips"
