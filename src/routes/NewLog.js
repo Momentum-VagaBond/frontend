@@ -75,7 +75,13 @@ export default function NewLog({token}) {
 
     <Card
         variant="outlined"
-        sx={{ maxWidth: 345 }}
+        sx={{ 
+            my: 8,
+            mx: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            maxWidth: 345 }}
     >
     <FormGroup>
         <label htmlFor='reg-location'>Location: </label>
