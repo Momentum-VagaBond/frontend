@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import TripCard from '../components/TripCard';
-
+import {TripCard} from '../components/TripCard';
+// import {TripDetail} from './TripDetail';
 // import { Link } from 'react-router-dom';
 // import Avatar from '@mui/material/Avatar';
 // import Button from '@mui/material/Button';
@@ -18,7 +18,7 @@ import Container from '@mui/material/Container';
 
 
 
-const AllTrips = ({token, map}) => {
+const AllTrips = ({username, token, map}) => {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
@@ -33,25 +33,28 @@ const AllTrips = ({token, map}) => {
 return (
   <>
 <Container maxWidth="xs">
-  <h1>This is a test list of ALL trips</h1>
+  <h1>Welcome, {username}</h1>
+  <h2>This is a test list of ALL trips</h2>
 </Container>
 
-{/* <Container component="main" maxWidth="xs"> */}
+<Container component="main" maxWidth="xs">
   {trips.map((trip ) =>
     <TripCard
+      username={username}
       key={trip.pk}
       title={trip.title}
       location={trip.location}
       // duration={trip.duration}
-      user={trip.user}
-      username={trip.username}
-      user_first={trip.user_first_name}
-      user_last={trip.user_last_name}
-      // begin={trip.begin}
-      // end={trip.end}
+      trip_user={trip.user}
+      trip_username={trip.username}
+      trip_user_first={trip.user_first_name}
+      trip_user_last={trip.user_last_name}
+      begin={trip.begin}
+      end={trip.end}
+      tripId={trip.pk}
     />
     )}
-  {/* </Container> */}
+  </Container>
   </>
   )
   }
