@@ -135,6 +135,10 @@ export const Navbar = () => {
             </MenuItem>
 
             <MenuItem onClick={handleCloseUserMenu}>
+              <Link to="/mytrips">My Trips</Link>
+            </MenuItem>
+
+            <MenuItem onClick={handleCloseUserMenu}>
               <Link to="/logout">Log Out</Link>
             </MenuItem>
 

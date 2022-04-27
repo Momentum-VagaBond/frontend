@@ -15,16 +15,16 @@ const faces = [
 ];
 
 export const LogCard = () => (
-  <Card className={'MuiReviewCard--01'}>
+  <Card className="muiReviewCard01">
     <CardMedia
-      component={'img'}
-      className={'MuiCardMedia-root'}
+      component="img"
+      className="muiCardMediaRoot"
       src={
         'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
       }
     />
-    <CardContent className={'MuiCardContent-root'}>
-      <div className={'ContentHead'}>
+    <CardContent className="muiCardContent-root">
+      <div className="contentHead">
         <Typography
           className={'MuiTypography--heading'}
           variant={'h6'}
