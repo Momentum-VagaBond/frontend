@@ -8,6 +8,7 @@ import NewLog from './routes/NewLog';
 import { Navbar } from './components/Navbar';
 import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
+import TripDetail from './routes/TripDetail';
 import MyTrips from './routes/MyTrips';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
@@ -20,6 +21,7 @@ const App = () => {
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
   const [registerSuccess, setRegisterSuccess] = useState("")
+
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -63,8 +65,14 @@ const isLoggedIn = username && token
         />
         <Route
           path="/trips"
-          element={<AllTrips token={token} isLoggedIn={isLoggedIn} />}
+          element={<AllTrips token={token} isLoggedIn={isLoggedIn} username={username}/>}
         />
+
+      <Route
+          path="/trips/:tripId"
+          element={<TripDetail token={token} isLoggedIn={isLoggedIn} username={username}/>}
+        />
+
         <Route
           path="/logout"
           element={<Logout setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
