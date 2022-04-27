@@ -27,7 +27,6 @@ export default function NewLog({token}) {
     .post("https://momentum-vagabond.herokuapp.com/api/users/1/1/log/",
     {
         "location": location,
-        // "trip": trip,
         "details": details,
         "latitude": latitude,
         "longitude": longitude,
@@ -60,7 +59,6 @@ export default function NewLog({token}) {
 
     return (
         <Box
-            // component="form"
         sx={{
             '& .MuiTextField-root': { m: 1, width: '25ch' },
         }}
