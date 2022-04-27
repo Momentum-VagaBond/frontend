@@ -1,24 +1,50 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Card from '@mui/material/Card'
 
 
-const TripDetail = ({token, tripId}) => {
+const TripDetail = ({token }) => {
+
+  const [trip, setTrip] = useState(null)
+  const [logs, setLogs] = useState([])
+  // const [acceptedResponse, setAcceptedResponse] = useState(null)
+  // const [questionSubmitted, setQuestionSubmitted] = useState(false)
+  
+  const params = useParams()
+
+  useEffect(() => {
+    axios
+      .get(`https://momentum-vagabond.herokuapp.com/api/trips/${params.tripId}`, {
+        // headers: {
+        //   Authorization: `Token ${token}`,
+        // },
+      })
+      .then((res) => {
+        setTrip(res.data)
+        setLogs(res.data.trip_logs)
+        // setAcceptedResponse(res.data.accepted_response)
+        console.log("question detail request fired")
+        console.log(res.data.trip_logs)
+        console.log(res.data)
+        // console.log(username)
+      })
+  }, [params.tripId, token])
 
 
-
-return (
+  return (  
 <Container component="main" maxWidth="xs">
   <CssBaseline />
     <Box
@@ -28,9 +54,21 @@ return (
           flexDirection: 'column',
           alignItems: 'center',
         }}
-    >This is the Trip Detail page. {tripId}
-    
+    >This is the Trip Detail page. 
     </Box>
+    {logs.map((log) =>
+    <Card sx={{
+      mt: 8,
+      pl: 4,
+      // display: 'flex',
+      // flexDirection: 'column',
+      // // alignItems: 'center', 
+      // border: 1
+    }}>
+    {log.details}
+    </Card>
+    )}
+   
   </Container>
   )
 }
