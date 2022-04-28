@@ -21,7 +21,10 @@ export default function MyTrips({token, pk}) {
 
     useEffect(() => {
         axios
-        .get("https://momentum-vagabond.herokuapp.com/api/users/1/mytrips/")
+        .get("https://momentum-vagabond.herokuapp.com/api/trips/",
+        {
+            headers: {Authorization: `Token ${token}`}}
+        )
         .then((response) => {
             console.log(response.data)
         setTrips(response.data)
