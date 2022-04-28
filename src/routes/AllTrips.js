@@ -40,7 +40,7 @@ return (
 </Container>
 
 <Container component="main" maxWidth="xs">
-  {trips.map((trip ) =>
+  {trips.map((trip) =>
     <TripCard
       username={username}
       key={trip.pk}

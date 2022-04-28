@@ -44,7 +44,7 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
             })
             .then((response) => {
                 console.log(response.data);
-                // console.log(response.data.auth_token);
+                console.log(response.data.auth_token);
                 setAuth(username, response.data.token);
                 setIsLoading(false);
                 setRegisterSuccess("")

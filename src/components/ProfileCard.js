@@ -11,7 +11,7 @@ import { deepOrange } from "@mui/material/colors";
 import { Link as RouterLink } from 'react-router-dom'
 
 
-export const ProfileCard = ({username, id, bio}) => {
+export const ProfileCard = ({profilePk, id, bio}) => {
 return(
 
 <Box sx={{
@@ -28,6 +28,9 @@ return(
     <Card>
     bio: {bio}
     </Card>
+    {/* <Card>
+    pk: {profilePk}
+    </Card> */}
 </Box>
 )
 }
