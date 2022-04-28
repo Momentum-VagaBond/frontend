@@ -13,6 +13,9 @@ import MyTrips from './routes/MyTrips';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
+import { ThemeProvider } from '@mui/material/styles';
+import { Theme } from './assets/Theme'
+
 
 
 const App = () => {
@@ -35,13 +38,11 @@ const App = () => {
     setUsername(username)
   }
 
-  // const getLoggedUserPk = (pk) =>
-  // setLoggedUserPk(pk)
-
 const isLoggedIn = username && token
 
 
   return (
+    <ThemeProvider theme={Theme}>
     <div className="App">
 
       <Router>
@@ -74,12 +75,10 @@ const isLoggedIn = username && token
           path="/trips"
           element={<AllTrips token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
-
       <Route
           path="/trips/:tripId"
           element={<TripDetail token={token} isLoggedIn={isLoggedIn} username={username}/>}
         />
-
         <Route
           path="/logout"
           element={<Logout setAuth={setAuth} token={token} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} />}
@@ -104,6 +103,7 @@ const isLoggedIn = username && token
         </Routes>
       </Router>
     </div>
+    </ThemeProvider>
   );
 }
 
