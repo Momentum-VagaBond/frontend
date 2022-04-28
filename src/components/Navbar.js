@@ -34,7 +34,9 @@ export const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static"
+      sx={{}}
+    >
       <Container maxWidth="xl">
         <Toolbar>
           <Typography

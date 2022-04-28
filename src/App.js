@@ -14,7 +14,6 @@ import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
 
-const muiBaseTheme = createMuiTheme();
 
 const App = () => {
   
