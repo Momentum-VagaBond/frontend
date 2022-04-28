@@ -75,7 +75,7 @@ const LogCard = () => (
             // textAlign: 'left',
             // transform: 'scale(1.2)',
             boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-            borderRadius: spacing(0.5),
+            borderRadius: muiBaseTheme.spacing.unit / 2,
             margin: `0 ${spacing(2)}px`,
             backgroundColor: '#ffffff',
             position: 'absolute',
