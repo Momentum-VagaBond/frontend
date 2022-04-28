@@ -45,7 +45,8 @@ export const Logout = ({token, setAuth, isLoggedIn}) => {
         axios
             .request(options)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
+                console.log(response)
             })
             .catch(function (error) {
                 console.error(error);
@@ -111,7 +112,7 @@ export const Logout = ({token, setAuth, isLoggedIn}) => {
             </Typography>
             <Box component="form" noValidate onSubmit={handleLogOut} sx={{ mt: 1 }}>
             <Button className="Logout"
-                type="submit"
+                type="button"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
