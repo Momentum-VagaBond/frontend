@@ -23,8 +23,8 @@ function Copyright(props) {
 }
 
 
-export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, setRegisterSuccess }) => {
-    const loginURL = "https://momentum-vagabond.herokuapp.com/auth/token/login";
+export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserPk, setRegisterSuccess, setLoggedUserPk, getLoggedUserPk }) => {
+    const loginURL = "https://momentum-vagabond.herokuapp.com/api-token-auth/";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -35,6 +35,8 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, setRegister
     const handleLogin = (e) => {
         e.preventDefault();
         setError('');
+        // setLoggedUserPk("")
+        // console.log("original logged user Pk:", loggedUserPk);
         axios
             .post(loginURL, {
                 username: username,
@@ -42,12 +44,14 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, setRegister
             })
             .then((response) => {
                 console.log(response.data);
-                console.log(response.data.auth_token);
-                setAuth(username, response.data.auth_token);
+                // console.log(response.data.auth_token);
+                setAuth(username, response.data.token);
                 setIsLoading(false);
                 setRegisterSuccess("")
-                console.log(token); 
-                console.log(isLoggedIn)
+                getLoggedUserPk(response.data.user_id)
+                // console.log(loggedUserPk)
+                // console.log("token", token); 
+                // console.log(isLoggedIn)
             })
             .catch((e) => setError(e.message));
             console.log(error);
