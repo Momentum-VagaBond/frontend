@@ -10,7 +10,7 @@ import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import TripDetail from './routes/TripDetail';
 import MyTrips from './routes/MyTrips';
-import { LogCard } from './components/LogCard';
+import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { NavigateBeforeRounded } from '@mui/icons-material';
 
@@ -86,7 +86,7 @@ const isLoggedIn = username && token
           element={<NewLog setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
-          path="/users/1/mytrips/"
+          path="/mytrips"
           element={<MyTrips setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
         <Route
