@@ -1,3 +1,5 @@
+// /api/trips/trippk/log/logpk/
+
 import axios from "axios";
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
@@ -14,36 +16,36 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card'
-import CardActionArea from '@mui/material/CardActionArea'
-import { Link as RouterLink } from 'react-router-dom'
 
 
-const TripDetail = ({token, loggedUserPk }) => {
+const LogDetail = ({token, logpk, tripId, logId, loggedUserPk }) => {
 
-  const [trip, setTrip] = useState(null)
-  const [logs, setLogs] = useState([])
+  const [thisLog, setThisLog] = useState([])
+  // const [logs, setLogs] = useState([])
   // const [acceptedResponse, setAcceptedResponse] = useState(null)
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
+  // console.log(tripId)
+  // console.log(logId)
 
   useEffect(() => {
     axios
-      .get(`https://momentum-vagabond.herokuapp.com/api/trips/${params.tripId}`, {
+      .get(`https://momentum-vagabond.herokuapp.com/api/trips/${params.tripId}/log/${params.logId}/`, {
         // headers: {
         //   Authorization: `Token ${token}`,
         // },
       })
       .then((res) => {
-        setTrip(res.data)
-        setLogs(res.data.trip_logs)
+        setThisLog(res.data)
+        // setLog(res.data.trip_logs)
         // setAcceptedResponse(res.data.accepted_response)
-        console.log("trip detail request fired")
-        console.log(res.data.trip_logs)
+        console.log("log detail request fired")
+        // console.log(res.data.trip_logs)
         console.log(res.data)
         // console.log(username)
       })
-  }, [params.tripId, token])
+  }, [params.logId, params.tripId, token])
 
 
   return (
@@ -56,27 +58,57 @@ const TripDetail = ({token, loggedUserPk }) => {
           flexDirection: 'column',
           alignItems: 'center',
         }}
-    >This is the Trip Detail page. 
+    >This is the Log Detail page. 
 
     </Box>
+ 
+
+    <>
+    {thisLog && (
     
-    {logs.map((log) =>
-    <Card key={log.pk} sx={{
+        
+        
+    <Card sx={{
       mt: 8,
       pl: 4,
       // display: 'flex',
       // flexDirection: 'column',
       // // alignItems: 'center', 
       // border: 1
-    }}>
-      <CardActionArea logPk={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
-    {log.details}
-      </CardActionArea>
+    }}
+      
+    >
+      <p>date logged: {thisLog.date_logged}</p>
+      <p>details: {thisLog.details}</p>
+      <p>latitude: {thisLog.latitude}</p>
+      <p>longitude: {thisLog.longitude}</p>
+      <p>location: {thisLog.location}</p>
+      <p>pk: {thisLog.pk}</p>
+      <p>start: {thisLog.start}</p>
+      <p>user: {thisLog.user}</p>
+      {/* <p>title: {trip.title}</p>
+      <p>location: {trip.location}</p>
+      <p>duration: {trip.duration}</p>
+      <p>user: {trip.user}</p>
+      <p>username: {trip.username}</p>
+      <p>first name: {trip.user_first_name}</p>
+      <p>last name: {trip.user_last_name}</p> */}
+
     </Card>
     )}
-
+    </>
+    
   </Container>
   )
 }
 
-export default TripDetail;
+export default LogDetail;
+
+{/* <Grid container wrap="nowrap" spacing={2}>
+<Grid item>
+  <Avatar>W</Avatar>
+</Grid>
+<Grid item xs zeroMinWidth>
+  <Typography noWrap>{message}</Typography>
+</Grid>
+</Grid> */}
