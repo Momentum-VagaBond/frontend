@@ -7,24 +7,26 @@ import Box from '@mui/material/Box';
 import { Card } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import Container from '@mui/material/Container';
-import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ProfileCard } from "../components/ProfileCard";
+import { TripCard } from '../components/TripCard';
 
 
-const Profile = ({username, token}) => {
+const Profile = ({username, token, loggedUserPk }) => {
   const [profiles, setProfiles] = useState([]);
+  const [userTrips, setUserTrips] = useState([]);
+  
 
     useEffect(() => {
       axios
       .get("https://momentum-vagabond.herokuapp.com/api/auth/me/",
-      {
-        headers: {Authorization: `Token ${token}`}}
-      )
+        {headers: {Authorization: `Token ${token}`}
+      })
       .then((response) => {
         console.log(response.data)
       setProfiles(response.data)
       })
-    }, [token])
+    }, [token, loggedUserPk])
 
 return (
 <Container component="main" maxWidth="xs">
@@ -37,7 +39,7 @@ return (
           justifyContent:'center',
         }}
     >
-      This is {username}'s' Profile
+      This is {username}'s Profile
       <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
     </Box>
     <Card component="main" maxwidth="xs">
@@ -52,8 +54,31 @@ return (
         )}
     </Card>
     {/* <Card>
-      <Link to="/trips">Trips</Link>
+      <TripCard
+      />
     </Card> */}
+    <Card component="main" maxwidth="xs">
+      <h3>Your Trips</h3>
+
+    {userTrips.filter(trip => trip.includes(`${username}`)).map(filteredTrip => (
+    <TripCard
+      username={filteredTrip.username}
+      // key={trip.pk}
+      title={filteredTrip.title}
+      location={filteredTrip.location}
+      // duration={trip.duration}
+      trip_user={filteredTrip.user}
+      // trip_username={trip.username}
+      // trip_user_first={trip.user_first_name}
+      // trip_user_last={trip.user_last_name}
+      begin={filteredTrip.begin}
+      end={filteredTrip.end}
+      // tripId={trip.pk}
+    />
+    // </Link>
+    ))}
+    </Card>
+
   </Container>
   )
 };

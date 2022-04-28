@@ -15,7 +15,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
 
-export default function MyTrips({token, pk}) {
+export default function MyTrips({token, loggedUserPk, pk}) {
     const [trips, setTrips] = useState([]);
 
 
@@ -29,7 +29,7 @@ export default function MyTrips({token, pk}) {
             console.log(response.data)
         setTrips(response.data)
         })
-    }, [])
+    }, [token, loggedUserPk])
 
     return(
     <>
