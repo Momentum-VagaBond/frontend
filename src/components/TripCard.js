@@ -14,7 +14,7 @@ export const TripCard = ({pk, tripId, title, currentUser, location, username, tr
     //   }
     const name = `${trip_username}`;
     const str = name;
-    const str2 = str.charAt(0).toUpperCase() + str.slice(1);
+    const usernameCapital= str.charAt(0).toUpperCase() + str.slice(1);
     // console.log(str2)
 
     return (
@@ -39,7 +39,7 @@ export const TripCard = ({pk, tripId, title, currentUser, location, username, tr
         {trip_username === username ? (
         <> My trip to {location}</> 
         ):( 
-        <>{str2}'s trip to {location}</>
+        <>{usernameCapital}'s trip to {location}</>
         )
     }
     

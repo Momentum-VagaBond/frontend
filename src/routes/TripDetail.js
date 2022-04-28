@@ -44,7 +44,7 @@ const TripDetail = ({token }) => {
   }, [params.tripId, token])
 
 
-  return (  
+  return (
 <Container component="main" maxWidth="xs">
   <CssBaseline />
     <Box
@@ -55,7 +55,9 @@ const TripDetail = ({token }) => {
           alignItems: 'center',
         }}
     >This is the Trip Detail page. 
+
     </Box>
+    
     {logs.map((log) =>
     <Card sx={{
       mt: 8,

@@ -21,7 +21,14 @@ const App = () => {
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
   const [registerSuccess, setRegisterSuccess] = useState("")
+  const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
+  const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
 
+  const getLoggedUserPk = (pk) =>
+    setLoggedUserPk(pk)
+
+  // const updateAvatar = (newImg) =>
+  //   setAvatar(newImg)
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -57,7 +64,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/login"
-          element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
+          element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} getLoggedUserPk={getLoggedUserPk} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/profile"
@@ -65,7 +72,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/trips"
-          element={<AllTrips token={token} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<AllTrips token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
 
       <Route
@@ -75,7 +82,7 @@ const isLoggedIn = username && token
 
         <Route
           path="/logout"
-          element={<Logout setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
+          element={<Logout setAuth={setAuth} token={token} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/newtrip"
@@ -91,7 +98,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/logcard"
-          element={<LogCard setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} />}
+          element={<LogCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
           {/* <Route path="/home"></Route> */}
         </Routes>

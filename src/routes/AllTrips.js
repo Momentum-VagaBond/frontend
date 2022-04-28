@@ -18,7 +18,7 @@ import Container from '@mui/material/Container';
 
 
 
-const AllTrips = ({username, token, map}) => {
+const AllTrips = ({username, loggedUserPk, token, map}) => {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
@@ -27,14 +27,16 @@ const AllTrips = ({username, token, map}) => {
       .then((response) => {
         console.log(response.data)
         setTrips(response.data)
+        console.log("loggedUserPk" + loggedUserPk)
       })
-  }, [])
+  }, [loggedUserPk])
 
 return (
   <>
 <Container maxWidth="xs">
   <h1>Welcome, {username}</h1>
   <h2>This is a test list of ALL trips</h2>
+  {/* {loggedUserPk}  */}
 </Container>
 
 <Container component="main" maxWidth="xs">

@@ -9,7 +9,7 @@ import { IconButton } from '@mui/material';
 import { Button } from '@mui/material';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
-export default function NewLog({token}) {
+export default function NewLog({token, loggedUserPk}) {
     // const [trip, setTrip] = useState("");
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
@@ -25,6 +25,7 @@ export default function NewLog({token}) {
 
     axios
     .post("https://momentum-vagabond.herokuapp.com/api/users/1/1/log/",
+    // .post(`https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/4/log/`,
     {
         "location": location,
         "details": details,
@@ -66,7 +67,7 @@ export default function NewLog({token}) {
         autoComplete="off"
         >
     {error && <div className="error">{error}</div>}
-    <h1>New Trip Log!</h1>
+    <h1>New Trip Log! {loggedUserPk} </h1>
     <form onSubmit={handleSubmit}>
 
     <div>
