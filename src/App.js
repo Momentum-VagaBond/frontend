@@ -10,6 +10,7 @@ import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import TripDetail from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
+import { TripDetailCard } from './components/TripDetailCard';
 import MyTrips from './routes/MyTrips';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
@@ -81,7 +82,6 @@ const isLoggedIn = username && token
           path="/trips/:tripId"
           element={<TripDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
-
       <Route
           path="/trips/:tripId/:logId"
           element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
@@ -105,6 +105,10 @@ const isLoggedIn = username && token
         <Route
           path="/logcard"
           element={<LogCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
+        />
+        <Route
+          path="/tripdetailcard"
+          element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
           {/* <Route path="/home"></Route> */}
         </Routes>
