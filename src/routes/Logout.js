@@ -57,20 +57,6 @@ export const Logout = ({token, setAuth, isLoggedIn}) => {
         setAuth("", "");
         };
 
-        //   .then((res) => {
-        //     setAuth(null, null);
-        //     localStorage.clear();
-        //   })
-        //   .catch((e) => {
-        //     console.log(e);
-        //     setStatus(e.status);
-        //     setAuth(null, null);
-        //   });
-    
-    //   if (status === 401) {
-    //     setAuth(null, null);
-    //   }
-
     if (!isLoggedIn) {
         return <Navigate to="/login" />
     }

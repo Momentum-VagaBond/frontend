@@ -8,14 +8,13 @@ import { CardContent } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import CardActionArea from '@mui/material/CardActionArea'
-// import { ThemeProvider } from '@mui/material/styles';
 
 
 
-export const TripDetailCard = ({log, details, logId, date, location, Theme}) => {
+export const TripDetailCard = ({details, pk, date, location, logId}) => {
     const params = useParams()
     return (
-        // <ThemeProvider theme={Theme}>
+
     <Card className='MuiPostCard'
     sx={{
         borderRadius: 10,
@@ -50,9 +49,6 @@ export const TripDetailCard = ({log, details, logId, date, location, Theme}) => 
             position: 'relative',
             width: '30%',
             maxWidth: 250,
-            // mt: 3,
-            // mb: 3,
-            // pt: 3,
             paddingTop: 30,
             transform: "translateX(-10%)",
             boxShadow: '7px 4px 30px 2px rgba(252, 56, 56, 0.2)',
@@ -68,7 +64,7 @@ export const TripDetailCard = ({log, details, logId, date, location, Theme}) => 
                 left: 0,
                 // width: '100%',
                 // height: '100%',
-                borderRadius: 2, // 16
+                borderRadius: 2,
 
             },
         }}
@@ -131,5 +127,4 @@ export const TripDetailCard = ({log, details, logId, date, location, Theme}) => 
     </CardContent>
     </Box>
     </Card>
-    // </ThemeProvider>gi
     )};

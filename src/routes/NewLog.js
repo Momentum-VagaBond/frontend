@@ -4,9 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { FormGroup } from '@mui/material';
 import { Card } from '@mui/material';
-import { CardHeader } from '@mui/material';
 import { IconButton } from '@mui/material';
-import { Button } from '@mui/material';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
 export default function NewLog({token, loggedUserPk}) {

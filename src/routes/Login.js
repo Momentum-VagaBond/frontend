@@ -2,10 +2,8 @@ import * as React from 'react';
 import axios from "axios";
 import { useState } from "react";
 import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
-
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CircularProgress } from '@mui/material';
-
+import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -55,20 +53,12 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
             })
             .catch((e) => setError(e.message));
             console.log(error);
-            
-
-        navigate("/trips")
-        }
+          }
 
         if (isLoggedIn) {
             return <Navigate to="/trips" />
-        }
-      //had to disable isLoading because it was getting stuck when navigating here after loging out
-        // if (isLoading) {
-        //   return <CircularProgress />
-        //     }
-        
-        
+        }      
+
   return (
     <div className="loginDiv">
       <ThemeProvider theme={theme}>
@@ -86,7 +76,7 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url(https://www.kalenmartin.com/portfolio/travel)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

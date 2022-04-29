@@ -14,7 +14,6 @@ import { TripDetailCard } from './components/TripDetailCard';
 import MyTrips from './routes/MyTrips';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
-import { NavigateBeforeRounded } from '@mui/icons-material';
 import { ThemeProvider } from '@mui/material/styles';
 import { Theme } from './assets/Theme'
 
@@ -27,7 +26,7 @@ const App = () => {
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
   const [registerSuccess, setRegisterSuccess] = useState("")
-  const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
+  // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
 
   const getLoggedUserPk = (pk) =>
@@ -110,7 +109,7 @@ const isLoggedIn = username && token
           path="/tripdetailcard"
           element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
-          {/* <Route path="/home"></Route> */}
+
         </Routes>
       </Router>
     </div>

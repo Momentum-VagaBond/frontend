@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Navigate, Link as RouterLink} from 'react-router-dom'
 import axios from 'axios';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { AlertTile, TextField, Alert, Container, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CircularProgress } from '@mui/material';;
+import { TextField, Alert, Container, Typography, Box, Grid, Link, CssBaseline, Button, Avatar } from '@mui/material';;
 
 export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
     const [username, setUsername] = useState("");
@@ -12,7 +12,6 @@ export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) =>
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [error, setError] = useState("");
-    // const [success, setSucess] = useState("");
     const [isRegistered, setIsRegistered] = useState(false);
 
     const handleRegistration = (e) => {
