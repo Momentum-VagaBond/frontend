@@ -10,6 +10,7 @@ import { Typography } from "@mui/material";
 import { Icon } from "@mui/material";
 // import { borderRadius, spacing } from '@mui/system';
 import { grey } from '@mui/material/colors';
+import CommentBox from './CommentBox';
 
 
 const faces = [
@@ -19,7 +20,7 @@ const faces = [
   "http://i.pravatar.cc/300?img=9"
 ];
 
-const LogCard = ({detail_text,location}) => (
+const LogCard = ({detail_text,location, comments}) => (
   <Container className='bodyContainer'
   sx={{
   }}
@@ -32,6 +33,8 @@ const LogCard = ({detail_text,location}) => (
     flexDirection: 'column',
     alignItems: 'center',
     border: 0,
+
+    // position: 'relative',
     }}
   >
     <CardMedia
@@ -147,7 +150,12 @@ const LogCard = ({detail_text,location}) => (
       </div>
     </CardContent>
 
+    <CommentBox />
+
     </Box>
+
+
+
   </Card>
   </Container>
   )

@@ -69,17 +69,22 @@ const LogDetail = ({token}) => {
 
 {/* Post a comment */}
   <Container>
-  <Card>
-  <Box border={1} margin={4}>
+  {/* <Box border={1} margin={4}>
     <CommentBox
         token={token}
         logId={thisLog.pk}
         commentPosted={commentPosted}
         setCommentPosted={setCommentPosted}
           />
-  </Box>
+  </Box> */}
 
 {/* Display comment section */}
+  <Card className="responseBox"
+    sx={{
+      marginTop: 35,
+      position: 'relative',
+    }}
+  >
     {comments.map((comment, idx) =>
     <Box margin={4} border={1} key={idx}>
       <ul>{comment.comments}</ul>

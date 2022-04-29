@@ -34,7 +34,7 @@ export const Navbar = () => {
 
   return (
     <AppBar position="static"
-      // sx={{borderRadius: 10}}
+      // sx={{'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)'}}
     >
       <Container maxWidth="m">
         <Toolbar>

@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
-
-import { Navigate, Link as RouterLink} from 'react-router-dom'
-import { AlertTile, TextField, Alert, Container, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CircularProgress } from '@mui/material';;
+import { TextField, Box, Button } from '@mui/material';;
 
 // import { Link } from 'react-router-dom'
 
@@ -56,7 +53,7 @@ export default function CommentBox({ token, logId }) {
           <Button type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}>Post comment
+            sx={{ mt: 3, mb: 2, borderRadius: 5 }}>Post comment
           </Button>
         </Box>
       </>

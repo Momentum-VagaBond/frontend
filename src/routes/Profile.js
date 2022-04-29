@@ -25,9 +25,10 @@ const Profile = ({username, token, loggedUserPk, id, trips }) => {
       .then((response) => {
         console.log(response.data)
       setProfiles(response.data)
-      setUserTrips(response.data)
+      console.log(userTrips)
+      setUserTrips(response.data.pk)
       })
-    }, [token, loggedUserPk])
+    }, [token, loggedUserPk, userTrips])
 
 return (
 <Container component="main" maxWidth="xs">
@@ -44,9 +45,9 @@ return (
       <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
     </Box>
     <Card component="main" maxwidth="xs">
-      {profiles.map((profile, idx) => {
+      {profiles.map((profile, pk) => {
         return (
-          <ProfileCard key={idx}
+          <ProfileCard key={pk}
             profileId={profile.pk}
             id={profile.id}
             bio={profile.bio}
