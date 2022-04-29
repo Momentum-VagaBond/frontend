@@ -16,6 +16,7 @@ import Container from '@mui/material/Container';
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import { Link as RouterLink } from 'react-router-dom'
+import { TripDetailCard } from "../components/TripDetailCard";
 
 
 const TripDetail = ({token, loggedUserPk }) => {
@@ -47,7 +48,7 @@ const TripDetail = ({token, loggedUserPk }) => {
 
 
   return (
-<Container component="main" maxWidth="xs">
+<Container component="main">
   <CssBaseline />
     <Box
       sx={{
@@ -61,18 +62,17 @@ const TripDetail = ({token, loggedUserPk }) => {
     </Box>
     
     {logs.map((log) =>
-    <Card key={log.pk} sx={{
+    <TripDetailCard key={log.pk}
+    sx={{
       mt: 8,
       pl: 4,
-      // display: 'flex',
-      // flexDirection: 'column',
-      // // alignItems: 'center', 
-      // border: 1
     }}>
-      <CardActionArea logPk={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
-    {log.details}
-      </CardActionArea>
-    </Card>
+      <p>{log.details}</p>
+      {log.user}
+      {/* <CardActionArea logPk={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
+      {log.details}
+      </CardActionArea> */}
+    </TripDetailCard>
     )}
 
   </Container>
