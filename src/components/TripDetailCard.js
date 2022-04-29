@@ -12,7 +12,7 @@ import CardActionArea from '@mui/material/CardActionArea'
 
 
 
-export const TripDetailCard = ({log, details, pk, date, location, Theme}) => {
+export const TripDetailCard = ({log, details, logId, date, location, Theme}) => {
     const params = useParams()
     return (
         // <ThemeProvider theme={Theme}>
@@ -78,7 +78,7 @@ export const TripDetailCard = ({log, details, pk, date, location, Theme}) => {
     sx={{
     }}
     >
-    <CardContent className='MuiCardContent-root' key={pk}
+    <CardContent className='MuiCardContent-root' key={logId}
     sx={{
         textAlign: 'left',
         padding: 0,
@@ -110,8 +110,8 @@ export const TripDetailCard = ({log, details, pk, date, location, Theme}) => {
         >
             {details}
         </Typography>
-        <CardActionArea component={RouterLink} to={`/trips/${params.tripId}`}>
-        <Button className='MuiButton--readMore' size="xs"
+        {/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}`}> */}
+        <Button className='MuiButton--readMore' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`}
         sx={{
             backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 74%)',
             backgroundSize: 'constrain',
@@ -127,7 +127,7 @@ export const TripDetailCard = ({log, details, pk, date, location, Theme}) => {
         >
         Read More
         </Button>
-        </CardActionArea>
+        {/* </CardActionArea> */}
     </CardContent>
     </Box>
     </Card>
