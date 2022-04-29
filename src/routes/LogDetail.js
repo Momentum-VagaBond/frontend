@@ -17,13 +17,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card'
 import LogCard from "../components/LogCard";
+import CommentBox from "../components/CommentBox";
 import Moment from 'react-moment'
 
 
-const LogDetail = ({token, logpk, logId, loggedUserPk }) => {
+const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
 
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
+  const [commentPosted, setCommentPosted] = ("")
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
@@ -81,8 +83,12 @@ const LogDetail = ({token, logpk, logId, loggedUserPk }) => {
 {/* Post a comment */}
   <Container>
   <Box border={1} margin={4}>
-    Hold this space for making a comment
-    <br></br>
+    <CommentBox
+        token={token}
+        logId={thisLog.pk}
+        commentPosted={commentPosted}
+        setCommentPosted={setCommentPosted}
+          />
   </Box>
 
 {/* Display comment section */}
