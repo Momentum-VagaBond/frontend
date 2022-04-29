@@ -22,6 +22,7 @@ const TripDetail = ({token, loggedUserPk }) => {
 
   const [trip, setTrip] = useState(null)
   const [logs, setLogs] = useState([])
+  const [logPk, setLogPk] = useState([])
   // const [acceptedResponse, setAcceptedResponse] = useState(null)
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
@@ -37,6 +38,8 @@ const TripDetail = ({token, loggedUserPk }) => {
       .then((res) => {
         setTrip(res.data)
         setLogs(res.data.trip_logs)
+        setLogPk(res.data.pk)
+        console.log("logpk", res.data.trip_logs.pk)
         // setAcceptedResponse(res.data.accepted_response)
         console.log("trip detail request fired")
         console.log(res.data.trip_logs)
@@ -59,7 +62,7 @@ const TripDetail = ({token, loggedUserPk }) => {
     >This is the Trip Detail page. 
 
     </Box>
-    
+
     {logs.map((log) =>
     <Card key={log.pk} sx={{
       mt: 8,
@@ -69,8 +72,9 @@ const TripDetail = ({token, loggedUserPk }) => {
       // // alignItems: 'center', 
       // border: 1
     }}>
-      <CardActionArea logPk={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
-    {log.details}
+      <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
+    <li>{log.details}</li>
+    <li>this is the LOG PK: {log.pk}</li>
       </CardActionArea>
     </Card>
     )}
