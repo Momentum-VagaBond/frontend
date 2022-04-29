@@ -3,16 +3,9 @@
 import axios from "axios";
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card'
@@ -25,7 +18,7 @@ const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
 
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
-  const [commentPosted, setCommentPosted] = ("")
+  const [commentPosted, setCommentPosted] = ''
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
@@ -49,6 +42,9 @@ const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
       })
   }, [params.logId, token])
 
+  const addNewComment = (newComment) => {
+    setComments([...comments, newComment])
+  }
 
   return (
 <Container component="main">
@@ -88,6 +84,7 @@ const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
         logId={thisLog.pk}
         commentPosted={commentPosted}
         setCommentPosted={setCommentPosted}
+        setNewComment={addNewComment}
           />
   </Box>
 
