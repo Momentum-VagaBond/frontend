@@ -131,5 +131,5 @@ export const TripDetailCard = ({log, details, pk, date, location, Theme}) => {
     </CardContent>
     </Box>
     </Card>
-    // </ThemeProvider>
+    // </ThemeProvider>gi
     )};

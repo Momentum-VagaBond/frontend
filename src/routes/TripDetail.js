@@ -66,22 +66,15 @@ const TripDetail = ({token, loggedUserPk }) => {
 
     {logs.map((log) =>
     <TripDetailCard
-    // sx={{
-    //   mt: 8,
-    //   pl: 4,
-    //   // display: 'flex',
-    //   // flexDirection: 'column',
-    //   // // alignItems: 'center', 
-    //   // border: 1
-    // }}>
-    
+    sx={{
+      mt: 8,
+      pl: 4,
+    }}
       key={log.pk}
       details={log.details}
       location={log.location}
       date={log.date_logged}
     />
-      
-     
     )}
 {/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}></CardActionArea> */}
   </Container>
