@@ -16,7 +16,7 @@ const LogDetail = ({token}) => {
 
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
-  const [commentPosted, setCommentPosted] = ("")
+  const [commentPosted, setCommentPosted] = ''
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
@@ -36,6 +36,9 @@ const LogDetail = ({token}) => {
       })
   }, [params.logId, token])
 
+  const addNewComment = (newComment) => {
+    setComments([...comments, newComment])
+  }
 
   return (
 <Container component="main">
@@ -75,6 +78,7 @@ const LogDetail = ({token}) => {
         logId={thisLog.pk}
         commentPosted={commentPosted}
         setCommentPosted={setCommentPosted}
+        setNewComment={addNewComment}
           />
   </Box> */}
 

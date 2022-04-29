@@ -58,7 +58,7 @@ const TripDetail = ({token }) => {
       mt: 8,
       pl: 4,
     }}
-      key={log.pk}
+      logId={log.pk}
       details={log.details}
       location={log.location}
       date={log.date_logged}
