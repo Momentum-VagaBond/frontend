@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { Avatar } from '@mui/material';
 import { Container } from '@mui/material';
-import { Box, flexbox } from '@mui/system';
+import { Box } from '@mui/system';
 import { Card } from '@mui/material';
 import { CardMedia } from '@mui/material';
 import { CardContent } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Icon } from "@mui/material";
-import { borderRadius, spacing } from '@mui/system';
+// import { borderRadius, spacing } from '@mui/system';
 import { grey } from '@mui/material/colors';
+import CommentBox from './CommentBox';
 
 
 const faces = [
@@ -19,7 +20,7 @@ const faces = [
   "http://i.pravatar.cc/300?img=9"
 ];
 
-const LogCard = ({date_logged, detail_text,latitude, log_user, longitude, location, logPk, start}) => (
+const LogCard = ({detail_text,location, comments}) => (
   <Container className='bodyContainer'
   sx={{
   }}
@@ -28,12 +29,12 @@ const LogCard = ({date_logged, detail_text,latitude, log_user, longitude, locati
   <Card id="cardBody"
     sx={{
     mt: 8,
-    // pl: 12,
-    // pr: 12,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     border: 0,
+
+    // position: 'relative',
     }}
   >
     <CardMedia
@@ -52,8 +53,11 @@ const LogCard = ({date_logged, detail_text,latitude, log_user, longitude, locati
                   marginBottom: 10,
                   backgroundColor: '#ffffff',
                   position: 'absolute',
-                  top: '49%',
+                  top: '55%',
                   textAlign: 'left',
+                  maxWidth: 400,
+                  width: '70%',
+                  overflow: 'visible',
       }}
     >
     <CardContent className='CardContent'
@@ -98,7 +102,7 @@ const LogCard = ({date_logged, detail_text,latitude, log_user, longitude, locati
         </Icon>
         {location}
       </Typography>
-      <div className="ContentRating">
+      {/* <div className="ContentRating">
 
         <Icon className="IconStarred"
         sx={{color: '#ffbb00'}}>star_rounded</Icon>
@@ -114,7 +118,7 @@ const LogCard = ({date_logged, detail_text,latitude, log_user, longitude, locati
         <Typography className="TypographyRating" inline="true">
           4.0
         </Typography>
-      </div>
+      </div> */}
       <Typography gutterBottom color="TextSecondary">
         {detail_text}
       </Typography>
@@ -125,9 +129,12 @@ const LogCard = ({date_logged, detail_text,latitude, log_user, longitude, locati
       // }}
       >
         {faces.map(face => (
-          <Avatar className="Avatar" key={face} src={face} />
+          <Avatar className="Avatar" key={face} src={face}
+          sx={{
+          }}
+          />
         ))}
-        <Typography
+        {/* <Typography
           className="TypographyReviewer"
           color="textSecondary"
           sx={{
@@ -136,13 +143,19 @@ const LogCard = ({date_logged, detail_text,latitude, log_user, longitude, locati
           }}
         >
           +420
-        </Typography>
+        </Typography> */}
         <IconButton className="IconButton">
           <Icon>more_horiz</Icon>
         </IconButton>
       </div>
     </CardContent>
+
+    <CommentBox />
+
     </Box>
+
+
+
   </Card>
   </Container>
   )

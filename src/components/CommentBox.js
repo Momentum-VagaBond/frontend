@@ -57,29 +57,26 @@ export default function CommentBox({ token, logId, setNewComment }) {
     }
   }
 
-  return (
-    <>
-      <Box component="form" noValidate onSubmit={handleComment} sx={{ mt: 3 }}>
-        <TextField
-          className="input-field"
-          // id="comment"
-          type="text"
-          required
-          fullWidth
-          placeholder="Add a comment..."
-          value={comment}
-          autoFocus
-          onChange={(e) => handleChange('commentText', e)}
-        />
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-        >
-          Post comment
-        </Button>
-      </Box>
-    </>
-  )
+    return (
+      <>
+        <Box component='form' noValidate onSubmit={handleComment} sx={{ mt: 3 }}>    
+          <TextField
+            className='input-field'
+            // id="comment"
+            type='text'
+            required
+            fullWidth
+            placeholder="Add a comment..."
+            value={comment}
+            autoFocus
+            onChange={(e) => handleChange('commentText', e)}
+          />  
+          <Button type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2, borderRadius: 5 }}>Post comment
+          </Button>
+        </Box>
+      </>
+    )
 }
