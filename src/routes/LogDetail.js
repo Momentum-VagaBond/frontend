@@ -16,13 +16,16 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card'
+import LogCard from "../components/LogCard";
+import CommentBox from "../components/CommentBox";
+import Moment from 'react-moment'
 
 
-const LogDetail = ({token, logpk, tripId, logId, loggedUserPk }) => {
+const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
 
   const [thisLog, setThisLog] = useState([])
-  // const [logs, setLogs] = useState([])
-  // const [acceptedResponse, setAcceptedResponse] = useState(null)
+  const [comments, setComments] = useState([])
+  const [commentPosted, setCommentPosted] = ("")
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
@@ -31,25 +34,24 @@ const LogDetail = ({token, logpk, tripId, logId, loggedUserPk }) => {
 
   useEffect(() => {
     axios
-      .get(`https://momentum-vagabond.herokuapp.com/api/trips/${params.tripId}/log/${params.logId}/`, {
+      .get(`https://momentum-vagabond.herokuapp.com/api/log/${params.logId}/`, {
         // headers: {
         //   Authorization: `Token ${token}`,
         // },
       })
       .then((res) => {
         setThisLog(res.data)
-        // setLog(res.data.trip_logs)
-        // setAcceptedResponse(res.data.accepted_response)
+        setComments(res.data.log_comments)
         console.log("log detail request fired")
-        // console.log(res.data.trip_logs)
-        console.log(res.data)
+        console.log(res.data.log_comments)
+        // console.log(res.data)
         // console.log(username)
       })
-  }, [params.logId, params.tripId, token])
+  }, [params.logId, token])
 
 
   return (
-<Container component="main" maxWidth="xs">
+<Container component="main">
   <CssBaseline />
     <Box
       sx={{
@@ -61,43 +63,44 @@ const LogDetail = ({token, logpk, tripId, logId, loggedUserPk }) => {
     >This is the Log Detail page. 
 
     </Box>
- 
+{/* Log Detail Card: */}
 
-    <>
+    <Container>
     {thisLog && (
-    
-        
-        
-    <Card sx={{
-      mt: 8,
-      pl: 4,
-      // display: 'flex',
-      // flexDirection: 'column',
-      // // alignItems: 'center', 
-      // border: 1
-    }}
-      
-    >
-      <p>date logged: {thisLog.date_logged}</p>
-      <p>details: {thisLog.details}</p>
-      <p>latitude: {thisLog.latitude}</p>
-      <p>longitude: {thisLog.longitude}</p>
-      <p>location: {thisLog.location}</p>
-      <p>pk: {thisLog.pk}</p>
-      <p>start: {thisLog.start}</p>
-      <p>user: {thisLog.user}</p>
-      {/* <p>title: {trip.title}</p>
-      <p>location: {trip.location}</p>
-      <p>duration: {trip.duration}</p>
-      <p>user: {trip.user}</p>
-      <p>username: {trip.username}</p>
-      <p>first name: {trip.user_first_name}</p>
-      <p>last name: {trip.user_last_name}</p> */}
-
-    </Card>
+    <LogCard
+      date_logged={thisLog.date_logged}
+      detail_text={thisLog.details}
+      latitude={thisLog.latitude}
+      longitude={thisLog.longitude}
+      location={thisLog.location}
+      logPk={thisLog.pk}
+      start={thisLog.start}
+      log_user={thisLog.user}
+    />
     )}
-    </>
-    
+    </Container>
+
+{/* Post a comment */}
+  <Container>
+  <Box border={1} margin={4}>
+    <CommentBox
+        token={token}
+        logId={thisLog.pk}
+        commentPosted={commentPosted}
+        setCommentPosted={setCommentPosted}
+          />
+  </Box>
+
+{/* Display comment section */}
+    {comments.map((comment, idx) =>
+    <Box margin={4} border={1} key={idx}>
+      <ul>{comment.comments}</ul>
+      <ul><Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment></ul>
+      <ul>{comment.user}</ul>
+    </Box>
+  
+    )}
+    </Container>
   </Container>
   )
 }

@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link as RouterLink } from 'react-router-dom'
+import Moment from 'react-moment'
 
 
 export const TripCard = ({pk, tripId, title, currentUser, location, username, trip_user, trip_username, trip_user_first_name, trip_user_last_name, begin, end }) => {
@@ -52,7 +53,7 @@ export const TripCard = ({pk, tripId, title, currentUser, location, username, tr
             {user}
             {user_first_name}
             {user_last_name} */}
-            {begin} - {end}
+            <Moment format="MM/D/YYYY">{begin}</Moment> - <Moment format="MM/D/YYYY">{end}</Moment>
         </Typography>
     </CardContent>
 

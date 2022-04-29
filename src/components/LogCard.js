@@ -19,11 +19,12 @@ const faces = [
   "http://i.pravatar.cc/300?img=9"
 ];
 
-const LogCard = () => (
+const LogCard = ({date_logged, detail_text,latitude, log_user, longitude, location, logPk, start}) => (
   <Container className='bodyContainer'
   sx={{
   }}
   >
+  
   <Card id="cardBody"
     sx={{
     mt: 8,
@@ -95,7 +96,7 @@ const LogCard = () => (
         >
           location_on
         </Icon>
-        Rome
+        {location}
       </Typography>
       <div className="ContentRating">
 
@@ -115,8 +116,7 @@ const LogCard = () => (
         </Typography>
       </div>
       <Typography gutterBottom color="TextSecondary">
-        Talking about travelling or new jobs, many people often think of change
-        of environment...
+        {detail_text}
       </Typography>
       <div className="ContentTail"
       // sx={{

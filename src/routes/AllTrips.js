@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {TripCard} from '../components/TripCard';
+import {CommentBox} from '../components/CommentBox';
+
 // import {TripDetail} from './TripDetail';
 // import { Link } from 'react-router-dom';
 // import Avatar from '@mui/material/Avatar';
