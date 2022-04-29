@@ -9,7 +9,6 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -46,6 +45,21 @@ export const Navbar = () => {
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
             VagaBond
+            <MenuItem>
+                <Link to="/newtrip">New Trip</Link>
+              </MenuItem>
+
+              <MenuItem>
+                <Link to="/trips">All Trips</Link>
+              </MenuItem>
+
+              <MenuItem>
+                <Link to="/profile">Profile</Link>
+              </MenuItem>
+
+              <MenuItem>
+                <Link to="/newlog">New Log</Link>
+              </MenuItem>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

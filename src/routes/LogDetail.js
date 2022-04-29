@@ -2,18 +2,9 @@
 
 import axios from "axios";
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import { useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card'
 import LogCard from "../components/LogCard";
@@ -21,7 +12,7 @@ import CommentBox from "../components/CommentBox";
 import Moment from 'react-moment'
 
 
-const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
+const LogDetail = ({token}) => {
 
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
@@ -29,8 +20,6 @@ const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
-  // console.log(tripId)
-  // console.log(logId)
 
   useEffect(() => {
     axios
@@ -44,8 +33,6 @@ const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
         setComments(res.data.log_comments)
         console.log("log detail request fired")
         console.log(res.data.log_comments)
-        // console.log(res.data)
-        // console.log(username)
       })
   }, [params.logId, token])
 
@@ -82,6 +69,7 @@ const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
 
 {/* Post a comment */}
   <Container>
+  <Card>
   <Box border={1} margin={4}>
     <CommentBox
         token={token}
@@ -98,8 +86,8 @@ const LogDetail = ({token, logpk, logId, loggedUserPk, comment }) => {
       <ul><Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment></ul>
       <ul>{comment.user}</ul>
     </Box>
-  
     )}
+    </Card>
     </Container>
   </Container>
   )

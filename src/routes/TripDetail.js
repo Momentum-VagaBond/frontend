@@ -1,25 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import { useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Card from '@mui/material/Card'
-import CardActionArea from '@mui/material/CardActionArea'
-import { Link as RouterLink } from 'react-router-dom'
 import { TripDetailCard } from "../components/TripDetailCard";
 
 
-const TripDetail = ({token, loggedUserPk }) => {
+const TripDetail = ({token }) => {
 
   const [trip, setTrip] = useState(null)
   const [logs, setLogs] = useState([])

@@ -4,7 +4,6 @@ import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import { Container, FormGroup } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import { AlignHorizontalCenter, CenterFocusStrong, SettingsInputAntennaSharp } from "@mui/icons-material";
 
 
 export default function NewTrip({token, isLoggedIn}) {

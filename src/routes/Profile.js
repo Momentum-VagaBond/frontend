@@ -7,12 +7,12 @@ import Box from '@mui/material/Box';
 import { Card } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom'
 import { ProfileCard } from "../components/ProfileCard";
 import { TripCard } from '../components/TripCard';
+// import { PictureAsPdfOutlined } from '@mui/icons-material';
 
 
-const Profile = ({username, token, loggedUserPk }) => {
+const Profile = ({username, token, loggedUserPk, id, trips }) => {
   const [profiles, setProfiles] = useState([]);
   const [userTrips, setUserTrips] = useState([]);
   
@@ -25,6 +25,7 @@ const Profile = ({username, token, loggedUserPk }) => {
       .then((response) => {
         console.log(response.data)
       setProfiles(response.data)
+      setUserTrips(response.data)
       })
     }, [token, loggedUserPk])
 
@@ -43,9 +44,9 @@ return (
       <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
     </Box>
     <Card component="main" maxwidth="xs">
-      {profiles.map((profile) => {
+      {profiles.map((profile, idx) => {
         return (
-          <ProfileCard
+          <ProfileCard key={idx}
             profileId={profile.pk}
             id={profile.id}
             bio={profile.bio}
@@ -53,14 +54,14 @@ return (
       )}
         )}
     </Card>
-    {/* <Card>
-      <TripCard
-      />
-    </Card> */}
+
     <Card component="main" maxwidth="xs">
       <h3>Your Trips</h3>
-
-    {userTrips.filter(trip => trip.includes(`${username}`)).map(filteredTrip => (
+      <TripCard
+      />
+    </Card>
+    
+    {/* {userTrips.filter(trip => trip.includes(`${id}`)).map(filteredTrip => (
     <TripCard
       username={filteredTrip.username}
       // key={trip.pk}
@@ -75,9 +76,7 @@ return (
       end={filteredTrip.end}
       // tripId={trip.pk}
     />
-    // </Link>
-    ))}
-    </Card>
+    ))} */}
 
   </Container>
   )
