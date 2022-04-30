@@ -42,7 +42,11 @@ const LogDetail = ({token}) => {
   }
 
   return (
-<Container component="main">
+<Container component="main"
+// sx={{
+//   backgroundColor: "lightgray",
+// }}
+>
   <CssBaseline />
     <Box
       sx={{
@@ -50,6 +54,7 @@ const LogDetail = ({token}) => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          borderRadius: 5,
         }}
     >This is the Log Detail page. 
 
@@ -77,7 +82,14 @@ const LogDetail = ({token}) => {
           marginTop: 35,
         }}
   >
-  <Box border={1} margin={4}>
+  <Box sx={{
+    border: 1,
+    margin: 4,
+    padding: 1,
+    borderRadius: 5,
+    boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
+  }}
+  >
     <CommentBox
         token={token}
         logId={thisLog.pk}
@@ -88,16 +100,28 @@ const LogDetail = ({token}) => {
   </Box>
 
 {/* Display comment section */}
-  <Card className="responseBox"
+  <Container className="responseBox"
     sx={{
       position: 'relative',
     }}
   >
     {comments.map((comment, idx) =>
-    <Card>
+    <Card
+    sx={{
+      borderRadius: 5,
+      margin: 2,
+    }}
+    >
     <Box sx={{
-      margin: 4,
+      margin: 1,
       border: 1,
+      borderRadius: 5,
+      paddingLeft: 3,
+      backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 74%)',
+      '&:hover': {
+        transform: 'translateY(-3px)',
+        boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
+        }
     }}
       key={idx}>
       <h2>{comment.comments}</h2>
@@ -106,7 +130,7 @@ const LogDetail = ({token}) => {
     </Box>
     </Card>
     )}
-    </Card>
+    </Container>
     </Container>
   </Container>
   )

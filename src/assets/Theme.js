@@ -19,5 +19,5 @@ export const Theme = createTheme({
                 main: '#08d295',
             },
         },
-    }
+    },
 });

@@ -62,7 +62,7 @@ export default function CommentBox({ token, logId, setNewComment }) {
       <Container>
         <Box component='form' noValidate onSubmit={handleComment}
         sx={{ 
-          mt: 2
+          mt: 2,
         }}
         >    
           <TextField
