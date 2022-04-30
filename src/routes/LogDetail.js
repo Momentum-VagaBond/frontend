@@ -10,6 +10,7 @@ import Card from '@mui/material/Card'
 import LogCard from "../components/LogCard";
 import CommentBox from "../components/CommentBox";
 import Moment from 'react-moment'
+import { CardHeader } from "@mui/material";
 
 
 const LogDetail = ({token}) => {
@@ -71,8 +72,12 @@ const LogDetail = ({token}) => {
     </Container>
 
 {/* Post a comment */}
-  <Container>
-  {/* <Box border={1} margin={4}>
+  <Container
+        sx={{
+          marginTop: 35,
+        }}
+  >
+  <Box border={1} margin={4}>
     <CommentBox
         token={token}
         logId={thisLog.pk}
@@ -80,21 +85,26 @@ const LogDetail = ({token}) => {
         setCommentPosted={setCommentPosted}
         setNewComment={addNewComment}
           />
-  </Box> */}
+  </Box>
 
 {/* Display comment section */}
   <Card className="responseBox"
     sx={{
-      marginTop: 35,
       position: 'relative',
     }}
   >
     {comments.map((comment, idx) =>
-    <Box margin={4} border={1} key={idx}>
-      <ul>{comment.comments}</ul>
-      <ul><Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment></ul>
-      <ul>{comment.user}</ul>
+    <Card>
+    <Box sx={{
+      margin: 4,
+      border: 1,
+    }}
+      key={idx}>
+      <h2>{comment.comments}</h2>
+      <h3>{comment.user}</h3>
+      <Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment>
     </Box>
+    </Card>
     )}
     </Card>
     </Container>
