@@ -7,6 +7,7 @@ import { CardMedia } from '@mui/material';
 import { CardContent } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import Moment from 'react-moment';
 import CardActionArea from '@mui/material/CardActionArea'
 
 
@@ -21,17 +22,21 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
         transition: '0.3s',
         boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
         width: '90%',
+        height: '90%',
+        maxHeight: 125,
         position: 'relative',
-        maxWidth: 800,
+        maxWidth: 600,
         marginLeft: 2,
         marginRight: 2,
-        marginTop: 1,
+        marginTop: 3,
         overflow: 'visible',
         background: '#ffffff',
         display: 'flex',
         // flexDirection: 'column',
         alignItems: 'center',
         padding: 0,
+        paddingTop: 10,
+        paddingBottom: 10,
         '&:hover': {
         transform: 'translateY(-3px)',
         boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
@@ -47,9 +52,10 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
         sx={{
             flexShrink: 0,
             position: 'relative',
-            width: '0%',
-            maxWidth: 300,
-            paddingTop: 30,
+            width: '30%',
+            maxWidth: 200,
+            paddingTop: 13,
+            paddingBottom: 8,
             transform: "translateX(-10%)",
             boxShadow: '7px 4px 30px 2px rgba(252, 56, 56, 0.2)',
             borderRadius: 10, // 16px
@@ -77,14 +83,13 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
     <CardContent className='MuiCardContent-root' key={logId}
     sx={{
         textAlign: 'left',
-        padding: 0,
         p: 2,
         position: 'relative',
     }}
     >
         <Typography className='MuiTypography--date' variant='overline'>
             {/* 28 Mar 2019 */}
-            {date}
+            <Moment format="MM/D/YYYY">{date}</Moment>
         </Typography>
         <Typography
             sx={{fontWeight: 'bold'}}

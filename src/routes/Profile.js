@@ -9,6 +9,7 @@ import { deepOrange } from "@mui/material/colors";
 import Container from '@mui/material/Container';
 import { ProfileCard } from "../components/ProfileCard";
 import { TripCard } from '../components/TripCard';
+import { ImageUploadForm } from '../components/ImageUploadForm';
 // import { PictureAsPdfOutlined } from '@mui/icons-material';
 
 
@@ -69,6 +70,9 @@ return (
             />
       )}
         )}
+    </Card>
+    <Card>
+      <ImageUploadForm />
     </Card>
 
     <Card component="main" maxwidth="xs">
