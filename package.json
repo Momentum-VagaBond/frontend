@@ -13,6 +13,7 @@
     "moment": "^2.29.3",
     "moment-timezone": "^0.5.34",
     "react": "^18.0.0",
+    "react-calendar": "^3.7.0",
     "react-dom": "^18.0.0",
     "react-moment": "^1.1.2",
     "react-motion": "^0.5.2",

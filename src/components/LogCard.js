@@ -150,8 +150,6 @@ const LogCard = ({detail_text,location, comments}) => (
       </div>
     </CardContent>
 
-    <CommentBox />
-
     </Box>
 
 
