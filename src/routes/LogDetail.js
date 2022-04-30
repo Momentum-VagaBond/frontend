@@ -113,11 +113,10 @@ const LogDetail = ({token}) => {
     }}
     >
     <Box sx={{
-      margin: 1,
+      margin: 2,
       border: 1,
       borderRadius: 5,
       paddingLeft: 3,
-      backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 74%)',
       '&:hover': {
         transform: 'translateY(-3px)',
         boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',

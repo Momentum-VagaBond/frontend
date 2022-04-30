@@ -45,7 +45,9 @@ return (
 </Container>
 
 <Container component="main" maxWidth="xs">
-  {trips.map((trip) =>
+  {trips.map(trip => {
+    return (
+      <div>
     <TripCard
       username={username}
       key={trip.pk}
@@ -60,6 +62,9 @@ return (
       end={trip.end}
       tripId={trip.pk}
     />
+    </div>
+    )
+  }
     )}
   </Container>
   </>
