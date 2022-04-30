@@ -94,6 +94,7 @@ const LogDetail = ({token}) => {
       <ul>{comment.comments}</ul>
       <ul><Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment></ul>
       <ul>{comment.user}</ul>
+      <ul>{comment.reactions}</ul>
     </Box>
     )}
     </Card>

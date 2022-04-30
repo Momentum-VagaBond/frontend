@@ -17,6 +17,7 @@ import useLocalStorageState from 'use-local-storage-state';
 import { ThemeProvider } from '@mui/material/styles';
 import { Theme } from './assets/Theme'
 import { Geolocate } from './components/Geolocate';
+import MapBox from './components/MapBox';
 
 
 
@@ -68,7 +69,11 @@ const isLoggedIn = username && token
         />
         <Route
           path="/geo"
-          element={<Geolocate setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
+          element={<Geolocate />}
+        />
+        <Route
+          path="/map"
+          element={<MapBox />}
         />
         <Route
           path="/login"
