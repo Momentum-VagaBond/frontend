@@ -12,10 +12,11 @@ import { TripCard } from '../components/TripCard';
 // import { PictureAsPdfOutlined } from '@mui/icons-material';
 
 
-const Profile = ({username, token, loggedUserPk, id, trips }) => {
+const Profile = ({username, token, loggedUserPk, id, trip }) => {
   const [profiles, setProfiles] = useState([]);
   const [userTrips, setUserTrips] = useState([]);
-  
+
+  const isUserTrips = trip & username
 
     useEffect(() => {
       axios
@@ -51,6 +52,9 @@ return (
             profileId={profile.pk}
             id={profile.id}
             bio={profile.bio}
+            firstName={profile.first_name}
+            lastName={profile.last_name}
+            username={profile.username}
             />
       )}
         )}

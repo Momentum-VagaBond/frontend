@@ -21,7 +21,6 @@ import MapBox from './components/MapBox';
 
 
 
-
 const App = () => {
   
   //use local storage to keep this token hanging around

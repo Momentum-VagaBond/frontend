@@ -59,7 +59,12 @@ export default function CommentBox({ token, logId, setNewComment }) {
 
     return (
       <>
-        <Box component='form' noValidate onSubmit={handleComment} sx={{ mt: 3 }}>    
+      <Container>
+        <Box component='form' noValidate onSubmit={handleComment}
+        sx={{ 
+          mt: 2
+        }}
+        >    
           <TextField
             className='input-field'
             // id="comment"
@@ -77,6 +82,7 @@ export default function CommentBox({ token, logId, setNewComment }) {
             sx={{ mt: 3, mb: 2, borderRadius: 5 }}>Post comment
           </Button>
         </Box>
+        </Container>
       </>
     )
 }
