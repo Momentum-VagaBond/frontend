@@ -1,20 +1,40 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { FormGroup } from '@mui/material';
-import { Card } from '@mui/material';
-import { IconButton } from '@mui/material';
+import { Card, IconButton, Button, FormGroup, Box, TextField } from '@mui/material';
+import {Geolocate} from "../components/Geolocate";
+
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
-export default function NewLog({token, loggedUserPk}) {
+export default function NewLog({token, loggedUserPk, tripId}) {
     // const [trip, setTrip] = useState("");
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
     const [error, setError] = useState("");
+    const [status, setStatus] = useState("")
     const [isSubmit, setSubmit] = useState(false);
+
+    //post request 
+//get back location
+//display location
+//the axios requests need to happen within the getLocation
+//need new endpoint
+    const getLocation = () => {
+        if (!navigator.geolocation) {
+            setStatus('Geolocation is not supported by your browser');
+        } else {
+            setStatus('Locating...');
+            navigator.geolocation.getCurrentPosition((position) => {
+            setStatus(null);
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+        }, () => {
+            setStatus('Unable to retrieve your location');
+        });
+        }
+    }
+
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,13 +42,15 @@ export default function NewLog({token, loggedUserPk}) {
         console.log(location, details, latitude, longitude);
 
     axios
-    .post("https://momentum-vagabond.herokuapp.com/api/users/1/1/log/",
-    // .post(`https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/4/log/`,
+    // .post("https://momentum-vagabond.herokuapp.com/api/users/1/7/log/",
+    .post(`https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/7/log/`,
     {
+        "user_id": `${loggedUserPk}`,
+        "trip": 7,
         "location": location,
         "details": details,
-        "latitude": latitude,
-        "longitude": longitude,
+        // "latitude": latitude,
+        // "longitude": longitude,
     },
     {
         headers: {Authorization: `Token ${token}`}
@@ -62,8 +84,12 @@ export default function NewLog({token, loggedUserPk}) {
             '& .MuiTextField-root': { m: 1, width: '25ch' },
         }}
         noValidate
-        autoComplete="off"
+        autoComplete="on"
         >
+        {/* <Geolocate
+        latitude={latitude}
+        longitude={longitude}
+        /> */}
     {error && <div className="error">{error}</div>}
     <h1>New Trip Log! {loggedUserPk} </h1>
     <form onSubmit={handleSubmit}>
@@ -80,13 +106,19 @@ export default function NewLog({token, loggedUserPk}) {
             alignItems: 'center',
             maxWidth: 345 }}
     >
+
+<IconButton onClick={getLocation}>
+        <AddLocationAltTwoToneIcon />
+    </IconButton>
+        Find your location!
+
     <FormGroup>
         <label htmlFor='reg-location'>Location: </label>
         <TextField id="filled-basic"
             label="Location"
             variant="filled"
             className='tripLocation'
-            required value={location}
+            // required value={location}
             onChange={(e) => setLocation(e.target.value)}
         />
     </FormGroup>
@@ -97,7 +129,7 @@ export default function NewLog({token, loggedUserPk}) {
             label="Details"
             variant="filled"
             className='tripDetails'
-            required value={details}
+            value={details}
             onChange={(e) => setDetails(e.target.value)}
         />
     </FormGroup>
@@ -105,10 +137,11 @@ export default function NewLog({token, loggedUserPk}) {
     <FormGroup>
         <label htmlFor='reg-latitude'>Latitude: </label>
         <TextField id="filled-basic"
-            label="Lat"
+            label={latitude}
             variant="filled"
             className='tripLet'
-            required value={latitude}
+            autoComplete='on'
+            value={latitude}
             onChange={(e) => setLatitude(e.target.value)}
         />
     </FormGroup>
@@ -119,15 +152,18 @@ export default function NewLog({token, loggedUserPk}) {
             label="Lat"
             variant="filled"
             className='tripLet'
-            required value={longitude}
+            autoComplete='on'
+            value={longitude}
             onChange={(e) => setLongitude(e.target.value)}
         />
     </FormGroup>
 
-    <IconButton type='submit'>
-        <AddLocationAltTwoToneIcon />
-    </IconButton>
-        Log your pin!
+
+    
+    <Button type='submit'>
+    Create Log!
+    </Button>
+       
 
     </Card>
     </div>
