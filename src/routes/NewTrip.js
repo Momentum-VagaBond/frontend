@@ -5,7 +5,6 @@ import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import { Container, FormGroup } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import NewTripForm from '../NewTripForm/NewTripForm';
 
 
 export default function NewTrip({token, isLoggedIn}) {
@@ -48,7 +47,6 @@ export default function NewTrip({token, isLoggedIn}) {
     // return <Navigate to='/' />
     }
 
-
     if (!isLoggedIn) {
         return <Navigate to="/login" />
     }
@@ -73,7 +71,6 @@ export default function NewTrip({token, isLoggedIn}) {
     {error && <div className="error">{error}</div>}
     <h1>New Trip!</h1>
     <form onSubmit={handleSubmit}>
-
 
     <FormGroup>
         <label htmlFor='reg-title'>Title: </label>
@@ -100,7 +97,7 @@ export default function NewTrip({token, isLoggedIn}) {
     <FormGroup>
         <label htmlFor='begin'>Begin: </label>
         <TextField id="filled-basic"
-            label="day-month-year"
+            label="month-day-year"
             variant="filled"
             className='tripBegin'
             required value={begin}
@@ -111,7 +108,7 @@ export default function NewTrip({token, isLoggedIn}) {
     <FormGroup>
         <label htmlFor='end'>End: </label>
         <TextField id="filled-basic"
-            label="day-month-year"
+            label="month-day-year"
             variant="filled"
             className='tripEnd'
             required value={end}
