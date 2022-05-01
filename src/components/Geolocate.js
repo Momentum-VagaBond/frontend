@@ -1,10 +1,4 @@
 import React, { useState } from 'react';
-import MapGL, {NavigationControl, Feature, Layer} from 'react-map-gl';
-
-// import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-
-const token = "pk.eyJ1IjoiZW1pbHlmbG8iLCJhIjoiY2wyZGRsNG9hMHk0aDNicGR1bjhxZGZmdyJ9.OwfzAfjxswxUss6pTmNVUQ";
-const Map = 'pk.eyJ1IjoiZW1pbHlmbG8iLCJhIjoiY2wyZGRsNG9hMHk0aDNicGR1bjhxZGZmdyJ9.OwfzAfjxswxUss6pTmNVUQ';
 
 export const Geolocate = () => {
 const [lat, setLat] = useState(null);

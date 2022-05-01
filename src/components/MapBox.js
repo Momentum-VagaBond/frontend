@@ -1,5 +1,6 @@
+
 import React, { useRef, useEffect } from "react"
-import mapboxgl from "mapbox-gl"
+import mapboxgl, {Marker} from "mapbox-gl"
 // import the mapbox styles
 // alternatively can use a link tag in the head of public/index.html
 // see https://docs.mapbox.com/mapbox-gl-js/api/
@@ -11,7 +12,11 @@ import mapboxgl from "mapbox-gl"
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 const MapBox = () => {
+  // const [lng, setLng] = useState(-79.919376);
+  // const [lat, setLat] = useState(436.112514,);
   const mapContainer = useRef()
+  const lng= -115.172157
+  const lat= 36.112514
 
   // this is where all of our map logic is going to live
   // adding the empty dependency array ensures that the map
@@ -23,15 +28,34 @@ const MapBox = () => {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [-87.903982, 43.020403],
-      zoom: 15,
+      center: [lng, lat],
+      zoom: 12,
+      // marker: true
+
     })
+  //   const marker = new mapboxgl.Marker() // initialize a new marker
+  // .setLngLat([-122.25948, 37.87221]) // Marker [lng, lat] coordinates
+  // .addTo(map); // Add the marker to the map
 
     // cleanup function to remove map on unmount
     return () => map.remove()
-  }, [])
+  }, [lng, lat])
 
   return <div ref={mapContainer} style={{ width: "100%", height: "100vh" }} />
 }
+// import * as React from 'react';
+// import Map from 'react-map-gl';
 
+// function MapBox() {
+//   return <Map
+//     initialViewState={{
+//       longitude: -100,
+//       latitude: 40,
+//       zoom: 3.5
+//     }}
+//     style={{width: 600, height: 400}}
+//     mapStyle="mapbox://styles/mapbox/streets-v9"
+//   />;
+// }
 export default MapBox
+

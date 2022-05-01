@@ -23,6 +23,8 @@ import Container from '@mui/material/Container';
 const AllTrips = ({username, loggedUserPk, token, map}) => {
   const [trips, setTrips] = useState([]);
   const [usernamePk, setUsernamePk] = useState([]);
+  const [tripId, setTripId] = useState("")
+
 
   useEffect(() => {
     axios
@@ -31,9 +33,11 @@ const AllTrips = ({username, loggedUserPk, token, map}) => {
         console.log(response.data)
         setTrips(response.data)
         setUsernamePk(response.data.pk)
+        setTripId(response.data.pk)
         console.log("loggedUserPk" + loggedUserPk)
+        console.log("tripId" + setTripId)
       })
-  }, [loggedUserPk])
+  }, [loggedUserPk, tripId])
 
 return (
   <>

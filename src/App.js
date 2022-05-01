@@ -29,9 +29,13 @@ const App = () => {
   const [registerSuccess, setRegisterSuccess] = useState("")
   // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
+  const [tripId, setTripId] = useLocalStorageState('TripId', '');
 
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
+
+  const getTripId = (pk) =>
+    setTripId(pk)
 
   // const updateAvatar = (newImg) =>
   //   setAvatar(newImg)
@@ -84,7 +88,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/trips"
-          element={<AllTrips token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<AllTrips token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
       <Route
           path="/trips/:tripId"
@@ -104,7 +108,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/newlog"
-          element={<NewLog setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
+          element={<NewLog loggedUserPk={loggedUserPk} tripId={tripId} setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/mytrips"
