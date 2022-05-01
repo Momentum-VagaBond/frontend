@@ -3,12 +3,13 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Link as RouterLink } from 'react-router-dom'
 import Moment from 'react-moment'
 
 
-export const TripCard = ({pk, tripId, title, currentUser, location, username, trip_user, trip_username, trip_user_first_name, trip_user_last_name, begin, end }) => {
+export const TripCard = ({pk, tripId, title, location, username, user, trip_username, user_first_name, user_last_name, begin, end }) => {
     // function capitalizeFirst(string) {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     //   }
@@ -39,21 +40,21 @@ export const TripCard = ({pk, tripId, title, currentUser, location, username, tr
         {trip_username === username ? (
         <> My trip to {location}</> 
         ):( 
-        <>{usernameCapital}'s trip to {location}</>
+        <><h2>{usernameCapital}'s trip to {location}</h2></>
         )
     }
     
          {/* /{trip_username}'s trip to {location} */}
 
         </Typography>
-        <Typography variant="body2" align="center" color="text.secondary">
-            {/* {title} */}
-            {/* {username}
-            {user}
+        <Box variant="body2" align="center" color="text.secondary">
+            <h3>{title}</h3>
+            <h4>{username}</h4>
+            
             {user_first_name}
-            {user_last_name} */}
+            {user_last_name}
             <Moment format="MM/D/YYYY">{begin}</Moment> - <Moment format="MM/D/YYYY">{end}</Moment>
-        </Typography>
+        </Box>
     </CardContent>
 
     {/* <CardActions>

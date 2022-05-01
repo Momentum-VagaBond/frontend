@@ -13,24 +13,20 @@ import { ImageUploadForm } from '../components/ImageUploadForm';
 // import { PictureAsPdfOutlined } from '@mui/icons-material';
 
 
-const Profile = ({username, token, loggedUserPk, id, trip, trips, trip_user }) => {
-  const [profiles, setProfiles] = useState([]);
-  const [userTrips, setUserTrips] = useState([]);
+const Profile = ({username, token, loggedUserPk, id, bio }) => {
+  const [trips, setTrips] = useState([]);
 
-  const isUserTrips = trip & username
 
     useEffect(() => {
       axios
-      .get("https://momentum-vagabond.herokuapp.com/api/auth/me/",
+      .get("https://momentum-vagabond.herokuapp.com/api/auth/me",
         {headers: {Authorization: `Token ${token}`}
       })
       .then((response) => {
         console.log(response.data)
-      setProfiles(response.data)
-      console.log(trips)
-      setUserTrips(response.data.pk)
+      setTrips(response.data.trips)
       })
-    }, [token, loggedUserPk, userTrips, trips])
+    }, [token, loggedUserPk, setTrips])
 
 return (
 <Container component="main" maxWidth="xs">
@@ -53,51 +49,27 @@ return (
         backgroundColor: '#0000',
       }}
       >
-      This is {username}'s Profile
+      <h2>This is {username}'s Profile</h2>
+      {bio}
       </Card>
-      <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+        <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
     </Box>
+
+
     <Card component="main" maxwidth="xs">
-      {profiles.map((profile, pk) => {
+      {trips.map((trip, pk) => {
         return (
-          <ProfileCard key={pk}
-            profileId={profile.pk}
-            id={profile.id}
-            bio={profile.bio}
-            firstName={profile.first_name}
-            lastName={profile.last_name}
-            username={profile.username}
+          <TripCard key={pk}
+            tripId={trip.pk}
+            title={trip.title}
+            location={trip.location}
+            firstName={trip.user_first_name}
+            lastName={trip.user_last_name}
+            username={trip.username}
             />
       )}
         )}
     </Card>
-    <Card>
-      <ImageUploadForm />
-    </Card>
-
-    <Card component="main" maxwidth="xs">
-      <h3>Your Trips</h3>
-      <TripCard key={id}
-      userTrips={trip_user}
-      />
-    </Card>
-    
-    {/* {userTrips.filter(trip => trip.includes(`${id}`)).map(filteredTrip => (
-    <TripCard
-      username={filteredTrip.username}
-      // key={trip.pk}
-      title={filteredTrip.title}
-      location={filteredTrip.location}
-      // duration={trip.duration}
-      trip_user={filteredTrip.user}
-      // trip_username={trip.username}
-      // trip_user_first={trip.user_first_name}
-      // trip_user_last={trip.user_last_name}
-      begin={filteredTrip.begin}
-      end={filteredTrip.end}
-      // tripId={trip.pk}
-    />
-    ))} */}
 
   </Container>
   )

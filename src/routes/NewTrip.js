@@ -3,8 +3,8 @@ import { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import { Container, FormGroup } from '@mui/material';
-import TextField from '@mui/material/TextField';
+import { Container } from '@mui/material';
+import NewTripForm from '../NewTripForm/NewTripForm';
 
 
 export default function NewTrip({token, isLoggedIn}) {
@@ -14,6 +14,8 @@ export default function NewTrip({token, isLoggedIn}) {
     const [end, setEnd] = useState("");
     const [error, setError] = useState("");
     const [isSubmit, setSubmit] = useState(false);
+
+
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,9 +72,17 @@ export default function NewTrip({token, isLoggedIn}) {
         >
     {error && <div className="error">{error}</div>}
     <h1>New Trip!</h1>
-    <form onSubmit={handleSubmit}>
+    {/* <form onSubmit={handleSubmit}> */}
 
-    <FormGroup>
+
+    <NewTripForm />
+
+
+
+
+
+
+    {/* <FormGroup>
         <label htmlFor='reg-title'>Title: </label>
         <TextField id="filled-basic"
             label="Title"
@@ -81,9 +91,9 @@ export default function NewTrip({token, isLoggedIn}) {
             required value={title}
             onChange={(e) => setTitle(e.target.value)}
         />
-    </FormGroup>
+    </FormGroup> */}
 
-    <FormGroup>
+    {/* <FormGroup>
         <label htmlFor='reg-location'>Location: </label>
         <TextField id="filled-basic"
             label="Location"
@@ -114,10 +124,10 @@ export default function NewTrip({token, isLoggedIn}) {
             required value={end}
             onChange={(e) => setEnd(e.target.value)}
         />
-    </FormGroup>
+    </FormGroup> */}
 
-    <button type='submit'>Submit</button>
-    </form>
+    {/* <button type='submit'>Submit</button> */}
+    {/* </form> */}
     
     </Box>
     </Container>

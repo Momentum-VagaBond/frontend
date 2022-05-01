@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 
 
-export const ProfileCard = ({username, id, profile, user, bio, firstName, lastName, trip_name, trip}) => {
+export const ProfileCard = ({username, id, profile, user, bio, firstName, lastName, trip_name, trips}) => {
     
 return(
 <Container>
@@ -27,6 +27,9 @@ return(
     </Card>
     <Card>
     username: {username}
+    </Card>
+    <Card>
+    trips: {trips}
     </Card>
 </Box>
 </Container>
