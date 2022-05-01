@@ -79,6 +79,10 @@ export default function NewTrip({token, isLoggedIn}) {
     <h1>New Trip!</h1>
     <form onSubmit={handleSubmit}>
 
+
+    {/* <NewTripForm /> */}
+
+
     <FormGroup>
         <label htmlFor='reg-title'>Title: </label>
         <TextField id="title"
@@ -133,7 +137,7 @@ export default function NewTrip({token, isLoggedIn}) {
     {/* <FormGroup>
         <label htmlFor='begin'>Begin: </label>
         <TextField id="filled-basic"
-            label="month-day-year"
+            label="year-month-day"
             variant="filled"
             className='tripBegin'
             required value={begin}
@@ -154,7 +158,7 @@ export default function NewTrip({token, isLoggedIn}) {
     <FormGroup>
         <label htmlFor='end'>End: </label>
         <TextField id="filled-basic"
-            label="month-day-year"
+            label="year-month-day"
             variant="filled"
             className='tripEnd'
             required value={end}
