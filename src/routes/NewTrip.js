@@ -9,7 +9,6 @@ import TextField from '@mui/material/TextField';
 export default function NewTrip({token, isLoggedIn}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
-    const [duration, setDuration] = useState("");
     const [begin, setBegin] = useState("");
     const [end, setEnd] = useState("");
     const [error, setError] = useState("");
@@ -18,14 +17,13 @@ export default function NewTrip({token, isLoggedIn}) {
     const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-        console.log(location, title, duration);
+        console.log(location, title);
 
     axios
     .post("https://momentum-vagabond.herokuapp.com/api/trips/",
     {
         "title": title,
         "location": location,
-        "duration": duration,
         "begin": begin,
         "end": end,
     },
@@ -37,7 +35,6 @@ export default function NewTrip({token, isLoggedIn}) {
         console.log(response.data);
     setTitle('')
     setLocation('')
-    setDuration('')
     setBegin('')
     setEnd('')
     })
@@ -94,17 +91,6 @@ export default function NewTrip({token, isLoggedIn}) {
             className='tripLocation'
             required value={location}
             onChange={(e) => setLocation(e.target.value)}
-        />
-    </FormGroup>
-
-    <FormGroup>
-        <label htmlFor='duration'>Duration: </label>
-        <TextField id="filled-basic"
-            label="Duration"
-            variant="filled"
-            className='tripDuration'
-            required value={duration}
-            onChange={(e) => setDuration(e.target.value)}
         />
     </FormGroup>
 
