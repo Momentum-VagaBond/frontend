@@ -36,7 +36,7 @@ const AllTrips = ({username, loggedUserPk, token, map, id}) => {
         setUsernamePk(response.data.pk)
         setTripId(response.data.pk)
         console.log("loggedUserPk" + loggedUserPk)
-        console.log("tripId" + setTripId)
+        // console.log("tripId" + setTripId)
       })
   }, [loggedUserPk, tripId])
 

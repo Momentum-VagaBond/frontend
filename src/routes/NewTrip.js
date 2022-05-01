@@ -2,9 +2,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import { Container, FormGroup } from '@mui/material';
+import { Container, FormGroup, Button, Box } from '@mui/material';
 import TextField from '@mui/material/TextField';
+// import { format } from 'date-fns';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+
+
 
 
 export default function NewTrip({token, isLoggedIn}) {
@@ -15,10 +20,12 @@ export default function NewTrip({token, isLoggedIn}) {
     const [error, setError] = useState("");
     const [isSubmit, setSubmit] = useState(false);
 
+    // const [value, setValue] = useState(null);
+
     const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-        console.log(location, title);
+        console.log(location, title, begin, end);
 
     axios
     .post("https://momentum-vagabond.herokuapp.com/api/trips/",
@@ -74,7 +81,7 @@ export default function NewTrip({token, isLoggedIn}) {
 
     <FormGroup>
         <label htmlFor='reg-title'>Title: </label>
-        <TextField id="filled-basic"
+        <TextField id="title"
             label="Title"
             variant="filled"
             className='tripTitle'
@@ -85,7 +92,7 @@ export default function NewTrip({token, isLoggedIn}) {
 
     <FormGroup>
         <label htmlFor='reg-location'>Location: </label>
-        <TextField id="filled-basic"
+        <TextField id="location"
             label="Location"
             variant="filled"
             className='tripLocation'
@@ -93,8 +100,37 @@ export default function NewTrip({token, isLoggedIn}) {
             onChange={(e) => setLocation(e.target.value)}
         />
     </FormGroup>
+    <FormGroup>
+    <label htmlFor='begin'>Start Date: </label>
+    <TextField
+        id="start-date"
+        label="month-day-year"
+        type="date"
+        required value={begin}
+        onChange={(e) => setBegin(e.target.value)}
+        sx={{ width: 220 }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+    </FormGroup>
 
     <FormGroup>
+    <label htmlFor='begin'>End Date: </label>
+    <TextField
+        id="end-date"
+        label="month-day-year"
+        type="date"
+        required value={end}
+        onChange={(e) => setEnd(e.target.value)}
+        sx={{ width: 220 }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+    </FormGroup>
+
+    {/* <FormGroup>
         <label htmlFor='begin'>Begin: </label>
         <TextField id="filled-basic"
             label="month-day-year"
@@ -103,8 +139,18 @@ export default function NewTrip({token, isLoggedIn}) {
             required value={begin}
             onChange={(e) => setBegin(e.target.value)}
         />
-    </FormGroup>
-
+    </FormGroup> */}
+    {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <DatePicker
+        label="Basic example"
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        renderInput={(params) => <TextField {...params} />}
+      />
+    </LocalizationProvider> */}
+{/* 
     <FormGroup>
         <label htmlFor='end'>End: </label>
         <TextField id="filled-basic"
@@ -114,9 +160,9 @@ export default function NewTrip({token, isLoggedIn}) {
             required value={end}
             onChange={(e) => setEnd(e.target.value)}
         />
-    </FormGroup>
+    </FormGroup> */}
 
-    <button type='submit'>Submit</button>
+    <Button type='submit'>Submit</Button>
     </form>
     
     </Box>
