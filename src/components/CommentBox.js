@@ -62,7 +62,8 @@ export default function CommentBox({ token, logId, setNewComment }) {
       <Container>
         <Box component='form' noValidate onSubmit={handleComment}
         sx={{ 
-          mt: 2
+          mt: 2,
+          position: 'relative',
         }}
         >    
           <TextField
@@ -79,7 +80,13 @@ export default function CommentBox({ token, logId, setNewComment }) {
           <Button type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, borderRadius: 5 }}>Post comment
+            sx={{
+              mt: 3,
+              mb: 2,
+              borderRadius: 5,
+              backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 90%)',
+            }}>
+              Post comment
           </Button>
         </Box>
         </Container>

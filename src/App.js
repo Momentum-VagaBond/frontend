@@ -15,7 +15,8 @@ import MyTrips from './routes/MyTrips';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { ThemeProvider } from '@mui/material/styles';
-import { Theme } from './assets/Theme'
+import { Theme } from './assets/Theme';
+// import { ImageUploadForm } from './components/ImageUploadForm';
 
 
 
@@ -104,6 +105,7 @@ const isLoggedIn = username && token
           path="/logcard"
           element={<LogCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
+        {/* <Route path="/upload" element={<ImageUploadForm token={token} />} /> */}
         <Route
           path="/tripdetailcard"
           element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}

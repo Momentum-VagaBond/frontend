@@ -11,6 +11,10 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
+import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
+import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
+import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
 
 export const Navbar = () => {
@@ -46,19 +50,31 @@ export const Navbar = () => {
           >
             VagaBond
             <MenuItem>
-                <Link to="/newtrip">New Trip</Link>
+                <Link to="/newtrip">
+                <FlightTwoToneIcon fontSize='inherit' />
+                  New Trip
+                </Link>
               </MenuItem>
 
               <MenuItem>
-                <Link to="/trips">All Trips</Link>
+                <Link to="/trips">
+                <CardTravelTwoToneIcon fontSize='inherit' />
+                  All Trips
+                </Link>
               </MenuItem>
 
               <MenuItem>
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile">
+                <AccountCircleTwoToneIcon fontSize='inherit' />
+                Profile
+                </Link>
               </MenuItem>
 
               <MenuItem>
-                <Link to="/newlog">New Log</Link>
+                <Link to="/newlog">
+                <AddLocationAltTwoToneIcon fontSize='inherit' />
+                  New Log
+                </Link>
               </MenuItem>
           </Typography>
 

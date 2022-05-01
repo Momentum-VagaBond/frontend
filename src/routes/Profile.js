@@ -9,10 +9,11 @@ import { deepOrange } from "@mui/material/colors";
 import Container from '@mui/material/Container';
 import { ProfileCard } from "../components/ProfileCard";
 import { TripCard } from '../components/TripCard';
+import { ImageUploadForm } from '../components/ImageUploadForm';
 // import { PictureAsPdfOutlined } from '@mui/icons-material';
 
 
-const Profile = ({username, token, loggedUserPk, id, trip }) => {
+const Profile = ({username, token, loggedUserPk, id, trip, trips, trip_user }) => {
   const [profiles, setProfiles] = useState([]);
   const [userTrips, setUserTrips] = useState([]);
 
@@ -26,10 +27,10 @@ const Profile = ({username, token, loggedUserPk, id, trip }) => {
       .then((response) => {
         console.log(response.data)
       setProfiles(response.data)
-      console.log(userTrips)
+      console.log(trips)
       setUserTrips(response.data.pk)
       })
-    }, [token, loggedUserPk, userTrips])
+    }, [token, loggedUserPk, userTrips, trips])
 
 return (
 <Container component="main" maxWidth="xs">
@@ -42,7 +43,18 @@ return (
           justifyContent:'center',
         }}
     >
+      <Card
+      sx={{
+        padding: 10,
+        borderRadius: 10,
+        transition: '0.3s',
+        boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
+        backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 100%)',
+        backgroundColor: '#0000',
+      }}
+      >
       This is {username}'s Profile
+      </Card>
       <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
     </Box>
     <Card component="main" maxwidth="xs">
@@ -59,10 +71,14 @@ return (
       )}
         )}
     </Card>
+    <Card>
+      <ImageUploadForm />
+    </Card>
 
     <Card component="main" maxwidth="xs">
       <h3>Your Trips</h3>
-      <TripCard
+      <TripCard key={id}
+      userTrips={trip_user}
       />
     </Card>
     
