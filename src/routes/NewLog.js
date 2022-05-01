@@ -42,10 +42,10 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         console.log(location, details, latitude, longitude);
 
     axios
-    .post("https://momentum-vagabond.herokuapp.com/api/users/1/7/log/",
-    // .post(`https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/${tripId}/log/`,
+    // .post("https://momentum-vagabond.herokuapp.com/api/users/1/7/log/",
+    .post(`https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/7/log/`,
     {
-        "user_id": 1,
+        "user_id": `${loggedUserPk}`,
         "trip": 7,
         "location": location,
         "details": details,
@@ -84,7 +84,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
             '& .MuiTextField-root': { m: 1, width: '25ch' },
         }}
         noValidate
-        autoComplete="off"
+        autoComplete="on"
         >
         {/* <Geolocate
         latitude={latitude}
