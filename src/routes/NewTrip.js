@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import { Container, FormGroup } from '@mui/material';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
+import NewTripForm from '../NewTripForm/NewTripForm';
 
 
 export default function NewTrip({token, isLoggedIn}) {
@@ -45,6 +47,9 @@ export default function NewTrip({token, isLoggedIn}) {
         console.log("Submitted!")
     // return <Navigate to='/' />
     }
+    if (!isSubmit) {
+        console.log("notsubmitted")
+    }
 
     if (!isLoggedIn) {
         return <Navigate to="/login" />
@@ -58,21 +63,24 @@ export default function NewTrip({token, isLoggedIn}) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-        }}
-        >
-        <Box
+        }}>
+        {/* <Box
         // component="form"
         sx={{
             '& .MuiTextField-root': { m: 1, width: '25ch' },
         }}
         noValidate
         autoComplete="off"
-        >
+        > */}
     {error && <div className="error">{error}</div>}
     <h1>New Trip!</h1>
-    <form onSubmit={handleSubmit}>
+    {/* <form onSubmit={handleSubmit}> */}
 
-    <FormGroup>
+    <NewTripForm 
+    onSubmit={handleSubmit}
+    />
+
+    {/* <FormGroup>
         <label htmlFor='reg-title'>Title: </label>
         <TextField id="filled-basic"
             label="Title"
@@ -116,10 +124,10 @@ export default function NewTrip({token, isLoggedIn}) {
         />
     </FormGroup>
 
-    <button type='submit'>Submit</button>
-    </form>
+    <button type='submit'>Submit</button> */}
+    {/* </form> */}
     
-    </Box>
+    {/* </Box> */}
     </Container>
     );
 }

@@ -17,6 +17,8 @@
     "react-dom": "^18.0.0",
     "react-moment": "^1.1.2",
     "react-motion": "^0.5.2",
+    "react-native-wizard": "^2.1.0",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-simple-maps": "^2.3.0",
