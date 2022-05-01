@@ -21,7 +21,7 @@ import Container from '@mui/material/Container';
 
 
 
-const AllTrips = ({username, loggedUserPk, token, map}) => {
+const AllTrips = ({username, loggedUserPk, token, map, id}) => {
   const [trips, setTrips] = useState([]);
   const [usernamePk, setUsernamePk] = useState([]);
 
@@ -47,7 +47,7 @@ return (
 <Container component="main" maxWidth="xs">
   {trips.map(trip => {
     return (
-      <div>
+      <div key={id}>
     <TripCard
       username={username}
       key={trip.pk}

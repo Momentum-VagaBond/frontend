@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -58,8 +59,7 @@ export default function NewTrip({token, isLoggedIn}) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-        }}
-        >
+        }}>
         <Box
         // component="form"
         sx={{
@@ -97,7 +97,7 @@ export default function NewTrip({token, isLoggedIn}) {
     <FormGroup>
         <label htmlFor='begin'>Begin: </label>
         <TextField id="filled-basic"
-            label="day-month-year"
+            label="month-day-year"
             variant="filled"
             className='tripBegin'
             required value={begin}
@@ -108,7 +108,7 @@ export default function NewTrip({token, isLoggedIn}) {
     <FormGroup>
         <label htmlFor='end'>End: </label>
         <TextField id="filled-basic"
-            label="day-month-year"
+            label="month-day-year"
             variant="filled"
             className='tripEnd'
             required value={end}
