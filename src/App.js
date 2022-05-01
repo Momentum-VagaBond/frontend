@@ -118,6 +118,7 @@ const isLoggedIn = username && token
           path="/logcard"
           element={<LogCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
+        {/* <Route path="/upload" element={<ImageUploadForm token={token} />} /> */}
         <Route
           path="/tripdetailcard"
           element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}

@@ -55,8 +55,8 @@ const TripDetail = ({token }) => {
     {logs.map((log) =>
     <TripDetailCard
     sx={{
-      mt: 8,
-      pl: 4,
+      marginTop: 8,
+      paddingLeft: 4,
     }}
       logId={log.pk}
       details={log.details}

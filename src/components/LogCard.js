@@ -23,16 +23,19 @@ const faces = [
 const LogCard = ({detail_text,location, comments}) => (
   <Container className='bodyContainer'
   sx={{
+    alignItems: 'center',
+    position: 'sticky',
   }}
   >
   
   <Card id="cardBody"
     sx={{
-    mt: 8,
+    mt: 5,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     border: 0,
+    borderRadius: 5,
 
     // position: 'relative',
     }}
@@ -45,19 +48,28 @@ const LogCard = ({detail_text,location, comments}) => (
       }
       sx={{
         height: 'fit-content',
+        borderRadius: 5,
       }}
     />
+    </Card>
+    <Container className='cardContainer'
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+    >
     <Box sx={{
                   boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
                   borderRadius: 10,
                   marginBottom: 10,
                   backgroundColor: '#ffffff',
                   position: 'absolute',
-                  top: '55%',
+                  top: '75%',
                   textAlign: 'left',
-                  maxWidth: 400,
-                  width: '70%',
-                  overflow: 'visible',
+                  maxWidth: 350,
+                  width: '60%',
+                  overflow: 'auto',
       }}
     >
     <CardContent className='CardContent'
@@ -81,7 +93,7 @@ const LogCard = ({detail_text,location, comments}) => (
           variant="h6"
           gutterBottom
         >
-          Colloseo
+          {detail_text}
         </Typography>
         <IconButton className="IconButton">
           <Icon>favorite</Icon>
@@ -119,9 +131,9 @@ const LogCard = ({detail_text,location, comments}) => (
           4.0
         </Typography>
       </div> */}
-      <Typography gutterBottom color="TextSecondary">
+      {/* <Typography gutterBottom color="TextSecondary">
         {detail_text}
-      </Typography>
+      </Typography> */}
       <div className="ContentTail"
       // sx={{
       //   display: 'flexbox',
@@ -151,10 +163,7 @@ const LogCard = ({detail_text,location, comments}) => (
     </CardContent>
 
     </Box>
-
-
-
-  </Card>
+    </Container>
   </Container>
   )
 
