@@ -15,8 +15,10 @@ import MyTrips from './routes/MyTrips';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { ThemeProvider } from '@mui/material/styles';
-import { Theme } from './assets/Theme';
-// import { ImageUploadForm } from './components/ImageUploadForm';
+import { Theme } from './assets/Theme'
+import { Geolocate } from './components/Geolocate';
+import MapBox from './components/MapBox';
+
 
 
 
@@ -28,9 +30,13 @@ const App = () => {
   const [registerSuccess, setRegisterSuccess] = useState("")
   // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
+  const [tripId, setTripId] = useLocalStorageState('TripId', '');
 
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
+
+  const getTripId = (pk) =>
+    setTripId(pk)
 
   // const updateAvatar = (newImg) =>
   //   setAvatar(newImg)
@@ -66,6 +72,14 @@ const isLoggedIn = username && token
           element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
         <Route
+          path="/geo"
+          element={<Geolocate />}
+        />
+        <Route
+          path="/map"
+          element={<MapBox />}
+        />
+        <Route
           path="/login"
           element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} getLoggedUserPk={getLoggedUserPk} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
@@ -75,7 +89,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/trips"
-          element={<AllTrips token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<AllTrips token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
       <Route
           path="/trips/:tripId"
@@ -95,7 +109,7 @@ const isLoggedIn = username && token
         />
         <Route
           path="/newlog"
-          element={<NewLog setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
+          element={<NewLog loggedUserPk={loggedUserPk} tripId={tripId} setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/mytrips"
