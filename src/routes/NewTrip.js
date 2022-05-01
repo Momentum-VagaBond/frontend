@@ -4,7 +4,8 @@ import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
-import NewTripForm from '../NewTripForm/NewTripForm';
+import { FormGroup, TextField } from '@mui/material';
+// import NewTripForm from '../NewTripForm/NewTripForm';
 
 
 export default function NewTrip({token, isLoggedIn}) {
@@ -72,17 +73,13 @@ export default function NewTrip({token, isLoggedIn}) {
         >
     {error && <div className="error">{error}</div>}
     <h1>New Trip!</h1>
-    {/* <form onSubmit={handleSubmit}> */}
+    <form onSubmit={handleSubmit}>
 
 
-    <NewTripForm />
+    {/* <NewTripForm /> */}
 
 
-
-
-
-
-    {/* <FormGroup>
+    <FormGroup>
         <label htmlFor='reg-title'>Title: </label>
         <TextField id="filled-basic"
             label="Title"
@@ -91,9 +88,9 @@ export default function NewTrip({token, isLoggedIn}) {
             required value={title}
             onChange={(e) => setTitle(e.target.value)}
         />
-    </FormGroup> */}
+    </FormGroup>
 
-    {/* <FormGroup>
+    <FormGroup>
         <label htmlFor='reg-location'>Location: </label>
         <TextField id="filled-basic"
             label="Location"
@@ -107,7 +104,7 @@ export default function NewTrip({token, isLoggedIn}) {
     <FormGroup>
         <label htmlFor='begin'>Begin: </label>
         <TextField id="filled-basic"
-            label="month-day-year"
+            label="year-month-day"
             variant="filled"
             className='tripBegin'
             required value={begin}
@@ -118,16 +115,16 @@ export default function NewTrip({token, isLoggedIn}) {
     <FormGroup>
         <label htmlFor='end'>End: </label>
         <TextField id="filled-basic"
-            label="month-day-year"
+            label="year-month-day"
             variant="filled"
             className='tripEnd'
             required value={end}
             onChange={(e) => setEnd(e.target.value)}
         />
-    </FormGroup> */}
+    </FormGroup>
 
-    {/* <button type='submit'>Submit</button> */}
-    {/* </form> */}
+    <button type='submit'>Submit</button>
+    </form>
     
     </Box>
     </Container>
