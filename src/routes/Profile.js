@@ -12,6 +12,7 @@ import { TripCard } from '../components/TripCard';
 import Moment from 'react-moment';
 import { Link as RouterLink } from 'react-router-dom';
 import { Grid, Item } from '@mui/material';
+import logo from './VBLogo.png';
 
 // import { PictureAsPdfOutlined } from '@mui/icons-material';
 
@@ -19,6 +20,9 @@ import { Grid, Item } from '@mui/material';
 const Profile = ({username, token, loggedUserPk, id, bio }) => {
   const [trips, setTrips] = useState([]);
 
+  const VBLogo = (
+    <img src={logo} alt='VBLogo' height='100'/>
+  );
 
     useEffect(() => {
       axios
@@ -74,11 +78,12 @@ sx={{
         //need to connect log photopk here in the image field//
         sx={{
             flexShrink: 0,
-            position: 'relative',
+            position: 'static',
             width: '30%',
             maxwidth: 200,
-            paddingTop: 13,
-            paddingBottom: 8,
+            paddingTop: 3,
+            paddingBottom: 3,
+            paddingLeft: 3,
             transform: "translateX(-10%)",
             // boxShadow: '7px 4px 30px 2px rgba(252, 56, 56, 0.2)',
             borderRadius: 10, // 16px
@@ -86,18 +91,18 @@ sx={{
             backgroundImage: '#fe8a39',
             backgroundColor: '#fe8a39',
             overflow: 'initial',
-            '&:after': {
-                content: '" "',
-                // position: 'absolute',
-                top: 0,
-                left: 0,
-                // width: '100%',
-                // height: '100%',
-                borderRadius: 2,
-            },
+            // '&:after': {
+            //     content: '" "',
+            //     // position: 'absolute',
+            //     top: 0,
+            //     left: 0,
+            //     // width: '100%',
+            //     // height: '100%',
+            //     borderRadius: 2,
+            // },
         }}
     >
-      <p>profile image will go here</p>
+      {VBLogo}
       </CardMedia>
     <Box className='cardContentBox'
     sx={{
