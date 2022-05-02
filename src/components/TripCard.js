@@ -40,7 +40,7 @@ export const TripCard = ({pk, tripId, title, location, username, user, trip_user
         {trip_username === username ? (
         <> My trip to {location}</> 
         ):( 
-        <><h2>{usernameCapital}'s trip to {location}</h2></>
+        <>{usernameCapital}'s trip to {location}</>
         )
     }
     
