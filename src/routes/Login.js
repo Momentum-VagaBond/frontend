@@ -5,7 +5,7 @@ import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CardActionArea, CardMedia } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import image from './TravelStock.jpg'
+import image from './VBLogo.png'
 
 
 
@@ -33,7 +33,7 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
     const theme = createTheme();
 
     const LoginImage = (
-      <img src={image} alt='LoginImage' height='800' />
+      <img src={image} alt='LoginImage' height='640' />
     )
 
     const handleLogin = (e) => {
