@@ -110,10 +110,10 @@ sx={{
         position: 'relative',
     }}
     >
-<Avatar sx={{ backgroundColor: '#2af1b5' }}>A</Avatar>
         <Typography className='MuiTypography--date' variant='overline'>
+        <p><i>-currently under construction, we thank you for your patience-</i></p>
       <h2>This is {username}'s Profile</h2>
-      <p>-currently under construction, we thank you for your patience-</p>
+      <p>User Bio, name, etc will be located here</p>
       <h3>{bio}</h3>
         </Typography>
 

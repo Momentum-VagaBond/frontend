@@ -3,9 +3,10 @@ import axios from "axios";
 import { useState } from "react";
 import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar } from '@mui/material';
+import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CardActionArea, CardMedia } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Image } from '@mui/icons-material';
+import image from './TravelStock.jpg'
+
 
 
 function Copyright(props) {
@@ -22,7 +23,7 @@ function Copyright(props) {
 }
 
 
-export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserPk, setRegisterSuccess, setLoggedUserPk, getLoggedUserPk }) => {
+export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserPk, setRegisterSuccess, setLoggedUserPk, getLoggedUserPk, VagaBondLogo }) => {
     const loginURL = "https://momentum-vagabond.herokuapp.com/api-token-auth/";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -30,6 +31,10 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const theme = createTheme();
+
+    const LoginImage = (
+      <img src={image} alt='LoginImage' height='800' />
+    )
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -77,7 +82,7 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
           sm={4}
           md={7}
           sx={{
-            // backgroundImage: 'url()',
+            backgroundImage: '{VagaBondLogo}',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -85,7 +90,8 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
             backgroundPosition: 'center',
           }}
         >
-          <Image src={"TravelStock.jpg"} alt={'logo'}/>
+          {LoginImage}
+          {/* <Image url= 'https://source.unsplash.com/random'/> */}
         </Grid>
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
@@ -99,7 +105,7 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
           >
           <Avatar 
           sx={{ m: 2, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+            {VagaBondLogo}
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in

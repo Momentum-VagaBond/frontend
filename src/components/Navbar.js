@@ -15,6 +15,7 @@ import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
 import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
+import logo from './VagaBond2.png';
 
 
 export const Navbar = () => {
@@ -36,8 +37,14 @@ export const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  const VagaBondLogo = (
+    <img src={logo} alt='VagaBondLogo' height='50'/>
+  );
+
   return (
-    <AppBar position="static"
+    <AppBar
+    position="static"
+    title='AppBar'
       sx={{backgroundColor: '#fe8a39'}}
     >
       <Container maxWidth="m">
@@ -51,7 +58,7 @@ export const Navbar = () => {
               display: { xs: 'none', md: 'flex' },
             }}
           >
-            VagaBond
+            {VagaBondLogo}
             <MenuItem>
                 <Link to="/newtrip">
                 <FlightTwoToneIcon fontSize='inherit' />
