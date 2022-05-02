@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import { Card, IconButton, Button, FormGroup, Box, TextField } from '@mui/material';
+import { Card, IconButton, Button, FormGroup, Box, TextField, Container } from '@mui/material';
 import {Geolocate} from "../components/Geolocate";
 
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
@@ -75,13 +75,17 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     // return <Navigate to='/' />
     }
 
-
-
-
     return (
+        <Container
+        sx={{
+            marginTop: 0,
+        }}
+        >
         <Box
         sx={{
+            marginTop: 0,
             '& .MuiTextField-root': { m: 1, width: '25ch' },
+            backgroundColor:'#e9ecef',
         }}
         noValidate
         autoComplete="on"
@@ -99,7 +103,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     <Card
         variant="outlined"
         sx={{ 
-            my: 8,
+            my: 5,
             mx: 3,
             display: 'flex',
             flexDirection: 'column',
@@ -170,5 +174,6 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     </form>
 
     </Box>
+    </Container>
     );
 }

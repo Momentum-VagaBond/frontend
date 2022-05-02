@@ -38,7 +38,7 @@ export const Navbar = () => {
 
   return (
     <AppBar position="static"
-      // sx={{'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)'}}
+      sx={{backgroundColor: '#fe8a39'}}
     >
       <Container maxWidth="m">
         <Toolbar>
@@ -46,7 +46,10 @@ export const Navbar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+            }}
           >
             VagaBond
             <MenuItem>
@@ -78,7 +81,11 @@ export const Navbar = () => {
               </MenuItem>
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box 
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'flex', md: 'none' },
+            }}>
             <IconButton
               size="large"
               aria-label="account of current user"

@@ -9,7 +9,7 @@ export const ImageUploadForm = ({ token }) => {
   
     const handleClick = () => {
       const imageFile = imageFileInput.current.files[0]
-      axios.post('https://momentum-vagabond.herokuapp.com/api/auth/me/', imageFile, {
+      axios.post("https://momentum-vagabond.herokuapp.com/auth/users/", imageFile, {
         headers: {
           Authorization: `Token ${token}`,
           'Content-Type': imageFile.type,

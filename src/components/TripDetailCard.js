@@ -8,12 +8,12 @@ import { CardContent } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Moment from 'react-moment';
-import CardActionArea from '@mui/material/CardActionArea'
 
 
 
 export const TripDetailCard = ({details, pk, date, location, logId}) => {
     const params = useParams()
+    
     return (
 
     <Card className='MuiPostCard'
@@ -53,11 +53,11 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
             flexShrink: 0,
             position: 'relative',
             width: '30%',
-            maxWidth: 200,
+            maxwidth: 200,
             paddingTop: 13,
             paddingBottom: 8,
             transform: "translateX(-10%)",
-            boxShadow: '7px 4px 30px 2px rgba(252, 56, 56, 0.2)',
+            // boxShadow: '7px 4px 30px 2px rgba(252, 56, 56, 0.2)',
             borderRadius: 10, // 16px
             backgroundSize: 'constrain',
             backgroundImage: 'linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)',
@@ -114,10 +114,11 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
         {/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}`}> */}
         <Button className='MuiButton--readMore' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`}
         sx={{
-            backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 74%)',
+            // backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 74%)',
+            backgroundColor: '#F86A13',
             backgroundSize: 'constrain',
             position: 'relative',
-            boxShadow: '0px 4px 32px rgba(252, 56, 56, 0.4)',
+            // boxShadow: '0px 4px 32px rgba(252, 56, 56, 0.4)',
             borderRadius: 5,
             paddingLeft: 12,
             paddingRight: 12,
