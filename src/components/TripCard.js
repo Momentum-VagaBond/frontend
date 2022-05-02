@@ -47,14 +47,13 @@ export const TripCard = ({pk, tripId, title, location, username, user, trip_user
          {/* /{trip_username}'s trip to {location} */}
 
         </Typography>
-        <Box variant="body2" align="center" color="text.secondary">
-            <h3>{title}</h3>
-            <h4>{username}</h4>
+        <Typography variant="body2" align="center" color="text.secondary">
+            {/* <h3>{title}</h3> */}
+            {/* <h4>{username}</h4> */}
+            {/* {user_first_name} {user_last_name} */}
+            <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
             
-            {user_first_name}
-            {user_last_name}
-            <Moment format="MM/D/YYYY">{begin}</Moment> - <Moment format="MM/D/YYYY">{end}</Moment>
-        </Box>
+        </Typography>
     </CardContent>
 
     {/* <CardActions>
