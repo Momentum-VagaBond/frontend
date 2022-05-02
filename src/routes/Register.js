@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { Navigate, Link as RouterLink} from 'react-router-dom'
 import axios from 'axios';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { TextField, Alert, Container, Typography, Box, Grid, Link, CssBaseline, Button, Avatar } from '@mui/material';;
+import { TextField, Alert, Container, Typography, Box, Grid, Link, CssBaseline, Button, Avatar } from '@mui/material';import { ImageUploadForm } from '../components/ImageUploadForm';
+;
 
 export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
     const [username, setUsername] = useState("");
@@ -12,6 +13,7 @@ export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) =>
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [error, setError] = useState("");
+    const [avatar, setAvatar] = useState(null);
     const [isRegistered, setIsRegistered] = useState(false);
 
     const handleRegistration = (e) => {
@@ -21,16 +23,18 @@ export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) =>
     console.log(username, password, email);
       axios
         .post("https://momentum-vagabond.herokuapp.com/auth/users/", {
-          firstname: firstName,
-          lastname:lastName,
+          first_name: firstName,
+          last_name:lastName,
           username: username,
           password: password,
           email: email,
+          avatar: avatar,
         })
         .then((res) => {
           console.log(res.data);
           setRegisterSuccess(true);
           setIsRegistered(true)
+          setAvatar()
           console.log(registerSuccess)
           
         })
@@ -128,12 +132,11 @@ export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) =>
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
-              {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+              <Grid item xs={12}>
+                <ImageUploadForm
+                value={avatar}
                 />
-              </Grid> */}
+              </Grid>
             </Grid>
             <Button
               type="submit"

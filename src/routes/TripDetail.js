@@ -12,6 +12,7 @@ const TripDetail = ({token }) => {
   const [trip, setTrip] = useState(null)
   const [logs, setLogs] = useState([])
   const [logPk, setLogPk] = useState([])
+  // const [selectedId, setSelectedId] = useState(null)
   // const [acceptedResponse, setAcceptedResponse] = useState(null)
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   

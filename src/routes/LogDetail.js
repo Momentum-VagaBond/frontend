@@ -43,14 +43,16 @@ const LogDetail = ({token}) => {
 
   return (
 <Container component="main"
-// sx={{
-//   backgroundColor: "lightgray",
-// }}
+sx={{
+backgroundColor:'#e9ecef',
+}}
 >
   <CssBaseline />
     <Box
       sx={{
-          marginTop: 8,
+          marginTop: 0,
+          marginBottom: 0,
+          paddingTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

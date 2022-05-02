@@ -5,6 +5,7 @@ import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Image } from '@mui/icons-material';
 
 
 function Copyright(props) {
@@ -76,14 +77,16 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://www.kalenmartin.com/portfolio/travel)',
+            // backgroundImage: 'url()',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
-        />
+        >
+          <Image src={"TravelStock.jpg"} alt={'logo'}/>
+        </Grid>
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
@@ -94,7 +97,8 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
               alignItems: 'center',
             }}
           >
-          <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}>
+          <Avatar 
+          sx={{ m: 2, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -135,7 +139,10 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{
+              mt: 3,
+              mb: 2,
+            }}
             >
           Sign In
         </Button>

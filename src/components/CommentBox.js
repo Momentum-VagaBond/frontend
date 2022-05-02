@@ -72,19 +72,19 @@ export default function CommentBox({ token, logId, setNewComment }) {
             type='text'
             required
             fullWidth
-            placeholder="Add a comment..."
+            placeholder="Add a comment!"
             value={comment}
             autoFocus
             onChange={(e) => handleChange('commentText', e)}
           />  
           <Button type="submit"
-            fullWidth
             variant="contained"
             sx={{
               mt: 3,
               mb: 2,
               borderRadius: 5,
-              backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 90%)',
+              color: 'black',
+              // backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 90%)',
             }}>
               Post comment
           </Button>
