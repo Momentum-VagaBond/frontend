@@ -2,24 +2,38 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {TripCard} from '../components/TripCard';
+import Moment from 'react-moment'
+import { Container, Box, Button, Typography } from "@mui/material";
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
+import LaptopIcon from '@mui/icons-material/Laptop';
+import TvIcon from '@mui/icons-material/Tv';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import Stack from '@mui/material/Stack';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { Luggage, Visibility} from "@mui/icons-material";
 // import {CommentBox} from '../components/CommentBox';
 
 // import {TripDetail} from './TripDetail';
 // import { Link } from 'react-router-dom';
 
-import Container from '@mui/material/Container';
 
 
 
-const AllTrips = ({username, loggedUserPk, token, map, id}) => {
+
+export default function AllTrips ({username, loggedUserPk, token, map, id}) {
   const [trips, setTrips] = useState([]);
   const [usernamePk, setUsernamePk] = useState([]);
   const [tripId, setTripId] = useState("")
   const [tripUsername, setTripUsername] = useState([])
-  const [mytrips, setMyTrips] = useState([])
-  const [followingTrips, setFollowingTrips] = useState([])
+  const [showMyTrips, setShowMyTrips] = useState(false)
+  const [showFollowing, setShowFollowing] = useState(false)
+  // const [showFollowingTrips, setShowFollowingTrips] = useState(false)
   let[userTripNumber, setUserTripNumber] = useState(0)
   let[userFollowNumber, setUserFollowNumber] = useState(0)
+  const [alignment, setAlignment] = React.useState('left');
 
 
   useEffect(() => {
@@ -45,14 +59,56 @@ const AllTrips = ({username, loggedUserPk, token, map, id}) => {
   //   setSearchResults(resultsFromSearch);
   //   }, [items])
 
+  const handleAlignment = (event, newAlignment, setShowFollowing, showFollowing, showMyTrips) => {
+    if (newAlignment !== null) {
+      setAlignment(newAlignment);
+    }
+    // if (showMyTrips === false) {
+    //   setShowMyTrips(true);
+    // }
+    // if (showMyTrips !== false) {
+    //   setShowMyTrips(false);
+    // }
+    // if (showFollowing === false) {
+    //   setShowFollowing(true);
+    // }
+    // if (showFollowing !== false) {
+    //   setShowFollowing(false);
+    // }
+  };
+
 return (
   <>
-<Container maxWidth="xs">
+<Container >
   <h1>Welcome, {username}</h1>
   {/* <h2>This is a test list of ALL trips</h2> */}
   {/* {loggedUserPk}  */}
 </Container>
-
+<Stack direction="row" spacing={4}>
+      <ToggleButtonGroup
+        value={alignment}
+        exclusive
+        onChange={handleAlignment}
+        aria-label="text alignment"
+      >
+        <ToggleButton value="left" aria-label="left aligned">
+          <Luggage /> 
+        </ToggleButton>
+        
+        <ToggleButton value="right" aria-label="right aligned">
+          <Visibility /> 
+        </ToggleButton>
+      </ToggleButtonGroup>
+  </Stack>
+{/* <Container component="main" maxWidth="xs">
+  <Button variant="outlined" startIcon={<DeleteIcon />}>
+  My Trips
+</Button>
+  <Button variant="contained" endIcon={<SendIcon />}>
+  Trips I'm Following
+</Button>
+</Container> */}
+{/* {showMyTrips && */}
 <Container component="main" maxWidth="xs">
 <h2>My trips</h2>
 
@@ -88,7 +144,9 @@ return (
   )
   }
   </Container>
+{/* } */}
 
+{/* {showFollowing && */}
   <Container component="main" maxWidth="xs">
 <h2>Trips I'm Following</h2>
 
@@ -125,21 +183,11 @@ return (
    {userFollowNumber === 0 && (
     <h1>Not following any trips yet</h1>
   )
-  }
+   }
   </Container>
+{/* } */}
   </>
   )
-  }
+}
 
-export default AllTrips;
-
-
-
-// <Card sx={{
-    //   mt: 8,
-    //   pl: 4,
-      // display: 'flex',
-      // flexDirection: 'column',
-      // // alignItems: 'center', 
-      // border: 1
-    // }}>
+// export default AllTrips;
