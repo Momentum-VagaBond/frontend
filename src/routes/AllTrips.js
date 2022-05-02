@@ -3,14 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {TripCard} from '../components/TripCard';
 import Moment from 'react-moment'
-import { Container, Box, Button, Typography } from "@mui/material";
-import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
-import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
-import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
-import LaptopIcon from '@mui/icons-material/Laptop';
-import TvIcon from '@mui/icons-material/Tv';
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-import Stack from '@mui/material/Stack';
+import { Container,Grid, Stack, Box, Button, Typography } from "@mui/material";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Luggage, Visibility} from "@mui/icons-material";
@@ -83,7 +76,7 @@ return (
   <h1>Welcome, {username}</h1>
   {/* <h2>This is a test list of ALL trips</h2> */}
   {/* {loggedUserPk}  */}
-</Container>
+
 <Stack direction="row" spacing={4}>
       <ToggleButtonGroup
         value={alignment}
@@ -100,6 +93,7 @@ return (
         </ToggleButton>
       </ToggleButtonGroup>
   </Stack>
+  </Container>
 {/* <Container component="main" maxWidth="xs">
   <Button variant="outlined" startIcon={<DeleteIcon />}>
   My Trips
@@ -109,18 +103,22 @@ return (
 </Button>
 </Container> */}
 {/* {showMyTrips && */}
-<Container component="main" maxWidth="xs">
-<h2>My trips</h2>
 
+<Container component="main" maxWidth="sm">
+
+<h2>My trips</h2>
+<Grid container spacing={2}>
+ 
 {trips.map((trip) => {
     if (username === trip.username) {
       while (userTripNumber < 1) {
       setUserTripNumber((userTripNumber += 1))
       console.log(userTripNumber)
       }
-    return (
       
-      // <div key={id}>
+    return (
+    
+      <Grid item xs={6} direction="column" key={id}>
     <TripCard
       username={username}
       key={trip.pk}
@@ -135,21 +133,21 @@ return (
       end={trip.end}
       tripId={trip.pk}
     />
-    // </div>
+    </Grid>
     )
   }
   } )}
+  </Grid>
     {userTripNumber === 0 && (
     <h1>No trips yet! Ready to start one?</h1>
-  )
-  }
+  )}
   </Container>
 {/* } */}
-
 {/* {showFollowing && */}
-  <Container component="main" maxWidth="xs">
-<h2>Trips I'm Following</h2>
+  <Container component="main" maxWidth="sm">
+    <h2>Trips I'm Following</h2>
 
+  <Grid container spacing={2}>
 {trips.map(trip => {
     if (username !== trip.username) {
       while (userFollowNumber < 1) {
@@ -159,7 +157,7 @@ return (
       
     return (
       
-      // <div key={id}>
+      <Grid item xs={6} direction="column" key={id}>
     <TripCard
       username={username}
       key={trip.pk}
@@ -174,16 +172,14 @@ return (
       end={trip.end}
       tripId={trip.pk}
     />
-    // </div>
-    )
-
-    
-  }
-  } )}
+   </Grid>
+    )}
+  })}
    {userFollowNumber === 0 && (
     <h1>Not following any trips yet</h1>
   )
    }
+   </Grid>
   </Container>
 {/* } */}
   </>
