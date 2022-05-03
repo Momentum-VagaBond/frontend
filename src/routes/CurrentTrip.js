@@ -6,8 +6,8 @@ import { CurrentTripCard } from '../components/CurrentTripCard';
 
 
 const CurrentTrip = ({token, loggedUserPk, username, id }) => {
-    const [trip, setTrip] = useState("");
-    const [begin, setBegin] = useState(null);
+    const [trip, setTrip] = useState([]);
+    const [begin, setBegin] = useState([]);
     // const [tripDate, setTripDate] = useState("")
     // const [tripUsername, setTripUsername] = useState([])
 
@@ -27,12 +27,13 @@ const CurrentTrip = ({token, loggedUserPk, username, id }) => {
     return (
 
             <div>
-            {/* {trips.map((trip, pk) => {
+            {trip.map((trip, pk) => {
                 return (
                     <CurrentTripCard
                     key={pk}
                     tripId={trip.pk}
                     title={trip.title}
+                    user={trip.user}
                     location={trip.location}
                     begin={trip.begin}
                     end={trip.end}
@@ -40,7 +41,7 @@ const CurrentTrip = ({token, loggedUserPk, username, id }) => {
                 )
             }
             )
-            } */}
+            }
             </div>
 
     )

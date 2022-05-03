@@ -5,8 +5,8 @@ import Box from '@mui/material/Box';
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import Container from '@mui/material/Container';
 import { TripCard } from '../components/TripCard';
-
 import logo from './VBLogo.png';
+import { CurrentTripCard } from '../components/CurrentTripCard';
 
 
 const Profile = ({username, token, loggedUserPk, id, bio }) => {
@@ -115,6 +115,7 @@ sx={{
     <h1>
       {username}'s Trips!
     </h1>
+    <CurrentTripCard />
     </Box>
 
     <Box>
