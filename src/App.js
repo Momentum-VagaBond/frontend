@@ -18,6 +18,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Theme } from './assets/Theme'
 import { Geolocate } from './components/Geolocate';
 import MapBox from './components/MapBox';
+import CurrentTrip from './routes/CurrentTrip';
 
 
 
@@ -123,6 +124,10 @@ const isLoggedIn = username && token
         <Route
           path="/tripdetailcard"
           element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
+        />
+        <Route
+          path="/trips/current/user/"
+          element={<CurrentTrip setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
         />
 
         </Routes>

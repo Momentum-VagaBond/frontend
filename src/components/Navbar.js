@@ -19,23 +19,6 @@ import logo from './VagaBond2.png';
 
 
 export const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   const VagaBondLogo = (
     <img src={logo} alt='VagaBondLogo' height='50'/>
@@ -48,28 +31,17 @@ export const Navbar = () => {
       sx={{backgroundColor: '#fe8a39'}}
     >
       <Container maxWidth="m">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
+
+          <Box 
             sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-            }}
-          >
-            {VagaBondLogo}
-            <MenuItem>
+              flexGrow: 1,
+              display: { xs: 'flex', md: 'none' },
+            }}>
+
+              <MenuItem>
                 <Link to="/newtrip">
                 <FlightTwoToneIcon fontSize='inherit' />
                   New Trip
-                </Link>
-              </MenuItem>
-
-              <MenuItem>
-                <Link to="/trips">
-                <CardTravelTwoToneIcon fontSize='inherit' />
-                  All Trips
                 </Link>
               </MenuItem>
 
@@ -81,56 +53,14 @@ export const Navbar = () => {
               </MenuItem>
 
               <MenuItem>
-                <Link to="/newlog">
+                <Link to="/logout">
                 <AddLocationAltTwoToneIcon fontSize='inherit' />
-                  New Log
+                  Logout
                 </Link>
               </MenuItem>
-          </Typography>
 
-          <Box 
-            sx={{
-              flexGrow: 1,
-              display: { xs: 'flex', md: 'none' },
-            }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
+              {VagaBondLogo}
 
-              <MenuItem>
-                <Link to="/newtrip">New Trip</Link>
-              </MenuItem>
-
-              <MenuItem>
-                <Link to="/trips">All Trips</Link>
-              </MenuItem>
-
-            </Menu>
           </Box>
           {/* <Typography
             variant="h6"
@@ -152,44 +82,6 @@ export const Navbar = () => {
               </Button>
             ))} */}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-            <MenuItem onClick={handleCloseUserMenu}>
-              <Link to="/profile">Profile</Link>
-            </MenuItem>
-
-            <MenuItem onClick={handleCloseUserMenu}>
-              <Link to="/mytrips">My Trips</Link>
-            </MenuItem>
-
-            <MenuItem onClick={handleCloseUserMenu}>
-              <Link to="/logout">Log Out</Link>
-            </MenuItem>
-
-            </Menu>
-          </Box>
-        </Toolbar>
       </Container>
     </AppBar>
   );

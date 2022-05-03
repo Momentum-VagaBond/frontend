@@ -1,20 +1,12 @@
 import * as React from 'react';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Avatar from '@mui/material/Avatar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import { Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
-import { deepOrange } from "@mui/material/colors";
+import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import Container from '@mui/material/Container';
-import { ProfileCard } from "../components/ProfileCard";
 import { TripCard } from '../components/TripCard';
-import Moment from 'react-moment';
-import { Link as RouterLink } from 'react-router-dom';
-import { Grid, Item } from '@mui/material';
-import logo from './VBLogo.png';
 
-// import { PictureAsPdfOutlined } from '@mui/icons-material';
+import logo from './VBLogo.png';
 
 
 const Profile = ({username, token, loggedUserPk, id, bio }) => {
@@ -91,15 +83,6 @@ sx={{
             backgroundImage: '#fe8a39',
             backgroundColor: '#fe8a39',
             overflow: 'initial',
-            // '&:after': {
-            //     content: '" "',
-            //     // position: 'absolute',
-            //     top: 0,
-            //     left: 0,
-            //     // width: '100%',
-            //     // height: '100%',
-            //     borderRadius: 2,
-            // },
         }}
     >
       {VBLogo}
@@ -153,52 +136,5 @@ sx={{
         </Box>
   )
 };
-
-
-
-
-  {/* <CssBaseline />
-    <Box sx={{
-          marginTop: 7,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent:'center',
-          maxWidth: 'auto',
-        }}
-    >
-      <Card
-      sx={{
-        padding: 10,
-        borderRadius: 10,
-        transition: '0.3s',
-        boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
-        backgroundImage: 'linear-gradient(150deg, #fe8a39 30%, #fd3838 85%)',
-        backgroundColor: '#0000',
-        maxWidth: 500,
-      }}
-      >
-        <Avatar sx={{ backgroundColor: '#2af1b5' }}>A</Avatar>
-      <h2>This is {username}'s Profile</h2>
-      {bio}
-      </Card>
-    </Box>
-
-
-    <Box component="main" maxwidth="m">
-      {trips.map((trip, pk) => {
-        return (
-          <TripCard key={pk}
-            tripId={trip.pk}
-            title={trip.title}
-            location={trip.location}
-            firstName={trip.user_first_name}
-            lastName={trip.user_last_name}
-            username={trip.username}
-            />
-      )}
-        )}
-    </Box> */}
-
 
 export default Profile
