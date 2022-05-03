@@ -61,8 +61,7 @@ export default function NewTrip({token, isLoggedIn}) {
     return (
         <Container
         sx={{
-            my: 8,
-            mx: 3,
+            marginTop: 15,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

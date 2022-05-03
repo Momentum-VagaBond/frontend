@@ -13,12 +13,12 @@ import { grey } from '@mui/material/colors';
 import CommentBox from './CommentBox';
 
 
-const faces = [
-  "http://i.pravatar.cc/300?img=6",
-  "http://i.pravatar.cc/300?img=7",
-  "http://i.pravatar.cc/300?img=8",
-  "http://i.pravatar.cc/300?img=9"
-];
+// const faces = [
+//   "http://i.pravatar.cc/300?img=6",
+//   "http://i.pravatar.cc/300?img=7",
+//   "http://i.pravatar.cc/300?img=8",
+//   "http://i.pravatar.cc/300?img=9"
+// ];
 
 const LogCard = ({detail_text,location, comments}) => (
   <Container className='bodyContainer'
@@ -61,13 +61,13 @@ const LogCard = ({detail_text,location, comments}) => (
     >
     <Box sx={{
                   boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-                  borderRadius: 10,
-                  marginBottom: 10,
+                  borderRadius: 5,
+                  // marginBottom: 10,
                   backgroundColor: '#ffffff',
                   position: 'absolute',
-                  top: '75%',
+                  top: '90%',
                   textAlign: 'left',
-                  maxWidth: 350,
+                  maxWidth: 300,
                   width: '60%',
                   overflow: 'auto',
       }}
@@ -76,9 +76,9 @@ const LogCard = ({detail_text,location, comments}) => (
       sx={{
           // marginBottom: 200,
           maxWidth: 350,
-          margin: 'auto',
+          margin: 0,
           overflow: 'initial',
-          borderRadius: 10,
+          borderRadius: 5,
         
       }}>
       <div className="ContentHead"
@@ -90,7 +90,7 @@ const LogCard = ({detail_text,location, comments}) => (
       >
         <Typography
           className="Typography"
-          variant="h6"
+          variant="h7"
           gutterBottom
         >
           {detail_text}
@@ -123,17 +123,17 @@ const LogCard = ({detail_text,location, comments}) => (
       {/* <Typography gutterBottom color="TextSecondary">
         {detail_text}
       </Typography> */}
-      <div className="ContentTail">
-        {faces.map(face => (
+      {/* <div className="ContentTail"> */}
+        {/* {faces.map(face => (
           <Avatar className="Avatar" key={face} src={face}
           sx={{
           }}
           />
-        ))}
-        <IconButton className="IconButton">
+        ))} */}
+        {/* <IconButton className="IconButton">
           <Icon>more_horiz</Icon>
-        </IconButton>
-      </div>
+        </IconButton> */}
+      {/* </div> */}
     </CardContent>
 
     </Box>

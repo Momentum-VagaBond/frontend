@@ -35,7 +35,7 @@ sx={{
 >
 <Container component="main" maxWidth="l"
   sx={{
-    paddingTop: 3,
+    paddingTop: 10,
   }}
 >
 
@@ -50,7 +50,7 @@ sx={{
         position: 'relative',
         maxWidth: 600,
         marginLeft: 2,
-        marginRight: 2,
+        marginRight: 1,
         marginTop: 0,
         overflow: 'visible',
         background: '#ffffff',
@@ -94,14 +94,12 @@ sx={{
     <CardContent className='MuiCardContent-root'
     sx={{
         textAlign: 'left',
-        p: 2,
+        padding: 1,
         position: 'relative',
     }}
     >
         <Typography className='MuiTypography--date' variant='overline'>
-        <p><i>-currently under construction, we thank you for your patience-</i></p>
       <h2>This is {username}'s Profile</h2>
-      <p>User Bio, name, etc will be located here</p>
       <h3>{bio}</h3>
         </Typography>
 
@@ -129,7 +127,10 @@ sx={{
             location={trip.location}
             firstName={trip.user_first_name}
             lastName={trip.user_last_name}
-            username={trip.username}
+            trip_username={trip.username}
+            begin={trip.begin}
+            end={trip.end}
+            username={username}
             />
       )}
         )}

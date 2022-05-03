@@ -2,28 +2,16 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ArchiveIcon from '@mui/icons-material/Archive';
 import Paper from '@mui/material/Paper';
-import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
 import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 import { Link } from 'react-router-dom';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import Avatar from '@mui/material/Avatar';
 
 
 export default function Navbar() {
-  // const ref = React.useRef(null);
-
 
   return (
     <Box
@@ -46,19 +34,19 @@ export default function Navbar() {
         }}>
 
         <BottomNavigation>
-               <MenuItem>
-                 <Link to="/newtrip">
-                 <FlightTwoToneIcon fontSize='inherit' />
-                   New Trip
-                 </Link>
-               </MenuItem>
+          <MenuItem>
+            <Link to="/newtrip">
+              <FlightTwoToneIcon fontSize='inherit' />
+                New Trip
+            </Link>
+          </MenuItem>
 
-               <MenuItem>
-                 <Link to="/profile">
-                 <AccountCircleTwoToneIcon fontSize='inherit' />
+          <MenuItem>
+            <Link to="/profile">
+              <AccountCircleTwoToneIcon fontSize='inherit' />
                 Profile
-                 </Link>
-               </MenuItem>
+            </Link>
+          </MenuItem>
 
                <MenuItem>
                  <Link to="/logout">

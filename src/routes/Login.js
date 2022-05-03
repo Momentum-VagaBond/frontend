@@ -5,7 +5,7 @@ import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CardActionArea, CardMedia } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import image from './JT4.jpg'
+// import image from './CapitolReflection.jpg'
 
 
 
@@ -32,9 +32,9 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
     const navigate = useNavigate();
     const theme = createTheme();
 
-    const LoginImage = (
-      <img src={image} alt='LoginImage' height='1000' />
-    )
+    // const LoginImage = (
+    //   <img src={image} alt='LoginImage' height='100' />
+    // )
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -68,7 +68,9 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
   return (
     <div className="loginDiv">
       <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" 
+      // sx={{ width: '300' }}
+      >
       {error && <div className="errorDiv">{error}</div>}
       {registerSuccess && 
         <Alert severity="success">
@@ -90,7 +92,7 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
             backgroundPosition: 'center',
           }}
         >
-          {LoginImage}
+          {/* {LoginImage} */}
           {/* <Image url= 'https://source.unsplash.com/random'/> */}
         </Grid>
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
