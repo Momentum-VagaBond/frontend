@@ -40,7 +40,11 @@ const TripDetail = ({token }) => {
 
 
   return (
-<Container component="main">
+<Container component="main"
+  sx={{
+    marginBottom: 10,
+  }}
+  >
   <CssBaseline />
     <Box
       sx={{

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/system';
 import CssBaseline from '@mui/material/CssBaseline';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import Paper from '@mui/material/Paper';
-import MenuItem from '@mui/material/MenuItem';
-import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
+import { BottomNavigation } from '@mui/material';
+import { Paper } from '@mui/material';
+import { MenuItem } from '@mui/material';
+import { AccountCircleTwoTone } from '@mui/icons-material';
 import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
 import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
@@ -22,7 +22,7 @@ export default function Navbar() {
       right: 0,
       backgroundColor: '#fe8a39',
     }}>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <Paper
         elevation={3}
         sx={{
@@ -43,7 +43,7 @@ export default function Navbar() {
 
           <MenuItem>
             <Link to="/profile">
-              <AccountCircleTwoToneIcon fontSize='inherit' />
+              <AccountCircleTwoTone fontSize='inherit' />
                 Profile
             </Link>
           </MenuItem>

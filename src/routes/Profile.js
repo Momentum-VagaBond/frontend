@@ -6,7 +6,7 @@ import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import Container from '@mui/material/Container';
 import { TripCard } from '../components/TripCard';
 import logo from './VBLogo.png';
-// import { CurrentTripCard } from '../components/CurrentTripCard';
+import { CurrentTripCard } from '../components/CurrentTripCard';
 
 
 const Profile = ({username, token, loggedUserPk, id, bio }) => {
@@ -31,6 +31,7 @@ return (
 <Box
 sx={{
   backgroundColor:'#e9ecef',
+  marginBottom: 8,
 }}
 >
 <Container component="main" maxWidth="l"
@@ -115,7 +116,7 @@ sx={{
     </h1>
     </Box>
 
-{/* <CurrentTripCard /> */}
+<CurrentTripCard />
 
     <Box>
       {trips.map((trip, pk) => {
