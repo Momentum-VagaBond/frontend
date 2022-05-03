@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Card, IconButton, Button, FormGroup, Box, TextField, Container } from '@mui/material';
 import {Geolocate} from "../components/Geolocate";
@@ -34,6 +34,21 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         });
         }
     }
+
+    useEffect(() => {
+        // isolating address info based on database poi data
+        if (latitude !== null) {
+          // creates search query for mapbox forward geocode - address into coordinates
+            axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?limit=1&types=address%2Cpoi&access_token=pk.eyJ1IjoiZW1pbHlmbG8iLCJhIjoiY2wyZGRsNG9hMHk0aDNicGR1bjhxZGZmdyJ9.OwfzAfjxswxUss6pTmNVUQ`)
+            .then(response => {
+                console.log(response.data)
+                // setLatitude("")
+                // setLongitude("")
+            }, [])
+
+        }
+      }, [latitude, longitude])
+  
 
 
     const handleSubmit = (e) => {

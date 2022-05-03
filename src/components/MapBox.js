@@ -1,6 +1,8 @@
 
 import React, { useRef, useEffect } from "react"
 import mapboxgl, {Marker} from "mapbox-gl"
+import MapboxGeocoder from "mapbox-gl"
+
 // import the mapbox styles
 // alternatively can use a link tag in the head of public/index.html
 // see https://docs.mapbox.com/mapbox-gl-js/api/
@@ -18,6 +20,8 @@ const MapBox = () => {
   const lng= -115.172157
   const lat= 36.112514
 
+  
+
   // this is where all of our map logic is going to live
   // adding the empty dependency array ensures that the map
   // is only rendered once
@@ -30,9 +34,24 @@ const MapBox = () => {
       style: "mapbox://styles/mapbox/streets-v11",
       center: [lng, lat],
       zoom: 12,
-      // marker: true
+      marker: false
+      
 
     })
+  //   import mapboxgl, {Marker} from "mapbox-gl"
+  //   const marker = new mapboxgl.Marker() // initialize a new marker
+  // .setLngLat([-122.25948, 37.87221]) // Marker [lng, lat] coordinates
+  // .addTo(map); // Add the marker to the map
+
+    // const geocoder = new MapboxGeocoder({
+    //   accessToken: mapboxgl.accessToken,
+    //   marker: {
+    //   color: 'orange'
+    //   },
+    //   mapboxgl: mapboxgl
+    //   });
+       
+    //   map.addControl(geocoder);
   //   const marker = new mapboxgl.Marker() // initialize a new marker
   // .setLngLat([-122.25948, 37.87221]) // Marker [lng, lat] coordinates
   // .addTo(map); // Add the marker to the map

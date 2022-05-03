@@ -45,6 +45,8 @@ export default function AllTrips ({username, loggedUserPk, token, map, id}) {
       })
   }, [loggedUserPk, tripId, tripUsername])
 
+
+
   // useEffect(() => {
   //   const resultsFromSearch = trip.filter((trip: any) =>
   //         trip.title.toLowerCase().includes(username)
