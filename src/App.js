@@ -16,12 +16,9 @@ import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { ThemeProvider } from '@mui/material/styles';
 import { Theme } from './assets/Theme'
-import { Geolocate } from './components/Geolocate';
+import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
 import CurrentTrip from './routes/CurrentTrip';
-
-
-
 
 const App = () => {
   
