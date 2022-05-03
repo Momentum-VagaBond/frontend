@@ -13,9 +13,6 @@ import { Luggage, Visibility} from "@mui/icons-material";
 // import { Link } from 'react-router-dom';
 
 
-
-
-
 export default function AllTrips ({username, loggedUserPk, token, map, id}) {
   const [trips, setTrips] = useState([]);
   const [usernamePk, setUsernamePk] = useState([]);
@@ -44,6 +41,8 @@ export default function AllTrips ({username, loggedUserPk, token, map, id}) {
         // console.log("tripId" + setTripId)
       })
   }, [loggedUserPk, tripId, tripUsername])
+
+
 
   // useEffect(() => {
   //   const resultsFromSearch = trip.filter((trip: any) =>
