@@ -41,7 +41,8 @@ export default function NewLog({token, loggedUserPk, tripId}) {
           // creates search query for mapbox forward geocode - address into coordinates
             axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?limit=1&types=address%2Cpoi&access_token=pk.eyJ1IjoiZW1pbHlmbG8iLCJhIjoiY2wyZGRsNG9hMHk0aDNicGR1bjhxZGZmdyJ9.OwfzAfjxswxUss6pTmNVUQ`)
             .then(response => {
-                console.log(response.data)
+                console.log(response.data.features[0].place_name)
+                setLocation(response.data.features[0].place_name)
                 // setLatitude("")
                 // setLongitude("")
             }, [])
@@ -110,7 +111,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         longitude={longitude}
         /> */}
     {error && <div className="error">{error}</div>}
-    <h1>New Trip Log! {loggedUserPk} </h1>
+    <h1>New Trip Log! </h1>
     <form onSubmit={handleSubmit}>
 
     <div>
@@ -130,14 +131,14 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         <AddLocationAltTwoToneIcon />
     </IconButton>
         Find your location!
-
+        <p>{status}</p>
     <FormGroup>
         <label htmlFor='reg-location'>Location: </label>
         <TextField id="filled-basic"
             label="Location"
             variant="filled"
             className='tripLocation'
-            // required value={location}
+            value={location}
             onChange={(e) => setLocation(e.target.value)}
         />
     </FormGroup>
@@ -153,7 +154,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         />
     </FormGroup>
 
-    <FormGroup>
+    {/* <FormGroup>
         <label htmlFor='reg-latitude'>Latitude: </label>
         <TextField id="filled-basic"
             label={latitude}
@@ -175,7 +176,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
             value={longitude}
             onChange={(e) => setLongitude(e.target.value)}
         />
-    </FormGroup>
+    </FormGroup> */}
 
 
     
