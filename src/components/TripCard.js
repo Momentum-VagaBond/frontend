@@ -38,7 +38,7 @@ export const TripCard = ({pk, tripId, title, location, username, user, trip_user
         
         <Typography gutterBottom align="center" variant="body1" component="div">
         {trip_username === username ? (
-        <> My trip to {location}</> 
+        <>{location}</> 
         ):( 
         <>{usernameCapital}'s trip to {location}</>
         )

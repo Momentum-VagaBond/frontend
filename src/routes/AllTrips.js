@@ -28,7 +28,9 @@ export default function AllTrips ({username, loggedUserPk, token, map, id}) {
 
   useEffect(() => {
     axios
-      .get("https://momentum-vagabond.herokuapp.com/api/trips")
+      .get("https://momentum-vagabond.herokuapp.com/api/trips",
+      {headers: {Authorization: `Token ${token}`}
+      })
 
       .then((response) => {
         console.log(response.data)
@@ -40,7 +42,7 @@ export default function AllTrips ({username, loggedUserPk, token, map, id}) {
         console.log(response.data.username)
         // console.log("tripId" + setTripId)
       })
-  }, [loggedUserPk, tripId, tripUsername])
+  }, [loggedUserPk, tripId, token, tripUsername])
 
 
 

@@ -53,7 +53,7 @@ backgroundColor:'#e9ecef',
           marginTop: 0,
           marginBottom: 0,
           paddingTop: 8,
-          display: 'flex',
+          display: 'grid',
           flexDirection: 'column',
           alignItems: 'center',
           borderRadius: 5,
@@ -86,8 +86,8 @@ backgroundColor:'#e9ecef',
   >
   <Box sx={{
     border: 1,
-    margin: 4,
-    padding: 1,
+    margin: 0,
+    padding: 0,
     borderRadius: 5,
     boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
   }}
@@ -115,7 +115,7 @@ backgroundColor:'#e9ecef',
     }}
     >
     <Box sx={{
-      margin: 2,
+      margin: 1,
       border: 1,
       borderRadius: 5,
       paddingLeft: 3,

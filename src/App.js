@@ -5,7 +5,7 @@ import { Login } from './routes/Login';
 import { Logout } from './routes/Logout';
 import NewTrip from './routes/NewTrip';
 import NewLog from './routes/NewLog';
-import { Navbar } from './components/Navbar';
+import Navbar from './components/Navbar';
 import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import TripDetail from './routes/TripDetail';
@@ -18,6 +18,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Theme } from './assets/Theme'
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
+import CurrentTrip from './routes/CurrentTrip';
 
 const App = () => {
   
@@ -121,7 +122,11 @@ const isLoggedIn = username && token
           path="/tripdetailcard"
           element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
-        
+        {/* <Route
+          path="/trips/current/user/"
+          element={<CurrentTrip setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
+        /> */}
+
         </Routes>
       </Router>
     </div>
