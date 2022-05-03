@@ -19,9 +19,6 @@ import { Theme } from './assets/Theme'
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
 
-
-
-
 const App = () => {
   
   //use local storage to keep this token hanging around
