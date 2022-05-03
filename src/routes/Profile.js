@@ -6,7 +6,7 @@ import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import Container from '@mui/material/Container';
 import { TripCard } from '../components/TripCard';
 import logo from './VBLogo.png';
-import { CurrentTripCard } from '../components/CurrentTripCard';
+// import { CurrentTripCard } from '../components/CurrentTripCard';
 
 
 const Profile = ({username, token, loggedUserPk, id, bio }) => {
@@ -66,7 +66,7 @@ sx={{
 
     <CardMedia
         className='ProfileCardMedia'
-        component='text'
+        // component='img'
         //need to connect log photopk here in the image field//
         sx={{
             flexShrink: 0,
@@ -115,8 +115,9 @@ sx={{
     <h1>
       {username}'s Trips!
     </h1>
-    <CurrentTripCard />
     </Box>
+
+{/* <CurrentTripCard /> */}
 
     <Box>
       {trips.map((trip, pk) => {

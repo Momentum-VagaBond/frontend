@@ -116,17 +116,6 @@ const LogCard = ({detail_text,location, comments}) => (
       </Typography>
       {/* <div className="ContentRating">
 
-        <Icon className="IconStarred"
-        sx={{color: '#ffbb00'}}>star_rounded</Icon>
-        <Icon className="IconStarred"
-        sx={{color: '#ffbb00'}}>star_rounded</Icon>
-        <Icon className="IconStarred"
-        sx={{color: '#ffbb00'}}>star_rounded</Icon>
-        <Icon className="IconStarred"
-        sx={{color: '#ffbb00'}}>star_rounded</Icon>
-        <Icon className="IconStarred"
-        sx={{color: '#ffbb00'}}>star_rounded</Icon>
-
         <Typography className="TypographyRating" inline="true">
           4.0
         </Typography>
@@ -134,28 +123,13 @@ const LogCard = ({detail_text,location, comments}) => (
       {/* <Typography gutterBottom color="TextSecondary">
         {detail_text}
       </Typography> */}
-      <div className="ContentTail"
-      // sx={{
-      //   display: 'flexbox',
-      //   flexDirection: 'row',
-      // }}
-      >
+      <div className="ContentTail">
         {faces.map(face => (
           <Avatar className="Avatar" key={face} src={face}
           sx={{
           }}
           />
         ))}
-        {/* <Typography
-          className="TypographyReviewer"
-          color="textSecondary"
-          sx={{
-            marginLeft: 1,
-            marginRight: 'auto',
-          }}
-        >
-          +420
-        </Typography> */}
         <IconButton className="IconButton">
           <Icon>more_horiz</Icon>
         </IconButton>
