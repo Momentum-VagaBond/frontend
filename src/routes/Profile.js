@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Box from '@mui/material/Box';
+import { Box } from '@mui/system';
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import Container from '@mui/material/Container';
 import { TripCard } from '../components/TripCard';
@@ -11,6 +11,8 @@ import { CurrentTripCard } from '../components/CurrentTripCard';
 
 const Profile = ({username, token, loggedUserPk, id, bio }) => {
   const [trips, setTrips] = useState([]);
+  const [trip, setTrip] = useState([]);
+  const [begin, setBegin] = useState([]);
 
   const VBLogo = (
     <img src={logo} alt='VBLogo' height='100'/>
@@ -26,6 +28,20 @@ const Profile = ({username, token, loggedUserPk, id, bio }) => {
       setTrips(response.data.trips)
       })
     }, [token, loggedUserPk, setTrips])
+
+    useEffect(() =>{
+      axios
+      .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
+          {headers: {Authorization: `Token ${token}`}
+      })
+      .then((response) => {
+          console.log(response.data)
+          setTrip(response.data)
+          setBegin(response.data.begin)
+  
+      })
+      }, [token, loggedUserPk, setTrip, setBegin])
+
 
 return (
 <Box
@@ -116,7 +132,23 @@ sx={{
     </h1>
     </Box>
 
-<CurrentTripCard />
+    <div>
+            {trip.map((trip, pk) => {
+                return (
+                    <CurrentTripCard
+                    key={pk}
+                    tripId={trip.pk}
+                    title={trip.title}
+                    user={trip.user}
+                    location={trip.location}
+                    begin={trip.begin}
+                    end={trip.end}
+                    />
+                )
+            }
+            )
+            }
+            </div>
 
     <Box>
       {trips.map((trip, pk) => {
