@@ -13,9 +13,6 @@ import { Luggage, Visibility} from "@mui/icons-material";
 // import { Link } from 'react-router-dom';
 
 
-
-
-
 export default function AllTrips ({username, loggedUserPk, token, map, id}) {
   const [trips, setTrips] = useState([]);
   const [usernamePk, setUsernamePk] = useState([]);

@@ -124,7 +124,7 @@ const isLoggedIn = username && token
           path="/tripdetailcard"
           element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
-
+        
         </Routes>
       </Router>
     </div>
