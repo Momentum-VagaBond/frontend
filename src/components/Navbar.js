@@ -16,12 +16,13 @@ export default function Navbar() {
   return (
     <Box
     sx={{
-      position: 'fixed',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: '#fe8a39',
-    }}>
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'baseline',
+      marginBottom: 0,
+    }}
+    >
       {/* <CssBaseline /> */}
       <Paper
         elevation={3}
@@ -31,7 +32,8 @@ export default function Navbar() {
           left: 0,
           right: 0,
           backgroundColor: '#fe8a39',
-        }}>
+        }}
+        >
 
         <BottomNavigation>
           <MenuItem>

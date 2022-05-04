@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import { TripCard } from '../components/TripCard';
 import logo from './VBLogo.png';
 import { CurrentTripCard } from '../components/CurrentTripCard';
+import { FutureTripCard } from '../components/FutureTripCard';
 
 
 const Profile = ({username, token, loggedUserPk, id, bio }) => {
@@ -29,7 +30,8 @@ const Profile = ({username, token, loggedUserPk, id, bio }) => {
       })
     }, [token, loggedUserPk, setTrips])
 
-    useEffect(() =>{
+
+    useEffect(() => {
       axios
       .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
           {headers: {Authorization: `Token ${token}`}
@@ -40,7 +42,20 @@ const Profile = ({username, token, loggedUserPk, id, bio }) => {
           setBegin(response.data.begin)
   
       })
-      }, [token, loggedUserPk, setTrip, setBegin])
+    }, [token, loggedUserPk, setTrip, setBegin])
+
+
+    useEffect(() => {
+      axios
+      .get("https://momentum-vagabond.herokuapp.com/api/trip/future/user/",
+          {headers: {Authorization: `Token ${token}`}
+        })
+      .then((response) => {
+        console.log(response.data)
+        setTrip(response.data)
+        setBegin(response.data.begin)
+      })
+    }, [token, loggedUserPk, setTrip, setBegin])
 
 
 return (
@@ -121,9 +136,7 @@ sx={{
         </Typography>
 
     </CardContent>
-
     </Box>
-
     </Card>
 
     <Box>
@@ -132,23 +145,39 @@ sx={{
     </h1>
     </Box>
 
-    <div>
-            {trip.map((trip, pk) => {
-                return (
-                    <CurrentTripCard
-                    key={pk}
-                    tripId={trip.pk}
-                    title={trip.title}
-                    user={trip.user}
-                    location={trip.location}
-                    begin={trip.begin}
-                    end={trip.end}
-                    />
-                )
-            }
-            )
-            }
-            </div>
+    <Box>
+      <h3>CurrentTripCard</h3>
+      {trip.map((trip, pk) => {
+        return (
+          <CurrentTripCard
+            key={pk}
+            tripId={trip.pk}
+            title={trip.title}
+            user={trip.user}
+            location={trip.location}
+            begin={trip.begin}
+            end={trip.end}
+          />
+        )}
+      )}
+    </Box>
+
+    <Box>
+      <h3>FutureTripCard</h3>
+      {trip.map((trip, pk) => {
+        return (
+          <FutureTripCard
+            key={pk}
+            tripId={trip.pk}
+            title={trip.title}
+            user={trip.user}
+            location={trip.location}
+            begin={trip.begin}
+            end={trip.end}
+          />
+        )}
+      )}
+    </Box>
 
     <Box>
       {trips.map((trip, pk) => {
@@ -165,8 +194,8 @@ sx={{
             end={trip.end}
             username={username}
             />
-      )}
         )}
+      )}
     </Box>
         </Container>
         </Box>
