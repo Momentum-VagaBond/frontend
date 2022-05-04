@@ -37,6 +37,7 @@ const App = () => {
   const getTripId = (pk) =>
     setTripId(pk)
 
+
   // const updateAvatar = (newImg) =>
   //   setAvatar(newImg)
 

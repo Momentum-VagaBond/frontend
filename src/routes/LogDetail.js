@@ -21,6 +21,7 @@ const LogDetail = ({token}) => {
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
+  const logId2 = (params.logId)
 
   useEffect(() => {
     axios
@@ -34,8 +35,9 @@ const LogDetail = ({token}) => {
         setComments(res.data.log_comments)
         console.log("log detail request fired")
         console.log(res.data.log_comments)
+        console.log("trying to set logId: " + logId2)
       })
-  }, [params.logId, token])
+  }, [params.logId, logId2, token])
 
   const addNewComment = (newComment) => {
     setComments([...comments, newComment])

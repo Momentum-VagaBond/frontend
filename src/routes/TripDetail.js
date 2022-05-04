@@ -7,11 +7,12 @@ import Container from '@mui/material/Container';
 import { TripDetailCard } from "../components/TripDetailCard";
 
 
-const TripDetail = ({token, pk }) => {
+const TripDetail = ({token, pk, tripId }) => {
 
   const [trip, setTrip] = useState(null)
+  const [tripLocation, setTripLocation] = useState("")
   const [logs, setLogs] = useState([])
-  const [logPk, setLogPk] = useState([])
+  const [tripPk, setTripPk] = useState([])
   // const [selectedId, setSelectedId] = useState(null)
   // const [acceptedResponse, setAcceptedResponse] = useState(null)
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
@@ -28,7 +29,9 @@ const TripDetail = ({token, pk }) => {
       .then((res) => {
         setTrip(res.data)
         setLogs(res.data.trip_logs)
-        setLogPk(res.data.pk)
+        setTripPk(res.data.pk)
+        setTripLocation(res.data.location)
+        // setTripId(res.data.pk)
         console.log("logpk", res.data.trip_logs.pk)
         // setAcceptedResponse(res.data.accepted_response)
         console.log("trip detail request fired")
@@ -53,7 +56,7 @@ const TripDetail = ({token, pk }) => {
           flexDirection: 'column',
           alignItems: 'center',
         }}
-    >This is the Trip Detail page. 
+    >This is the Trip Detail page for trip #{tripPk} to {tripLocation}. 
 
     </Box>
 

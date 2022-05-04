@@ -13,12 +13,12 @@ import MapboxGeocoder from "mapbox-gl"
 // in a .env file
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
-const MapBox = () => {
+const MapBox = ({latitude, longitude}) => {
   // const [lng, setLng] = useState(-79.919376);
   // const [lat, setLat] = useState(436.112514,);
   const mapContainer = useRef()
-  const lng= -115.172157
-  const lat= 36.112514
+  const lng= longitude
+  const lat= latitude
 
   
 
@@ -35,9 +35,14 @@ const MapBox = () => {
       center: [lng, lat],
       zoom: 12,
       marker: false
-      
-
+        
     })
+    const marker = new mapboxgl.Marker({
+      color: '#708090'
+    }).setLngLat([lng, lat])
+      // .setPopup(newPopup)
+      .addTo(map)
+  
   //   import mapboxgl, {Marker} from "mapbox-gl"
   //   const marker = new mapboxgl.Marker() // initialize a new marker
   // .setLngLat([-122.25948, 37.87221]) // Marker [lng, lat] coordinates
@@ -60,7 +65,7 @@ const MapBox = () => {
     return () => map.remove()
   }, [lng, lat])
 
-  return <div ref={mapContainer} style={{ width: "100%", height: "100vh" }} />
+  return <div ref={mapContainer} style={{ width: "25vh", height: "20vh" }} />
 }
 // import * as React from 'react';
 // import Map from 'react-map-gl';
