@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import { TripDetailCard } from "../components/TripDetailCard";
 
 
-const TripDetail = ({token, tripId }) => {
+const TripDetail = ({token, pk, tripId }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
@@ -62,6 +62,7 @@ const TripDetail = ({token, tripId }) => {
 
     {logs.map((log) =>
     <TripDetailCard
+    key={pk}
     sx={{
       marginTop: 8,
       paddingLeft: 4,
