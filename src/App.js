@@ -18,7 +18,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Theme } from './assets/Theme'
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
-import CurrentTrip from './routes/CurrentTrip';
+
+
 
 const App = () => {
   
@@ -118,14 +119,18 @@ const isLoggedIn = username && token
           element={<LogCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
         {/* <Route path="/upload" element={<ImageUploadForm token={token} />} /> */}
-        <Route
+        {/* <Route
           path="/tripdetailcard"
           element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
-        />
-        {/* <Route
-          path="/trips/current/user/"
-          element={<CurrentTrip setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
         /> */}
+        <Route
+          path="/trips/current/user/"
+          element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
+        />
+        <Route
+          path="/trip/future/user/"
+          element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
+        />
 
         </Routes>
       </Router>
