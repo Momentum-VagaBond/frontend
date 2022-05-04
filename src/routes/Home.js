@@ -55,10 +55,10 @@ export default function Home ({username, loggedUserPk, token, map, getTripId}) {
         setCurrentTripTraveler(response.data[0])
         setTripId(response.data[0].pk)
         console.log(response.data[0].username)
-        console.log(response.data[0].pk)
+        console.log("current trip:" + response.data[0].pk)
 
     })
-  }, [token, setCurrentTripTraveler, tripId])
+  }, [token, setCurrentTripTraveler, setTripId])
 
 
   
@@ -94,7 +94,7 @@ return (
     />
     // </Grid>
     )}
-
+{tripId}
      {/* {userTripNumber === 0 && (
     <h1>No trips yet! Ready to start one?</h1>
   */}
