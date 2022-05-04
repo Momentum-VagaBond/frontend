@@ -4,7 +4,9 @@ import { Navigate, Link as RouterLink} from 'react-router-dom'
 import axios from 'axios';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { TextField, Alert, Container, Typography, Box, Grid, Link, CssBaseline, Button, Avatar } from '@mui/material';import { ImageUploadForm } from '../components/ImageUploadForm';
-;
+import { ThemeProvider } from 'styled-components';
+import { Theme } from '../Theme';
+
 
 export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
     const [username, setUsername] = useState("");
@@ -50,6 +52,7 @@ export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) =>
 
 
   return (
+  <ThemeProvider theme={Theme}>
   <div className="Register">
     <Container component="main" sx={{ mt: 4 }} maxWidth="xs">
       {error && <Alert severity="error">{error}. <strong>Please Try Again.</strong></Alert>}
@@ -157,5 +160,6 @@ export const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) =>
         </Box>
       </Container>
     </div>
+    </ThemeProvider>
   );
 }

@@ -6,7 +6,8 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { styled } from '@mui/material/styles';
 import MapBox from '../components/MapBox';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { Theme } from '../Theme';
+import { TextareaAutosize } from '@mui/material';
 
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
@@ -89,8 +90,8 @@ export default function NewLog({token, loggedUserPk, tripId}) {
             }, [])
 
         }
-      }, [latitude, longitude])
-  
+    }, [latitude, longitude])
+
 
 
     const handleSubmit = (e) => {
@@ -143,8 +144,8 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     }
 
     return (
+    <ThemeProvider theme={Theme}>
     <div className="loginDiv">
-        <ThemeProvider theme={theme}>
             <Grid container component="main">
         <CssBaseline />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -161,7 +162,14 @@ export default function NewLog({token, loggedUserPk, tripId}) {
             <strong>Create a Log</strong>
         </Typography>
  
-    <Box sx={{mt: 2, border: 1, borderStyle:"dashed", borderColor: "gray"}}> 
+    <Box
+    sx={{
+        mt: 2,
+        border: 1,
+        borderStyle:"dashed",
+        borderColor: "gray"
+        }}
+        > 
     <Stack direction="row" alignItems="center" >
     <IconButton onClick={getLocation}>
         <AddLocationAltTwoToneIcon />
@@ -235,7 +243,9 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         variant="contained"
         sx={{
             mt: 3,
-            mb: 2
+            mb: 2,
+            backgroundColor: '#fe8a39',
+            borderRadius: 5,
         }}
         >
     Submit Log
@@ -245,7 +255,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     </Box>
     </Grid>
     </Grid>
-    </ThemeProvider>
     </div>
+    </ThemeProvider>
     );
 }

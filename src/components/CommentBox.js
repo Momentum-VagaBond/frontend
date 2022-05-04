@@ -60,7 +60,9 @@ export default function CommentBox({ token, logId, setNewComment }) {
     return (
       <>
       <Container>
-        <Box component='form' noValidate onSubmit={handleComment}
+        <Box
+        component='form'
+        noValidate onSubmit={handleComment}
         sx={{ 
           mt: 2,
           position: 'relative',
@@ -79,6 +81,7 @@ export default function CommentBox({ token, logId, setNewComment }) {
           />  
           <Button type="submit"
             variant="contained"
+            color='secondary'
             sx={{
               mt: 3,
               mb: 2,

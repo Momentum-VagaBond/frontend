@@ -5,7 +5,7 @@ import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CardActionArea, CardMedia } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import image from './CapitolReflection.jpg'
+
 
 
 
@@ -150,13 +150,14 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
             sx={{
               mt: 3,
               mb: 2,
+              backgroundColor: '#424b54',
             }}
             >
           Sign In
         </Button>
         <Grid container>
               <Grid item xs >
-              <Link component={RouterLink} to="/register" variant="body2">
+              <Link component={RouterLink} to="/register" variant="body2" color="primary">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

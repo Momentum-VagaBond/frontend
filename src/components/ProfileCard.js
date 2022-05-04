@@ -9,11 +9,11 @@ export const ProfileCard = ({username, id, avatar, bio, firstName, lastName, tri
 return(
 <Container>
 <Box sx={{
-    marginTop: 5,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent:'center',
+    // marginTop: 5,
+    // display: 'flex',
+    // flexDirection: 'column',
+    // alignItems: 'center',
+    // justifyContent:'center',
     }}
 >
     <Card>

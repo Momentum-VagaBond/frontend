@@ -9,33 +9,34 @@ import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
 import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 import { Link } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { Theme } from '../Theme';
 
 
-export default function Navbar() {
+export default function NavBar() {
+  const [value, setValue] = React.useState('recents');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
-    <Box
+    <ThemeProvider theme={Theme}>
+    <BottomNavigation 
+    color='secondary'
     sx={{
-      width: '100%',
+      width: 'auto',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'baseline',
       marginBottom: 0,
-    }}
-    >
-      {/* <CssBaseline /> */}
-      <Paper
-        elevation={3}
-        sx={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: '#fe8a39',
-        }}
-        >
-
-        <BottomNavigation>
+      position: 'fixed',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: '#e76f51',
+     }} 
+     value={value} onChange={handleChange}>
           <MenuItem>
             <Link to="/newtrip">
               <FlightTwoToneIcon fontSize='inherit' />
@@ -63,10 +64,8 @@ export default function Navbar() {
                    AllTrips
                  </Link>
                </MenuItem>
-
-        </BottomNavigation>
-      </Paper>
-    </Box>
+    </BottomNavigation>
+    </ThemeProvider>
   );
 }
 

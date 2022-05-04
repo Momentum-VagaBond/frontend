@@ -11,14 +11,9 @@ import { Icon } from "@mui/material";
 // import { borderRadius, spacing } from '@mui/system';
 import { grey } from '@mui/material/colors';
 import CommentBox from './CommentBox';
+// import { Theme } from '../Theme';
 
 
-// const faces = [
-//   "http://i.pravatar.cc/300?img=6",
-//   "http://i.pravatar.cc/300?img=7",
-//   "http://i.pravatar.cc/300?img=8",
-//   "http://i.pravatar.cc/300?img=9"
-// ];
 
 const LogCard = ({detail_text,location, comments}) => (
   <Container className='bodyContainer'

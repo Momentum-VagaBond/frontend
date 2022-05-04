@@ -62,37 +62,37 @@ return (
 <Box
 sx={{
   backgroundColor:'#e9ecef',
-  marginBottom: 8,
+  marginBottom: 4,
 }}
 >
-<Container component="main" maxWidth="l"
+<Container component="main" maxWidth="l" 
   sx={{
-    paddingTop: 10,
+    paddingTop: 0,
   }}
 >
 
 <Card className='ProfileCard'
     sx={{
-        borderRadius: 10,
-        transition: '0.3s',
-        boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
-        width: '90%',
-        height: '90%',
-        maxHeight: 125,
-        position: 'relative',
-        maxWidth: 600,
-        marginLeft: 2,
-        marginRight: 1,
-        marginTop: 0,
-        overflow: 'visible',
-        background: '#ffffff',
-        display: 'flex',
-        // flexDirection: 'column',
-        alignItems: 'center',
-        padding: 0,
-        paddingTop: 10,
-        paddingBottom: 10,
-        // boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
+        // borderRadius: 0,
+        // // transition: '0.3s',
+        // // boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
+        // width: '105%',
+        // height: '50%',
+        // maxHeight: 125,
+        // position: 'static',
+        // maxWidth: 600,
+        // marginLeft: 0,
+        // marginRight: 0,
+        // marginTop: 0,
+        // // overflow: 'visible',
+        // background: '#ffffff',
+        // display: 'flex',
+        // // flexDirection: 'column',
+        // alignItems: 'center',
+        // padding: 0,
+        // paddingTop: 0,
+        // paddingBottom: 10,
+        // // boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
     }}
     >
 
@@ -100,22 +100,22 @@ sx={{
         className='ProfileCardMedia'
         // component='img'
         //need to connect log photopk here in the image field//
-        sx={{
-            flexShrink: 0,
-            position: 'static',
-            width: '30%',
-            maxwidth: 200,
-            paddingTop: 3,
-            paddingBottom: 3,
-            paddingLeft: 3,
-            transform: "translateX(-10%)",
-            // boxShadow: '7px 4px 30px 2px rgba(252, 56, 56, 0.2)',
-            borderRadius: 10, // 16px
-            backgroundSize: 'constrain',
-            backgroundImage: '#fe8a39',
-            backgroundColor: '#fe8a39',
-            overflow: 'initial',
-        }}
+        // sx={{
+        //     flexShrink: 0,
+        //     position: 'static',
+        //     width: '30%',
+        //     maxwidth: 200,
+        //     paddingTop: 3,
+        //     paddingBottom: 3,
+        //     paddingLeft: 3,
+        //     transform: "translateX(-10%)",
+        //     // boxShadow: '7px 4px 30px 2px rgba(252, 56, 56, 0.2)',
+        //     borderRadius: 10, // 16px
+        //     backgroundSize: 'constrain',
+        //     backgroundImage: '#fe8a39',
+        //     backgroundColor: '#fe8a39',
+        //     overflow: 'initial',
+        // }}
     >
       {VBLogo}
       </CardMedia>
@@ -125,14 +125,13 @@ sx={{
     >
     <CardContent className='MuiCardContent-root'
     sx={{
-        textAlign: 'left',
-        padding: 1,
-        position: 'relative',
+        // textAlign: 'left',
+        // padding: 1,
+        // position: 'relative',
     }}
     >
         <Typography className='MuiTypography--date' variant='overline'>
-      <h2>This is {username}'s Profile</h2>
-      <h3>{bio}</h3>
+
         </Typography>
 
     </CardContent>
@@ -140,6 +139,8 @@ sx={{
     </Card>
 
     <Box>
+    <h2>This is {username}'s Profile</h2>
+      <h3>{bio}</h3>
     <h1>
       {username}'s Trips!
     </h1>

@@ -6,6 +6,7 @@ import { Logout } from './routes/Logout';
 import NewTrip from './routes/NewTrip';
 import NewLog from './routes/NewLog';
 import Navbar from './components/Navbar';
+import Header from './assets/Header';
 import Profile from './routes/Profile';
 import AllTrips from './routes/AllTrips';
 import TripDetail from './routes/TripDetail';
@@ -15,7 +16,7 @@ import MyTrips from './routes/MyTrips';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { ThemeProvider } from '@mui/material/styles';
-import { Theme } from './assets/Theme'
+import { Theme } from './Theme'
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
 
@@ -52,6 +53,8 @@ const isLoggedIn = username && token
   return (
     <ThemeProvider theme={Theme}>
     <div className="App">
+
+      <Header />
 
       <Router>
 
