@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
-import { Card, Stack, IconButton, Button, FormGroup, Box, TextField, Container } from '@mui/material';
+import { Card, Grid, CssBaseline, FormControlLabel, Paper, Stack, IconButton, Button, FormGroup, Box, TextField, Container, Typography,  } from '@mui/material';
 import {Geolocate} from "../components/Geolocate";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { styled } from '@mui/material/styles';
+import MapBox from '../components/MapBox';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
@@ -24,6 +26,8 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     const Input = styled('input')({
         display: 'none',
       });
+    
+      const theme = createTheme();
 
     //post request 
 //get back location
@@ -139,65 +143,79 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     }
 
     return (
-        <Container
-        sx={{
-            marginTop: 0,
-        }}
-        >
-        <Box
-        sx={{
-            marginTop: 0,
-            '& .MuiTextField-root': { m: 1, width: '25ch' },
-            backgroundColor:'#e9ecef',
-        }}
-        noValidate
-        autoComplete="on"
-        >
-        {/* <Geolocate
+    <div className="loginDiv">
+        <ThemeProvider theme={theme}>
+            <Grid container component="main">
+        <CssBaseline />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+            <Box
+                sx={{
+                my: 4,
+                mx: 4,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                }}
+            >
+        <Typography component="h1" variant="h5" >
+            <strong>Create a Log</strong>
+        </Typography>
+ 
+    <Box sx={{mt: 2, border: 1, borderStyle:"dashed", borderColor: "gray"}}> 
+    <Stack direction="row" alignItems="center" >
+    <IconButton onClick={getLocation}>
+        <AddLocationAltTwoToneIcon />
+    </IconButton>
+        Find your location!
+    <MapBox 
         latitude={latitude}
         longitude={longitude}
-        /> */}
+    />
+    </Stack>
+    </Box> 
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1}}>
+    <FormGroup>
+        <label htmlFor="reg-location">
+            {/* <Typography variant="body2">Location: </Typography> */}
+            </label>
+        <TextField id="filled-basic"
+            variant="filled"
+            placeholder= {status} 
+            multiline
+            className='tripLocation'
+            value={location}
+            sx={{mb: 2, mt: 2}}
+            onChange={(e) => setLocation(e.target.value)}
+        />
+  
+        <label htmlFor="reg-title"><Typography variant="body2">Log Title: (Keep it short & simple!)</Typography></label>
+        <TextField id="filled-basic"
+            // label="Give your post a shortly and simple title"
+            variant="filled"
+            placeholder="Dinner Downtown!"
+            multiline
+            className='tripDetails'
+            sx={{mb: 2}}
+            // value={details}
+            // onChange={(e) => setDetails(e.target.value)}
+        />
+   
+
+    
+        <label htmlFor='reg-details'><Typography variant="body2">Details: (Tell us more!)</Typography>  </label>
+        <TextField id="filled-basic"
+            placeholder="We were so hungry and found this great local BBQ spot..."
+            variant="filled"
+            className='tripDetails'
+            multiline
+            rows={4}
+            value={details}
+            onChange={(e) => setDetails(e.target.value)}
+        />
+    </FormGroup>
     {error && <div className="error">{error}</div>}
-    <h1>New Trip Log! </h1>
-    <form onSubmit={handleSubmit}>
 
-    <div>
-
-    <Card
-        variant="outlined"
-        sx={{ 
-            my: 5,
-            mx: 3,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            maxWidth: 345 }}
-    >
-{/* <div className="file is-normal has-name container m-5">
-        <label className="file-label">
-          <input
-            className="file-input"
-            type="file"
-            name="resume"
-            ref={imageFileInput}
-            onChange={handleFileName}
-          />
-        </label>
-</div> */}
-        <Stack direction="row" alignItems="center" spacing={2}>
-      {/* <label htmlFor="contained-button-file">
-        <Input 
-            accept="image/*" 
-            id="contained-button-file" 
-            multiple type="file" 
-            ref={imageFileInput}
-            onChange={handleFileName}
-            />
-        <Button variant="contained" component="span">
-          Upload
-        </Button>
-      </label> */}
-      <label htmlFor="icon-button-file">
+    <label htmlFor="icon-button-file">
         <Input 
         accept="image/*" 
         id="icon-button-file" 
@@ -210,88 +228,24 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         </IconButton>
       </label>
       {fileName}
-    </Stack>
-
-<IconButton onClick={getLocation}>
-        <AddLocationAltTwoToneIcon />
-    </IconButton>
-        Find your location!
-        <p>{status}</p>
-    <FormGroup>
-        <label htmlFor='reg-location'>Location: (Ideally they use the 'find me' feature, but can also accept text entry) </label>
-        <TextField id="filled-basic"
-            // label="Location"
-            variant="filled"
-            placeholder="Durham, NC"
-            multiline
-            className='tripLocation'
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-        />
-    </FormGroup>
-
-    <FormGroup>
-        <label htmlFor='reg-title'>Log Title: (Keep it short & simple!)</label>
-        <TextField id="filled-basic"
-            // label="Give your post a shortly and simple title"
-            variant="filled"
-            placeholder="Dinner Downtown!"
-            multiline
-            className='tripDetails'
-            // value={details}
-            // onChange={(e) => setDetails(e.target.value)}
-        />
-    </FormGroup>
-
-    <FormGroup>
-        <label htmlFor='reg-details'>Details: (Tell us more!) </label>
-        <TextField id="filled-basic"
-            placeholder="We were so hungry and found this great local BBQ spot..."
-            variant="filled"
-            className='tripDetails'
-            multiline
-            rows={4}
-            value={details}
-            onChange={(e) => setDetails(e.target.value)}
-        />
-    </FormGroup>
-
-    {/* <FormGroup>
-        <label htmlFor='reg-latitude'>Latitude: </label>
-        <TextField id="filled-basic"
-            label={latitude}
-            variant="filled"
-            className='tripLet'
-            autoComplete='on'
-            value={latitude}
-            onChange={(e) => setLatitude(e.target.value)}
-        />
-    </FormGroup>
-
-    <FormGroup>
-        <label htmlFor='reg-long'>Longitude: </label>
-        <TextField id="filled-basic"
-            label="Lat"
-            variant="filled"
-            className='tripLet'
-            autoComplete='on'
-            value={longitude}
-            onChange={(e) => setLongitude(e.target.value)}
-        />
-    </FormGroup> */}
-
-
-    
-    <Button type='submit'>
-    Create Log!
+    {/* </Stack> */}
+    <Button 
+        type='submit'
+        fullWidth
+        variant="contained"
+        sx={{
+            mt: 3,
+            mb: 2
+        }}
+        >
+    Submit Log
     </Button>
-       
-
-    </Card>
-    </div>
-    </form>
-
+    {/* </Card> */}
     </Box>
-    </Container>
+    </Box>
+    </Grid>
+    </Grid>
+    </ThemeProvider>
+    </div>
     );
 }
