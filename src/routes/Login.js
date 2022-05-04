@@ -23,7 +23,7 @@ function Copyright(props) {
 }
 
 
-export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserPk, setRegisterSuccess, setLoggedUserPk, getLoggedUserPk, VagaBondLogo }) => {
+export const Login = ({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess, setLoggedUserPk, getLoggedUserPk, VagaBondLogo }) => {
     const loginURL = "https://momentum-vagabond.herokuapp.com/api-token-auth/";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -62,7 +62,7 @@ export const Login = ({ setAuth, isLoggedIn, token, registerSuccess, loggedUserP
           }
 
         if (isLoggedIn) {
-            return <Navigate to="/trips" />
+            return <Navigate to="/home" />
         }      
 
   return (

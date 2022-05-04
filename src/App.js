@@ -8,7 +8,7 @@ import NewLog from './routes/NewLog';
 import Navbar from './components/Navbar';
 import Header from './assets/Header';
 import Profile from './routes/Profile';
-import AllTrips from './routes/AllTrips';
+import Home from './routes/Home';
 import TripDetail from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
 import { TripDetailCard } from './components/TripDetailCard';
@@ -91,8 +91,8 @@ const isLoggedIn = username && token
           element={<Profile setAuth={setAuth} token={token} username={username} />}
         />
         <Route
-          path="/trips"
-          element={<AllTrips token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          path="/home"
+          element={<Home token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
       <Route
           path="/trips/:tripId"
