@@ -90,10 +90,10 @@ const isLoggedIn = username && token
           path="/profile"
           element={<Profile setAuth={setAuth} token={token} username={username} />}
         />
-        {/* <Route
+        <Route
           path="/home"
           element={<Home token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
-        /> */}
+        />
       <Route
           path="/trips/:tripId"
           element={<TripDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}

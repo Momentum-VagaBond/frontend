@@ -34,17 +34,17 @@ const Profile = ({username, token, loggedUserPk, id, bio }) => {
     }, [token, loggedUserPk, setTrips])
 
 
-    // useEffect(() => {
-    //   axios
-    //   .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
-    //       {headers: {Authorization: `Token ${token}`}
-    //   })
-    //   .then((response) => {
-    //       console.log(response.data)
-    //       setTrip(response.data)
-    //       setBegin(response.data.begin)
-    //   })
-    // }, [token, loggedUserPk, setTrip, setBegin])
+    useEffect(() => {
+      axios
+      .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
+          {headers: {Authorization: `Token ${token}`}
+      })
+      .then((response) => {
+          console.log(response.data)
+          setTrip(response.data)
+          setBegin(response.data.begin)
+      })
+    }, [token, loggedUserPk, setTrip, setBegin])
 
 
     useEffect(() => {
