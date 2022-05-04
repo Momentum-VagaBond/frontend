@@ -16,7 +16,7 @@ import { Luggage, Visibility} from "@mui/icons-material";
 export default function Home ({username, loggedUserPk, token, map, getTripId}) {
   const [trips, setTrips] = useState([]);
   const [usernamePk, setUsernamePk] = useState([]);
-  const [tripId, setTripId] = useState("")
+  const [tripId, setTripId] = useState([])
   const [tripUsername, setTripUsername] = useState([])
   const [currentTripTraveler, setCurrentTripTraveler] = useState([])
   const [showMyTrips, setShowMyTrips] = useState(false)
@@ -27,101 +27,49 @@ export default function Home ({username, loggedUserPk, token, map, getTripId}) {
   const [alignment, setAlignment] = React.useState('left');
 
 
-  useEffect(() => {
-    axios
-      .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
-      {headers: {Authorization: `Token ${token}`}
-      })
-
-      .then((response) => {
-        console.log(response.data)
-        setCurrentTripTraveler(response.data[0])
-        setUsernamePk(response.data.pk)
-        getTripId(response.data[0].pk)
-        setTripUsername(response.data.username)
-        console.log("loggedUserPk: " + loggedUserPk)
-        console.log(response.data[0].pk)
-        // console.log("tripId" + setTripId)
-      })
-  }, [loggedUserPk, tripId, token, getTripId])
-
-  //All TRIPS- leaving in until we get the other new endpoints here
   // useEffect(() => {
   //   axios
-  //     .get("https://momentum-vagabond.herokuapp.com/api/trips",
+  //     .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
   //     {headers: {Authorization: `Token ${token}`}
   //     })
 
   //     .then((response) => {
   //       console.log(response.data)
-  //       setTrips(response.data)
-  //       setUsernamePk(response.data.pk)
-  //       setTripId(response.data.pk)
+  //       // setCurrentTripTraveler(response.data)
+  //       // setUsernamePk(response.data.pk)
+  //       getTripId(response.data.pk)
   //       setTripUsername(response.data.username)
   //       console.log("loggedUserPk: " + loggedUserPk)
-  //       console.log(response.data.username)
+  //       console.log(response.data.pk)
   //       // console.log("tripId" + setTripId)
   //     })
-  // }, [loggedUserPk, tripId, token, tripUsername])
+  // }, [loggedUserPk, tripId, token, getTripId])
 
-  // useEffect(() => {
-  //   const resultsFromSearch = trip.filter((trip: any) =>
-  //         trip.title.toLowerCase().includes(username)
-  //       );
-  //   setSearchResults(resultsFromSearch);
-  //   }, [items])
+  useEffect(() => {
+    axios
+    .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
+        {headers: {Authorization: `Token ${token}`}
+    })
+    .then((response) => {
+        console.log(response.data)
+        setCurrentTripTraveler(response.data[0])
+        setTripId(response.data[0].pk)
+        console.log(response.data[0].username)
+        console.log(response.data[0].pk)
 
-  const handleAlignment = (event, newAlignment, setShowFollowing, showFollowing, showMyTrips) => {
-    if (newAlignment !== null) {
-      setAlignment(newAlignment);
-    }
-    // if (showMyTrips === false) {
-    //   setShowMyTrips(true);
-    // }
-    // if (showMyTrips !== false) {
-    //   setShowMyTrips(false);
-    // }
-    // if (showFollowing === false) {
-    //   setShowFollowing(true);
-    // }
-    // if (showFollowing !== false) {
-    //   setShowFollowing(false);
-    // }
-  };
+    })
+  }, [token, setCurrentTripTraveler, tripId])
+
+
+  
 
 return (
   <>
 <Container >
   <h1>Welcome, {username}</h1>
-  {/* <h2>This is a test list of ALL trips</h2> */}
-  {/* {loggedUserPk}  */}
-
-<Stack direction="row" spacing={4}>
-      <ToggleButtonGroup
-        value={alignment}
-        exclusive
-        onChange={handleAlignment}
-        aria-label="text alignment"
-      >
-        <ToggleButton value="left" aria-label="left aligned">
-          <Luggage /> 
-        </ToggleButton>
-        
-        <ToggleButton value="right" aria-label="right aligned">
-          <Visibility /> 
-        </ToggleButton>
-      </ToggleButtonGroup>
-  </Stack>
+  
   </Container>
-{/* <Container component="main" maxWidth="xs">
-  <Button variant="outlined" startIcon={<DeleteIcon />}>
-  My Trips
-</Button>
-  <Button variant="contained" endIcon={<SendIcon />}>
-  Trips I'm Following
-</Button>
-</Container> */}
-{/* {showMyTrips && */}
+
 
 <Container component="main" maxWidth="sm">
 
@@ -146,19 +94,20 @@ return (
     />
     // </Grid>
     )}
-{tripId}
+
      {/* {userTripNumber === 0 && (
     <h1>No trips yet! Ready to start one?</h1>
   */}
   </Container>
 {/* } */}
 {/* {showFollowing && */}
-  <Container component="main" maxWidth="sm">
+  {/* <Container component="main" maxWidth="sm">
     <h2>Trips I'm Following</h2>
-  </Container>
+  </Container> */}
 
   </>
   )
 }
+
 
 // export default AllTrips;
