@@ -15,6 +15,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
     const [latitude, setLatitude] = useState("");
+    const [title, setTitle] = useState("");
     const [longitude, setLongitude] = useState("");
     const [error, setError] = useState("");
     const [status, setStatus] = useState("")
@@ -97,15 +98,16 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     console.log(imageFile)
     e.preventDefault();
     setError("");
-        console.log(location, details, latitude, longitude, imageFile);
+        console.log(location, details, title, latitude, longitude, imageFile);
 
     axios
     // .post("https://momentum-vagabond.herokuapp.com/api/users/1/7/log/",
-    .post(`https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/3/log/`,
+    .post(`https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/${tripId}/log/`,
     {
         "user_id": `${loggedUserPk}`,
-        "trip": 3,
+        "trip": {tripId},
         "location": location,
+        "title": title,
         "details": details,
         "latitude": latitude,
         "longitude": longitude,
@@ -194,10 +196,10 @@ export default function NewLog({token, loggedUserPk, tripId}) {
             variant="filled"
             placeholder="Dinner Downtown!"
             multiline
-            className='tripDetails'
+            className='tripTitle'
             sx={{mb: 2}}
-            // value={details}
-            // onChange={(e) => setDetails(e.target.value)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
         />
    
 
