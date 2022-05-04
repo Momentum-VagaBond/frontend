@@ -2,11 +2,9 @@ import * as React from 'react';
 import axios from "axios";
 import { useState } from "react";
 import { Link as RouterLink, useNavigate, Navigate } from 'react-router-dom'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar, CardActionArea, CardMedia } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-
+import { AlertTitle, TextField, Alert, Paper, Typography, Box, Grid, Link, Checkbox, FormControlLabel, CssBaseline, Button, Avatar } from '@mui/material';
+import { Theme } from '../Theme';
+import { ThemeProvider } from 'styled-components';
 
 
 function Copyright(props) {
@@ -30,7 +28,7 @@ export const Login = ({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
-    const theme = createTheme();
+
 
     // const LoginImage = (
     //   <img src={image} alt='LoginImage' height='100' />
@@ -66,8 +64,8 @@ export const Login = ({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess
         }      
 
   return (
+  <ThemeProvider theme={Theme}>
     <div className="loginDiv">
-      <ThemeProvider theme={theme}>
       <Grid container component="main" 
       // sx={{ width: '300' }}
       >
@@ -92,8 +90,6 @@ export const Login = ({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess
             backgroundPosition: 'center',
           }}
         >
-          {/* {LoginImage} */}
-          {/* <Image url= 'https://source.unsplash.com/random'/> */}
         </Grid>
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
@@ -170,7 +166,7 @@ export const Login = ({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess
       </Box>
     </Grid>
     </Grid>
-    </ThemeProvider>
     </div>
+    </ThemeProvider>
     )
 }

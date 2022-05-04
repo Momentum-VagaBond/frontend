@@ -7,6 +7,8 @@ import { Container,Grid, Stack, Box, Button, Typography } from "@mui/material";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Luggage, Visibility} from "@mui/icons-material";
+import { Theme } from '../Theme';
+import { ThemeProvider } from 'styled-components';
 // import {CommentBox} from '../components/CommentBox';
 
 // import {TripDetail} from './TripDetail';
@@ -64,6 +66,7 @@ export default function Home ({username, loggedUserPk, token, map, getTripId}) {
   
 
 return (
+  <ThemeProvider theme={Theme}>
   <>
 <Container >
   <h1>Welcome, {username}</h1>
@@ -106,6 +109,7 @@ return (
   </Container> */}
 
   </>
+  </ThemeProvider>
   )
 }
 

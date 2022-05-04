@@ -10,7 +10,8 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Theme } from '../Theme';
+import { ThemeProvider } from 'styled-components';
 
 
 function Copyright(props) {
@@ -27,7 +28,6 @@ function Copyright(props) {
   }
 
 export const Logout = ({token, setAuth, isLoggedIn}) => {
-    const theme = createTheme();
 
     const handleLogOut = () => {
     const options = {
@@ -63,7 +63,7 @@ export const Logout = ({token, setAuth, isLoggedIn}) => {
 
     return (
 
-<ThemeProvider theme={theme}>
+<ThemeProvider theme={Theme}>
     <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
