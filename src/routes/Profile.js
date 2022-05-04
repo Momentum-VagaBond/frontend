@@ -8,6 +8,9 @@ import { TripCard } from '../components/TripCard';
 import logo from './VBLogo.png';
 import { CurrentTripCard } from '../components/CurrentTripCard';
 import { FutureTripCard } from '../components/FutureTripCard';
+import { PastTripCard } from '../components/PastTripCard';
+import { Theme } from '../Theme';
+import { ThemeProvider } from 'styled-components';
 
 
 const Profile = ({username, token, loggedUserPk, id, bio }) => {
@@ -40,7 +43,6 @@ const Profile = ({username, token, loggedUserPk, id, bio }) => {
           console.log(response.data)
           setTrip(response.data)
           setBegin(response.data.begin)
-  
       })
     }, [token, loggedUserPk, setTrip, setBegin])
 
@@ -58,20 +60,35 @@ const Profile = ({username, token, loggedUserPk, id, bio }) => {
     }, [token, loggedUserPk, setTrip, setBegin])
 
 
-return (
-<Box
-sx={{
-  backgroundColor:'#e9ecef',
-  marginBottom: 4,
-}}
->
-<Container component="main" maxWidth="l" 
-  sx={{
-    paddingTop: 0,
-  }}
->
+    useEffect(() => {
+      axios
+      .get("https://momentum-vagabond.herokuapp.com/api/trip/past/user/",
+          {headers: {Authorization: `Token ${token}`}
+        })
+      .then((response) => {
+        console.log(response.data)
+        setTrip(response.data)
+        setBegin(response.data.begin)
+      })
+    }, [token, loggedUserPk, setTrip, setBegin])
 
-<Card className='ProfileCard'
+
+return (
+  <ThemeProvider theme={Theme}>
+  <Box
+  sx={{
+    backgroundColor:'#e9ecef',
+    marginBottom: 6,
+    paddingBottom: 2,
+  }}
+  >
+  <Container component="main" maxWidth="l" 
+    sx={{
+      paddingTop: 0,
+    }}
+  >
+
+  <Card className='ProfileCard'
     sx={{
         // borderRadius: 0,
         // // transition: '0.3s',
@@ -198,8 +215,30 @@ sx={{
         )}
       )}
     </Box>
+
+    <Box>
+    <h3>PastTripCard</h3>
+      {trips.map((trip, pk) => {
+        return (
+          <PastTripCard
+            key={pk}
+            tripId={trip.pk}
+            title={trip.title}
+            location={trip.location}
+            firstName={trip.user_first_name}
+            lastName={trip.user_last_name}
+            trip_username={trip.username}
+            begin={trip.begin}
+            end={trip.end}
+            username={username}
+            />
+        )}
+      )}
+    </Box>
+
         </Container>
         </Box>
+</ThemeProvider>
   )
 };
 

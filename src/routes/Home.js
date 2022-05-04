@@ -7,6 +7,8 @@ import { Container,Grid, Stack, Box, Button, Typography } from "@mui/material";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Luggage, Visibility} from "@mui/icons-material";
+import { Theme } from '../Theme';
+import { ThemeProvider } from 'styled-components';
 // import {CommentBox} from '../components/CommentBox';
 
 // import {TripDetail} from './TripDetail';
@@ -27,42 +29,42 @@ export default function Home ({username, loggedUserPk, token, map, getTripId}) {
   const [alignment, setAlignment] = React.useState('left');
 
 
+//   useEffect(() => {
+//     axios
+//       .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
+//       {headers: {Authorization: `Token ${token}`}
+//       })
+
+//       .then((response) => {
+//         console.log(response.data)
+//         setCurrentTripTraveler(response.data[0])
+//         setUsernamePk(response.data.pk)
+//         getTripId(response.data[0].pk)
+//         setTripUsername(response.data.username)
+//         console.log("loggedUserPk: " + loggedUserPk)
+//         console.log(response.data[0].pk)
+//         // console.log("tripId" + setTripId)
+//       })
+//   }, [loggedUserPk, tripId, token, getTripId])
+
+  //All TRIPS- leaving in until we get the other new endpoints here
   useEffect(() => {
     axios
-      .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
+      .get("https://momentum-vagabond.herokuapp.com/api/trips",
       {headers: {Authorization: `Token ${token}`}
       })
 
       .then((response) => {
         console.log(response.data)
-        setCurrentTripTraveler(response.data[0])
+        setTrips(response.data)
         setUsernamePk(response.data.pk)
-        getTripId(response.data[0].pk)
+        setTripId(response.data.pk)
         setTripUsername(response.data.username)
         console.log("loggedUserPk: " + loggedUserPk)
-        console.log(response.data[0].pk)
+        console.log(response.data.username)
         // console.log("tripId" + setTripId)
       })
-  }, [loggedUserPk, tripId, token, getTripId])
-
-  //All TRIPS- leaving in until we get the other new endpoints here
-  // useEffect(() => {
-  //   axios
-  //     .get("https://momentum-vagabond.herokuapp.com/api/trips",
-  //     {headers: {Authorization: `Token ${token}`}
-  //     })
-
-  //     .then((response) => {
-  //       console.log(response.data)
-  //       setTrips(response.data)
-  //       setUsernamePk(response.data.pk)
-  //       setTripId(response.data.pk)
-  //       setTripUsername(response.data.username)
-  //       console.log("loggedUserPk: " + loggedUserPk)
-  //       console.log(response.data.username)
-  //       // console.log("tripId" + setTripId)
-  //     })
-  // }, [loggedUserPk, tripId, token, tripUsername])
+  }, [loggedUserPk, tripId, token, tripUsername])
 
   // useEffect(() => {
   //   const resultsFromSearch = trip.filter((trip: any) =>
@@ -90,6 +92,7 @@ export default function Home ({username, loggedUserPk, token, map, getTripId}) {
   };
 
 return (
+  <ThemeProvider theme={Theme}>
   <>
 <Container >
   <h1>Welcome, {username}</h1>
@@ -156,8 +159,8 @@ return (
   <Container component="main" maxWidth="sm">
     <h2>Trips I'm Following</h2>
   </Container>
-
   </>
+  </ThemeProvider>
   )
 }
 

@@ -4,6 +4,8 @@ import axios from "axios";
 import { Navigate } from 'react-router-dom';
 import { Container, FormGroup, Button, Box, Card } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import { Theme } from '../Theme';
+import { ThemeProvider } from 'styled-components';
 // import { format } from 'date-fns';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -59,6 +61,7 @@ export default function NewTrip({token, isLoggedIn}) {
     }
 
     return (
+        <ThemeProvider theme={Theme}>
         <Box>
         <Container
         sx={{
@@ -82,8 +85,6 @@ export default function NewTrip({token, isLoggedIn}) {
     <h1>New Trip!</h1>
     <form onSubmit={handleSubmit}>
 
-
-    {/* <NewTripForm /> */}
 
 
     <FormGroup>
@@ -173,10 +174,9 @@ export default function NewTrip({token, isLoggedIn}) {
     type='submit'
     variant="contained"
     sx={{
-        borderRadius: 3,
+        borderRadius: 2,
         mt: 3,
         mb: 2,
-        backgroundColor: '#fe8a39',
     }}
     >
         Submit
@@ -186,5 +186,6 @@ export default function NewTrip({token, isLoggedIn}) {
     </Card>
     </Container>
     </Box>
+    </ThemeProvider>
     );
 }

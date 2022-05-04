@@ -1,11 +1,9 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import Button from "@mui/material/Button";
   
 export default function Header() {
   return (
@@ -21,13 +19,18 @@ export default function Header() {
           >
           </IconButton>
   
-          <Typography variant="h6" 
+          <Typography variant="h6"
+            color="secondary"
             component="div"
             sx={{
                 flexGrow: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent:'center',
             }}
             >
-            VagaBond
+              <Button variant="text"
+              >VagaBond</Button>
           </Typography>
         </Toolbar>
       </AppBar>

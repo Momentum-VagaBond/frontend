@@ -11,6 +11,8 @@ import LogCard from "../components/LogCard";
 import CommentBox from "../components/CommentBox";
 import Moment from 'react-moment'
 import { CardHeader } from "@mui/material";
+import { Theme } from '../Theme';
+import { ThemeProvider } from 'styled-components';
 
 
 const LogDetail = ({token}) => {
@@ -44,11 +46,12 @@ const LogDetail = ({token}) => {
   }
 
   return (
-<Container component="main"
-sx={{
-backgroundColor:'#e9ecef',
-}}
->
+  <ThemeProvider theme={Theme}>
+    <Container component="main"
+      sx={{
+        backgroundColor:'#e9ecef',
+    }}
+    >
   <CssBaseline />
     <Box
       sx={{
@@ -139,6 +142,7 @@ backgroundColor:'#e9ecef',
     </Container>
     </Container>
   </Container>
+  </ThemeProvider>
   )
 }
 
