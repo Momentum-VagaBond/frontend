@@ -26,9 +26,9 @@ const LogDetail = ({token}) => {
   useEffect(() => {
     axios
       .get(`https://momentum-vagabond.herokuapp.com/api/log/${params.logId}/`, {
-        // headers: {
-        //   Authorization: `Token ${token}`,
-        // },
+        headers: {
+          Authorization: `Token ${token}`,
+        },
       })
       .then((res) => {
         setThisLog(res.data)

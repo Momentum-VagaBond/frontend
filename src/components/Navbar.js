@@ -35,8 +35,8 @@ export default function NavBar() {
       left: 0,
       right: 0,
       backgroundColor: '#e76f51',
-     }} 
-     value={value} onChange={handleChange}>
+    }} 
+    value={value} onChange={handleChange}>
           <MenuItem>
             <Link to="/newtrip">
               <FlightTwoToneIcon fontSize='inherit' />
@@ -51,19 +51,19 @@ export default function NavBar() {
             </Link>
           </MenuItem>
 
-               <MenuItem>
-                 <Link to="/logout">
-                 <AddLocationAltTwoToneIcon fontSize='inherit' />
-                   Logout
-                 </Link>
-               </MenuItem>
+          <MenuItem>
+            <Link to="/logout">
+              <AddLocationAltTwoToneIcon fontSize='inherit' />
+                Logout
+            </Link>
+          </MenuItem>
 
-               <MenuItem>
-                 <Link to="/trips">
-                 <AddLocationAltTwoToneIcon fontSize='inherit' />
-                   AllTrips
-                 </Link>
-               </MenuItem>
+          <MenuItem>
+            <Link to="/trips">
+              <AddLocationAltTwoToneIcon fontSize='inherit' />
+                  AllTrips
+            </Link>
+          </MenuItem>
     </BottomNavigation>
     </ThemeProvider>
   );
