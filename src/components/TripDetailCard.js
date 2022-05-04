@@ -19,16 +19,24 @@ import InfoIcon from '@mui/icons-material/Info';
 
 export const TripDetailCard = ({details, pk, date, location, logId}) => {
     const params = useParams()
-    
+
     return (
-<Container>
-<ImageList key={{pk}} cols={2}
-      sx={{ width: 300, height: 350, columnCount: 2, }}>
+      <div>
+        <ImageList key={{pk}} col={2}
+          sx={{
+            width: 300,
+            // height: 350,
+            columnCount: 2,
+            marginBottom: 1,
+            position: 'relative',
+            border: 'dotted',
+            }}
+          >
+            <Container>
         <Card>
-      <ImageListItem key="Subheader" cols={2}>
+      <ImageListItem key="Subheader" col={2}>
         <ListSubheader component="div">{location}</ListSubheader>
       </ImageListItem>
-      {/* {itemData.map((item) => ( */}
         <ImageListItem>
           <img
             src={
@@ -55,9 +63,9 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
           />
         </ImageListItem>
         </Card>
-      {/* ))} */}
+        </Container>
     </ImageList>
-    </Container>
+    </div>
     )};
 
 

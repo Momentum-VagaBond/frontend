@@ -22,7 +22,7 @@ export const TripCard = ({pk, tripId, title, location, username, user, trip_user
 
     <Card sx={{
         marginTop: 8,
-        maxWidth: 345 
+        maxWidth: 300 
     }}
         >
     <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>

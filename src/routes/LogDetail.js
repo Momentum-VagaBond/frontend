@@ -26,9 +26,9 @@ const LogDetail = ({token}) => {
   useEffect(() => {
     axios
       .get(`https://momentum-vagabond.herokuapp.com/api/log/${params.logId}/`, {
-        // headers: {
-        //   Authorization: `Token ${token}`,
-        // },
+        headers: {
+          Authorization: `Token ${token}`,
+        },
       })
       .then((res) => {
         setThisLog(res.data)
@@ -83,7 +83,7 @@ backgroundColor:'#e9ecef',
 {/* Post a comment */}
   <Container
         sx={{
-          marginTop: 35,
+          marginTop: 25,
         }}
   >
   <Box sx={{
@@ -92,6 +92,7 @@ backgroundColor:'#e9ecef',
     padding: 0,
     borderRadius: 5,
     boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
+    backgroundColor: 'white',
   }}
   >
     <CommentBox
@@ -114,6 +115,7 @@ backgroundColor:'#e9ecef',
     sx={{
       borderRadius: 5,
       margin: 2,
+      // backgroundColor: '#424b54',
     }}
     >
     <Box sx={{
@@ -121,6 +123,7 @@ backgroundColor:'#e9ecef',
       border: 1,
       borderRadius: 5,
       paddingLeft: 3,
+      backgroundColor: 'white',
       '&:hover': {
         transform: 'translateY(-3px)',
         boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',

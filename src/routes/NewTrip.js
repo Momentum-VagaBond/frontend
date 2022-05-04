@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
-import { Container, FormGroup, Button, Box } from '@mui/material';
+import { Container, FormGroup, Button, Box, Card } from '@mui/material';
 import TextField from '@mui/material/TextField';
 // import { format } from 'date-fns';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -59,16 +59,20 @@ export default function NewTrip({token, isLoggedIn}) {
     }
 
     return (
+        <Box>
         <Container
         sx={{
-            marginTop: 15,
+            marginTop: 12,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            backgroundColor: '#e9ecef',
         }}>
-        <Box
+        <Card
         // component="form"
         sx={{
+            paddingRight: 2,
+            paddingLeft: 2,
             '& .MuiTextField-root': { m: 1, width: '25ch' },
         }}
         noValidate
@@ -165,10 +169,22 @@ export default function NewTrip({token, isLoggedIn}) {
         />
     </FormGroup> */}
 
-    <Button type='submit'>Submit</Button>
+    <Button
+    type='submit'
+    variant="contained"
+    sx={{
+        borderRadius: 3,
+        mt: 3,
+        mb: 2,
+        backgroundColor: '#fe8a39',
+    }}
+    >
+        Submit
+    </Button>
     </form>
     
-    </Box>
+    </Card>
     </Container>
+    </Box>
     );
 }

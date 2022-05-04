@@ -5,8 +5,9 @@ import {Geolocate} from "../components/Geolocate";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { styled } from '@mui/material/styles';
 import MapBox from '../components/MapBox';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { Theme } from '../Theme';
+import { ThemeProvider } from 'styled-components';
+import { TextareaAutosize } from '@mui/material';
 
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
@@ -26,9 +27,9 @@ export default function NewLog({token, loggedUserPk, tripId}) {
 
     const Input = styled('input')({
         display: 'none',
-      });
+    });
     
-      const theme = createTheme();
+
 
     //post request 
 //get back location
@@ -39,7 +40,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
 // const ImageUploadForm = ({ token }) => {
 //     const imageFileInput = useRef(null)
 //     const [fileName, setFileName] = useState('No file selected')
-  
+
     // const handleClick = () => {
     //   const imageFile = imageFileInput.current.files[0]
     //   console.log(imageFile)
@@ -51,15 +52,15 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     //     },
     //   })
     // }
-  
+
     const handleFileName = (e) => {
         const imageFile = imageFileInput.current.files[0]
         console.log(imageFile)
         setImageFile(imageFileInput.current.files[0])
         console.log(imageFile)
-      setFileName(e.target.files[0].name)
-      console.log(e.target.files[0].name)
-      return ("file name:" + fileName)
+        setFileName(e.target.files[0].name)
+        console.log(e.target.files[0].name)
+        return ("file name:" + fileName)
     }
 
     const getLocation = () => {
@@ -90,8 +91,8 @@ export default function NewLog({token, loggedUserPk, tripId}) {
             }, [])
 
         }
-      }, [latitude, longitude])
-  
+    }, [latitude, longitude])
+
 
 
     const handleSubmit = (e) => {
@@ -145,8 +146,9 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     }
 
     return (
+    <ThemeProvider theme={Theme}>
     <div className="loginDiv">
-        <ThemeProvider theme={theme}>
+    <Container>
             <Grid container component="main">
         <CssBaseline />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -157,13 +159,21 @@ export default function NewLog({token, loggedUserPk, tripId}) {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                // backgroundColor: '#e9ecef',
                 }}
             >
         <Typography component="h1" variant="h5" >
             <strong>Create a Log</strong>
         </Typography>
- 
-    <Box sx={{mt: 2, border: 1, borderStyle:"dashed", borderColor: "gray"}}> 
+
+    <Box
+    sx={{
+        mt: 2,
+        border: 1,
+        borderStyle:"dashed",
+        borderColor: "gray"
+        }}
+        > 
     <Stack direction="row" alignItems="center" >
     <IconButton onClick={getLocation}>
         <AddLocationAltTwoToneIcon />
@@ -189,7 +199,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
             sx={{mb: 2, mt: 2}}
             onChange={(e) => setLocation(e.target.value)}
         />
-  
+
         <label htmlFor="reg-title"><Typography variant="body2">Log Title: (Keep it short & simple!)</Typography></label>
         <TextField id="filled-basic"
             // label="Give your post a shortly and simple title"
@@ -201,9 +211,8 @@ export default function NewLog({token, loggedUserPk, tripId}) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
         />
-   
 
-    
+
         <label htmlFor='reg-details'><Typography variant="body2">Details: (Tell us more!)</Typography>  </label>
         <TextField id="filled-basic"
             placeholder="We were so hungry and found this great local BBQ spot..."
@@ -226,10 +235,10 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         onChange={handleFileName}
         />
         <IconButton color="primary" aria-label="upload picture" component="span">
-          <PhotoCamera />
+            <PhotoCamera />
         </IconButton>
-      </label>
-      {fileName}
+    </label>
+        {fileName}
     {/* </Stack> */}
     <Button 
         type='submit'
@@ -237,7 +246,9 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         variant="contained"
         sx={{
             mt: 3,
-            mb: 2
+            mb: 2,
+            backgroundColor: '#c44536',
+            borderRadius: 5,
         }}
         >
     Submit Log
@@ -247,7 +258,8 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     </Box>
     </Grid>
     </Grid>
-    </ThemeProvider>
+    </Container>
     </div>
+    </ThemeProvider>
     );
 }

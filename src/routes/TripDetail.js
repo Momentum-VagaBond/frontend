@@ -5,6 +5,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { TripDetailCard } from "../components/TripDetailCard";
+import { ThemeProvider } from "styled-components";
+import { Theme } from "../Theme";
+
 
 
 const TripDetail = ({token, pk, tripId }) => {
@@ -43,6 +46,7 @@ const TripDetail = ({token, pk, tripId }) => {
 
 
   return (
+    <ThemeProvider theme={Theme}>
 <Container component="main"
   sx={{
     marginBottom: 10,
@@ -51,7 +55,7 @@ const TripDetail = ({token, pk, tripId }) => {
   <CssBaseline />
     <Box
       sx={{
-          marginTop: 8,
+          marginTop: 5,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -75,6 +79,7 @@ const TripDetail = ({token, pk, tripId }) => {
     )}
 {/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}></CardActionArea> */}
   </Container>
+  </ThemeProvider>
   )
 }
 
