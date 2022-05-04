@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Avatar } from '@mui/material';
 import { Container } from '@mui/material';
 import { Box } from '@mui/system';
 import { Card } from '@mui/material';
@@ -31,8 +30,6 @@ const LogCard = ({detail_text,location, comments}) => (
     alignItems: 'center',
     border: 0,
     borderRadius: 5,
-
-    // position: 'relative',
     }}
   >
     <CardMedia
