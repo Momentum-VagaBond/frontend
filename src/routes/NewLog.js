@@ -147,18 +147,19 @@ export default function NewLog({token, loggedUserPk, tripId}) {
 
     return (
     <ThemeProvider theme={Theme}>
-    <div className="loginDiv">
+    <div className="newLog">
     <Container>
             <Grid container component="main">
         <CssBaseline />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
             <Box
                 sx={{
-                my: 4,
-                mx: 4,
+                marginTop: 5,
+                marginRight: 2,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                position: 'absolute',
                 // backgroundColor: '#e9ecef',
                 }}
             >
@@ -247,7 +248,6 @@ export default function NewLog({token, loggedUserPk, tripId}) {
         sx={{
             mt: 3,
             mb: 2,
-            backgroundColor: '#c44536',
             borderRadius: 5,
         }}
         >

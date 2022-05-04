@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 
-export const PastTripCard = ({title, user, location, begin, end, }) => {
+export const PastTripCard = ({title, user, location, begin, end }) => {
     return(
         <Container>
 <Box sx={{

@@ -62,7 +62,7 @@ export default function NewTrip({token, isLoggedIn}) {
 
     return (
         <ThemeProvider theme={Theme}>
-        <Box>
+
         <Container
         sx={{
             marginTop: 12,
@@ -70,12 +70,14 @@ export default function NewTrip({token, isLoggedIn}) {
             flexDirection: 'column',
             alignItems: 'center',
             backgroundColor: '#e9ecef',
+            position: 'absolute',
         }}>
-        <Card
+        <Box
         // component="form"
         sx={{
             paddingRight: 2,
             paddingLeft: 2,
+            position: 'absolute',
             '& .MuiTextField-root': { m: 1, width: '25ch' },
         }}
         noValidate
@@ -183,9 +185,8 @@ export default function NewTrip({token, isLoggedIn}) {
     </Button>
     </form>
     
-    </Card>
-    </Container>
     </Box>
+    </Container>
     </ThemeProvider>
     );
 }

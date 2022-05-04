@@ -29,7 +29,9 @@ export default function Header() {
                 justifyContent:'center',
             }}
             >
-              <Button variant="text"
+              <Button
+              variant="h6"
+              color="secondary"
               >VagaBond</Button>
           </Typography>
         </Toolbar>

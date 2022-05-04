@@ -34,17 +34,17 @@ const Profile = ({username, token, loggedUserPk, id, bio }) => {
     }, [token, loggedUserPk, setTrips])
 
 
-    useEffect(() => {
-      axios
-      .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
-          {headers: {Authorization: `Token ${token}`}
-      })
-      .then((response) => {
-          console.log(response.data)
-          setTrip(response.data)
-          setBegin(response.data.begin)
-      })
-    }, [token, loggedUserPk, setTrip, setBegin])
+    // useEffect(() => {
+    //   axios
+    //   .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
+    //       {headers: {Authorization: `Token ${token}`}
+    //   })
+    //   .then((response) => {
+    //       console.log(response.data)
+    //       setTrip(response.data)
+    //       setBegin(response.data.begin)
+    //   })
+    // }, [token, loggedUserPk, setTrip, setBegin])
 
 
     useEffect(() => {
@@ -115,24 +115,6 @@ return (
 
     <CardMedia
         className='ProfileCardMedia'
-        // component='img'
-        //need to connect log photopk here in the image field//
-        // sx={{
-        //     flexShrink: 0,
-        //     position: 'static',
-        //     width: '30%',
-        //     maxwidth: 200,
-        //     paddingTop: 3,
-        //     paddingBottom: 3,
-        //     paddingLeft: 3,
-        //     transform: "translateX(-10%)",
-        //     // boxShadow: '7px 4px 30px 2px rgba(252, 56, 56, 0.2)',
-        //     borderRadius: 10, // 16px
-        //     backgroundSize: 'constrain',
-        //     backgroundImage: '#fe8a39',
-        //     backgroundColor: '#fe8a39',
-        //     overflow: 'initial',
-        // }}
     >
       {VBLogo}
       </CardMedia>
