@@ -1,10 +1,8 @@
 import React from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import AllTrips from "../routes/AllTrips";
+import { useState } from "react";
 import { Card } from "@mui/material";
 
-export const UserTrips = ({trips, username, setUsername, profiles, profile}) => {
+export const UserTrips = ({profiles}) => {
     const [userTrips, setUserTrips] = useState([])
 
     return(

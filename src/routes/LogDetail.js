@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -10,7 +10,7 @@ import Card from '@mui/material/Card'
 import LogCard from "../components/LogCard";
 import CommentBox from "../components/CommentBox";
 import Moment from 'react-moment'
-import { CardHeader } from "@mui/material";
+import { CardHeader, Typography } from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
@@ -45,9 +45,9 @@ const LogDetail = ({token, isLoggedIn}) => {
     setComments([...comments, newComment])
   }
 
-  // if (!isLoggedIn) {
-  //   return Navigate('/login');
-  // }
+  if (!isLoggedIn) {
+    return <Navigate to="/login" />
+} 
 
   return (
   <ThemeProvider theme={Theme}>
@@ -87,12 +87,19 @@ const LogDetail = ({token, isLoggedIn}) => {
     )}
     </Container>
 
+    {/* <Card>
+      <Typography>
+        <h2>{thisLog.details}</h2>
+      </Typography>
+    </Card> */}
+
 {/* Post a comment */}
   <Container
         sx={{
-          marginTop: 25,
+          marginTop: 40,
         }}
   >
+
   <Box sx={{
     border: 1,
     margin: 0,
@@ -120,7 +127,6 @@ const LogDetail = ({token, isLoggedIn}) => {
     {comments.map((comment, idx) =>
     <Card
     sx={{
-      borderRadius: 5,
       margin: 2,
       // backgroundColor: '#424b54',
     }}

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Register } from './routes/Register';
-import { Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Login } from './routes/Login';
 import { Logout } from './routes/Logout';
@@ -9,7 +8,6 @@ import NewLog from './routes/NewLog';
 import Navbar from './components/Navbar';
 import Header from './assets/Header';
 import Profile from './routes/Profile';
-import Home from './routes/Home';
 import { TripDetail } from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
 import { TripDetailCard } from './components/TripDetailCard';
@@ -33,6 +31,7 @@ const App = () => {
   // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
   const [tripId, setTripId] = useLocalStorageState('TripId', '');
+  const [status, setStatus] = useState(null);
 
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
@@ -51,6 +50,9 @@ const App = () => {
 
 const isLoggedIn = username && token
 
+if (status === 401) {
+  setAuth(null, null);
+}
 
   return (
     <ThemeProvider theme={Theme}>

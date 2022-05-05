@@ -9,13 +9,10 @@ import { Theme } from "../Theme";
 import ImageList from "@mui/material/ImageList";
 import { ImageListItem } from "@mui/material";
 import ListSubheader from "@mui/material/ListSubheader";
-import InfoIcon from '@mui/icons-material/Info';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
+import LaunchTwoToneIcon from '@mui/icons-material/LaunchTwoTone';import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Button from "@mui/material/Button";
-import Moment from 'react-moment';
 import { Link as RouterLink, Navigate } from 'react-router-dom';
 import Flags from './Flags.jpg';
-import { IconButton } from "@mui/material";
 
 
 export const TripDetail = ({token, pk, logId, username, isLoggedIn }) => {
@@ -52,28 +49,23 @@ export const TripDetail = ({token, pk, logId, username, isLoggedIn }) => {
       })
   }, [params.tripId, token])
 
-  if (!isLoggedIn) {
-    return Navigate('/login');
-  }
+  if (!token) {
+    return <Navigate to="/login" />
+} 
 
 
   return (
 
-    <ThemeProvider theme={Theme}>
-<Container component="main"
-  sx={{
-    marginBottom: 10,
-    backgroundColor: '#e9ecef',
-    position: 'absolute',
-  }}
-  >
+  <ThemeProvider theme={Theme}>
+  <Container component="main"
+    sx={{
+      marginBottom: 10,
+      backgroundColor: '#e9ecef',
+      position: 'absolute',
+    }}
+    >
   <CssBaseline />
 
-  {/* <Box
-  sx={{
-    border: 'dotted',
-  }}
-  > */}
   <ImageList
     sx={{
       width: 'auto',
@@ -113,12 +105,11 @@ export const TripDetail = ({token, pk, logId, username, isLoggedIn }) => {
             title={item.title}
             subtitle={item.author}
             actionIcon={
-              <IconButton
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${item.title}`}
+              <Button
+              className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`}
               >
-                <InfoIcon />
-              </IconButton>
+                <LaunchTwoToneIcon />
+              </Button>
             }
           />
         </ImageListItem>
@@ -158,35 +149,3 @@ const itemData = [
     cols: 2,
   },
 ]
-
-
-
-
-{/* <ImageListItem key={trip.pk}>
-    {logs.map((log) => (
-    <TripDetailCard
-    // key={trip.pk}
-    // sx={{
-    //   marginTop: 8,
-    //   paddingLeft: 4,
-    // }}
-      logId={log.pk}
-      details={log.details}
-      location={log.location}
-      date={log.date_logged}
-    />
-    ))}
-              <ImageListItemBar
-            actionIcon={
-              <Button
-              className='MuiButton--readMore' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`}
-              >
-                <Moment format="MM/D/YYYY">{trip.date}</Moment>
-                {trip.location}
-                {trip.details}
-                <InfoIcon />
-              </Button>
-            }
-          />
-    </ImageListItem>
-</ImageList> */}
