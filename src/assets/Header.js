@@ -10,7 +10,7 @@ import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
   
 export default function Header() {
   return (
-      <AppBar position="static" color="primary">
+      <AppBar position="relative" color="primary">
         <Toolbar>
 
           <IconButton
