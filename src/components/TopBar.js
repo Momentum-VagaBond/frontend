@@ -49,7 +49,7 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           > */}
           <Typography
-           variant="h6"
+           variant="subtitle2"
            color="secondary"
            >
             VAGABOND
