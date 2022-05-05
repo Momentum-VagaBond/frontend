@@ -59,6 +59,7 @@ const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
           <ImageListItemBar
             details={detail_text}
             date_logged={date_logged}
+            
             // actionIcon={
             //   <Button
             //   className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`}
@@ -70,10 +71,10 @@ const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
         </ImageListItem>
     </ImageList>
 
-
     {/* </Box> */}
 {/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}></CardActionArea> */}
   </Container>
+  <p>Comments will go down here</p>
   </ThemeProvider>
   )
   export default LogCard;
