@@ -4,6 +4,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
+import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
   
 export default function Header() {
   return (
@@ -34,6 +37,13 @@ export default function Header() {
               color="secondary"
               >VagaBond</Button>
           </Typography>
+
+          {/* <MenuItem component={Link} to="/profile">
+                <Link to="/profile">
+                <AccountCircleTwoToneIcon fontSize='inherit' />
+                Profile
+                </Link>
+              </MenuItem> */}
         </Toolbar>
       </AppBar>
   );

@@ -25,9 +25,9 @@ const TripDetail = ({token, pk, tripId }) => {
   useEffect(() => {
     axios
       .get(`https://momentum-vagabond.herokuapp.com/api/trips/${params.tripId}`, {
-        // headers: {
-        //   Authorization: `Token ${token}`,
-        // },
+        headers: {
+          Authorization: `Token ${token}`,
+        },
       })
       .then((res) => {
         setTrip(res.data)
