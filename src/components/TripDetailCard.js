@@ -22,11 +22,11 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
 
     return (
       <div>
-        <ImageList key={{pk}} col={2}
+        <ImageList key={{pk}} cols={2} rowHeight={150}
           sx={{
-            width: 300,
-            // height: 350,
-            columnCount: 2,
+            width: 500,
+            height: 450,
+            // columnCount: 2,
             marginBottom: 1,
             position: 'relative',
             border: 'dotted',
@@ -49,7 +49,7 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
             alt='random'
             loading="lazy"
           />
-          <ImageListItemBar
+          {/* <ImageListItemBar
             actionIcon={
               <Button
               className='MuiButton--readMore' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`}
@@ -60,7 +60,7 @@ export const TripDetailCard = ({details, pk, date, location, logId}) => {
                 <InfoIcon />
               </Button>
             }
-          />
+          /> */}
         </ImageListItem>
         </Card>
         </Container>

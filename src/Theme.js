@@ -14,13 +14,16 @@ export const Theme = createTheme({
             secondary: '#c44536',
             //international orange golen gate bridge
         },
-    },
-
-    backgroundColor: {
-        primary: {
-            main: '#e9ecef',
+        background: {
+            default: '#e9ecef',
         }
     },
+
+    // backgroundColor: {
+    //     primary: {
+    //         main: '#e9ecef',
+    //     }
+    // },
 
 
 });

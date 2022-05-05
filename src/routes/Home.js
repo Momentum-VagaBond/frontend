@@ -3,13 +3,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {TripCard} from '../components/TripCard';
 import Moment from 'react-moment'
-import { Container,Grid, Stack, Box, Button, Typography } from "@mui/material";
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { Luggage, Visibility} from "@mui/icons-material";
+import { Container } from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-// import {CommentBox} from '../components/CommentBox';
 
 // import {TripDetail} from './TripDetail';
 // import { Link } from 'react-router-dom';

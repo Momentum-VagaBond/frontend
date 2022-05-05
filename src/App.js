@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 import Header from './assets/Header';
 import Profile from './routes/Profile';
 import Home from './routes/Home';
-import TripDetail from './routes/TripDetail';
+import { TripDetail } from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
 import { TripDetailCard } from './components/TripDetailCard';
 import MyTrips from './routes/MyTrips';
@@ -20,6 +20,7 @@ import { Theme } from './Theme'
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
 
+import AllTrips from './routes/AllTrips';
 
 
 const App = () => {
@@ -93,6 +94,10 @@ const isLoggedIn = username && token
         <Route
           path="/home"
           element={<Home token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+        />
+        <Route
+          path="/trips"
+          element={<AllTrips token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
       <Route
           path="/trips/:tripId"
