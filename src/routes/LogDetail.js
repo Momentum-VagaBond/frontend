@@ -15,7 +15,7 @@ import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
 
-const LogDetail = ({token}) => {
+const LogDetail = ({token, isLoggedIn}) => {
 
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
@@ -44,6 +44,10 @@ const LogDetail = ({token}) => {
   const addNewComment = (newComment) => {
     setComments([...comments, newComment])
   }
+
+  // if (!isLoggedIn) {
+  //   return Navigate('/login');
+  // }
 
   return (
   <ThemeProvider theme={Theme}>

@@ -11,7 +11,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="primary" href="https://mui.com/">
         VagaBond
       </Link>{' '}
       {new Date().getFullYear()}
@@ -65,10 +65,9 @@ export const Login = ({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess
 
   return (
   <ThemeProvider theme={Theme}>
+
     <div className="loginDiv">
-      <Grid container component="main" 
-      // sx={{ width: '300' }}
-      >
+      <Grid container component="main" >
       {error && <div className="errorDiv">{error}</div>}
       {registerSuccess && 
         <Alert severity="success">

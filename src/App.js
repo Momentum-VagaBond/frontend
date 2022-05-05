@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Register } from './routes/Register';
+import { Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Login } from './routes/Login';
 import { Logout } from './routes/Logout';
@@ -66,8 +67,9 @@ const isLoggedIn = username && token
           setUsername={setUsername}
           />
 
-        <Routes>
-        <Route
+      <Routes>
+
+      <Route
           path="/register"
           element={<Register isLoggedIn={isLoggedIn} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} setAuth={setAuth} username={username} token={token} setToken={setToken}/>}
         />
@@ -75,6 +77,20 @@ const isLoggedIn = username && token
           path="/"
           element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
+        <Route
+          path="/login"
+          element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} getLoggedUserPk={getLoggedUserPk} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
+        />
+        <Route
+          path="/logout"
+          element={<Logout setAuth={setAuth} token={token} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} />}
+        />
+
+      {!token ? (
+          <></>
+        ) : (
+          <>
+
         <Route
           path="/geo"
           element={<Geolocate />}
@@ -84,16 +100,12 @@ const isLoggedIn = username && token
           element={<MapBox />}
         />
         <Route
-          path="/login"
-          element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} getLoggedUserPk={getLoggedUserPk} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
-        />
-        <Route
           path="/profile"
           element={<Profile setAuth={setAuth} token={token} username={username} />}
         />
         <Route
           path="/home"
-          element={<Home token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<TripDetail token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
         <Route
           path="/trips"
@@ -106,10 +118,6 @@ const isLoggedIn = username && token
       <Route
           path="/trips/:tripId/:logId"
           element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
-        />
-        <Route
-          path="/logout"
-          element={<Logout setAuth={setAuth} token={token} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/newtrip"
@@ -141,6 +149,9 @@ const isLoggedIn = username && token
           element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
         />
 
+        
+        </>
+        )}
         </Routes>
       </Router>
     </div>

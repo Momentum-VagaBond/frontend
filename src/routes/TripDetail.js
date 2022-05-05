@@ -2,9 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
-import { Box, Card } from '@mui/material/';
+import { Card } from '@mui/material/';
 import Container from '@mui/material/Container';
-import { TripDetailCard } from "../components/TripDetailCard";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "../Theme";
 import ImageList from "@mui/material/ImageList";
@@ -14,15 +13,12 @@ import InfoIcon from '@mui/icons-material/Info';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Button from "@mui/material/Button";
 import Moment from 'react-moment';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Navigate } from 'react-router-dom';
 import Flags from './Flags.jpg';
 import { IconButton } from "@mui/material";
 
-// const piccy = (
-//   <img src={Flags} alt='LGBTQIA flags' />
-// );
 
-export const TripDetail = ({token, pk, logId, username }) => {
+export const TripDetail = ({token, pk, logId, username, isLoggedIn }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
@@ -37,9 +33,9 @@ export const TripDetail = ({token, pk, logId, username }) => {
   useEffect(() => {
     axios
       .get(`https://momentum-vagabond.herokuapp.com/api/trips/${params.tripId}`, {
-        // headers: {
-        //   Authorization: `Token ${token}`,
-        // },
+        headers: {
+          Authorization: `Token ${token}`,
+        },
       })
       .then((res) => {
         setTrip(res.data)
@@ -55,6 +51,10 @@ export const TripDetail = ({token, pk, logId, username }) => {
         // console.log(username)
       })
   }, [params.tripId, token])
+
+  if (!isLoggedIn) {
+    return Navigate('/login');
+  }
 
 
   return (
