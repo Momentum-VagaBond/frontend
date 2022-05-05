@@ -12,6 +12,7 @@ import { TripDetail } from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
 import { TripDetailCard } from './components/TripDetailCard';
 import MyTrips from './routes/MyTrips';
+import Home from './routes/Home'
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { ThemeProvider } from '@mui/material/styles';
@@ -107,7 +108,7 @@ if (status === 401) {
         />
         <Route
           path="/home"
-          element={<TripDetail token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<Home token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
         <Route
           path="/trips"

@@ -81,7 +81,6 @@ export const Login = ({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess
           sm={4}
           md={7}
           sx={{
-            backgroundImage: '{VagaBondLogo}',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -98,6 +97,8 @@ export const Login = ({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              position: 'absolute',
+              backgroundColor: 'primary',
             }}
           >
           <Avatar 
