@@ -1,6 +1,7 @@
 import * as React from 'react';
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Navigate } from 'react-router-dom';
 import { Box } from '@mui/system';
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import Container from '@mui/material/Container';
@@ -13,7 +14,7 @@ import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
 
-const Profile = ({username, token, loggedUserPk, id, bio }) => {
+const Profile = ({username, token, loggedUserPk, id, bio, isLoggedIn }) => {
   const [trips, setTrips] = useState([]);
   const [trip, setTrip] = useState([]);
   const [begin, setBegin] = useState([]);
@@ -73,8 +74,13 @@ const Profile = ({username, token, loggedUserPk, id, bio }) => {
     }, [token, loggedUserPk, setTrip, setBegin])
 
 
+    if (!token) {
+      return <Navigate to="/login" />
+  } 
+
 return (
   <ThemeProvider theme={Theme}>
+
   <Box
   sx={{
     backgroundColor:'#e9ecef',
@@ -220,6 +226,7 @@ return (
 
         </Container>
         </Box>
+
 </ThemeProvider>
   )
 };

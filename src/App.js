@@ -8,11 +8,11 @@ import NewLog from './routes/NewLog';
 import Navbar from './components/Navbar';
 import Header from './assets/Header';
 import Profile from './routes/Profile';
-import Home from './routes/Home';
-import TripDetail from './routes/TripDetail';
+import { TripDetail } from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
 import { TripDetailCard } from './components/TripDetailCard';
 import MyTrips from './routes/MyTrips';
+import Home from './routes/Home'
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { ThemeProvider } from '@mui/material/styles';
@@ -20,6 +20,7 @@ import { Theme } from './Theme'
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
 
+import AllTrips from './routes/AllTrips';
 
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
   // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
   const [tripId, setTripId] = useLocalStorageState('TripId', '');
+  const [status, setStatus] = useState(null);
 
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
@@ -49,6 +51,9 @@ const App = () => {
 
 const isLoggedIn = username && token
 
+if (status === 401) {
+  setAuth(null, null);
+}
 
   return (
     <ThemeProvider theme={Theme}>
@@ -65,8 +70,9 @@ const isLoggedIn = username && token
           setUsername={setUsername}
           />
 
-        <Routes>
-        <Route
+      <Routes>
+
+      <Route
           path="/register"
           element={<Register isLoggedIn={isLoggedIn} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} setAuth={setAuth} username={username} token={token} setToken={setToken}/>}
         />
@@ -74,6 +80,20 @@ const isLoggedIn = username && token
           path="/"
           element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
+        <Route
+          path="/login"
+          element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} getLoggedUserPk={getLoggedUserPk} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
+        />
+        <Route
+          path="/logout"
+          element={<Logout setAuth={setAuth} token={token} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} />}
+        />
+
+      {!token ? (
+          <></>
+        ) : (
+          <>
+
         <Route
           path="/geo"
           element={<Geolocate />}
@@ -83,16 +103,16 @@ const isLoggedIn = username && token
           element={<MapBox />}
         />
         <Route
-          path="/login"
-          element={<Login setAuth={setAuth} setRegisterSuccess={setRegisterSuccess} getLoggedUserPk={getLoggedUserPk} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} registerSuccess={registerSuccess} setToken={setToken} isLoggedIn={isLoggedIn} />}
-        />
-        <Route
           path="/profile"
           element={<Profile setAuth={setAuth} token={token} username={username} />}
         />
         <Route
           path="/home"
-          element={<Home token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<Home token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+        />
+        <Route
+          path="/trips"
+          element={<AllTrips token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
       <Route
           path="/trips/:tripId"
@@ -101,10 +121,6 @@ const isLoggedIn = username && token
       <Route
           path="/trips/:tripId/:logId"
           element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
-        />
-        <Route
-          path="/logout"
-          element={<Logout setAuth={setAuth} token={token} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/newtrip"
@@ -136,6 +152,9 @@ const isLoggedIn = username && token
           element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
         />
 
+        
+        </>
+        )}
         </Routes>
       </Router>
     </div>
