@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BottomNavigation, BottomNavigationAction, Typography, MenuItem, Stack } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Paper, Typography, MenuItem } from '@mui/material';
 import { AccountCircleTwoTone,  Add, Edit, AddBoxRounded,  Home, PhotoAlbum, PlusOneRounded } from '@mui/icons-material';
 import EditIcon from '@mui/icons-material/Edit';
 // import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
@@ -22,10 +22,11 @@ export default function NavBar() {
     setValue(newValue);
   };
 
-  
+
 
   return (
     <ThemeProvider theme={Theme}>
+      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
     <BottomNavigation 
     showLabels
     color='#FFFFFF'
@@ -39,6 +40,7 @@ export default function NavBar() {
       position: 'fixed',
       fontWeight: 'medium',
       paddingBottom: 1,
+      top: 'auto',
       bottom: 0,
       left: 0,
       right: 0,
@@ -106,6 +108,7 @@ export default function NavBar() {
           </MenuItem> */}
           
     </BottomNavigation>
+    </Paper>
     </ThemeProvider>
   );
 }

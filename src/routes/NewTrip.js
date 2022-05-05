@@ -56,7 +56,7 @@ export default function NewTrip({token, isLoggedIn}) {
         <ThemeProvider theme={Theme}>
         <Container
         sx={{
-            marginTop: 2,
+            marginTop: 0,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -67,6 +67,7 @@ export default function NewTrip({token, isLoggedIn}) {
 
         sx={{
             paddingRight: 2,
+            paddingBottom: 6,
             paddingLeft: 2,
             position: 'absolute',
             '& .MuiTextField-root': { m: 1, width: '25ch' },
