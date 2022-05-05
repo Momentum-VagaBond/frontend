@@ -1,42 +1,81 @@
 import * as React from 'react';
-import { Box } from '@mui/system';
-import CssBaseline from '@mui/material/CssBaseline';
-import { BottomNavigation } from '@mui/material';
-import { Paper } from '@mui/material';
-import { MenuItem } from '@mui/material';
-import { AccountCircleTwoTone } from '@mui/icons-material';
-import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
-import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
-import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
+import { BottomNavigation, BottomNavigationAction, Typography, MenuItem, Stack } from '@mui/material';
+import { AccountCircleTwoTone,  Add, Edit, AddBoxRounded,  Home, PhotoAlbum, PlusOneRounded } from '@mui/icons-material';
+import EditIcon from '@mui/icons-material/Edit';
+// import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
+// import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
+// import PhotoSizeSelectActualOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActualOutlined'; //memories
+// import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
+// import { Home }from '@mui/icons-material/Home'; //home
 import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Theme } from '../Theme';
 
 
+
+
 export default function NavBar() {
-  const [value, setValue] = React.useState('recents');
+  // const [value, setValue] = React.useState('recents');
+  const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  
+
   return (
     <ThemeProvider theme={Theme}>
     <BottomNavigation 
-    color='secondary'
+    showLabels
+    color='#FFFFFF'
     sx={{
-      width: 'auto',
+      width: '500',
+      // width: 'auto'
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'baseline',
       marginBottom: 0,
       position: 'fixed',
+      fontWeight: 'medium',
+      paddingBottom: 1,
       bottom: 0,
       left: 0,
       right: 0,
       backgroundColor: '#e76f51',
     }} 
     value={value} onChange={handleChange}>
+      
+        <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home />} />
+     
+
+      {/* <Link to="/newlog"> */}
+        <BottomNavigationAction label="New Log" component={Link} to="/newlog" icon={<Edit />} />
+
+        <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AddBoxRounded  />} />
+      {/* </Link> */}
+
+      {/* <Link to="/Profile">
+        <BottomNavigationAction label="Profile" icon={<LockOutlinedIcon />} />
+      </Link> */}
+
+      
+      <BottomNavigationAction label="Memories" component={Link} to="/" icon={<PhotoAlbum />} />
+ 
+          {/* <MenuItem>
+            <Link to="/">
+              <PhotoSizeSelectActualOutlinedIcon fontSize='inherit' />
+                Memories
+            </Link>
+          </MenuItem>
+
+          <MenuItem>
+            <Link to="/newtrip">
+              <FlightTwoToneIcon fontSize='inherit' />
+                Placeholder
+            </Link>
+          </MenuItem>
+
           <MenuItem>
             <Link to="/newtrip">
               <FlightTwoToneIcon fontSize='inherit' />
@@ -49,21 +88,23 @@ export default function NavBar() {
               <AccountCircleTwoTone fontSize='inherit' />
                 Profile
             </Link>
-          </MenuItem>
+          </MenuItem> */}
 
-          <MenuItem>
+          {/* <MenuItem>
             <Link to="/logout">
               <AddLocationAltTwoToneIcon fontSize='inherit' />
                 Logout
             </Link>
-          </MenuItem>
-
-          <MenuItem>
-            <Link to="/trips">
-              <AddLocationAltTwoToneIcon fontSize='inherit' />
-                  AllTrips
+          </MenuItem> */}
+          
+          
+          {/* <MenuItem>
+            <Link to="/home">
+              <HomeOutlined fontSize='inherit' />
+                  Home
             </Link>
-          </MenuItem>
+          </MenuItem> */}
+          
     </BottomNavigation>
     </ThemeProvider>
   );

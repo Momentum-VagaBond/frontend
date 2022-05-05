@@ -11,9 +11,6 @@ import { ThemeProvider } from 'styled-components';
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-
-
-
 export default function NewTrip({token, isLoggedIn}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
@@ -62,10 +59,9 @@ export default function NewTrip({token, isLoggedIn}) {
 
     return (
         <ThemeProvider theme={Theme}>
-
         <Container
         sx={{
-            marginTop: 12,
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -86,9 +82,6 @@ export default function NewTrip({token, isLoggedIn}) {
     {error && <div className="error">{error}</div>}
     <h1>New Trip!</h1>
     <form onSubmit={handleSubmit}>
-
-
-
     <FormGroup>
         <label htmlFor='reg-title'>Title: </label>
         <TextField id="title"
