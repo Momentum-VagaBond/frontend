@@ -2,50 +2,27 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {TripCard} from '../components/TripCard';
-import Moment from 'react-moment'
-import { Container,Grid, Stack, Box, Button, Typography } from "@mui/material";
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { Luggage, Visibility} from "@mui/icons-material";
+import { Container } from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-// import {CommentBox} from '../components/CommentBox';
-
-// import {TripDetail} from './TripDetail';
-// import { Link } from 'react-router-dom';
+import { Link as Navigate } from 'react-router-dom'
 
 
-export default function Home ({username, loggedUserPk, token, map, getTripId}) {
-  const [trips, setTrips] = useState([]);
-  const [usernamePk, setUsernamePk] = useState([]);
+
+export default function Home ({username, loggedUserPk, token, map, getTripId, isLoggedIn}) {
+  // const [trips, setTrips] = useState([]);
+  // const [usernamePk, setUsernamePk] = useState([]);
   const [tripId, setTripId] = useState([])
-  const [tripUsername, setTripUsername] = useState([])
+  // const [tripUsername, setTripUsername] = useState([])
   const [currentTripTraveler, setCurrentTripTraveler] = useState([])
-  const [showMyTrips, setShowMyTrips] = useState(false)
-  const [showFollowing, setShowFollowing] = useState(false)
+  // const [showMyTrips, setShowMyTrips] = useState(false)
+  // const [showFollowing, setShowFollowing] = useState(false)
   // const [showFollowingTrips, setShowFollowingTrips] = useState(false)
-  let[userTripNumber, setUserTripNumber] = useState(0)
-  let[userFollowNumber, setUserFollowNumber] = useState(0)
-  const [alignment, setAlignment] = React.useState('left');
+  // let[userTripNumber, setUserTripNumber] = useState(0)
+  // let[userFollowNumber, setUserFollowNumber] = useState(0)
+  // const [alignment, setAlignment] = React.useState('left');
 
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
-  //     {headers: {Authorization: `Token ${token}`}
-  //     })
-
-  //     .then((response) => {
-  //       console.log(response.data)
-  //       // setCurrentTripTraveler(response.data)
-  //       // setUsernamePk(response.data.pk)
-  //       getTripId(response.data.pk)
-  //       setTripUsername(response.data.username)
-  //       console.log("loggedUserPk: " + loggedUserPk)
-  //       console.log(response.data.pk)
-  //       // console.log("tripId" + setTripId)
-  //     })
-  // }, [loggedUserPk, tripId, token, getTripId])
 
   useEffect(() => {
     axios
@@ -62,7 +39,9 @@ export default function Home ({username, loggedUserPk, token, map, getTripId}) {
     })
   }, [token, setCurrentTripTraveler, setTripId])
 
-
+  if (!isLoggedIn) {
+    return <Navigate to="/login" />
+} 
   
 
 return (

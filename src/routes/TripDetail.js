@@ -2,15 +2,21 @@ import axios from "axios";
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
+import { Card } from '@mui/material/';
 import Container from '@mui/material/Container';
-import { TripDetailCard } from "../components/TripDetailCard";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "../Theme";
+import ImageList from "@mui/material/ImageList";
+import { ImageListItem } from "@mui/material";
+import ListSubheader from "@mui/material/ListSubheader";
+import LaunchTwoToneIcon from '@mui/icons-material/LaunchTwoTone';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import Button from "@mui/material/Button";
+import { Link as RouterLink, Navigate } from 'react-router-dom';
+import Flags from './Flags.jpg';
 
 
-
-const TripDetail = ({token, pk, tripId }) => {
+export const TripDetail = ({token, pk, logId, username, isLoggedIn }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
@@ -44,43 +50,103 @@ const TripDetail = ({token, pk, tripId }) => {
       })
   }, [params.tripId, token])
 
+  if (!token) {
+    return <Navigate to="/login" />
+} 
+
 
   return (
-    <ThemeProvider theme={Theme}>
-<Container component="main"
+
+  <ThemeProvider theme={Theme}>
+  <Container component="main"
+    sx={{
+      marginBottom: 10,
+      backgroundColor: '#e9ecef',
+      position: 'absolute',
+    }}
+    >
+  <CssBaseline />
+
+  <ImageList
+    sx={{
+      width: 'auto',
+      height: 'auto',
+      marginTop: 5,
+      marginRight: 1,
+      marginLeft: 1,
+    }}
+    >
+  <ImageListItem key="Subheader" cols={2}>
+  <Card>
+  <ListSubheader component="div"
   sx={{
-    marginBottom: 10,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   }}
   >
-  <CssBaseline />
-    <Box
-      sx={{
-          marginTop: 5,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+    <h2>{username}, this is trip #{tripPk} to {tripLocation}!</h2>
+  </ListSubheader>
+  </Card>
+  </ImageListItem>
+    
+  {itemData.map((item) => (
+        <ImageListItem key={item.title}
+        sx={{
+          margin: .5,
         }}
-    >This is the Trip Detail page for trip #{tripPk} to {tripLocation}. 
+        >
+          <img
+            src={`${Flags}?w=248&fit=crop&auto=format`}
+            srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={item.title}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title={item.title}
+            subtitle={item.author}
+            actionIcon={
+              <Button
+              className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`}
+              >
+                <LaunchTwoToneIcon />
+              </Button>
+            }
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
 
-    </Box>
 
-    {logs.map((log) =>
-    <TripDetailCard
-    key={pk}
-    sx={{
-      marginTop: 8,
-      paddingLeft: 4,
-    }}
-      logId={log.pk}
-      details={log.details}
-      location={log.location}
-      date={log.date_logged}
-    />
-    )}
+    {/* </Box> */}
 {/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}></CardActionArea> */}
   </Container>
   </ThemeProvider>
-  )
+  );
 }
 
-export default TripDetail;
+const itemData = [
+  {
+    img: {Flags},
+    title: 'Breakfast',
+    author: '@bkristastucchio',
+    rows: 2,
+    cols: 2,
+  },
+  {
+    img: {Flags},
+    title: 'Burger',
+    author: '@rollelflex_graphy726',
+  },
+  {
+    img: {Flags},
+    title: 'Camera',
+    author: '@helloimnik',
+  },
+  {
+    img: {Flags},
+    title: 'Coffee',
+    author: '@nolanissac',
+    cols: 2,
+  },
+]

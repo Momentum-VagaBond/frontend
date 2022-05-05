@@ -7,11 +7,11 @@ import { styled } from '@mui/material/styles';
 import MapBox from '../components/MapBox';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-import { TextareaAutosize } from '@mui/material';
+import { Navigate } from 'react-router-dom';
 
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
-export default function NewLog({token, loggedUserPk, tripId}) {
+export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
     // const [trip, setTrip] = useState("");
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
@@ -166,8 +166,14 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     // return <Navigate to='/' />
     }
 
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" />
+    } 
+
     return (
     <ThemeProvider theme={Theme}>
+
     <div className="newLog">
     <Container>
             <Grid container component="main">
@@ -281,6 +287,7 @@ export default function NewLog({token, loggedUserPk, tripId}) {
     </Grid>
     </Container>
     </div>
+    
     </ThemeProvider>
     );
 }

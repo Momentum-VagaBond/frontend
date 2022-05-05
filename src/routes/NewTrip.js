@@ -2,14 +2,10 @@ import * as React from 'react';
 import { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
-import { Container, FormGroup, Button, Box, Card } from '@mui/material';
+import { Container, FormGroup, Button, Box } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-// import { format } from 'date-fns';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 export default function NewTrip({token, isLoggedIn}) {
     const [title, setTitle] = useState("");
@@ -19,7 +15,6 @@ export default function NewTrip({token, isLoggedIn}) {
     const [error, setError] = useState("");
     const [isSubmit, setSubmit] = useState(false);
 
-    // const [value, setValue] = useState(null);
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +64,7 @@ export default function NewTrip({token, isLoggedIn}) {
             position: 'absolute',
         }}>
         <Box
-        // component="form"
+
         sx={{
             paddingRight: 2,
             paddingLeft: 2,
@@ -82,6 +77,8 @@ export default function NewTrip({token, isLoggedIn}) {
     {error && <div className="error">{error}</div>}
     <h1>New Trip!</h1>
     <form onSubmit={handleSubmit}>
+
+
     <FormGroup>
         <label htmlFor='reg-title'>Title: </label>
         <TextField id="title"
@@ -113,9 +110,9 @@ export default function NewTrip({token, isLoggedIn}) {
         onChange={(e) => setBegin(e.target.value)}
         sx={{ width: 220 }}
         InputLabelProps={{
-          shrink: true,
+            shrink: true,
         }}
-      />
+    />
     </FormGroup>
 
     <FormGroup>
@@ -128,9 +125,9 @@ export default function NewTrip({token, isLoggedIn}) {
         onChange={(e) => setEnd(e.target.value)}
         sx={{ width: 220 }}
         InputLabelProps={{
-          shrink: true,
+            shrink: true,
         }}
-      />
+    />
     </FormGroup>
 
     {/* <FormGroup>
@@ -165,16 +162,17 @@ export default function NewTrip({token, isLoggedIn}) {
         />
     </FormGroup> */}
 
-    <Button
-    type='submit'
-    variant="contained"
-    sx={{
-        borderRadius: 2,
-        mt: 3,
-        mb: 2,
-    }}
-    >
-        Submit
+<Button 
+        type='submit'
+        fullWidth
+        variant="contained"
+        sx={{
+            mt: 3,
+            mb: 2,
+            borderRadius: 5,
+        }}
+        >
+    Submit
     </Button>
     </form>
     
