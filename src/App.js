@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Register } from './routes/Register';
 import { useState } from 'react';
 import { Login } from './routes/Login';
@@ -19,6 +20,10 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Theme } from './Theme'
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 import AllTrips from './routes/AllTrips';
 
@@ -51,6 +56,14 @@ const App = () => {
 
 const isLoggedIn = username && token
 
+const style1 = {
+  margin: 0,
+  top: 'auto',
+  right: 10,
+  bottom: 120,
+  left: 'auto',
+  position: 'fixed',
+};
 if (status === 401) {
   setAuth(null, null);
 }
@@ -62,6 +75,12 @@ if (status === 401) {
       <Header />
 
       <Router>
+      
+      <Box sx={{ '& > :not(style)': { m: 1 } }}>
+      <Fab style={style1} component={Link} to="/newlog" color="secondary" aria-label="edit">
+        <EditIcon />
+      </Fab>
+      </Box>
 
       <Navbar
           isLoggedIn={isLoggedIn}

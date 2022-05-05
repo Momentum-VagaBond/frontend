@@ -7,9 +7,6 @@ import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
-
-
-
 export default function NewTrip({token, isLoggedIn}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
@@ -57,10 +54,9 @@ export default function NewTrip({token, isLoggedIn}) {
 
     return (
         <ThemeProvider theme={Theme}>
-
         <Container
         sx={{
-            marginTop: 10,
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
