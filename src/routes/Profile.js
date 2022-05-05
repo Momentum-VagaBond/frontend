@@ -130,13 +130,13 @@ return (
     >
     <CardContent className='MuiCardContent-root'
     sx={{
-        // textAlign: 'left',
-        // padding: 1,
-        // position: 'relative',
+        textAlign: 'left',
+        padding: 1,
+        position: 'relative',
     }}
     >
         <Typography className='MuiTypography--date' variant='overline'>
-
+        <h2>This is {username}'s Profile</h2>
         </Typography>
 
     </CardContent>
@@ -144,7 +144,6 @@ return (
     </Card>
 
     <Box>
-    <h2>This is {username}'s Profile</h2>
       <h3>{bio}</h3>
     <h1>
       {username}'s Trips!

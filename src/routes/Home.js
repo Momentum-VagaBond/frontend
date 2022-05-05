@@ -77,7 +77,7 @@ return (
     // </Grid>
     )}
 {tripId}
-     {/* {userTripNumber === 0 && (
+    {/* {userTripNumber === 0 && (
     <h1>No trips yet! Ready to start one?</h1>
   */}
   </Container>

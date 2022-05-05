@@ -28,7 +28,8 @@ export const TripCard = ({pk, tripId, title, location, username, user, trip_user
     <CardMedia
         component="img"
         alt="green iguana"
-        height="200"
+        height= '100%'
+        width='auto'
         // image="/static/images/cards/contemplative-reptile.jpg"
         src="https://parade.com/wp-content/uploads/2021/02/family-beach-vacations-2021-1024x767.jpg"
     />
