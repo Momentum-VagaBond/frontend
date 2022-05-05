@@ -7,6 +7,7 @@ import { Logout } from './routes/Logout';
 import NewTrip from './routes/NewTrip';
 import NewLog from './routes/NewLog';
 import Navbar from './components/Navbar';
+import TopBar from './components/TopBar'
 import Header from './assets/Header';
 import Profile from './routes/Profile';
 import { TripDetail } from './routes/TripDetail';
@@ -72,9 +73,17 @@ if (status === 401) {
     <ThemeProvider theme={Theme}>
     <div className="App">
 
-      <Header />
+      {/* <Header /> */}
+      
 
       <Router>
+      <TopBar
+          isLoggedIn={isLoggedIn}
+          token={token}
+          setToken={setToken}
+          setUsername={setUsername}
+          />
+  
       
       <Box sx={{ '& > :not(style)': { m: 1 } }}>
       <Fab style={style1} component={Link} to="/newlog" color="secondary" aria-label="edit">
