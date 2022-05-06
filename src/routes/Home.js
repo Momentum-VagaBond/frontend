@@ -9,10 +9,10 @@ import { Link as Navigate } from 'react-router-dom'
 
 
 
-export default function Home ({username, loggedUserPk, token, map, getTripId, isLoggedIn}) {
+export default function Home ({username, loggedUserPk, token, map, setTripId, isLoggedIn}) {
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
-  const [tripId, setTripId] = useState([])
+  // const [tripId, setTripId] = useState([])
   // const [tripUsername, setTripUsername] = useState([])
   const [currentTripTraveler, setCurrentTripTraveler] = useState([])
   // const [showMyTrips, setShowMyTrips] = useState(false)
