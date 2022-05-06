@@ -28,15 +28,16 @@ export default function NavBar() {
     <ThemeProvider theme={Theme}>
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
     <BottomNavigation 
-    showLabels
+    // showlabels
     color='#FFFFFF'
     sx={{
-      width: '500',
+      width: '100%',
       // width: 'auto'
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'baseline',
       marginBottom: 0,
+      marginTop: 10,
       position: 'fixed',
       fontWeight: 'medium',
       paddingBottom: 1,
@@ -48,13 +49,13 @@ export default function NavBar() {
     }} 
     value={value} onChange={handleChange}>
       
-        <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home />} />
+        <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home sx={{ color: 'white'}} />} />
      
 
       {/* <Link to="/newlog"> */}
-        <BottomNavigationAction label="New Log" component={Link} to="/newlog" icon={<Edit />} />
+        <BottomNavigationAction label="New Log" component={Link} to="/newlog" icon={<Edit sx={{ color: 'white'}} />} />
 
-        <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AddBoxRounded  />} />
+        <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AddBoxRounded sx={{ color: 'white'}} />} />
       {/* </Link> */}
 
       {/* <Link to="/Profile">
@@ -62,7 +63,7 @@ export default function NavBar() {
       </Link> */}
 
       
-      <BottomNavigationAction label="Memories" component={Link} to="/" icon={<PhotoAlbum />} />
+      <BottomNavigationAction label="Profile" component={Link} to="/profile" icon={<PhotoAlbum sx={{ color: 'white'}} />} />
  
           {/* <MenuItem>
             <Link to="/">

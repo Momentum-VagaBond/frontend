@@ -58,6 +58,9 @@ export const TripDetail = ({token, pk, logId, username, isLoggedIn }) => {
   return (
 
   <ThemeProvider theme={Theme}>
+
+  <CssBaseline />
+
   <Container component="main"
     sx={{
       marginBottom: 10,
@@ -65,35 +68,36 @@ export const TripDetail = ({token, pk, logId, username, isLoggedIn }) => {
       position: 'absolute',
     }}
     >
-  <CssBaseline />
 
-  <ImageList
-    sx={{
-      width: 'auto',
-      height: 'auto',
-      marginTop: 5,
-      marginRight: 1,
-      marginLeft: 1,
-    }}
-    >
-  <ImageListItem key="Subheader" cols={2}>
-  <Card>
-  <ListSubheader component="div"
+  <Card
   sx={{
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    marginTop: 2,
   }}
   >
-    <h2>{username}, this is trip #{tripPk} to {tripLocation}!</h2>
-  </ListSubheader>
+    <h2>{tripLocation}!</h2>
   </Card>
-  </ImageListItem>
-    
+
+  <ImageList
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+      width: 'auto',
+      height: 'auto',
+      marginTop: 2,
+      // marginRight: 1,
+      // marginLeft: 1,
+    }}
+    >
+    {/* <Card> */}
   {itemData.map((item) => (
         <ImageListItem key={item.title}
         sx={{
-          margin: .5,
+          marginBottom: .5,
+          marginTop: .5,
         }}
         >
           <img
@@ -107,19 +111,16 @@ export const TripDetail = ({token, pk, logId, username, isLoggedIn }) => {
             subtitle={item.author}
             actionIcon={
               <Button
-              className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`}
-              >
-                <LaunchTwoToneIcon />
-              </Button>
-            }
-          />
+              className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`} icon={<LaunchTwoToneIcon sx={{ color: 'white'}}/>}
+              />
+                // <LaunchTwoToneIcon />
+              // </Button>
+            }/>
         </ImageListItem>
       ))}
+
     </ImageList>
 
-
-    {/* </Box> */}
-{/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}></CardActionArea> */}
   </Container>
   </ThemeProvider>
   );

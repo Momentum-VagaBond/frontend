@@ -6,6 +6,9 @@ import { Container, FormGroup, Button, Box } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
+import { FormHelperText } from '@mui/material';
+import { useValidation } from 'usetheform';
+
 
 export default function NewTrip({token, isLoggedIn}) {
     const [title, setTitle] = useState("");
@@ -20,6 +23,13 @@ export default function NewTrip({token, isLoggedIn}) {
     e.preventDefault();
     setError("");
         console.log(location, title, begin, end);
+
+    // const  = (e) => {
+    //     console.log("validating inputs");
+    // if (e.target.value === "error")
+    //     setError({ ...error, [e.target.name]: true });
+    // else setError({ ...error, [e.target.name]: false });
+    // };
 
     axios
     .post("https://momentum-vagabond.herokuapp.com/api/trips/",
@@ -43,9 +53,9 @@ export default function NewTrip({token, isLoggedIn}) {
     .catch((e) => setError(e.message))
     }
 
+
     if (isSubmit) {
-        console.log("Submitted!")
-    // return <Navigate to='/' />
+        alert('Error! Please fill out all fields')
     }
 
     if (!isLoggedIn) {
@@ -56,7 +66,7 @@ export default function NewTrip({token, isLoggedIn}) {
         <ThemeProvider theme={Theme}>
         <Container
         sx={{
-            marginTop: 0,
+            marginTop: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -76,38 +86,49 @@ export default function NewTrip({token, isLoggedIn}) {
         autoComplete="off"
         >
     {error && <div className="error">{error}</div>}
-    <h1>New Trip!</h1>
     <form onSubmit={handleSubmit}>
 
 
     <FormGroup>
-        <label htmlFor='reg-title'>Title: </label>
-        <TextField id="title"
-            label="Title"
+        <label htmlFor='reg-title'> Title * </label>
+        <TextField
+            placeholder='Title'
+            id="title"
+            // label="Title"
+            name='Title'
             variant="filled"
             className='tripTitle'
             required value={title}
+            helperText="This is required!"
             onChange={(e) => setTitle(e.target.value)}
         />
     </FormGroup>
 
     <FormGroup>
-        <label htmlFor='reg-location'>Location: </label>
-        <TextField id="location"
-            label="Location"
+    <FormHelperText id="component-error-text">Error</FormHelperText>
+        <label htmlFor='reg-location'> Location * </label>
+        <TextField
+            placeholder='Location'
+            id="location"
+            // label="Location"
+            name='Location'
             variant="filled"
             className='tripLocation'
             required value={location}
+            helperText="This is required!"
             onChange={(e) => setLocation(e.target.value)}
         />
     </FormGroup>
     <FormGroup>
-    <label htmlFor='begin'>Start Date: </label>
+    <label htmlFor='begin'> Start Date * </label>
     <TextField
+        placeholder='Start Date'
         id="start-date"
-        label="month-day-year"
+        // label="month-day-year"
         type="date"
+        name='startDate'
         required value={begin}
+        helperText="This is required!"
         onChange={(e) => setBegin(e.target.value)}
         sx={{ width: 220 }}
         InputLabelProps={{
@@ -117,11 +138,13 @@ export default function NewTrip({token, isLoggedIn}) {
     </FormGroup>
 
     <FormGroup>
-    <label htmlFor='begin'>End Date: </label>
+    <label htmlFor='begin'> End Date * </label>
     <TextField
+        placeholder='End Date'
         id="end-date"
-        label="month-day-year"
+        // label="month-day-year"
         type="date"
+        name='endDate'
         required value={end}
         onChange={(e) => setEnd(e.target.value)}
         sx={{ width: 220 }}
@@ -173,7 +196,7 @@ export default function NewTrip({token, isLoggedIn}) {
             borderRadius: 5,
         }}
         >
-    Submit
+    Start Trip
     </Button>
     </form>
     
