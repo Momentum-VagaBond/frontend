@@ -45,8 +45,9 @@ const App = () => {
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
 
-  const getTripId = (pk) =>
-    setTripId(pk)
+  // const getTripIdCurrent = (pk) =>
+  //   setTripIdCurrent(pk)
+   
 
 
   // const updateAvatar = (newImg) =>
@@ -142,7 +143,7 @@ if (status === 401) {
         />
         <Route
           path="/trips"
-          element={<AllTrips token={token} setTripId={setTripId} getTripId={getTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<AllTrips token={token} setTripId={setTripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
         />
       <Route
           path="/trips/:tripId"
@@ -158,7 +159,7 @@ if (status === 401) {
         />
         <Route
           path="/newlog"
-          element={<NewLog loggedUserPk={loggedUserPk} tripId={tripId} setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} />}
+          element={<NewLog loggedUserPk={loggedUserPk} tripId={tripId} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/mytrips"
@@ -166,7 +167,7 @@ if (status === 401) {
         />
         <Route
           path="/logcard"
-          element={<LogCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
+          element={<LogCard setAuth={setAuth} loggedUserPk={loggedUserPk} tripId={tripId} setTripId={setTripId} token={token} isLoggedIn={isLoggedIn} username={username} />}
         />
         {/* <Route path="/upload" element={<ImageUploadForm token={token} />} /> */}
         {/* <Route
@@ -175,11 +176,11 @@ if (status === 401) {
         /> */}
         <Route
           path="/trips/current/user/"
-          element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
+          element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
         />
         <Route
           path="/trip/future/user/"
-          element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} getTripId={getTripId} />}
+          element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
         />
 
         
