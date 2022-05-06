@@ -2,10 +2,17 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {TripCard} from '../components/TripCard';
-import { Container } from "@mui/material";
+import { Container, Card, Box, ImageList, CssBaseline} from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-import { Link as Navigate } from 'react-router-dom'
+import { Link as RouterLink, Navigate } from 'react-router-dom'
+import {NEWTripDetailCard} from '../components/TripCard';
+import { ImageListItem } from "@mui/material";
+// import ListSubheader from "@mui/material/ListSubheader";
+import LaunchTwoToneIcon from '@mui/icons-material/LaunchTwoTone';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import Button from "@mui/material/Button";
+import Flags from './Flags.jpg';
 
 
 
@@ -13,7 +20,7 @@ export default function Home ({username, loggedUserPk, token, map, setTripId, is
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
   // const [tripId, setTripId] = useState([])
-  // const [tripUsername, setTripUsername] = useState([])
+  const [tripLogs, setTripLogs] = useState([])
   const [currentTripTraveler, setCurrentTripTraveler] = useState([])
   const [hasCurrentTrip, setHasCurrentTrip] = useState(false)
   const [pastTripTraveler, setPastTripTraveler] = useState([])   //this gives the 1 Most recent past trip
@@ -37,7 +44,9 @@ export default function Home ({username, loggedUserPk, token, map, setTripId, is
         console.log(response.data[0])
         setCurrentTripTraveler(response.data[0])
         setTripId(response.data[0].pk)
-        console.log(response.data[0].username)
+        setTripLogs(response.data[0].trip_logs)
+        console.log("tripLogs:" + response.data[0].trip_logs)
+        console.log(response.data.username)
         console.log("current trip:" + response.data[0].pk)
 
     })
@@ -86,9 +95,20 @@ return (
   <h1>Welcome, {username}</h1>
   
   </Container>
-<Container component="main" maxWidth="sm">
 
-<h2>Bon Voyage! Current trip to {currentTripTraveler.location} </h2>
+
+{/* <Container component="main" maxWidth="sm"> */}
+{tripLogs.map((log) => (
+  <Box>
+    {log.pk}
+    <Button
+              className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${currentTripTraveler.pk}/${log.pk}`} icon={<LaunchTwoToneIcon sx={{ color: 'white'}}/>}
+              />
+    </Box>
+))}
+
+
+<h2>Bon Voyage! Current trip to {currentTripTraveler.location} </h2> 
   {currentTripTraveler && (
     <TripCard
       username={username}
@@ -104,10 +124,29 @@ return (
       end={currentTripTraveler.end}
       tripId={currentTripTraveler.pk}
     />
-  )}
+  )} 
+<Container component="main"
+    sx={{
+      marginBottom: 10,
+      backgroundColor: '#e9ecef',
+      position: 'absolute',
+    }}
+    >
 
+  <Card
+  sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: 2,
+  }}
+  >
+    {/* <h2>{tripLocation}!</h2> */}
+  </Card>
 
-<h2>Traveler's 1 most Recent past trip {pastTripTraveler.location} </h2>
+  
+
+{/* <h2>Traveler's 1 most Recent past trip {pastTripTraveler.location} </h2>
 {pastTripTraveler && (
     <TripCard
       username={username}
@@ -123,7 +162,7 @@ return (
       end={pastTripTraveler.end}
       tripId={pastTripTraveler.pk}
     />
-)}
+)} */}
 
   {/* <Grid item xs={6} direction="column" key={id}> */}
 

@@ -10,9 +10,9 @@ import Navbar from './components/Navbar';
 import TopBar from './components/TopBar'
 import Header from './assets/Header';
 import Profile from './routes/Profile';
-import { TripDetail } from './routes/TripDetail';
+import TripDetail  from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
-import { TripDetailCard } from './components/TripDetailCard';
+// import { TripDetailCard } from './components/TripDetailCard';
 import MyTrips from './routes/MyTrips';
 import Home from './routes/Home'
 import LogCard from './components/LogCard';
@@ -24,13 +24,8 @@ import MapBox from './components/MapBox';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
-
-
 import AllTrips from './routes/AllTrips';
-
-
 const App = () => {
-  
   //use local storage to keep this token hanging around
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
@@ -41,25 +36,18 @@ const App = () => {
   const [tripId, setTripId] = useLocalStorageState('TripId', '');
   //
   const [status, setStatus] = useState(null);
-
+  // const [logId, setLogId] = useLocalStorageState('LogId', '');
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
-
   // const getTripIdCurrent = (pk) =>
   //   setTripIdCurrent(pk)
-   
-
-
   // const updateAvatar = (newImg) =>
   //   setAvatar(newImg)
-
   const setAuth = (username, token) => {
     setToken(token)
     setUsername(username)
   }
-
 const isLoggedIn = username && token
-
 const style1 = {
   margin: 0,
   top: 'auto',
@@ -71,14 +59,10 @@ const style1 = {
 if (status === 401) {
   setAuth(null, null);
 }
-
   return (
     <ThemeProvider theme={Theme}>
     <div className="App">
-
       {/* <Header /> */}
-      
-
       <Router>
       <TopBar
           isLoggedIn={isLoggedIn}
@@ -86,23 +70,18 @@ if (status === 401) {
           setToken={setToken}
           setUsername={setUsername}
           />
-  
-      
       <Box sx={{ '& > :not(style)': { m: 1 } }}>
       <Fab style={style1} component={Link} to="/newlog" color="secondary" aria-label="edit">
         <EditIcon />
       </Fab>
       </Box>
-
       <Navbar
           isLoggedIn={isLoggedIn}
           token={token}
           setToken={setToken}
           setUsername={setUsername}
           />
-
       <Routes>
-
       <Route
           path="/register"
           element={<Register isLoggedIn={isLoggedIn} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} setAuth={setAuth} username={username} token={token} setToken={setToken}/>}
@@ -119,12 +98,10 @@ if (status === 401) {
           path="/logout"
           element={<Logout setAuth={setAuth} token={token} setLoggedUserPk={setLoggedUserPk} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} />}
         />
-
       {!token ? (
           <></>
         ) : (
           <>
-
         <Route
           path="/geo"
           element={<Geolocate />}
@@ -147,11 +124,11 @@ if (status === 401) {
         />
       <Route
           path="/trips/:tripId"
-          element={<TripDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<TripDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} />}
         />
       <Route
           path="/trips/:tripId/:logId"
-          element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} />}
         />
         <Route
           path="/newtrip"
@@ -182,8 +159,6 @@ if (status === 401) {
           path="/trip/future/user/"
           element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
         />
-
-        
         </>
         )}
         </Routes>
@@ -192,5 +167,4 @@ if (status === 401) {
     </ThemeProvider>
   );
 }
-
 export default App;
