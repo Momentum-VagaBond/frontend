@@ -33,29 +33,6 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
     });
     
 
-
-    //post request 
-//get back location
-//display location
-//the axios requests need to happen within the getLocation
-//need new endpoint
-
-// const ImageUploadForm = ({ token }) => {
-//     const imageFileInput = useRef(null)
-//     const [fileName, setFileName] = useState('No file selected')
-
-    // const handleClick = () => {
-    //   const imageFile = imageFileInput.current.files[0]
-    //   console.log(imageFile)
-    //   axios.post("https://momentum-vagabond.herokuapp.com/auth/users/", imageFile, {
-    //     headers: {
-    //       Authorization: `Token ${token}`,
-    //       'Content-Type': imageFile.type,
-    //       'Content-Disposition': `attachment; filename=${imageFile.name}`,
-    //     },
-    //   })
-    // }
-
     const handleFileName = (e) => {
         const imageFile = imageFileInput.current.files[0]
         console.log(imageFile)
@@ -98,57 +75,6 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
         }
     }, [latitude, longitude])
 
-
-
-    // const handleSubmit = (e) => {
-    // console.log(imageFile)
-    // e.preventDefault();
-    // setError("");
-    //     console.log(location, details, title, latitude, longitude);
-
-    // axios
-    // // .post("https://momentum-vagabond.herokuapp.com/api/users/1/7/log/",
-    // .post(`https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/${tripId}/log/`,
-    // {
-    //     "user_id": `${loggedUserPk}`,
-    //     "trip": `${tripId}`,
-    //     "location": location,
-    //     "title": title,
-    //     "details": details,
-    //     "latitude": latitude,
-    //     "longitude": longitude,
-    // },
-    // {
-    //     headers: {Authorization: `Token ${token}`}
-    // }
-    // )
-
-    // .then(response => {
-    //         console.log(response.data);
-    //         console.log("this should be the pk" + response.data.pk);
-    //         setLogId(response.data.pk)
-    //         setLocation('')
-    //         // setTrip('')
-    //         setDetails('')
-    //         setLatitude('')
-    //         setLongitude('')
-        
-    //         })
-    //     .catch((e) => setError(e.message))
-    //     }
-    //     {
-    //     const imageFile = imageFileInput.current.files[0]
-    //         axios.post(`https://momentum-vagabond.herokuapp.com/api/logs/${logId}/images/`, imageFile, {
-    //     headers: {
-    //         Authorization: `Token ${token}`,
-    //         'Content-Type': imageFile.type,
-    //         'Content-Disposition': `attachment; filename=${imageFile.name}`,
-    //     },   
-    // })
-    // }  
-    // })
-    // .catch((e) => setError(e.message))
-    // }
 
     const handleSubmit = (e) => {
         console.log(imageFile)
