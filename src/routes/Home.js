@@ -9,10 +9,10 @@ import { Link as Navigate } from 'react-router-dom'
 
 
 
-export default function Home ({username, loggedUserPk, token, map, getTripIdCurrent, setTripId, isLoggedIn}) {
+export default function Home ({username, loggedUserPk, token, map, setTripId, isLoggedIn}) {
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
-  // const [tripId, setTripId] = useState("")
+  // const [tripId, setTripId] = useState([])
   // const [tripUsername, setTripUsername] = useState([])
   const [currentTripTraveler, setCurrentTripTraveler] = useState([])
   const [hasCurrentTrip, setHasCurrentTrip] = useState(false)
@@ -37,12 +37,11 @@ export default function Home ({username, loggedUserPk, token, map, getTripIdCurr
         console.log(response.data[0])
         setCurrentTripTraveler(response.data[0])
         setTripId(response.data[0].pk)
-        getTripIdCurrent(response.data[0].pk)
         console.log(response.data[0].username)
         console.log("current trip:" + response.data[0].pk)
 
     })
-  }, [token, setCurrentTripTraveler, getTripIdCurrent, setTripId])
+  }, [token, setCurrentTripTraveler, setTripId])
 
   // if (currentTripTraveler) {
   //   setHasCurrentTrip(true)

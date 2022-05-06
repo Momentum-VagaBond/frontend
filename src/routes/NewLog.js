@@ -12,7 +12,7 @@ import { Navigate } from 'react-router-dom';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 // import { LoginRounded } from '@mui/icons-material';
 
-export default function NewLog({token, loggedUserPk, tripId, tripIdCurrent, isLoggedIn}) {
+export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
     // const [trip, setTrip] = useState("");
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
@@ -25,7 +25,7 @@ export default function NewLog({token, loggedUserPk, tripId, tripIdCurrent, isLo
     const imageFileInput = useRef(null)
     const [fileName, setFileName] = useState('No file selected')
     const [fileType, setFileType] = useState('No file selected')
-    const  [imageFile, setImageFile] = useState(null)
+    const [imageFile, setImageFile] = useState(null)
     const [logId, setLogId] = useState("")
 
     const Input = styled('input')({
@@ -165,7 +165,7 @@ export default function NewLog({token, loggedUserPk, tripId, tripIdCurrent, isLo
                 }}
             >
         <Typography component="h1" variant="h5" >
-            <strong>Create a Log  tripId: {tripId} \ {tripIdCurrent}</strong>
+            <strong>Create a Log {tripId}</strong>
         </Typography>
 
     <Box
