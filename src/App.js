@@ -38,7 +38,7 @@ const App = () => {
   // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
   //
-  const [tripId, setTripId] = useState('');
+  const [tripId, setTripId] = useLocalStorageState('TripId', '');
   //
   const [status, setStatus] = useState(null);
 
