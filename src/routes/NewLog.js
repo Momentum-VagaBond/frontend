@@ -165,7 +165,7 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
                 }}
             >
         <Typography component="h1" variant="h5" >
-            <strong>Create a Log {tripId}</strong>
+            <strong>Create a Log </strong>
         </Typography>
 
     <Box
@@ -192,20 +192,21 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
         <label htmlFor="reg-location">
             {/* <Typography variant="body2">Location: </Typography> */}
             </label>
-        <TextField id="filled-basic"
-            variant="filled"
+        <label htmlFor="reg-title"><Typography variant="body2">Location:</Typography></label>
+        <TextField id="outlined-basic"
+            variant="outlined"
             placeholder= {status} 
             multiline
             className='tripLocation'
             value={location}
-            sx={{mb: 2, mt: 2}}
+            sx={{mb: 2}}
             onChange={(e) => setLocation(e.target.value)}
         />
 
         <label htmlFor="reg-title"><Typography variant="body2">Log Title: (Keep it short & simple!)</Typography></label>
-        <TextField id="filled-basic"
+        <TextField id="outlined-basic"
             // label="Give your post a shortly and simple title"
-            variant="filled"
+            variant="outlined"
             placeholder="Dinner Downtown!"
             multiline
             className='tripTitle'
@@ -216,9 +217,9 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
 
 
         <label htmlFor='reg-details'><Typography variant="body2">Details: (Tell us more!)</Typography>  </label>
-        <TextField id="filled-basic"
+        <TextField id="outlined-basic"
             placeholder="We were so hungry and found this great local BBQ spot..."
-            variant="filled"
+            variant="outlined"
             className='tripDetails'
             multiline
             rows={4}

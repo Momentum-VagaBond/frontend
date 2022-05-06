@@ -2,11 +2,11 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {TripCard} from '../components/TripCard';
-import { Container, Card, ImageList, CssBaseline} from "@mui/material";
+import { Container, Card, Box, ImageList, CssBaseline} from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-import { Link as Navigate, RouterLink } from 'react-router-dom'
-
+import { Link as RouterLink, Navigate } from 'react-router-dom'
+import {NEWTripDetailCard} from '../components/TripCard';
 import { ImageListItem } from "@mui/material";
 // import ListSubheader from "@mui/material/ListSubheader";
 import LaunchTwoToneIcon from '@mui/icons-material/LaunchTwoTone';
@@ -95,7 +95,18 @@ return (
   <h1>Welcome, {username}</h1>
   
   </Container>
+
+
 {/* <Container component="main" maxWidth="sm"> */}
+{tripLogs.map((log) => (
+  <Box>
+    {log.pk}
+    <Button
+              className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${currentTripTraveler.pk}/${log.pk}`} icon={<LaunchTwoToneIcon sx={{ color: 'white'}}/>}
+              />
+    </Box>
+))}
+
 
 <h2>Bon Voyage! Current trip to {currentTripTraveler.location} </h2> 
   {currentTripTraveler && (
@@ -133,47 +144,7 @@ return (
     {/* <h2>{tripLocation}!</h2> */}
   </Card>
 
-  {/* <ImageList
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      flex: 1,
-      width: 'auto',
-      height: 'auto',
-      marginTop: 2,
-      // marginRight: 1,
-      // marginLeft: 1,
-    }}
-    > */}
-    {/* <Card> */}
-  {/* {tripLogs.map((log) => (
-        <ImageListItem key={log.title}
-        sx={{
-          marginBottom: .5,
-          marginTop: .5,
-        }}
-        >
-          <img
-            src={`${Flags}?w=248&fit=crop&auto=format`}
-            srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={log.title}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title={log.title}
-            subtitle={log.author}
-            actionIcon={
-              <Button
-              // className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${params.tripId}/${logId}`} icon={<LaunchTwoToneIcon sx={{ color: 'white'}}/>}
-              />
-                // <LaunchTwoToneIcon />
-              // </Button>
-            }/>
-        </ImageListItem>
-      ))}
-
-    </ImageList> */}
-
+  
 
 {/* <h2>Traveler's 1 most Recent past trip {pastTripTraveler.location} </h2>
 {pastTripTraveler && (
