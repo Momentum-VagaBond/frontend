@@ -37,7 +37,9 @@ const App = () => {
   const [registerSuccess, setRegisterSuccess] = useState("")
   // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
+  //
   const [tripId, setTripId] = useLocalStorageState('TripId', '');
+  //
   const [status, setStatus] = useState(null);
 
   const getLoggedUserPk = (pk) =>
@@ -136,7 +138,7 @@ if (status === 401) {
         />
         <Route
           path="/home"
-          element={<Home token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<Home token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} tripId={tripId} />}
         />
         <Route
           path="/trips"

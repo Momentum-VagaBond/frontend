@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { BottomNavigation, BottomNavigationAction, Paper, Typography, MenuItem } from '@mui/material';
-import { AccountCircleTwoTone,  Add, Edit, AddBoxRounded,  Home, PhotoAlbum, PlusOneRounded } from '@mui/icons-material';
-import EditIcon from '@mui/icons-material/Edit';
-// import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
-// import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
-// import PhotoSizeSelectActualOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActualOutlined'; //memories
-// import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
-// import { Home }from '@mui/icons-material/Home'; //home
+import { Edit, Home } from '@mui/icons-material';
+// import EditIcon from '@mui/icons-material/Edit';
+import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Theme } from '../Theme';
@@ -28,7 +25,7 @@ export default function NavBar() {
     <ThemeProvider theme={Theme}>
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
     <BottomNavigation 
-    // showlabels
+    // showLabels
     color='#FFFFFF'
     sx={{
       width: '100%',
@@ -48,66 +45,15 @@ export default function NavBar() {
       backgroundColor: '#e76f51',
     }} 
     value={value} onChange={handleChange}>
-      
-        <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home sx={{ color: 'white'}} />} />
-     
 
-      {/* <Link to="/newlog"> */}
+        <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home sx={{ color: 'white'}} />} />
+
         <BottomNavigationAction label="New Log" component={Link} to="/newlog" icon={<Edit sx={{ color: 'white'}} />} />
 
-        <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AddBoxRounded sx={{ color: 'white'}} />} />
-      {/* </Link> */}
+        <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AirplanemodeActiveIcon sx={{ color: 'white'}} />} />
 
-      {/* <Link to="/Profile">
-        <BottomNavigationAction label="Profile" icon={<LockOutlinedIcon />} />
-      </Link> */}
+      <BottomNavigationAction label="Profile" component={Link} to="/profile" icon={<PersonIcon sx={{ color: 'white'}} />} />
 
-      
-      <BottomNavigationAction label="Profile" component={Link} to="/profile" icon={<PhotoAlbum sx={{ color: 'white'}} />} />
- 
-          {/* <MenuItem>
-            <Link to="/">
-              <PhotoSizeSelectActualOutlinedIcon fontSize='inherit' />
-                Memories
-            </Link>
-          </MenuItem>
-
-          <MenuItem>
-            <Link to="/newtrip">
-              <FlightTwoToneIcon fontSize='inherit' />
-                Placeholder
-            </Link>
-          </MenuItem>
-
-          <MenuItem>
-            <Link to="/newtrip">
-              <FlightTwoToneIcon fontSize='inherit' />
-                New Trip
-            </Link>
-          </MenuItem>
-
-          <MenuItem>
-            <Link to="/profile">
-              <AccountCircleTwoTone fontSize='inherit' />
-                Profile
-            </Link>
-          </MenuItem> */}
-
-          {/* <MenuItem>
-            <Link to="/logout">
-              <AddLocationAltTwoToneIcon fontSize='inherit' />
-                Logout
-            </Link>
-          </MenuItem> */}
-          
-          
-          {/* <MenuItem>
-            <Link to="/home">
-              <HomeOutlined fontSize='inherit' />
-                  Home
-            </Link>
-          </MenuItem> */}
-          
     </BottomNavigation>
     </Paper>
     </ThemeProvider>
