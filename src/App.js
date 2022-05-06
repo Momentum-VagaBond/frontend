@@ -159,7 +159,7 @@ if (status === 401) {
         />
         <Route
           path="/newlog"
-          element={<NewLog loggedUserPk={loggedUserPk} tripId={tripId} token={token} tripIdCurrent={tripIdCurrent} isLoggedIn={isLoggedIn} />}
+          element={<NewLog loggedUserPk={loggedUserPk} tripId={tripId} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/mytrips"
