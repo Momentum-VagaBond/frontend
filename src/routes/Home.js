@@ -9,12 +9,14 @@ import { Link as Navigate } from 'react-router-dom'
 
 
 
-export default function Home ({username, loggedUserPk, token, map, getTripId, isLoggedIn}) {
+export default function Home ({username, loggedUserPk, token, map, getTripIdCurrent, setTripId, isLoggedIn}) {
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
-  const [tripId, setTripId] = useState([])
+  // const [tripId, setTripId] = useState("")
   // const [tripUsername, setTripUsername] = useState([])
   const [currentTripTraveler, setCurrentTripTraveler] = useState([])
+  const [hasCurrentTrip, setHasCurrentTrip] = useState(false)
+  const [pastTripTraveler, setPastTripTraveler] = useState([])   //this gives the 1 Most recent past trip
   // const [showMyTrips, setShowMyTrips] = useState(false)
   // const [showFollowing, setShowFollowing] = useState(false)
   // const [showFollowingTrips, setShowFollowingTrips] = useState(false)
@@ -24,25 +26,59 @@ export default function Home ({username, loggedUserPk, token, map, getTripId, is
 
 
 
+  //Getting current trip if one exists
+
   useEffect(() => {
     axios
     .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
         {headers: {Authorization: `Token ${token}`}
     })
     .then((response) => {
-        console.log(response.data)
+        console.log(response.data[0])
         setCurrentTripTraveler(response.data[0])
         setTripId(response.data[0].pk)
+        getTripIdCurrent(response.data[0].pk)
         console.log(response.data[0].username)
         console.log("current trip:" + response.data[0].pk)
 
     })
-  }, [token, setCurrentTripTraveler, setTripId])
+  }, [token, setCurrentTripTraveler, getTripIdCurrent, setTripId])
+
+  // if (currentTripTraveler) {
+  //   setHasCurrentTrip(true)
+  // }
+
+  // if (!currentTripTraveler) {
+  //   setHasCurrentTrip(false)
+  // }
+
+
+    //Getting Most recent past trip if one exists
+
+  useEffect(() => {
+    if (!currentTripTraveler) {
+    axios
+    .get("https://momentum-vagabond.herokuapp.com/api/trips/past/user/",
+        {headers: {Authorization: `Token ${token}`}
+    })
+    .then((response) => {
+        // console.log(response.data)
+
+        setPastTripTraveler(response.data[0])
+        setTripId(response.data[0].pk)
+        console.log(response.data[0].username)
+        console.log("most recent past trip:" + response.data[0].pk)
+
+    })
+  }
+  }, [token, setPastTripTraveler, pastTripTraveler, currentTripTraveler, setTripId])
+
 
   if (!isLoggedIn) {
     return <Navigate to="/login" />
 } 
   
+
 
 return (
   <ThemeProvider theme={Theme}>
@@ -51,14 +87,9 @@ return (
   <h1>Welcome, {username}</h1>
   
   </Container>
-
-
 <Container component="main" maxWidth="sm">
 
-<h2>Bon Voyage!</h2>
-
-
-  {/* <Grid item xs={6} direction="column" key={id}> */}
+<h2>Bon Voyage! Current trip to {currentTripTraveler.location} </h2>
   {currentTripTraveler && (
     <TripCard
       username={username}
@@ -74,8 +105,28 @@ return (
       end={currentTripTraveler.end}
       tripId={currentTripTraveler.pk}
     />
-    // </Grid>
-    )}
+  )}
+
+
+<h2>Traveler's 1 most Recent past trip {pastTripTraveler.location} </h2>
+{pastTripTraveler && (
+    <TripCard
+      username={username}
+      key={pastTripTraveler.pk}
+      title={pastTripTraveler.title}
+      location={pastTripTraveler.location}
+      // duration={trip.duration}
+      trip_user={pastTripTraveler.user}
+      trip_username={pastTripTraveler.username}
+      trip_user_first={pastTripTraveler.user_first_name}
+      trip_user_last={pastTripTraveler.user_last_name}
+      begin={pastTripTraveler.begin}
+      end={pastTripTraveler.end}
+      tripId={pastTripTraveler.pk}
+    />
+)}
+
+  {/* <Grid item xs={6} direction="column" key={id}> */}
 
      {/* {userTripNumber === 0 && (
 pm {tripId}

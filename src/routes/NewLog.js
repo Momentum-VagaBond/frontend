@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
-import { Card, Grid, CssBaseline, FormControlLabel, Paper, Stack, IconButton, Button, FormGroup, Box, TextField, Container, Typography,  } from '@mui/material';
-import {Geolocate} from "../components/Geolocate";
+import { CssBaseline, Paper, Stack, Grid, IconButton, Button, FormGroup, Box, TextField, Container, Typography,  } from '@mui/material';
+// import {Geolocate} from "../components/Geolocate";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { styled } from '@mui/material/styles';
 import MapBox from '../components/MapBox';
@@ -10,9 +10,9 @@ import { ThemeProvider } from 'styled-components';
 import { Navigate } from 'react-router-dom';
 
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
-import { LoginRounded } from '@mui/icons-material';
+// import { LoginRounded } from '@mui/icons-material';
 
-export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
+export default function NewLog({token, loggedUserPk, tripId, tripIdCurrent, isLoggedIn}) {
     // const [trip, setTrip] = useState("");
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
@@ -165,7 +165,7 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
                 }}
             >
         <Typography component="h1" variant="h5" >
-            <strong>Create a Log</strong>
+            <strong>Create a Log  tripId: {tripId} \ {tripIdCurrent}</strong>
         </Typography>
 
     <Box
