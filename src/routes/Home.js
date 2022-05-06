@@ -78,7 +78,7 @@ return (
     )}
 
      {/* {userTripNumber === 0 && (
-{tripId}
+pm {tripId}
     {/* {userTripNumber === 0 && (
     <h1>No trips yet! Ready to start one?</h1>
   */}

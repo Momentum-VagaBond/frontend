@@ -35,6 +35,7 @@ const LogDetail = ({token, isLoggedIn}) => {
       .then((res) => {
         setThisLog(res.data)
         setComments(res.data.log_comments)
+        console.log(res.data)
         console.log("log detail request fired")
         console.log(res.data.log_comments)
         console.log("trying to set logId: " + logId2)
