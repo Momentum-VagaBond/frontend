@@ -23,7 +23,7 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
     const [isSubmit, setSubmit] = useState(false);
     const imageFileInput = useRef(null)
     const [fileName, setFileName] = useState('No file selected')
-    const  [imageFile, setImageFile] = useState(null)
+    const [imageFile, setImageFile] = useState(null)
     const [logId, setLogId] = useState([])
 
     const Input = styled('input')({

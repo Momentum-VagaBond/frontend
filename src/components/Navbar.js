@@ -31,12 +31,13 @@ export default function NavBar() {
     // showlabels
     color='#FFFFFF'
     sx={{
-      width: '500',
+      width: '100%',
       // width: 'auto'
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'baseline',
       marginBottom: 0,
+      marginTop: 10,
       position: 'fixed',
       fontWeight: 'medium',
       paddingBottom: 1,
