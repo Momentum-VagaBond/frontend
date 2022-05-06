@@ -1,19 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
-import { CssBaseline, Paper, Stack, Grid, IconButton, Button, FormGroup, Box, TextField, Container, Typography,  } from '@mui/material';
-// import {Geolocate} from "../components/Geolocate";
+import { Card, Grid, CssBaseline, FormControlLabel, Paper, Stack, IconButton, Button, FormGroup, Box, TextField, Container, Typography,  } from '@mui/material';
+import {Geolocate} from "../components/Geolocate";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { styled } from '@mui/material/styles';
 import MapBox from '../components/MapBox';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import { Navigate } from 'react-router-dom';
-
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
-// import { LoginRounded } from '@mui/icons-material';
 
 export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
-    // const [trip, setTrip] = useState("");
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
     const [latitude, setLatitude] = useState("");
@@ -80,7 +77,7 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
         console.log(imageFile)
         e.preventDefault()
         setError('')
-        console.log(location, details, title, latitude, longitude, fileType, fileName)
+        console.log(location, details, title, latitude, longitude, fileType, fileName, logId)
 
         axios
         .post(
@@ -102,11 +99,12 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
             console.log(response.data)
             console.log('this should be the pk' + response.data.pk)
             setLogId(response.data.pk)
-            // console.log("logId" + logId)
+            console.log("logId" + logId)
             setLocation('')
             setDetails('')
             setLatitude('')
             setLongitude('')
+            setSubmit(logId)
             // const imageFile = imageFileInput.current.files[0]
             // console.log(imageFile)
             // const logId2 = (response.data.pk)
@@ -126,6 +124,7 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
             )
             .then((response) => {
                 console.log(response.data)
+                console.log(logId)
             })
             .catch((e) => setError(e.message))
             }, [token, imageFile, logId, fileName, fileType])
@@ -136,7 +135,9 @@ export default function NewLog({token, loggedUserPk, tripId, isLoggedIn}) {
     //     console.log("Not submitted!")
     // }
     if (isSubmit) {
+        alert("Log submitted!")
         console.log("Submitted!")
+        console.log(logId)
     // return <Navigate to='/' />
     }
 

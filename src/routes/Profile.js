@@ -110,8 +110,8 @@ return (
     </h1>
     </Box>
 
-  <Grid container columnSpacing={{ xs: 1}}>
-    <Grid item s={3}>
+  <Grid container columnSpacing={{ s: 3 }}>
+    {/* <Grid item s={3}> */}
       <h3>CurrentTripCard</h3>
       {trip.map((trip, pk) => {
         return (
@@ -126,10 +126,10 @@ return (
           />
         )}
       )}
-    </Grid>
-    </Grid>
+    {/* </Grid> */}
+    {/* </Grid> */}
 
-    <Grid item s={3}>
+    {/* <Grid item s={3}> */}
       <h3>FutureTripCard</h3>
       {trip.map((trip, pk) => {
         return (
@@ -144,9 +144,9 @@ return (
           />
         )}
       )}
-    </Grid>
+    {/* </Grid> */}
 
-    <Grid item s={3}>
+    {/* <Grid item s={3}> */}
     <h3>PastTripCard</h3>
       {trips.map((trip, pk) => {
         return (

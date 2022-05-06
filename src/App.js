@@ -41,6 +41,7 @@ const App = () => {
   const [tripId, setTripId] = useLocalStorageState('TripId', '');
   //
   const [status, setStatus] = useState(null);
+  // const [logId, setLogId] = useLocalStorageState('LogId', '');
 
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
@@ -147,11 +148,11 @@ if (status === 401) {
         />
       <Route
           path="/trips/:tripId"
-          element={<TripDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<TripDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} />}
         />
       <Route
           path="/trips/:tripId/:logId"
-          element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username}/>}
+          element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} />}
         />
         <Route
           path="/newtrip"

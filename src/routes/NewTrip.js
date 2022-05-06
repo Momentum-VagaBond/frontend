@@ -55,7 +55,7 @@ export default function NewTrip({token, isLoggedIn}) {
 
 
     if (isSubmit) {
-        alert('Error! Please fill out all fields')
+        alert('New Trip Submitted!')
     }
 
     if (!isLoggedIn) {

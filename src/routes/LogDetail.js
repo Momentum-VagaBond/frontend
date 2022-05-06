@@ -15,8 +15,8 @@ import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
 
-const LogDetail = ({token, isLoggedIn}) => {
-
+const LogDetail = ({token, isLoggedIn, date_logged}) => {
+  // const [logId, setLogId] = useState('')
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
   const [commentPosted, setCommentPosted] = ''
@@ -76,7 +76,7 @@ const LogDetail = ({token, isLoggedIn}) => {
     <Container>
     {thisLog && (
     <LogCard
-      date_logged={thisLog.date_logged}
+      date_logged={date_logged}
       detail_text={thisLog.details}
       latitude={thisLog.latitude}
       longitude={thisLog.longitude}
