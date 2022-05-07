@@ -15,7 +15,7 @@ import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
 
-const LogDetail = ({token, isLoggedIn, date_logged}) => {
+const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) => {
   // const [logId, setLogId] = useState('')
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
@@ -35,6 +35,7 @@ const LogDetail = ({token, isLoggedIn, date_logged}) => {
       .then((res) => {
         setThisLog(res.data)
         setComments(res.data.log_comments)
+        setLogSuccess(false)
         console.log(res.data)
         console.log("log detail request fired")
         console.log(res.data.log_comments)
