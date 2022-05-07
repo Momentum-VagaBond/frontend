@@ -87,10 +87,15 @@ export default function Home ({username, loggedUserPk, token, map, setTripId, tr
 return (
   <ThemeProvider theme={Theme}>
   <>
-<Container >
+<Container>
   <h1>Welcome, {username}</h1>
   </Container>
 
+{/* <Box
+sx={{
+  position: 'absolute',
+}}
+> */}
   {tripLogs.map((log) => 
     <CardActionArea component={RouterLink} to={`/trips/${tripId}/${log.pk}`}>
     <NEWTripDetailCard
@@ -108,7 +113,7 @@ return (
     />
     </CardActionArea>
     )}
-
+{/* </Box> */}
 
 {/* <h2>Bon Voyage! Current trip to {currentTripTraveler.location} </h2> 
   {currentTripTraveler && (
