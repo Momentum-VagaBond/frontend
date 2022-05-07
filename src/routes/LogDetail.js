@@ -52,30 +52,26 @@ const LogDetail = ({token, isLoggedIn, date_logged}) => {
 
   return (
   <ThemeProvider theme={Theme}>
+  <CssBaseline />
+
     <Container component="main"
       sx={{
-        backgroundColor:'#e9ecef',
-    }}
+        width: '100%',
+        maxWidth: '100%',
+        marginTop: 2,
+        // display: 'flex',
+        // flex: 1,
+        // flexDirection: 'column',
+        // alignContent: 'center',
+        // justifyContent: 'center',
+      }}
     >
-  <CssBaseline />
-    <Box
-      sx={{
-          marginTop: 0,
-          marginBottom: 0,
-          paddingTop: 8,
-          display: 'grid',
-          flexDirection: 'column',
-          alignItems: 'center',
-          borderRadius: 5,
-        }}
-    >This is the Log Detail page. 
-
-    </Box>
-{/* Log Detail Card: */}
-
-    <Container>
+    {/* <Container
+    > */}
     {thisLog && (
     <LogCard
+    sx={{
+    }}
       date_logged={date_logged}
       detail_text={thisLog.details}
       latitude={thisLog.latitude}
@@ -86,31 +82,26 @@ const LogDetail = ({token, isLoggedIn, date_logged}) => {
       log_user={thisLog.user}
     />
     )}
-    </Container>
-
-    {/* <Card>
-      <Typography>
-        <h2>{thisLog.details}</h2>
-      </Typography>
-    </Card> */}
-
-{/* Post a comment */}
-  <Container
-        sx={{
-          marginTop: 40,
-        }}
-  >
+    {/* </Container> */}
 
   <Box sx={{
-    border: 1,
-    margin: 0,
-    padding: 0,
-    borderRadius: 5,
-    boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-    backgroundColor: 'white',
+    // border: 1,
+    // marginBottom: 5,
+    // margin: 0,
+    // padding: 0,
+    // boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
+   // backgroundColor: 'white',
+    // width: '75%',
+    // display: 'flex',
+    // flex: 1,
+    // flexDirection: 'column',
+    // alignContent: 'center',
+    // justifyContent: 'center',
   }}
   >
     <CommentBox
+    sx={{
+    }}
         token={token}
         logId={thisLog.pk}
         commentPosted={commentPosted}
@@ -123,47 +114,33 @@ const LogDetail = ({token, isLoggedIn, date_logged}) => {
   <Container className="responseBox"
     sx={{
       position: 'relative',
+      marginBottom: 3,
+      width: "85%",
     }}
   >
     {comments.map((comment, idx) =>
     <Card
     sx={{
-      margin: 2,
-      // backgroundColor: '#424b54',
-    }}
-    >
-    <Box sx={{
-      margin: 1,
+      marginTop: 1,
+      // margin: 1,
       border: 1,
-      borderRadius: 5,
+      width: '100%',
+      height: 150,
+      // borderRadius: 5,
       paddingLeft: 3,
       backgroundColor: 'white',
-      '&:hover': {
-        transform: 'translateY(-3px)',
-        boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
-        }
     }}
       key={idx}>
-      <h2>{comment.comments}</h2>
-      <h3>{comment.user}</h3>
+      <h3>{comment.comments}</h3>
+      <h4>{comment.user}</h4>
       <Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment>
-    </Box>
     </Card>
     )}
     </Container>
-    </Container>
+    {/* </Container> */}
   </Container>
   </ThemeProvider>
   )
 }
 
 export default LogDetail;
-
-{/* <Grid container wrap="nowrap" spacing={2}>
-<Grid item>
-  <Avatar>W</Avatar>
-</Grid>
-<Grid item xs zeroMinWidth>
-  <Typography noWrap>{message}</Typography>
-</Grid>
-</Grid> */}
