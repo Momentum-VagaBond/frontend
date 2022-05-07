@@ -4,16 +4,14 @@ import { useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { TripDetailCard } from "../components/TripDetailCard";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "../Theme";
-import {TripCard} from '../components/TripCard';
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { Link as RouterLink } from 'react-router-dom'
 
 
-const TripDetail = ({token, pk, tripId }) => {
+const TripDetail = ({token, pk, tripId, details, location, title, log }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
@@ -77,13 +75,14 @@ const TripDetail = ({token, pk, tripId }) => {
       paddingLeft: 4,
     }}
       logId={log.pk}
-      details={log.details}
-      location={log.location}
-      title={log.title}
+      details={details}
+      location={location}
+      title={title}
       date={log.date_logged}
     />
     </CardActionArea>
     ))}
+
 
   </Container>
   </ThemeProvider>

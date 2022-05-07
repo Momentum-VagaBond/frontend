@@ -117,7 +117,6 @@ return (
       key={currentTripTraveler.pk}
       title={currentTripTraveler.title}
       location={currentTripTraveler.location}
-      // duration={trip.duration}
       trip_user={currentTripTraveler.user}
       trip_username={currentTripTraveler.username}
       trip_user_first={currentTripTraveler.user_first_name}

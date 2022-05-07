@@ -19,6 +19,10 @@ export default function NewTrip({token, isLoggedIn}) {
     const [isSubmit, setSubmit] = useState(false);
 
 
+    // const defaultFields = { Title: '', Location: '', startDate: '', endDate: '' }
+
+    // const [fields, setFields] = useState(defaultFields)
+
     const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
@@ -49,14 +53,15 @@ export default function NewTrip({token, isLoggedIn}) {
     setLocation('')
     setBegin('')
     setEnd('')
+    // setFields(defaultFields)
+    alert("form submitted!")
     })
     .catch((e) => setError(e.message))
     }
 
-
-    if (isSubmit) {
-        alert('Error! Please fill out all fields')
-    }
+    // if (fields.length < 0) {
+    //     return alert("field is required");
+    // }
 
     if (!isLoggedIn) {
         return <Navigate to="/login" />
