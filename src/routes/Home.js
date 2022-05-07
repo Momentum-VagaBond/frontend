@@ -6,20 +6,18 @@ import { Container, Card, Box, ImageList, CssBaseline} from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import { Link as RouterLink, Navigate } from 'react-router-dom'
-import {NEWTripDetailCard} from '../components/TripCard';
+import {NEWTripDetailCard} from '../components/NEWTripDetailCard';
 import { ImageListItem } from "@mui/material";
-// import ListSubheader from "@mui/material/ListSubheader";
 import LaunchTwoToneIcon from '@mui/icons-material/LaunchTwoTone';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Button from "@mui/material/Button";
-import Flags from './Flags.jpg';
+import { CardActionArea } from "@mui/material";
+import { useParams } from 'react-router-dom'
 
 
 
-export default function Home ({username, loggedUserPk, token, map, setTripId, isLoggedIn}) {
-  // const [trips, setTrips] = useState([]);
-  // const [usernamePk, setUsernamePk] = useState([]);
-  // const [tripId, setTripId] = useState([])
+
+export default function Home ({username, tripId, loggedUserPk, token, map, setTripId, isLoggedIn}) {
+
   const [tripLogs, setTripLogs] = useState([])
   const [currentTripTraveler, setCurrentTripTraveler] = useState([])
   const [hasCurrentTrip, setHasCurrentTrip] = useState(false)
@@ -31,7 +29,7 @@ export default function Home ({username, loggedUserPk, token, map, setTripId, is
   // let[userFollowNumber, setUserFollowNumber] = useState(0)
   // const [alignment, setAlignment] = React.useState('left');
 
-
+  const params = useParams()
 
   //Getting current trip if one exists
 
@@ -91,21 +89,47 @@ export default function Home ({username, loggedUserPk, token, map, setTripId, is
 return (
   <ThemeProvider theme={Theme}>
   <>
-<Container >
-  <h1>Welcome, {username}</h1>
-  
+  <Container >
+    <h1>Welcome, {username}</h1>
   </Container>
 
 
 {/* <Container component="main" maxWidth="sm"> */}
-{tripLogs.map((log) => (
+{/* {tripLogs.map((log) => (
   <Box>
     {log.pk}
+    {log.title}
+    {log.details}
     <Button
-              className='TripDetailButton' size="xs" component={RouterLink} to={`/trips/${currentTripTraveler.pk}/${log.pk}`} icon={<LaunchTwoToneIcon sx={{ color: 'white'}}/>}
-              />
+      className='TripDetailButton'
+      size="xs"
+      component={RouterLink}
+      to={`/trips/${currentTripTraveler.pk}/${log.pk}`}
+      icon={<LaunchTwoToneIcon
+      sx={{ color: 'white'}}/>}
+    />
     </Box>
-))}
+))} */}
+
+
+<Container>
+{tripLogs.map((log) => 
+    <CardActionArea component={RouterLink} to={`/trips/${tripId}/${log.pk}`}>
+    <TripCard
+    key={log.pk}
+    sx={{
+      marginTop: 8,
+      paddingLeft: 4,
+    }}
+      logId={log.pk}
+      details={log.details}
+      location={log.location}
+      title={log.title}
+      date={log.date_logged}
+    />
+    </CardActionArea>
+    )}
+</Container>
 
 
 <h2>Bon Voyage! Current trip to {currentTripTraveler.location} </h2> 
@@ -115,7 +139,6 @@ return (
       key={currentTripTraveler.pk}
       title={currentTripTraveler.title}
       location={currentTripTraveler.location}
-      // duration={trip.duration}
       trip_user={currentTripTraveler.user}
       trip_username={currentTripTraveler.username}
       trip_user_first={currentTripTraveler.user_first_name}
