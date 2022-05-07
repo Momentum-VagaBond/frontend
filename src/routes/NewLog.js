@@ -83,8 +83,6 @@ export default function NewLog({token, loggedUserPk, tripId, setLogSuccess, logS
         .post(
             `https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/${tripId}/log/`,
             {
-                user_id: loggedUserPk,
-                trip: tripId,
                 location: location,
                 title: title,
                 details: details,
