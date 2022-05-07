@@ -8,23 +8,26 @@ import NewTrip from './routes/NewTrip';
 import NewLog from './routes/NewLog';
 import Navbar from './components/Navbar';
 import TopBar from './components/TopBar'
-import Header from './assets/Header';
 import Profile from './routes/Profile';
 import TripDetail  from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
-// import { TripDetailCard } from './components/TripDetailCard';
 import MyTrips from './routes/MyTrips';
-import Home from './routes/Home'
+import Home from './routes/Home';
+import Contacts from './routes/Contacts';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
 import { ThemeProvider } from '@mui/material/styles';
-import { Theme } from './Theme'
+import { Theme } from './Theme';
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import AllTrips from './routes/AllTrips';
+
+
+
+
 const App = () => {
   //use local storage to keep this token hanging around
   const [token, setToken] = useLocalStorageState('Token', '')
@@ -147,6 +150,10 @@ if (status === 401) {
         <Route
           path="/logcard"
           element={<LogCard setAuth={setAuth} loggedUserPk={loggedUserPk} tripId={tripId} setTripId={setTripId} token={token} isLoggedIn={isLoggedIn} username={username} />}
+        />
+        <Route
+          path="/contacts"
+          element={<Contacts setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} loggedUserPk={loggedUserPk} />}
         />
         {/* <Route path="/upload" element={<ImageUploadForm token={token} />} /> */}
         {/* <Route

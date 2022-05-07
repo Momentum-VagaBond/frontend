@@ -10,11 +10,12 @@ import logo from './VBLogo.png';
 import { CurrentTripCard } from '../components/CurrentTripCard';
 import { FutureTripCard } from '../components/FutureTripCard';
 import { PastTripCard } from '../components/PastTripCard';
+import { ContactsCard } from '../components/ContactsCard';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
 
-const Profile = ({username, token, loggedUserPk, id, bio, isLoggedIn }) => {
+const Profile = ({username, token, loggedUserPk, contact, firstName, lastName, email, id, bio, isLoggedIn }) => {
   const [trips, setTrips] = useState([]);
   const [trip, setTrip] = useState([]);
   const [begin, setBegin] = useState([]);
@@ -80,6 +81,12 @@ const Profile = ({username, token, loggedUserPk, id, bio, isLoggedIn }) => {
 
 return (
   <ThemeProvider theme={Theme}>
+
+    <Container
+    sx={{
+      position: 'absolute'
+    }}
+    >
 
   <Card className='ProfileCard'>
     <CardMedia className='ProfileCardMedia'>
@@ -176,6 +183,7 @@ return (
       )}
       </Box>
 
+  </Container>
   </Container>
 </ThemeProvider>
   )

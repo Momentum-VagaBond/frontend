@@ -6,8 +6,6 @@ import { Container, FormGroup, Button, Box } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-import { FormHelperText } from '@mui/material';
-import { useValidation } from 'usetheform';
 
 
 export default function NewTrip({token, isLoggedIn}) {
@@ -79,7 +77,6 @@ export default function NewTrip({token, isLoggedIn}) {
             position: 'absolute',
         }}>
         <Box
-
         sx={{
             paddingRight: 2,
             paddingBottom: 6,
@@ -110,7 +107,6 @@ export default function NewTrip({token, isLoggedIn}) {
     </FormGroup>
 
     <FormGroup>
-    <FormHelperText id="component-error-text">Error</FormHelperText>
         <label htmlFor='reg-location'> Location * </label>
         <TextField
             placeholder='Location'
@@ -124,12 +120,12 @@ export default function NewTrip({token, isLoggedIn}) {
             onChange={(e) => setLocation(e.target.value)}
         />
     </FormGroup>
+
     <FormGroup>
     <label htmlFor='begin'> Start Date * </label>
     <TextField
         placeholder='Start Date'
         id="start-date"
-        // label="month-day-year"
         type="date"
         name='startDate'
         required value={begin}
@@ -147,7 +143,6 @@ export default function NewTrip({token, isLoggedIn}) {
     <TextField
         placeholder='End Date'
         id="end-date"
-        // label="month-day-year"
         type="date"
         name='endDate'
         required value={end}
@@ -158,38 +153,6 @@ export default function NewTrip({token, isLoggedIn}) {
         }}
     />
     </FormGroup>
-
-    {/* <FormGroup>
-        <label htmlFor='begin'>Begin: </label>
-        <TextField id="filled-basic"
-            label="year-month-day"
-            variant="filled"
-            className='tripBegin'
-            required value={begin}
-            onChange={(e) => setBegin(e.target.value)}
-        />
-    </FormGroup> */}
-    {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DatePicker
-        label="Basic example"
-        value={value}
-        onChange={(newValue) => {
-          setValue(newValue);
-        }}
-        renderInput={(params) => <TextField {...params} />}
-      />
-    </LocalizationProvider> */}
-{/* 
-    <FormGroup>
-        <label htmlFor='end'>End: </label>
-        <TextField id="filled-basic"
-            label="year-month-day"
-            variant="filled"
-            className='tripEnd'
-            required value={end}
-            onChange={(e) => setEnd(e.target.value)}
-        />
-    </FormGroup> */}
 
 <Button 
         type='submit'
