@@ -9,9 +9,10 @@ import { Theme } from "../Theme";
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { Link as RouterLink } from 'react-router-dom'
+import {Alert, AlertTitle } from '@mui/material';
 
 
-const TripDetail = ({token, pk, tripId, details, location, title, log }) => {
+const TripDetail = ({token, pk, tripId, details, logSuccess, setLogSuccess, location, title, log }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
@@ -41,19 +42,23 @@ const TripDetail = ({token, pk, tripId, details, location, title, log }) => {
         console.log("trip detail request fired")
         console.log("trip logs" + res.data.trip_logs)
         console.log(res.data)
-        // console.log(username)
+        setLogSuccess(false)
       })
-  }, [params.tripId, token])
+  }, [params.tripId, setLogSuccess, token])
 
 
   return (
     <ThemeProvider theme={Theme}>
-<Container component="main"
+<Container component="main" 
   sx={{
     marginBottom: 10,
   }}
   >
   <CssBaseline />
+  {logSuccess && 
+        <Alert severity="success" autoHideDuration={100} mt={1}>
+          <AlertTitle>New Log Created!</AlertTitle>
+        </Alert>}
     <Box
       sx={{
           marginTop: 5,
@@ -67,7 +72,7 @@ const TripDetail = ({token, pk, tripId, details, location, title, log }) => {
     </Box>
     
     {logs.map((log) => (
-    <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
+    <CardActionArea  key={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
     <NEWTripDetailCard
     key={log.pk}
     sx={{
@@ -75,9 +80,9 @@ const TripDetail = ({token, pk, tripId, details, location, title, log }) => {
       paddingLeft: 4,
     }}
       logId={log.pk}
-      details={details}
-      location={location}
-      title={title}
+      details={log.details}
+      location={log.location}
+      title={log.title}
       date={log.date_logged}
     />
     </CardActionArea>
