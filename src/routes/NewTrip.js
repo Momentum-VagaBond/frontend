@@ -13,6 +13,7 @@ export default function NewTrip({token, isLoggedIn}) {
     const [location, setLocation] = useState("");
     const [begin, setBegin] = useState("");
     const [end, setEnd] = useState("");
+    const [subscribers, setSubscribers] = useState([]);
     const [error, setError] = useState("");
     const [isSubmit, setSubmit] = useState(false);
 
@@ -26,13 +27,6 @@ export default function NewTrip({token, isLoggedIn}) {
     setError("");
         console.log(location, title, begin, end);
 
-    // const  = (e) => {
-    //     console.log("validating inputs");
-    // if (e.target.value === "error")
-    //     setError({ ...error, [e.target.name]: true });
-    // else setError({ ...error, [e.target.name]: false });
-    // };
-
     axios
     .post("https://momentum-vagabond.herokuapp.com/api/trips/",
     {
@@ -40,26 +34,24 @@ export default function NewTrip({token, isLoggedIn}) {
         "location": location,
         "begin": begin,
         "end": end,
+        "subscribers": subscribers,
     },
     {
         headers: {Authorization: `Token ${token}`}
     }
     )
-    .then(response => {
+    .then((response) => {
         console.log(response.data);
     setTitle('')
     setLocation('')
     setBegin('')
     setEnd('')
-    // setFields(defaultFields)
+    setSubscribers([])
     alert("form submitted!")
     })
     .catch((e) => setError(e.message))
     }
-
-    // if (fields.length < 0) {
-    //     return alert("field is required");
-    // }
+    
 
     if (!isLoggedIn) {
         return <Navigate to="/login" />

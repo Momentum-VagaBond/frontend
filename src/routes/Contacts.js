@@ -10,8 +10,8 @@ import { ContactsCard } from '../components/ContactsCard';
 
 
 export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
-    const [contacts, setContacts] = useState([])
-    const [contact, setContact] = useState([])
+    const [subscribers, setSubscribers] = useState([])
+    const [subscriber, setSubscriber] = useState([])
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -36,7 +36,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     )
     .then(response => {
         console.log(response.data);
-    setContact(response.data)
+    setSubscriber(response.data)
     setFirstName('')
     setLastName('')
     setEmail('')
@@ -53,10 +53,10 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         })
         .then((response) => {
             console.log(response.data)
-            setContacts(response.data)
+            setSubscribers(response.data)
 
         })
-    }, [token, loggedUserPk, setContacts])
+    }, [token, loggedUserPk, setSubscribers])
 
 
     if (!isLoggedIn) {
@@ -85,7 +85,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     noValidate
     autoComplete="off"
     >
-        Add Contacts
+        Add Subscriber
     {error && <div className="error">{error}</div>}
     <form onSubmit={handleSubmit}>
 
@@ -159,14 +159,14 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         marginBottom: 10,
     }}
     >
-    <h3>Contacts</h3>
-    {contacts.map((contact, pk) => {
+    <h3>Subscribers</h3>
+    {subscribers.map((subscriber, pk) => {
         return(
         <ContactsCard
             key={pk}
-            firstName={contact.first_name}
-            lastName={contact.last_name}
-            email={contact.email}
+            firstName={subscriber.first_name}
+            lastName={subscriber.last_name}
+            email={subscriber.email}
         />
     )}
     )}

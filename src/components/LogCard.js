@@ -12,10 +12,25 @@ import { Theme } from '../Theme';
 
 
 
-const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
+const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) => (
 
   <ThemeProvider theme={Theme}>
   <CssBaseline />
+
+  {/* <Card
+    sx={{
+      marginBottom: 2,
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+      width: '40%',
+      height: 'auto',
+      marginTop: 0,
+      alignContent: 'center',
+    }}
+    > */}
+      <h3>{title}</h3>
+    {/* </Card> */}
 
   <Container component="main"
     sx={{
@@ -31,6 +46,7 @@ const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
       backgroundColor: 'white',
     }}
     >
+
 
   <ImageList
     sx={{
@@ -73,8 +89,8 @@ const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
     // alignItems: 'center',
   }}
   >
-    <h3>{detail_text}</h3>
-    <p>{log_user}'s' log #{logPk} at {location}!</p>
+    {/* <h3>{title} at {location}</h3> */}
+    <p>{detail_text} at {location}!</p>
     <p>{date_logged}</p>
   </Typography>
   </Card>

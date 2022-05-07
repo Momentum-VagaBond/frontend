@@ -24,6 +24,7 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import AllTrips from './routes/AllTrips';
+import Stepper from './components/Stepper';
 
 
 
@@ -167,6 +168,10 @@ if (status === 401) {
         <Route
           path="/trip/future/user/"
           element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
+        />
+        <Route
+          path="/stepper"
+          element={<Stepper setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
         />
         </>
         )}

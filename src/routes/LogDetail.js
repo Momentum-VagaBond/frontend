@@ -75,6 +75,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
     }}
       date_logged={date_logged}
       detail_text={thisLog.details}
+      title={thisLog.title}
       latitude={thisLog.latitude}
       longitude={thisLog.longitude}
       location={thisLog.location}

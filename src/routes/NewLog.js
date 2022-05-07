@@ -99,6 +99,7 @@ export default function NewLog({token, loggedUserPk, tripId, setLogSuccess, logS
             setLogId(response.data.pk)
             console.log("logId" + logId)
             setLocation('')
+            setTitle('')
             setDetails('')
             setLatitude('')
             setLongitude('')
