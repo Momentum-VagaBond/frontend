@@ -16,7 +16,7 @@ const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
 
   <ThemeProvider theme={Theme}>
   <CssBaseline />
-  
+
   <Container component="main"
     sx={{
       // marginBottom: 0,
