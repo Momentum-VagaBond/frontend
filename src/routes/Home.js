@@ -86,7 +86,7 @@ export default function Home ({username, loggedUserPk, token, map, setTripId, tr
 
 return (
   <ThemeProvider theme={Theme}>
-  <>
+<Container>
 <Container >
   <h1>Welcome, {username}</h1>
   </Container>
@@ -181,7 +181,7 @@ pm {tripId}
     <h2>Trips I'm Following</h2>
   </Container> */}
 
-  </>
+  </Container>
   </ThemeProvider>
   )
 }

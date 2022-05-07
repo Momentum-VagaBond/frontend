@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BottomNavigation, BottomNavigationAction, Paper, Typography, MenuItem } from '@mui/material';
+import { BottomNavigation, AppBar, Toolbar, IconButton, MenuIcon, StyledFab, Box, SearchIcon, MoreIcon, BottomNavigationAction, Paper, Typography, MenuItem } from '@mui/material';
 import { Edit, Home } from '@mui/icons-material';
 // import EditIcon from '@mui/icons-material/Edit';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
@@ -22,8 +22,31 @@ export default function NavBar() {
 
 
   return (
+    <React.Fragment>
     <ThemeProvider theme={Theme}>
-      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+      
+       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
+        <BottomNavigation color='#FFFFFF' sx={{backgroundColor: '#e76f51', labelColor: 'white', fontWeight: 'medium',
+      paddingTop: .5, paddingBotton: .5 }} showLabels  value={value} onChange={handleChange}>
+          
+          <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home sx={{ color: 'white'}} />} />
+
+          <BottomNavigationAction label="New Log" component={Link} to="/newlog" icon={<Edit sx={{ color: 'white'}} />} />
+
+          <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AirplanemodeActiveIcon sx={{ color: 'white'}} />} />
+
+          <BottomNavigationAction label="Profile" component={Link} to="/profile" icon={<PersonIcon sx={{ color: 'white'}} />} />
+
+        </BottomNavigation>
+          
+        
+      </AppBar>
+      </ThemeProvider>
+    </React.Fragment>
+  );
+  }
+      
+      {/* <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
     <BottomNavigation 
     // showLabels
     color='#FFFFFF'
@@ -55,10 +78,9 @@ export default function NavBar() {
       <BottomNavigationAction label="Profile" component={Link} to="/profile" icon={<PersonIcon sx={{ color: 'white'}} />} />
 
     </BottomNavigation>
-    </Paper>
-    </ThemeProvider>
-  );
-}
+    </Paper> */}
+    // </ThemeProvider>
+  
 
 
 
