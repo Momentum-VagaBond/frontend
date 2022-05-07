@@ -170,9 +170,9 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
               Profile
             </MenuItem>
 
-            {/* <MenuItem onClick={handleCloseUserMenu}>
-              <Link to="/mytrips">My Trips</Link>
-            </MenuItem> */}
+            <MenuItem component={Link} to="/contacts"onClick={handleCloseUserMenu}>
+              Contacts
+            </MenuItem>
 
             <MenuItem component={Link} to="/logout" onClick={handleCloseUserMenu}>
               Log Out
