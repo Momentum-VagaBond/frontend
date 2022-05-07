@@ -98,6 +98,7 @@ return (
     sx={{
       marginTop: 8,
       paddingLeft: 4,
+      marginBottom: 8,
     }}
       logId={log.pk}
       details={log.details}
@@ -109,7 +110,7 @@ return (
     )}
 
 
-<h2>Bon Voyage! Current trip to {currentTripTraveler.location} </h2> 
+{/* <h2>Bon Voyage! Current trip to {currentTripTraveler.location} </h2> 
   {currentTripTraveler && (
     <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
     <TripCard
@@ -117,6 +118,7 @@ return (
       key={currentTripTraveler.pk}
       title={currentTripTraveler.title}
       location={currentTripTraveler.location}
+      // duration={trip.duration}
       trip_user={currentTripTraveler.user}
       trip_username={currentTripTraveler.username}
       trip_user_first={currentTripTraveler.user_first_name}
@@ -126,16 +128,16 @@ return (
       tripId={currentTripTraveler.pk}
     />
     </CardActionArea>
-  )} 
-<Container component="main"
+  )}  */}
+{/* <Container component="main"
     sx={{
       marginBottom: 10,
       backgroundColor: '#e9ecef',
       position: 'absolute',
     }}
-    >
+    > */}
 
-  <Card
+  {/* <Card
   sx={{
     display: 'flex',
     flexDirection: 'column',
@@ -143,8 +145,7 @@ return (
     marginTop: 2,
   }}
   >
-    {/* <h2>{tripLocation}!</h2> */}
-  </Card>
+  </Card> */}
 
   
 
@@ -173,7 +174,7 @@ pm {tripId}
     {/* {userTripNumber === 0 && (
     <h1>No trips yet! Ready to start one?</h1>
   */}
-  </Container>
+  {/* </Container> */}
 {/* } */}
 {/* {showFollowing && */}
   {/* <Container component="main" maxWidth="sm">

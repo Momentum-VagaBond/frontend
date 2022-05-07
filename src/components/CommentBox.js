@@ -1,26 +1,11 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
-
-import { Navigate, Link as RouterLink } from 'react-router-dom'
 import {
-  AlertTile,
   TextField,
-  Alert,
   Container,
-  Typography,
   Box,
-  Grid,
-  Link,
-  Checkbox,
-  FormControlLabel,
-  CssBaseline,
   Button,
-  Avatar,
-  CircularProgress,
 } from '@mui/material'
-
-// import { Link } from 'react-router-dom'
 
 export default function CommentBox({ token, logId, setNewComment }) {
   const [commentPosted, setCommentPosted] = useState('')
@@ -59,13 +44,19 @@ export default function CommentBox({ token, logId, setNewComment }) {
 
     return (
       <>
-      <Container>
+      <Container
+      sx={{
+
+        // width: '75%',
+      }}
+      >
         <Box
         component='form'
         noValidate onSubmit={handleComment}
         sx={{ 
-          mt: 2,
+          mt: 0,
           position: 'relative',
+          width: '100%',
         }}
         >    
           <TextField
@@ -78,14 +69,17 @@ export default function CommentBox({ token, logId, setNewComment }) {
             value={comment}
             autoFocus
             onChange={(e) => handleChange('commentText', e)}
+            sx={{
+              backgroundColor: 'white',
+            }}
           />  
           <Button type="submit"
             variant="contained"
             color='secondary'
             sx={{
-              mt: 3,
+              mt: 0,
               mb: 2,
-              borderRadius: 5,
+              // borderRadius: 5,
               color: 'black',
               // backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 90%)',
             }}>
