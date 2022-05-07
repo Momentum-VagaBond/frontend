@@ -116,7 +116,7 @@ if (status === 401) {
         />
         <Route
           path="/home"
-          element={<Home token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} tripId={tripId} />}
+          element={<Home token={token} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} />}
         />
         <Route
           path="/trips"

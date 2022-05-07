@@ -29,53 +29,20 @@ export const NEWTripDetailCard = ({pk, tripId, title, details, logId, date, loca
     const dateFormatted = <Moment format="MM/D/YYYY">{date}</Moment>
 
     return (
-<ThemeProvider theme={Theme}>
-<CssBaseline />
-{/* <CardActionArea component={RouterLink} to={`/trips/${tripId}/${logId}`}> */}
-<Container component="main" key={logId}
-  sx={{
-    marginBottom: 10,
-    backgroundColor: '#e9ecef',
-    position: 'absolute',
-  }}
-  >
-<ImageList
-  sx={{
-    display: 'flex',
-    flexDirection: 'column',
-    flex: 1,
-    width: 'auto',
-    height: 'auto',
-    marginTop: 2,
-    // marginRight: 1,
-    // marginLeft: 1,
-  }}
-  >
-  {/* <Card> */}
-
-  <ImageListItem 
-      sx={{
-        marginBottom: .5,
-        marginTop: .5,
-      }}
-      >
-        <img
-          src={`${Flags}?w=248&fit=crop&auto=format`}
-          srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
-          alt={title}
-          loading="lazy"
-        />
-        <ImageListItemBar
-          title={title}
-          details={details}
-          subtitle={dateFormatted}
-        />
+      <Container>
+      <ImageListItem>
+      <img
+        src={`${Flags}?w=248&fit=crop&auto=format`}
+        srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        alt={title}
+        loading="lazy"
+      />
+      <ImageListItemBar
+        title={title}
+        subtitle={dateFormatted}
+        >
+      </ImageListItemBar>
       </ImageListItem>
-
-  </ImageList>
-
-</Container>
-{/* </CardActionArea> */}
-</ThemeProvider>
-  )
-}
+      </Container>
+    )
+    }

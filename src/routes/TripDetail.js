@@ -66,7 +66,7 @@ const TripDetail = ({token, pk, tripId, details, location, title, log }) => {
 
     </Box>
     
-    {logs.map((log) => 
+    {logs.map((log) => (
     <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
     <NEWTripDetailCard
     key={log.pk}
@@ -81,7 +81,7 @@ const TripDetail = ({token, pk, tripId, details, location, title, log }) => {
       date={log.date_logged}
     />
     </CardActionArea>
-    )}
+    ))}
 
 
   </Container>
