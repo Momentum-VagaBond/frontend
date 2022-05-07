@@ -86,8 +86,8 @@ export default function NewLog({token, loggedUserPk, tripId, setLogSuccess, logS
                 location: location,
                 title: title,
                 details: details,
-                latitude: latitude,
-                longitude: longitude,
+                // latitude: latitude,
+                // longitude: longitude,
             },
             {
                 headers: { Authorization: `Token ${token}` },
