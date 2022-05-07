@@ -8,7 +8,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import Moment from 'react-moment'
 
 
-export const TripCard = ({pk, tripId, title, location, username, user, trip_username, user_first_name, user_last_name, begin, end }) => {
+export const TripCard = ({pk, tripId, title, location, username,  date, user, trip_username, user_first_name, user_last_name, begin, end }) => {
     // function capitalizeFirst(string) {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     //   }
@@ -24,7 +24,7 @@ export const TripCard = ({pk, tripId, title, location, username, user, trip_user
         maxWidth: 300 
     }}
         >
-    <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
+    {/* <CardActionArea component={RouterLink} to={`/trips/${tripId}`}> */}
     <CardMedia
         component="img"
         alt="green iguana"
@@ -60,7 +60,7 @@ export const TripCard = ({pk, tripId, title, location, username, user, trip_user
         <Button size="small">Make favorite</Button>
         <Button size="small">Trip details</Button>
     </CardActions> */}
-        </CardActionArea>
+        {/* </CardActionArea> */}
     </Card>
     );
 }
