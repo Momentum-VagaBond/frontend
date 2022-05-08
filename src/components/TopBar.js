@@ -53,9 +53,9 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           > */}
           <Typography
-           variant="subtitle2"
-           color="secondary"
-           >
+            variant="subtitle2"
+            color="secondary"
+          >
             VAGABOND
             </Typography>
             {/* <MenuItem>
@@ -118,24 +118,8 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
               }}
             >
 
-              {/* <MenuItem>
-                <Link to="/newtrip">New Trip</Link>
-              </MenuItem> */}
-
-              {/* <MenuItem>
-                <Link to="/trips">All Trips</Link>
-              </MenuItem> */}
-
             </Menu>
           </Box>
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            VagaBond
-          </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {/* {routes.map((route) => (
@@ -151,8 +135,8 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="BC" src="/static/images/avatar/2.jpg" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: 'white'}}>
+                <MenuIcon alt="hamburger" color="white" />
               </IconButton>
             </Tooltip>
             <Menu
