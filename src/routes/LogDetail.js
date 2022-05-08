@@ -35,13 +35,13 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
       .then((res) => {
         setThisLog(res.data)
         setComments(res.data.log_comments)
-        setLogSuccess(false)
+        // setLogSuccess(false)
         console.log(res.data)
         console.log("log detail request fired")
         console.log(res.data.log_comments)
         console.log("trying to set logId: " + logId2)
       })
-  }, [params.logId, logId2, token])
+  }, [params.logId,  logId2, token])
 
   const addNewComment = (newComment) => {
     setComments([...comments, newComment])

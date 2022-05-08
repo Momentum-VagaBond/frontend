@@ -26,12 +26,12 @@ export default function NavBar() {
     <ThemeProvider theme={Theme}>
       
        <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
-        <BottomNavigation color='#FFFFFF' sx={{backgroundColor: '#e76f51', labelColor: 'white', fontWeight: 'medium',
-      paddingTop: .5, paddingBotton: .5 }} showLabels  value={value} onChange={handleChange}>
+        <BottomNavigation  sx={{backgroundColor: '#e76f51', labelColor: 'white', color: "white", 
+            paddingTop: .5, paddingBotton: .5 }} showLabels  value={value} onChange={handleChange}>
           
           <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home sx={{ color: 'white'}} />} />
 
-          <BottomNavigationAction label="New Log" component={Link} to="/newlog" icon={<Edit sx={{ color: 'white'}} />} />
+          <BottomNavigationAction color="white" label="New Log" component={Link} to="/newlog" icon={<Edit sx={{ color: 'white'}} />} />
 
           <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AirplanemodeActiveIcon sx={{ color: 'white'}} />} />
 
@@ -44,6 +44,7 @@ export default function NavBar() {
       </ThemeProvider>
     </React.Fragment>
   );
+  // fontWeight: 'medium',
   }
       
       {/* <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>

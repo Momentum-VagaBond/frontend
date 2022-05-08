@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
-import { Card, Grid, CssBaseline, Paper, Stack, IconButton, Button, FormGroup, Box, TextField, Container, Typography,  } from '@mui/material';
+import { Card, Grid, Alert, AlertTitle, CssBaseline, Paper, Stack, IconButton, Button, FormGroup, Box, TextField, Container, Typography,  } from '@mui/material';
 // import {Geolocate} from "../components/Geolocate";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { styled } from '@mui/material/styles';
@@ -9,8 +9,9 @@ import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import { Navigate } from 'react-router-dom';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
+import { StartTripCard } from "../components/StartTripCard";
 
-export default function NewLog({token, loggedUserPk, tripId, setLogSuccess, logSuccess, isLoggedIn}) {
+export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, setLogSuccess, logSuccess, isLoggedIn}) {
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
     const [latitude, setLatitude] = useState("");
@@ -108,7 +109,7 @@ export default function NewLog({token, loggedUserPk, tripId, setLogSuccess, logS
             // console.log(imageFile)
             // const logId2 = (response.data.pk)
             return axios
-        
+
                 .post(
                 `https:/momentum-vagabond.herokuapp.com/api/logs/${(response.data.pk)}/images/`,
                 // "https:/momentum-vagabond.herokuapp.com/api/logs/66/images/",
@@ -146,12 +147,15 @@ export default function NewLog({token, loggedUserPk, tripId, setLogSuccess, logS
         return <Navigate to="/login" />
     } 
 
+   
     return (
+  
+    
     <ThemeProvider theme={Theme}>
-
+    {hasCurrentTrip &&
     <div className="newLog">
     <Container>
-            <Grid container component="main">
+        <Grid container component="main">
         <CssBaseline />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
             <Box
@@ -263,7 +267,22 @@ export default function NewLog({token, loggedUserPk, tripId, setLogSuccess, logS
     </Grid>
     </Container>
     </div>
+    }
     
-    </ThemeProvider>
-    );
+   {!hasCurrentTrip &&
+    <>
+    <Alert mt={4} severity="error">
+        <AlertTitle>Hey you're not on a trip!</AlertTitle>
+            Click below to start a current trip. 
+        </Alert>
+        <Container maxWidth="sm" align="center">
+        
+    <StartTripCard>
+    </StartTripCard>
+    </Container>
+    </>
+    }
+   
+    </ThemeProvider> 
+    )
 }
