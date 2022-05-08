@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import MapBox from '../components/MapBox';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 import { StartTripCard } from "../components/StartTripCard";
 
@@ -20,11 +20,13 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     const [error, setError] = useState("");
     const [status, setStatus] = useState("")
     const [isSubmit, setSubmit] = useState(false);
-    const imageFileInput = useRef(null)
-    const [fileName, setFileName] = useState('No file selected')
-    const [fileType, setFileType] = useState('No file selected')
-    const [imageFile, setImageFile] = useState(null)
-    const [logId, setLogId] = useState("")
+    const imageFileInput = useRef(null);
+    const [fileName, setFileName] = useState('No file selected');
+    const [fileType, setFileType] = useState('No file selected');
+    const [imageFile, setImageFile] = useState(null);
+    const [logId, setLogId] = useState("");
+    const [confirm, setConfirm] = useState(false);
+    const navigate = useNavigate();
 
     const Input = styled('input')({
         display: 'none',
@@ -75,10 +77,12 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
 
 
     const handleSubmit = (e) => {
-        console.log(imageFile)
-        e.preventDefault()
+        console.log(imageFile);
+        setConfirm(true);
+        e.preventDefault();
         setError('')
-        console.log(location, details, title, latitude, longitude, fileType, fileName, logId)
+        console.log(location, details, title, latitude, longitude, fileType, fileName, logId);
+        navigate('/home');
 
         axios
         .post(
@@ -146,7 +150,6 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
 
     return (
 
-    
     <ThemeProvider theme={Theme}>
     {hasCurrentTrip &&
     <div className="newLog">
