@@ -14,14 +14,14 @@ import Background2 from './Background2.png'
 
 
 
-export default function Home ({username, loggedUserPk, token, map, hasCurrentTrip, setHasCurrentTrip, setTripId, tripId, isLoggedIn}) {
+export default function SubscriberHome ({username, loggedUserPk, token, map, setSubscriberHasCurrent, subscriberHasCurrent, setTripId, tripId, isLoggedIn}) {
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
-  // const [tripId, setTripId] = useState([])
-  const [tripLogs, setTripLogs] = useState([])
-  const [currentTripTraveler, setCurrentTripTraveler] = useState([])
-  const [futureTripsTraveler, setFutureTripsTraveler] = useState([])   //this gives future trips
-  const [pastTripTraveler, setPastTripTraveler] = useState([])   //this gives the 1 Most recent past trip
+  // const [tripId, setTripId] = useState([]);
+  const [tripLogs, setTripLogs] = useState([]);
+  const [currentTripsSubscriber, setCurrentTripsSubscriber] = useState([]);
+  const [futureTripsSubscriber, setFutureTripsSubscriber] = useState([]);   //this gives future trips
+  const [pastTripSubscriber, setPastTripSubscriber] = useState([]);   //this gives the 1 Most recent past trip
   // const [showMyTrips, setShowMyTrips] = useState(false)
   // const [showFollowing, setShowFollowing] = useState(false)
   // const [showFollowingTrips, setShowFollowingTrips] = useState(false)
@@ -35,56 +35,56 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
 
   useEffect(() => {
     axios
-    .get("https://momentum-vagabond.herokuapp.com/api/trips/current/user/",
+    .get(`https://momentum-vagabond.herokuapp.com/api/user/${loggedUserPk}/current/subscribed`,
         {headers: {Authorization: `Token ${token}`}
     })
     .then((response) => {
-        console.log(response.data[0])
-        if (response.data[0]){
-          setHasCurrentTrip(true)
-          setCurrentTripTraveler(response.data[0])
-          setTripId(response.data[0].pk)
-          setTripLogs(response.data[0].trip_logs)
-          console.log("tripLogs:" + response.data[0].trip_logs)
+        console.log(response.data)
+        if (response.data){
+          setSubscriberHasCurrent(true)
+          setCurrentTripsSubscriber(response.data)
+          setTripId(response.data.pk)
+          setTripLogs(response.data.trip_logs)
+          console.log("tripLogs:" + response.data.trip_logs)
           console.log(response.data.username)
-          console.log("current trip:" + response.data[0].pk)
+          console.log("current trip:" + response.data.pk)
         } else {
-          setHasCurrentTrip(false)
+          setSubscriberHasCurrent(false)
         }
     })
-  }, [token, setCurrentTripTraveler, setHasCurrentTrip, setTripId])
+  }, [token, setSubscriberHasCurrent, setCurrentTripsSubscriber, loggedUserPk, setTripLogs, setTripId])
 
 
     //Getting Most recent past trip if one exists
 
   useEffect(() => {
-    if (hasCurrentTrip === false) {
+    if (subscriberHasCurrent === false) {
     axios
-    .get("https://momentum-vagabond.herokuapp.com/api/trips/past/user/",
+    .get(`https://momentum-vagabond.herokuapp.com/api/user/${loggedUserPk}/subscribed/`,
         {headers: {Authorization: `Token ${token}`}
     })
     .then((response) => {
         console.log("past trips: " + response.data)
         // if (response.data[0]){
-          setPastTripTraveler(response.data[0])
+          setPastTripSubscriber(response.data[0])
           setTripId(response.data[0].pk)
           console.log(response.data[0].pk)
           console.log("most recent past trip:" + response.data[0].pk)
         // } 
     })
   }
-  }, [token, setPastTripTraveler, hasCurrentTrip,  setTripId])
+  }, [token, setPastTripSubscriber, subscriberHasCurrent, loggedUserPk, setTripId])
 
   // get future trips of traveler
   useEffect(() => {
-    if (hasCurrentTrip === false) {
+    if (subscriberHasCurrent === false) {
     axios
-    .get("https://momentum-vagabond.herokuapp.com/api/trips/future/user/",
+    .get(`https://momentum-vagabond.herokuapp.com/api/user/${loggedUserPk}/past/subscribed`,
         {headers: {Authorization: `Token ${token}`}
     })
     .then((response) => {  
         if (response.data){
-          setFutureTripsTraveler(response.data)
+          setFutureTripsSubscriber(response.data)
           setTripId(response.data.pk)
           console.log("future trips" + response.data)
           // console.log("most recent past trip:" + response.data[0].pk)
@@ -92,7 +92,7 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
 
     })
   }
-  }, [token,  hasCurrentTrip, setFutureTripsTraveler, setTripId])
+  }, [token, subscriberHasCurrent, setFutureTripsSubscriber, loggedUserPk, setTripId])
 
 
   if (!isLoggedIn) {
@@ -126,7 +126,7 @@ return (
 <Typography mb={2} mt={4} variant="h5" align="center"><strong>Welcome, {username}! <br /> How's your trip?</strong></Typography>
   
 <Container maxWidth="sm" align="center">
-{hasCurrentTrip ? (
+{subscriberHasCurrent? (
 <>
   {tripLogs.map((log) => 
   
@@ -158,43 +158,43 @@ return (
   
 <Container maxWidth="sm" align="center">
 
-{(!hasCurrentTrip && (pastTripTraveler === null)) ? 
+{(!subscriberHasCurrent && (pastTripSubscriber === null)) ? 
 
     <TripCard
       username={username}
-      key={pastTripTraveler.pk}
-      title={pastTripTraveler.title}
-      location={pastTripTraveler.location}
+      key={pastTripSubscriber.pk}
+      title={pastTripSubscriber.title}
+      location={pastTripSubscriber.location}
       // duration={trip.duration}
-      trip_user={pastTripTraveler.user}
-      trip_username={pastTripTraveler.username}
-      trip_user_first={pastTripTraveler.user_first_name}
-      trip_user_last={pastTripTraveler.user_last_name}
-      begin={pastTripTraveler.begin}
-      end={pastTripTraveler.end}
-      tripId={pastTripTraveler.pk}
+      trip_user={pastTripSubscriber.user}
+      trip_username={pastTripSubscriber.username}
+      trip_user_first={pastTripSubscriber.user_first_name}
+      trip_user_last={pastTripSubscriber.user_last_name}
+      begin={pastTripSubscriber.begin}
+      end={pastTripSubscriber.end}
+      tripId={pastTripSubscriber.pk}
     />
   : '' }
 
   </Container>
   <Container maxWidth="sm" align="center"> 
   <>
-  {(!hasCurrentTrip && futureTripsTraveler) ? (
+  {(!subscriberHasCurrent && futureTripsSubscriber) ? (
 <>
-  {futureTripsTraveler.map((futureTripTraveler) => 
+  {futureTripsSubscriber.map((futureTrip) => 
     <TripCard
       username={username}
-      key={futureTripTraveler.pk}
-      title={futureTripTraveler.title}
-      location={futureTripTraveler.location}
+      key={futureTrip.pk}
+      title={futureTrip.title}
+      location={futureTrip.location}
       // duration={trip.duration}
-      trip_user={futureTripTraveler.user}
-      trip_username={futureTripTraveler.username}
-      trip_user_first={futureTripTraveler.user_first_name}
-      trip_user_last={futureTripTraveler.user_last_name}
-      begin={futureTripTraveler.begin}
-      end={futureTripTraveler.end}
-      tripId={futureTripTraveler.pk}
+      trip_user={futureTrip.user}
+      trip_username={futureTrip.username}
+      trip_user_first={futureTrip.user_first_name}
+      trip_user_last={futureTrip.user_last_name}
+      begin={futureTrip.begin}
+      end={futureTrip.end}
+      tripId={futureTrip.pk}
     />
   )}
   </>
