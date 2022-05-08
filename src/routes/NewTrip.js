@@ -170,7 +170,7 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
     />
     </FormGroup>
 
-<Button 
+    <Button 
         type='submit'
         fullWidth
         variant="contained"

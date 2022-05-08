@@ -7,7 +7,7 @@ import { Logout } from './routes/Logout';
 import NewTrip from './routes/NewTrip';
 import NewLog from './routes/NewLog';
 import Navbar from './components/Navbar';
-import TopBar from './components/TopBar'
+import TopBar from './components/TopBar';
 import Profile from './routes/Profile';
 import TripDetail  from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
@@ -162,11 +162,6 @@ if (status === 401) {
           path="/contacts"
           element={<Contacts setAuth={setAuth} token={token} isLoggedIn={isLoggedIn} username={username} loggedUserPk={loggedUserPk} />}
         />
-        {/* <Route path="/upload" element={<ImageUploadForm token={token} />} /> */}
-        {/* <Route
-          path="/tripdetailcard"
-          element={<TripDetailCard setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} />}
-        /> */}
         <Route
           path="/trips/current/user/"
           element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
@@ -175,10 +170,6 @@ if (status === 401) {
           path="/trip/future/user/"
           element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
         />
-        {/* <Route
-          path="/stepper"
-          element={<Stepper setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
-        /> */}
         </>
         )}
         </Routes>

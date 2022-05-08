@@ -6,7 +6,7 @@ import { Box, Item } from '@mui/system';
 import { Card, CardMedia, CardContent, Typography, ImageList, ImageListItem } from "@mui/material";
 import Container from '@mui/material/Container';
 import { Grid, GridItem } from '@mui/material';
-import logo from './VBLogo.png';
+import logo from './VagaBondLogo.png';
 import { CurrentTripCard } from '../components/CurrentTripCard';
 import { FutureTripCard } from '../components/FutureTripCard';
 import { PastTripCard } from '../components/PastTripCard';

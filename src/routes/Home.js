@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { StartTripCard } from "../components/StartTripCard";
-import Background2 from './Background2.png'
+// import Background5 from './Background5.png'
 
 
 
@@ -118,6 +118,9 @@ return (
             flexDirection: 'column',
             alignItems: 'center',
             position: 'sticky',
+            // backgroundImage: `url(${Background5})`,
+            backgroundSize: 'cover',
+            // height: "100vh",
             // scrollMarginBottom: 30,
             // bottom: 5,
             // backgroundColor: '#e9ecef',
