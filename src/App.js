@@ -169,10 +169,10 @@ if (status === 401) {
           path="/trip/future/user/"
           element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
         />
-        <Route
+        {/* <Route
           path="/stepper"
           element={<Stepper setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
-        />
+        /> */}
         </>
         )}
         </Routes>

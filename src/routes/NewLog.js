@@ -124,8 +124,9 @@ export default function NewLog({token, loggedUserPk, tripId, setLogSuccess, logS
             .then((response) => {
                 console.log(response.data)
                 console.log(logId)
-                setLogSuccess(true)
-                console.log(logSuccess)
+                // setLogSuccess(true)
+                // console.log(logSuccess)
+                alert("form submitted!")
             })
             .catch((e) => setError(e.message))
             }, [token, imageFile, logId, fileName, fileType])

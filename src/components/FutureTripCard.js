@@ -1,7 +1,5 @@
+
 import * as React from 'react';
-import axios from "axios";
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
 import { Card, CardActionArea } from '@mui/material/';
 import Container from '@mui/material/Container';
@@ -9,10 +7,6 @@ import { ThemeProvider } from "styled-components";
 import { Theme } from "../Theme";
 import ImageList from "@mui/material/ImageList";
 import { ImageListItem } from "@mui/material";
-// import ListSubheader from "@mui/material/ListSubheader";
-// import LaunchTwoToneIcon from '@mui/icons-material/LaunchTwoTone';
-// import ImageListItemBar from '@mui/material/ImageListItemBar';
-// import Button from "@mui/material/Button";
 import { Link as RouterLink, Navigate } from 'react-router-dom';
 import Flags from './Flags.jpg';
 import Moment from 'react-moment';
@@ -28,8 +22,8 @@ export const FutureTripCard = ({pk, tripId, title, location, username, user, tri
 
 <CssBaseline />
 
-<CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
-<Container component="main" size="sm"
+    <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
+    <Container component="main" size="sm"
     sx={{
         marginBottom: 10,
         backgroundColor: '#e9ecef',
@@ -76,87 +70,87 @@ export const FutureTripCard = ({pk, tripId, title, location, username, user, tri
     </Card>
 
 
-  {/* </Box> */}
-{/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}></CardActionArea> */}
-</Container>
-</CardActionArea>
+   {/* </Box> */}
+ {/* <CardActionArea component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}></CardActionArea> */}
+    </Container>
+    </CardActionArea>
 </ThemeProvider>
     )
 }
 
 
 
-    //     <Card sx={{
-    //         marginTop: 8,
-    //         maxWidth: 300 
-    //     }}
-    //         >
-    //     <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
-    //     <CardMedia
-    //         component="img"
-    //         alt="green iguana"
-    //         height= '100%'
-    //         width='auto'
-    //         // image="/static/images/cards/contemplative-reptile.jpg"
-    //         src="https://parade.com/wp-content/uploads/2021/02/family-beach-vacations-2021-1024x767.jpg"
-    //     />
+//     //     <Card sx={{
+//     //         marginTop: 8,
+//     //         maxWidth: 300 
+//     //     }}
+//     //         >
+//     //     <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
+//     //     <CardMedia
+//     //         component="img"
+//     //         alt="green iguana"
+//     //         height= '100%'
+//     //         width='auto'
+//     //         // image="/static/images/cards/contemplative-reptile.jpg"
+//     //         src="https://parade.com/wp-content/uploads/2021/02/family-beach-vacations-2021-1024x767.jpg"
+//     //     />
         
-    //     <CardContent key={pk}>
+//     //     <CardContent key={pk}>
             
-    //         <Typography gutterBottom align="center" variant="body1" component="div">
-    //         {trip_username === username ? (
-    //         <>{location}</> 
-    //         ):( 
-    //         <>{usernameCapital}'s trip to {location}</>
-    //         )
-    //     }
+//     //         <Typography gutterBottom align="center" variant="body1" component="div">
+//     //         {trip_username === username ? (
+//     //         <>{location}</> 
+//     //         ):( 
+//     //         <>{usernameCapital}'s trip to {location}</>
+//     //         )
+//     //     }
         
-    //          {/* /{trip_username}'s trip to {location} */}
+//     //          {/* /{trip_username}'s trip to {location} */}
     
-    //         </Typography>
-    //         <Typography variant="body2" align="center" color="text.secondary">
-    //             {title}
-    //             {/* <h4>{username}</h4> */}
-    //             {/* {user_first_name} {user_last_name} */}
-    //             <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
+//     //         </Typography>
+//     //         <Typography variant="body2" align="center" color="text.secondary">
+//     //             {title}
+//     //             {/* <h4>{username}</h4> */}
+//     //             {/* {user_first_name} {user_last_name} */}
+//     //             <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
                 
-    //         </Typography>
-    //     </CardContent>
+//     //         </Typography>
+//     //     </CardContent>
     
-    //     {/* <CardActions>
-    //         <Button size="small">Make favorite</Button>
-    //         <Button size="small">Trip details</Button>
-    //     </CardActions> */}
-    //         </CardActionArea>
-    //     </Card>
-    //     );
-    // }
+//     //     {/* <CardActions>
+//     //         <Button size="small">Make favorite</Button>
+//     //         <Button size="small">Trip details</Button>
+//     //     </CardActions> */}
+//     //         </CardActionArea>
+//     //     </Card>
+//     //     );
+//     // }
 
-//         <Container>
-// <Box sx={{
-//     marginTop: 5,
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//     justifyContent:'center',
-//     }}
-// >
-//     <Card>
-//     title: {title}
-//     </Card>
-//     <Card>
-//     user: {user}
-//     </Card>
-//     <Card>
-//     location: {location}
-//     </Card>
-//     <Card>
-//     begin: {begin}
-//     </Card>
-//     <Card>
-//     end: {end}
-//     </Card>
-// </Box>
-// </Container>
-// )
-// }
+// //         <Container>
+// // <Box sx={{
+// //     marginTop: 5,
+// //     display: 'flex',
+// //     flexDirection: 'column',
+// //     alignItems: 'center',
+// //     justifyContent:'center',
+// //     }}
+// // >
+// //     <Card>
+// //     title: {title}
+// //     </Card>
+// //     <Card>
+// //     user: {user}
+// //     </Card>
+// //     <Card>
+// //     location: {location}
+// //     </Card>
+// //     <Card>
+// //     begin: {begin}
+// //     </Card>
+// //     <Card>
+// //     end: {end}
+// //     </Card>
+// // </Box>
+// // </Container>
+// // )
+// // }
