@@ -134,9 +134,6 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         // })
     }
 
-    // if (!isSubmit) {
-    //     console.log("Not submitted!")
-    // }
     if (logSuccess) {
         // alert("Success! Log submitted!")
         // console.log("Submitted!")
@@ -147,9 +144,8 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         return <Navigate to="/login" />
     } 
 
-   
     return (
-  
+
     
     <ThemeProvider theme={Theme}>
     {hasCurrentTrip &&
@@ -165,6 +161,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                //position can be removed to create a white box that holds the form
                 position: 'absolute',
                 // backgroundColor: '#e9ecef',
                 }}
