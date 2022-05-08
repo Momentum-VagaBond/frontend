@@ -39,7 +39,7 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) =>
       // position: 'relative',
       // width: '100%',
       // border: 1,
-      marginBottom: 2,
+      marginBottom: 3,
       margin: 0,
       padding: 0,
       boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
@@ -84,12 +84,8 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) =>
   <Typography component="div"
   sx={{
     paddingLeft: 2,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'center',
   }}
   >
-    {/* <h3>{title} at {location}</h3> */}
     <p>{detail_text} at {location}!</p>
     <p>{date_logged}</p>
   </Typography>

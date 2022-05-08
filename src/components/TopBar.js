@@ -11,11 +11,15 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import ColorLogo from "./ColorLogo.png";
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
 import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 
+const VBLogo = (
+  <img src={ColorLogo} alt='VagaBondLogo' height='65'/>
+);
 
 export default function TopBar(isLoggedIn, token, setToken, setUsername) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -84,7 +88,8 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
           </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+            {VBLogo}
+            {/* <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -93,7 +98,7 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
               color="inherit"
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
