@@ -12,10 +12,25 @@ import { Theme } from '../Theme';
 
 
 
-const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
+const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) => (
 
   <ThemeProvider theme={Theme}>
   <CssBaseline />
+
+  {/* <Card
+    sx={{
+      marginBottom: 2,
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+      width: '40%',
+      height: 'auto',
+      marginTop: 0,
+      alignContent: 'center',
+    }}
+    > */}
+      <h3>{title}</h3>
+    {/* </Card> */}
 
   <Container component="main"
     sx={{
@@ -24,13 +39,14 @@ const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
       // position: 'relative',
       // width: '100%',
       // border: 1,
-      marginBottom: 2,
+      marginBottom: 3,
       margin: 0,
       padding: 0,
       boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
       backgroundColor: 'white',
     }}
     >
+
 
   <ImageList
     sx={{
@@ -68,13 +84,9 @@ const LogCard = ({detail_text,location, date_logged, logPk, log_user}) => (
   <Typography component="div"
   sx={{
     paddingLeft: 2,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'center',
   }}
   >
-    <h3>{detail_text}</h3>
-    <p>{log_user}'s' log #{logPk} at {location}!</p>
+    <p>{detail_text} at {location}!</p>
     <p>{date_logged}</p>
   </Typography>
   </Card>

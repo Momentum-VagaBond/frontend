@@ -144,7 +144,7 @@ return (
     }}
     >
       <h3>FutureTripCard</h3>
-      {trip.map((trip, pk) => {
+      {trips.map((trip, pk) => {
         return (
           <FutureTripCard
             key={pk}
@@ -154,6 +154,7 @@ return (
             location={trip.location}
             begin={trip.begin}
             end={trip.end}
+            img={trip.img}
           />
         )}
       )}

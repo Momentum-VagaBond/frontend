@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { StartTripCard } from "../components/StartTripCard";
-
+import Background2 from './Background2.png'
 
 
 
@@ -110,12 +110,15 @@ return (
             flexDirection: 'column',
             alignItems: 'center',
             position: 'sticky',
+            backgroundImage: `url(${Background2})`,
+            backgroundSize: 'cover',
+            height: "100vh",
             // scrollMarginBottom: 30,
             // bottom: 5,
             // backgroundColor: '#e9ecef',
             // position: 'absolute',
         }}>
-<Typography mb={2} mt={4} variant="h5" align="center"><strong>Welcome, {username}</strong></Typography>
+<Typography mb={2} mt={4} variant="h5" align="center"><strong>Welcome, {username}! <br /> How's your trip?</strong></Typography>
   
 <Container maxWidth="sm" align="center">
 {hasCurrentTrip ? (

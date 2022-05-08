@@ -67,14 +67,14 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
         // justifyContent: 'center',
       }}
     >
-    {/* <Container
-    > */}
+
     {thisLog && (
     <LogCard
     sx={{
     }}
       date_logged={date_logged}
       detail_text={thisLog.details}
+      title={thisLog.title}
       latitude={thisLog.latitude}
       longitude={thisLog.longitude}
       location={thisLog.location}
@@ -83,7 +83,6 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
       log_user={thisLog.user}
     />
     )}
-    {/* </Container> */}
 
   <Box sx={{
     // border: 1,

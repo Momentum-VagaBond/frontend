@@ -2,10 +2,11 @@ import * as React from 'react';
 import { useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
-import { Container, FormGroup, Button, Box } from '@mui/material';
+import { Container, FormGroup, Button, Box, Alert } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
+
 
 
 export default function NewTrip({token, isLoggedIn}) {
@@ -13,25 +14,17 @@ export default function NewTrip({token, isLoggedIn}) {
     const [location, setLocation] = useState("");
     const [begin, setBegin] = useState("");
     const [end, setEnd] = useState("");
+    const [subscribers, setSubscribers] = useState([]);
     const [error, setError] = useState("");
-    const [isSubmit, setSubmit] = useState(false);
+    // const [submit, setSubmit] = useState();
 
 
-    // const defaultFields = { Title: '', Location: '', startDate: '', endDate: '' }
-
-    // const [fields, setFields] = useState(defaultFields)
 
     const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
         console.log(location, title, begin, end);
 
-    // const  = (e) => {
-    //     console.log("validating inputs");
-    // if (e.target.value === "error")
-    //     setError({ ...error, [e.target.name]: true });
-    // else setError({ ...error, [e.target.name]: false });
-    // };
 
     axios
     .post("https://momentum-vagabond.herokuapp.com/api/trips/",
@@ -40,33 +33,36 @@ export default function NewTrip({token, isLoggedIn}) {
         "location": location,
         "begin": begin,
         "end": end,
+        "subscribers": subscribers,
     },
     {
         headers: {Authorization: `Token ${token}`}
     }
     )
-    .then(response => {
+    .then((response) => {
         console.log(response.data);
     setTitle('')
     setLocation('')
     setBegin('')
     setEnd('')
-    // setFields(defaultFields)
+    setSubscribers([])
     alert("form submitted!")
     })
     .catch((e) => setError(e.message))
     }
 
-    // if (fields.length < 0) {
-    //     return alert("field is required");
-    // }
 
     if (!isLoggedIn) {
         return <Navigate to="/login" />
     }
 
+    // if (setSubmit) {
+    //     return <Alert onClick={submit} severity="success">Sucessful Submit!</Alert>
+    // }
+
     return (
         <ThemeProvider theme={Theme}>
+            
         <Container
         sx={{
             marginTop: 10,
@@ -76,6 +72,7 @@ export default function NewTrip({token, isLoggedIn}) {
             backgroundColor: '#e9ecef',
             position: 'absolute',
         }}>
+            New Trip!
         <Box
         sx={{
             paddingRight: 2,
@@ -91,7 +88,7 @@ export default function NewTrip({token, isLoggedIn}) {
     <form onSubmit={handleSubmit}>
 
 
-    <FormGroup>
+    {/* <FormGroup> */}
         <label htmlFor='reg-title'> Title * </label>
         <TextField
             placeholder='Title'
@@ -104,9 +101,9 @@ export default function NewTrip({token, isLoggedIn}) {
             helperText="This is required!"
             onChange={(e) => setTitle(e.target.value)}
         />
-    </FormGroup>
+    {/* </FormGroup> */}
 
-    <FormGroup>
+    {/* <FormGroup> */}
         <label htmlFor='reg-location'> Location * </label>
         <TextField
             placeholder='Location'
@@ -119,9 +116,9 @@ export default function NewTrip({token, isLoggedIn}) {
             helperText="This is required!"
             onChange={(e) => setLocation(e.target.value)}
         />
-    </FormGroup>
+    {/* </FormGroup> */}
 
-    <FormGroup>
+    {/* <FormGroup> */}
     <label htmlFor='begin'> Start Date * </label>
     <TextField
         placeholder='Start Date'
@@ -136,9 +133,9 @@ export default function NewTrip({token, isLoggedIn}) {
             shrink: true,
         }}
     />
-    </FormGroup>
+    {/* </FormGroup> */}
 
-    <FormGroup>
+    {/* <FormGroup> */}
     <label htmlFor='begin'> End Date * </label>
     <TextField
         placeholder='End Date'
@@ -152,7 +149,7 @@ export default function NewTrip({token, isLoggedIn}) {
             shrink: true,
         }}
     />
-    </FormGroup>
+    {/* </FormGroup> */}
 
 <Button 
         type='submit'

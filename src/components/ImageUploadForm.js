@@ -17,11 +17,12 @@ export const ImageUploadForm = ({ token }) => {
         },
       })
     }
-  
+
     const handleFileName = (e) => {
       setFileName(e.target.files[0].name)
     }
-  
+
+
     return (
       <div className="file is-normal has-name container m-5">
         <label className="file-label">
