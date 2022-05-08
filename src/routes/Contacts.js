@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
-import { Container, FormGroup, Button, Box, Card } from '@mui/material';
+import { Container, FormGroup, Button, Box, Card, CssBaseline, Typography, Grid, Paper } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
@@ -65,31 +65,49 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
 
     return(
     <ThemeProvider theme={Theme}>
+    <CssBaseline />
+
     <Container
     sx={{
-        marginTop: 10,
+        marginTop: 5,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         backgroundColor: '#e9ecef',
-        position: 'absolute',
+        // marginTop: 10,
+        // display: 'flex',
+        // flexDirection: 'column',
+        // alignItems: 'center',
+        // backgroundColor: '#e9ecef',
+        // position: 'absolute',
     }}>
+    <Card
+    sx={{
+        marginBottom: 3,
+    }}
+    >
+    <Typography>
+        Add a Subscriber
+    </Typography>
+    </Card>
+
+    <Grid container component="main">
+    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
     <Box
     sx={{
-        paddingRight: 2,
-        paddingBottom: 6,
-        paddingLeft: 2,
-        position: 'absolute',
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        marginTop: 2,
+        //marginRight: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    '& .MuiTextField-root': { m: 2, width: '25ch' },
     }}
     noValidate
     autoComplete="off"
     >
-        Add Subscriber
     {error && <div className="error">{error}</div>}
     <form onSubmit={handleSubmit}>
 
-    <Card>
     <FormGroup>
         <label htmlFor='reg-title'> First Name * </label>
         <TextField
@@ -146,20 +164,35 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     >
     Submit
     </Button>
-    </Card>
 
     </form>
     </Box>
+    </Grid>
+    </Grid>
     </Container>
     <Box
     sx={{
-        marginTop: 70,
-        marginRight: 10,
-        marginLeft: 10,
-        marginBottom: 10,
+        // marginTop: 10,
+        // marginRight: 10,
+        marginLeft: 2,
+        marginBottom: 5,
+        marginTop: 2,
+        marginRight: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     }}
     >
-    <h3>Subscribers</h3>
+        <Card
+    sx={{
+        //marginBottom: 1,
+        marginTop: 3,
+    }}
+    >
+    <Typography>
+        Subscribers
+    </Typography>
+    </Card>
     {subscribers.map((subscriber, pk) => {
         return(
         <ContactsCard

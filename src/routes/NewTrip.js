@@ -1,29 +1,33 @@
 import * as React from 'react';
 import { useState } from 'react';
 import axios from "axios";
-import { Navigate } from 'react-router-dom';
-import { Container, FormGroup, Button, Box, Alert } from '@mui/material';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { Container, FormGroup, Button, Box, Card, Grid, Paper, CssBaseline, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
 
 
-export default function NewTrip({token, isLoggedIn}) {
+export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [begin, setBegin] = useState("");
     const [end, setEnd] = useState("");
     const [subscribers, setSubscribers] = useState([]);
     const [error, setError] = useState("");
-    // const [submit, setSubmit] = useState();
+    const [submit, setSubmit] = useState();
+    const [confirm, setConfirm] = useState(false);
+    const navigate = useNavigate();
 
 
 
     const handleSubmit = (e) => {
     e.preventDefault();
+    setConfirm(true);
     setError("");
         console.log(location, title, begin, end);
+    navigate('/home')
 
 
     axios
@@ -52,34 +56,49 @@ export default function NewTrip({token, isLoggedIn}) {
     }
 
 
-    if (!isLoggedIn) {
-        return <Navigate to="/login" />
-    }
-
-    // if (setSubmit) {
-    //     return <Alert onClick={submit} severity="success">Sucessful Submit!</Alert>
+    // if (!loggedUserPk) {
+    //     return <Navigate to="/login" />
     // }
 
+
     return (
-        <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={Theme}>
+    <CssBaseline />
             
         <Container
         sx={{
-            marginTop: 10,
+            marginTop: 5,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             backgroundColor: '#e9ecef',
-            position: 'absolute',
+            // position: 'relative',
         }}>
+        <Card
+        sx={{
+            marginBottom: 2,
+        }}
+        >
+        <Typography>
             New Trip!
+        </Typography>
+        </Card>
+
+        <Grid container component="main">
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <Box
         sx={{
-            paddingRight: 2,
-            paddingBottom: 6,
-            paddingLeft: 2,
-            position: 'absolute',
-            '& .MuiTextField-root': { m: 1, width: '25ch' },
+            marginTop: 2,
+            marginRight: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            // position: 'absolute',
+            // paddingRight: 2,
+            // paddingBottom: 6,
+            // paddingLeft: 2,
+            // position: 'absolute',
+            '& .MuiTextField-root': { m: 1, width: '30ch' },
         }}
         noValidate
         autoComplete="off"
@@ -88,7 +107,7 @@ export default function NewTrip({token, isLoggedIn}) {
     <form onSubmit={handleSubmit}>
 
 
-    {/* <FormGroup> */}
+    <FormGroup>
         <label htmlFor='reg-title'> Title * </label>
         <TextField
             placeholder='Title'
@@ -101,9 +120,9 @@ export default function NewTrip({token, isLoggedIn}) {
             helperText="This is required!"
             onChange={(e) => setTitle(e.target.value)}
         />
-    {/* </FormGroup> */}
+    </FormGroup>
 
-    {/* <FormGroup> */}
+    <FormGroup>
         <label htmlFor='reg-location'> Location * </label>
         <TextField
             placeholder='Location'
@@ -116,9 +135,9 @@ export default function NewTrip({token, isLoggedIn}) {
             helperText="This is required!"
             onChange={(e) => setLocation(e.target.value)}
         />
-    {/* </FormGroup> */}
+    </FormGroup>
 
-    {/* <FormGroup> */}
+    <FormGroup>
     <label htmlFor='begin'> Start Date * </label>
     <TextField
         placeholder='Start Date'
@@ -133,9 +152,9 @@ export default function NewTrip({token, isLoggedIn}) {
             shrink: true,
         }}
     />
-    {/* </FormGroup> */}
+    </FormGroup>
 
-    {/* <FormGroup> */}
+    <FormGroup>
     <label htmlFor='begin'> End Date * </label>
     <TextField
         placeholder='End Date'
@@ -149,7 +168,7 @@ export default function NewTrip({token, isLoggedIn}) {
             shrink: true,
         }}
     />
-    {/* </FormGroup> */}
+    </FormGroup>
 
 <Button 
         type='submit'
@@ -166,6 +185,8 @@ export default function NewTrip({token, isLoggedIn}) {
     </form>
     
     </Box>
+    </Grid>
+    </Grid>
     </Container>
     </ThemeProvider>
     );
