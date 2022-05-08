@@ -96,11 +96,11 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     <Box
     sx={{
         marginTop: 2,
-        marginRight: 2,
+        //marginRight: 2,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-    '& .MuiTextField-root': { m: 1, width: '25ch' },
+    '& .MuiTextField-root': { m: 2, width: '25ch' },
     }}
     noValidate
     autoComplete="off"

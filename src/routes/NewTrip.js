@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 
 
 
-export default function NewTrip({token, isLoggedIn}) {
+export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [begin, setBegin] = useState("");
@@ -56,7 +56,7 @@ export default function NewTrip({token, isLoggedIn}) {
     }
 
 
-    if (!isLoggedIn) {
+    if (!loggedUserPk) {
         return <Navigate to="/login" />
     }
 
@@ -64,7 +64,7 @@ export default function NewTrip({token, isLoggedIn}) {
     return (
     <ThemeProvider theme={Theme}>
     <CssBaseline />
-
+            
         <Container
         sx={{
             marginTop: 5,

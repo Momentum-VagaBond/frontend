@@ -18,6 +18,7 @@ export const ContactsCard = ({firstName, lastName, email}) => {
             flexDirection: 'column',
             alignItems: 'center',
             backgroundColor: '#e9ecef',
+            width: '85%',
             // position: 'relative',
         }}>
 
@@ -32,8 +33,8 @@ export const ContactsCard = ({firstName, lastName, email}) => {
         alignItems: 'center',
     }}
     >
-        <p>{firstName} {lastName}</p>
-        <p>Email: {email}</p>
+        <b><p>{firstName} {lastName}</p></b>
+        <p>{email}</p>
     </Box>
     </Grid>
     </Grid>
