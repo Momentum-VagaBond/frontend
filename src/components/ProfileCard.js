@@ -14,6 +14,7 @@ return(
     // flexDirection: 'column',
     // alignItems: 'center',
     // justifyContent:'center',
+
     }}
 >
     <Card>

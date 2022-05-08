@@ -24,10 +24,10 @@ export const TripCard = ({pk, tripId, title, location, username,  date, user, tr
         maxWidth: 300 
     }}
         >
-    {/* <CardActionArea component={RouterLink} to={`/trips/${tripId}`}> */}
+    <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
     <CardMedia
         component="img"
-        alt="green iguana"
+        alt={location}
         height= '100%'
         width='auto'
         // image="/static/images/cards/contemplative-reptile.jpg"
@@ -38,16 +38,17 @@ export const TripCard = ({pk, tripId, title, location, username,  date, user, tr
         
         <Typography gutterBottom align="center" variant="body1" component="div">
         {trip_username === username ? (
-        <>{location}</> 
+        <strong>{location}</strong> 
         ):( 
-        <>{usernameCapital}'s trip to {location}</>
+        <strong>{usernameCapital}'s trip to {location}</strong>
         )
     }
     
          {/* /{trip_username}'s trip to {location} */}
 
         </Typography>
-        <Typography variant="body2" align="center" color="text.secondary">
+        {/* fontFamily="Permanent Marker, cursive" */}
+        <Typography  variant="body2" align="center" color="text.secondary">
             {/* <h3>{title}</h3> */}
             {/* <h4>{username}</h4> */}
             {/* {user_first_name} {user_last_name} */}
@@ -60,7 +61,7 @@ export const TripCard = ({pk, tripId, title, location, username,  date, user, tr
         <Button size="small">Make favorite</Button>
         <Button size="small">Trip details</Button>
     </CardActions> */}
-        {/* </CardActionArea> */}
+        </CardActionArea>
     </Card>
     );
 }

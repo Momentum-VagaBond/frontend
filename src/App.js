@@ -24,6 +24,8 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import AllTrips from './routes/AllTrips';
+import { FlashOffTwoTone } from '@mui/icons-material';
+
 
 
 
@@ -37,9 +39,8 @@ const App = () => {
   const [newTripSuccess, setNewTripSuccess] = useState("false")
   // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
-  //
+  const [hasCurrentTrip, setHasCurrentTrip] = useState(null)
   const [tripId, setTripId] = useLocalStorageState('TripId', '');
-  //
   const [status, setStatus] = useState(null);
   // const [logId, setLogId] = useLocalStorageState('LogId', '');
   const getLoggedUserPk = (pk) =>
@@ -121,7 +122,7 @@ if (status === 401) {
         />
         <Route
           path="/home"
-          element={<Home token={token} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} />}
+          element={<Home token={token} hasCurrentTrip={hasCurrentTrip} setHasCurrentTrip={setHasCurrentTrip} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} />}
         />
         <Route
           path="/trips"
@@ -141,7 +142,7 @@ if (status === 401) {
         />
         <Route
           path="/newlog"
-          element={<NewLog loggedUserPk={loggedUserPk} logSuccess={logSuccess} setLogSuccess={setLogSuccess} tripId={tripId} token={token} isLoggedIn={isLoggedIn} />}
+          element={<NewLog loggedUserPk={loggedUserPk} hasCurrentTrip={hasCurrentTrip} logSuccess={logSuccess} setLogSuccess={setLogSuccess} tripId={tripId} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/mytrips"
