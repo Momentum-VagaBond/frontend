@@ -56,9 +56,9 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
     }
 
 
-    if (!loggedUserPk) {
-        return <Navigate to="/login" />
-    }
+    // if (!loggedUserPk) {
+    //     return <Navigate to="/login" />
+    // }
 
 
     return (
