@@ -7,40 +7,34 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { ForkLeft } from '@mui/icons-material';
 
 export default function ContactsCard({firstName, contactId, lastName, email, key}) {
 
     return(
 <ThemeProvider theme={Theme}>
     <div>
-    <CssBaseline />
+  <CssBaseline />
 
-    <Accordion
-    sx={{
-      // marginLeft: 2,
-      // marginBottom: 1,
-      marginTop: 2,
-      // marginRight: 2,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%',
-    }}
+  <Box
+  sx={{
+    overflow: 'auto',
+  }}
+  >
+    
+    <Typography align="left"
+      sx={{
+        overflow: 'auto',
+      }}
     >
-    {/* <AccordionSummary
-      expandIcon={<ExpandMoreIcon />}
-      aria-controls="panel1a-content"
-      id="panel1a-header"
-    >
-      <Typography>{contactId}</Typography>
-    </AccordionSummary> */}
-    <AccordionDetails>
-        <Typography>
-        {firstName} {lastName} <br />
-        {email}
-        </Typography>
-    </AccordionDetails>
-  </Accordion>
+    <ul>
+  ✈ {firstName} {lastName}
+    <br />
+      {email}
+    </ul>
+    </Typography>
+  </Box>
+
 </div>
 </ThemeProvider>
     )

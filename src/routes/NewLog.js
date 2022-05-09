@@ -184,29 +184,25 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     <Box maxWidth="sm" align="center"
     sx={{
         mt: 2,
-        // border: 1,
-        // borderStyle:"dashed",
-        // borderColor: "gray"
         }}
         > 
     {/* <Stack direction="row" alignItems="center" > */}
-   
+
     <MapBox align="center" ml={1}
         latitude={latitude}
         longitude={longitude}
     />
-     <Button type='submit'
+    <Button type='submit'
         variant="contained"
         sx={{
             mt: 3,
-            borderRadius: 5,
+            // borderRadius: 5,
             backgroundColor: "secondary"
         }}onClick={getLocation}>
         <AddLocationAltTwoToneIcon mr={3}/>
         Locate Me 
     </Button>
-        
-    {/* </Stack> */}
+
     </Box> 
     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1}}>
     <FormGroup>
@@ -224,7 +220,12 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
             onChange={(e) => setLocation(e.target.value)}
         />
   
-        <label htmlFor="reg-title" align="left"><Typography variant="body2">Log Title* (Keep it short & simple!)</Typography></label>
+        <label htmlFor="reg-title" align="left">
+            <Typography variant="body2">
+                Log Title* (Keep it short & simple!)
+            </Typography>
+        </label>
+
         <TextField id="outlined-basic"
             // label="Give your post a shortly and simple title"
             variant="outlined"
@@ -259,9 +260,21 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         ref={imageFileInput}
         onChange={handleFileName}
         />
-        <IconButton color="primary" aria-label="upload picture" component="span">
+
+        <Button
+        aria-label="upload picture"
+        component="span"
+        variant="contained"
+        color="primary"
+        size="small"
+        sx={{
+            //mt: 3,
+            //borderRadius: 5,
+            backgroundColor: "secondary"
+        }}>
             <PhotoCamera />
-        </IconButton>
+        </Button>
+
     </label>
         {fileName}
     {/* </Stack> */}
@@ -272,7 +285,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         sx={{
             mt: 3,
             mb: 10,
-            borderRadius: 5,
+            //borderRadius: 5,
         }}
         >
     Submit Log

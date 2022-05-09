@@ -15,7 +15,7 @@ import logo from './VagaBondLogo.png';
 
 
 
-export default function Home ({username, loggedUserPk, token, map, hasCurrentTrip, setHasCurrentTrip, setTripId, tripId, isLoggedIn}) {
+export default function Home ({username, setAuth, loggedUserPk, token, map, hasCurrentTrip, setHasCurrentTrip, setTripId, tripId, isLoggedIn}) {
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
   // const [tripId, setTripId] = useState([])
