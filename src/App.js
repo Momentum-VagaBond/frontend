@@ -78,11 +78,11 @@ if (status === 401) {
           setToken={setToken}
           setUsername={setUsername}
           />
-      <Box sx={{ '& > :not(style)': { m: 1 } }}>
+      {/* <Box sx={{ '& > :not(style)': { m: 1 } }}>
       <Fab style={style1} component={Link} to="/newlog" color="secondary" aria-label="edit">
         <EditIcon />
       </Fab>
-      </Box>
+      </Box> */}
       <Navbar
           isLoggedIn={isLoggedIn}
           token={token}
