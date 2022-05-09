@@ -120,7 +120,7 @@ if (status === 401) {
         />
         <Route
           path="/profile"
-          element={<Profile setAuth={setAuth} token={token} username={username} />}
+          element={<Profile setAuth={setAuth} hasCurrentTrip={hasCurrentTrip} token={token} username={username} />}
         />
         <Route
           path="/home"

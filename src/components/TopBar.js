@@ -155,6 +155,10 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              <MenuItem component={Link} to="/home/subscriber" onClick={handleCloseUserMenu}>
+              Trips Following
+            </MenuItem>
+            
             <MenuItem component={Link} to="/profile"onClick={handleCloseUserMenu}>
               Profile
             </MenuItem>
@@ -166,6 +170,7 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername) {
             <MenuItem component={Link} to="/logout" onClick={handleCloseUserMenu}>
               Log Out
             </MenuItem>
+          
 
             </Menu>
           </Box>

@@ -7,6 +7,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Theme } from '../Theme';
+import { styled } from "@mui/material/styles";
+import MuiBottomNavigationAction from "@mui/material/BottomNavigationAction";
+
 
 
 
@@ -19,23 +22,33 @@ export default function NavBar() {
     setValue(newValue);
   };
 
+  const BottomNavigationAction = styled(MuiBottomNavigationAction)(`
+  color: white;
+  font-size: '1rem';
+  &.Mui-selected {
+    color: white;
+    font-weight: normal;
+  }
 
+    
+  }
+`);
 
   return (
     <React.Fragment>
     <ThemeProvider theme={Theme}>
       
-       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
+       <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
         <BottomNavigation  sx={{backgroundColor: '#e76f51', labelColor: 'white', color: "white", 
             paddingTop: .5, paddingBotton: .5 }} showLabels  value={value} onChange={handleChange}>
           
           <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home sx={{ color: 'white'}} />} />
 
-          <BottomNavigationAction color="white" label="New Log" component={Link} to="/newlog" icon={<Edit sx={{ color: 'white'}} />} />
+          <BottomNavigationAction color="white" size="small" label="NewLog" component={Link} to="/newlog" icon={<Edit sx={{ color: 'white'}} />} />
 
           <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AirplanemodeActiveIcon sx={{ color: 'white'}} />} />
 
-          <BottomNavigationAction label="Profile" component={Link} to="/profile" icon={<PersonIcon sx={{ color: 'white'}} />} />
+          <BottomNavigationAction label="Following" component={Link} to="/home/subscriber" icon={<PersonIcon sx={{ color: 'white'}} />} />
 
         </BottomNavigation>
           
@@ -46,117 +59,3 @@ export default function NavBar() {
   );
   // fontWeight: 'medium',
   }
-      
-      {/* <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
-    <BottomNavigation 
-    // showLabels
-    color='#FFFFFF'
-    sx={{
-      width: '100%',
-      // width: 'auto'
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'baseline',
-      marginBottom: 0,
-      marginTop: 10,
-      position: 'fixed',
-      fontWeight: 'medium',
-      paddingBottom: 1,
-      top: 'auto',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: '#e76f51',
-    }} 
-    value={value} onChange={handleChange}>
-
-        <BottomNavigationAction component={Link} to="/home" label="Home" icon={<Home sx={{ color: 'white'}} />} />
-
-        <BottomNavigationAction label="New Log" component={Link} to="/newlog" icon={<Edit sx={{ color: 'white'}} />} />
-
-        <BottomNavigationAction label="New Trip" component={Link} to="/newtrip" icon={<AirplanemodeActiveIcon sx={{ color: 'white'}} />} />
-
-      <BottomNavigationAction label="Profile" component={Link} to="/profile" icon={<PersonIcon sx={{ color: 'white'}} />} />
-
-    </BottomNavigation>
-    </Paper> */}
-    // </ThemeProvider>
-  
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import AppBar from '@mui/material/AppBar';
-// import Box from '@mui/material/Box';
-// import Toolbar from '@mui/material/Toolbar';
-// import IconButton from '@mui/material/IconButton';
-// import Typography from '@mui/material/Typography';
-// import Menu from '@mui/material/Menu';
-// import MenuIcon from '@mui/icons-material/Menu';
-// import Container from '@mui/material/Container';
-// import Avatar from '@mui/material/Avatar';
-// import Tooltip from '@mui/material/Tooltip';
-// import MenuItem from '@mui/material/MenuItem';
-// import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
-// import FlightTwoToneIcon from '@mui/icons-material/FlightTwoTone';
-// import CardTravelTwoToneIcon from '@mui/icons-material/CardTravelTwoTone';
-// import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
-// import logo from './VagaBond2.png';
-
-
-// export const Navbar = () => {
-
-//   const VagaBondLogo = (
-//     <img src={logo} alt='VagaBondLogo' height='50'/>
-//   );
-
-//   return (
-//     <AppBar
-//     title='AppBar'
-//       sx={{
-//         backgroundColor: '#fe8a39'
-//       }}
-//     >
-//       <Container maxWidth="m">
-
-//           <Box 
-//             sx={{
-//               flexGrow: 1,
-//               display: { xs: 'flex', md: 'none' },
-//             }}>
-
-//               <MenuItem>
-//                 <Link to="/newtrip">
-//                 <FlightTwoToneIcon fontSize='inherit' />
-//                   New Trip
-//                 </Link>
-//               </MenuItem>
-
-//               <MenuItem>
-//                 <Link to="/profile">
-//                 <AccountCircleTwoToneIcon fontSize='inherit' />
-//                 Profile
-//                 </Link>
-//               </MenuItem>
-
-//               <MenuItem>
-//                 <Link to="/logout">
-//                 <AddLocationAltTwoToneIcon fontSize='inherit' />
-//                   Logout
-//                 </Link>
-//               </MenuItem>
-
-//               {VagaBondLogo}
-//           </Box>
-
-//       </Container>
-//     </AppBar>
-//   );
-// };

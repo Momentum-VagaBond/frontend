@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {TripCard} from '../components/TripCard';
-import { Container, Card, Box, Typography} from "@mui/material";
+import { Container, Card, Box, Grid, CardMedia, CardContent, Typography} from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import { Link as RouterLink, Navigate } from 'react-router-dom'
@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom'
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { StartTripCard } from "../components/StartTripCard";
+import logo from './VagaBondLogo.png';
 // import Background5 from './Background5.png'
 
 
@@ -18,6 +19,9 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
   // const [tripId, setTripId] = useState([])
+  const [tripTitle, setTripTitle] = useState("");
+  const [tripLocation, setTripLocation] = useState("")
+  const [logNumber, setLogNumber] = useState("")
   const [tripLogs, setTripLogs] = useState([])
   const [currentTripTraveler, setCurrentTripTraveler] = useState([])
   const [futureTripsTraveler, setFutureTripsTraveler] = useState([])   //this gives future trips
@@ -30,6 +34,10 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
   // const [alignment, setAlignment] = React.useState('left');
 
   const params = useParams()
+
+  const VBLogo = (
+    <img src={logo} alt='VBLogo' height='100'/>
+  );
 
   //Getting current trip if one exists
 
@@ -45,6 +53,9 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
           setCurrentTripTraveler(response.data[0])
           setTripId(response.data[0].pk)
           setTripLogs(response.data[0].trip_logs)
+          setLogNumber(response.data[0].trip_logs.length)
+          setTripLocation(response.data[0].location)
+          setTripTitle(response.data[0].title)
           console.log("tripLogs:" + response.data[0].trip_logs)
           console.log(response.data.username)
           console.log("current trip:" + response.data[0].pk)
@@ -52,7 +63,7 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
           setHasCurrentTrip(false)
         }
     })
-  }, [token, setCurrentTripTraveler, setHasCurrentTrip, setTripId])
+  }, [token, setCurrentTripTraveler, setTripLocation, setTripTitle, setHasCurrentTrip, setTripId])
 
 
     //Getting Most recent past trip if one exists
@@ -126,8 +137,35 @@ return (
             // backgroundColor: '#e9ecef',
             // position: 'absolute',
         }}>
-<Typography mb={2} mt={4} variant="h5" align="center"><strong>Welcome, {username}! <br /> How's your trip?</strong></Typography>
+<Container mb={2}>
+  {hasCurrentTrip &&
+ 
+  <Box mt={4} mb={4}>
+    <Grid container spacing={2}>
+  <Grid item xs={4}>
+    <CardMedia className='ProfileCardMedia'>
+      {VBLogo}
+    </CardMedia>
+  </Grid>
+  <Grid item xs={8}>
+    <CardContent>
+        <Typography variant="h5" component="div">
+          {username}
+        </Typography>
+        <Typography component="div" color="secondary">
+            <strong>On Current Trip</strong>
+          </Typography>
+          <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography>
+        </CardContent>
+  </Grid>
+  </Grid>
+  <Typography variant="subtitle2" color="primary"> {tripTitle}</Typography>
+  <Typography  variant="subtitle2" color="primary"> {tripLocation}</Typography>
   
+
+  </Box>
+  }
+</Container>
 <Container maxWidth="sm" align="center">
 {hasCurrentTrip ? (
 <>
