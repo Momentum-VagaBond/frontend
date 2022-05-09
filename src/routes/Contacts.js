@@ -6,7 +6,11 @@ import { Container, FormGroup, Button, Box, Card, CssBaseline, Typography, Grid,
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-import { ContactsCard } from '../components/ContactsCard';
+import ContactsCard from '../components/ContactsCard';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
@@ -73,13 +77,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: '#e9ecef',
-        // marginTop: 10,
-        // display: 'flex',
-        // flexDirection: 'column',
-        // alignItems: 'center',
-        // backgroundColor: '#e9ecef',
-        // position: 'absolute',
+        marginBottom: 10,
     }}>
     <Card
     sx={{
@@ -100,7 +98,8 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-    '& .MuiTextField-root': { m: 2, width: '25ch' },
+        //position: 'absolute',
+    '& .MuiTextField-root': { m: 2, width: '30ch' },
     }}
     noValidate
     autoComplete="off"
@@ -115,10 +114,10 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
             id="firstName"
             // label="Title"
             name='firstName'
-            variant="filled"
+            variant="outlined"
             className='firstName'
             required value={firstName}
-            helperText="This is required!"
+            helperText="Required"
             onChange={(e) => setFirstName(e.target.value)}
         />
     </FormGroup>
@@ -130,10 +129,10 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
             id="lastName"
             // label="Location"
             name='lastName'
-            variant="filled"
+            variant="outlined"
             className='lastName'
             required value={lastName}
-            helperText="This is required!"
+            helperText="Required"
             onChange={(e) => setLastName(e.target.value)}
         />
     </FormGroup>
@@ -147,7 +146,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
             type="email"
             name='email'
             required value={email}
-            helperText="This is required!"
+            helperText="Required"
             onChange={(e) => setEmail(e.target.value)}
         />
     </FormGroup>
@@ -159,7 +158,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     sx={{
         mt: 3,
         mb: 2,
-        borderRadius: 5,
+        //borderRadius: 5,
     }}
     >
     Submit
@@ -169,11 +168,10 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     </Box>
     </Grid>
     </Grid>
-    </Container>
+
     <Box
     sx={{
-        // marginTop: 10,
-        // marginRight: 10,
+
         marginLeft: 2,
         marginBottom: 5,
         marginTop: 2,
@@ -185,7 +183,6 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     >
         <Card
     sx={{
-        //marginBottom: 1,
         marginTop: 3,
     }}
     >
@@ -193,10 +190,11 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         Subscribers
     </Typography>
     </Card>
+    
     {subscribers.map((subscriber, pk) => {
         return(
         <ContactsCard
-            key={pk}
+            contactId={pk}
             firstName={subscriber.first_name}
             lastName={subscriber.last_name}
             email={subscriber.email}
@@ -204,6 +202,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     )}
     )}
     </Box>
+    </Container>
     </ThemeProvider>
     )
 }

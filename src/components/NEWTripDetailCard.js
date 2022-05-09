@@ -29,7 +29,17 @@ export const NEWTripDetailCard = ({pk, tripId, title, details, logId, date, loca
     const dateFormatted = <Moment format="MM/D/YYYY">{date}</Moment>
 
     return (
-      <Container>
+      <Container
+      sx={{
+        width: '100%',
+        // border: 1,
+        marginBottom: 3,
+        margin: 0,
+        padding: 0,
+        //boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
+        //backgroundColor: 'white',
+      }}
+      >
       <ImageListItem>
       <img
         src={`${Flags}?w=248&fit=crop&auto=format`}

@@ -69,10 +69,12 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
         sx={{
             marginTop: 5,
             display: 'flex',
+            flex: 1,
             flexDirection: 'column',
             alignItems: 'center',
             backgroundColor: '#e9ecef',
-            // position: 'relative',
+            position: 'relative',
+            width: '100%',
         }}>
         <Card
         sx={{
@@ -89,16 +91,19 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
         <Box
         sx={{
             marginTop: 2,
-            marginRight: 2,
+            marginBottom: 2,
+            marginRight: 0,
             display: 'flex',
+            flex: 1,
             flexDirection: 'column',
             alignItems: 'center',
             // position: 'absolute',
             // paddingRight: 2,
             // paddingBottom: 6,
-            // paddingLeft: 2,
-            // position: 'absolute',
-            '& .MuiTextField-root': { m: 1, width: '30ch' },
+            paddingLeft: 0,
+            position: 'fixed',
+            width: '40ch',
+            '& .MuiTextField-root': { m: 1, width: '40ch' },
         }}
         noValidate
         autoComplete="off"
@@ -114,7 +119,7 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
             id="title"
             // label="Title"
             name='Title'
-            variant="filled"
+            variant="outlined"
             className='tripTitle'
             required value={title}
             helperText="This is required!"
@@ -129,7 +134,7 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
             id="location"
             // label="Location"
             name='Location'
-            variant="filled"
+            variant="outlined"
             className='tripLocation'
             required value={location}
             helperText="This is required!"

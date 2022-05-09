@@ -174,9 +174,16 @@ return (
     <CardActionArea component={RouterLink} to={`/trips/${tripId}/${log.pk}`}>
     <NEWTripDetailCard
     sx={{
-      marginTop: 8,
-      paddingLeft: 4,
-      marginBottom: 8,
+      // display: 'flex',
+      // flexDirection: 'column',
+      // flex: 1,
+      // width: 'auto',
+      // height: 'auto',
+      // marginTop: 2,
+      // marginTop: 8,
+      // paddingLeft: 4,
+      // marginBottom: 8,
+      // width: '100%',
     }}
       logId={log.pk}
       details={log.details}
@@ -197,7 +204,7 @@ return (
 
 
   
-<Container maxWidth="sm" align="center">
+<Container maxWidth="l" align="center">
 
 {(!hasCurrentTrip && (pastTripTraveler === null)) ? 
 
@@ -218,7 +225,7 @@ return (
   : '' }
 
   </Container>
-  <Container maxWidth="sm" align="center"> 
+  <Container maxWidth="m" align="center"> 
   <>
   {(!hasCurrentTrip && futureTripsTraveler) ? (
 <>

@@ -9,7 +9,7 @@ import { Theme } from "../Theme";
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { Link as RouterLink } from 'react-router-dom'
-import {Alert, AlertTitle } from '@mui/material';
+import { Alert, AlertTitle, Typography } from '@mui/material';
 
 
 const TripDetail = ({token, pk, tripId, details, logSuccess, setLogSuccess, location, title, log }) => {
@@ -61,13 +61,15 @@ const TripDetail = ({token, pk, tripId, details, logSuccess, setLogSuccess, loca
         </Alert>}
     <Box
       sx={{
-          marginTop: 5,
+          marginTop: 2,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
         }}
     >
-      This is the Trip Detail page for trip #{tripPk} to {tripLocation}. 
+      <Typography>
+      <h1>{tripLocation}</h1>
+      </Typography>
 
     </Box>
     

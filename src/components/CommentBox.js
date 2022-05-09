@@ -47,7 +47,11 @@ export default function CommentBox({ token, logId, setNewComment }) {
       <Container
       sx={{
 
-        // width: '75%',
+        width: '100%',
+        // border: 1,
+        marginBottom: 3,
+        margin: 0,
+        padding: 0,
       }}
       >
         <Box
@@ -71,6 +75,7 @@ export default function CommentBox({ token, logId, setNewComment }) {
             onChange={(e) => handleChange('commentText', e)}
             sx={{
               backgroundColor: 'white',
+              width: '100%',
             }}
           />  
           <Button type="submit"
