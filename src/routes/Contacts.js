@@ -79,15 +79,9 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         alignItems: 'center',
         marginBottom: 10,
     }}>
-    <Card
-    sx={{
-        marginBottom: 3,
-    }}
-    >
-    <Typography>
-        Add a Subscriber
-    </Typography>
-    </Card>
+        <Typography component="h1" variant="h5" >
+            <strong>Add a subscriber</strong>
+        </Typography>
 
     <Grid container component="main">
     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -171,25 +165,19 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
 
     <Box
     sx={{
-
         marginLeft: 2,
         marginBottom: 5,
-        marginTop: 2,
+        marginTop: 6,
         marginRight: 2,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        width: '100%',
     }}
     >
-        <Card
-    sx={{
-        marginTop: 3,
-    }}
-    >
-    <Typography>
-        Subscribers
-    </Typography>
-    </Card>
+        <Typography component="h2" variant="h6" >
+            <strong>Subscribers</strong>
+        </Typography>
     {subscribers.map((subscriber, pk) => {
         return(
         <ContactsCard

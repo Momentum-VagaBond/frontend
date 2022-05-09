@@ -159,8 +159,9 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
             <Box
                 sx={{
-                marginTop: 5,
+                marginTop: 2,
                 marginRight: 2,
+                marginBottom: 15,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -192,7 +193,30 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     />
     </Stack>
     </Box> 
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1}}>
+    <Box
+    sx={{
+        mt: 1,
+        marginTop: 2,
+        marginBottom: 2,
+        marginRight: 0,
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        // position: 'absolute',
+        // paddingRight: 2,
+        // paddingBottom: 6,
+        paddingLeft: 0,
+        position: 'relative',
+        width: '40ch',
+        '& .MuiTextField-root': { m: 1, width: '40ch' },
+
+    }}
+    autoComplete="off" noValidate>
+
+    {error && <div className="error">{error}</div>}
+    <form onSubmit={handleSubmit}></form>
+
     <FormGroup>
         <label htmlFor="reg-location">
             {/* <Typography variant="body2">Location: </Typography> */}
@@ -203,6 +227,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
             placeholder= {status} 
             multiline
             className='tripLocation'
+            margin='normal'
             value={location}
             sx={{mb: 2}}
             onChange={(e) => setLocation(e.target.value)}
@@ -215,6 +240,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
             placeholder="Dinner Downtown!"
             multiline
             className='tripTitle'
+            margin='normal'
             sx={{mb: 2}}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -227,6 +253,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
             variant="outlined"
             className='tripDetails'
             multiline
+            margin='normal'
             rows={4}
             value={details}
             onChange={(e) => setDetails(e.target.value)}
@@ -269,7 +296,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     </div>
     }
     
-   {!hasCurrentTrip &&
+    {!hasCurrentTrip &&
     <>
     <Alert mt={4} severity="error">
         <AlertTitle>Hey you're not on a trip!</AlertTitle>
@@ -282,7 +309,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     </Container>
     </>
     }
-   
+
     </ThemeProvider> 
     )
 }
