@@ -153,35 +153,28 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     <ThemeProvider theme={Theme}>
     {hasCurrentTrip &&
     <div className="newLog">
-    {/* <Container sx={{
-            paddingBottom: 15,
-            marginBottom:5,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            position: 'sticky',
-            }}> */}
+ 
 
         <Container component="main" maxWidth="sm" align="center" >
         <CssBaseline />
-        {/* <Grid item xs={12} sm={8} md={5} > */}
             <Box
                 sx={{
                 marginTop: 3,
+                align: "center"
                 // marginRight: 2,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                // display: 'flex',
+                // flexDirection: 'column',
+                // alignItems: 'center',
                 //position can be removed to create a white box that holds the form
                 // position: 'absolute',
                 // backgroundColor: '#e9ecef',
                 }}
             >
-        <Typography component="h1" variant="h5" color="primary" >
+        {/* <Typography component="h1" variant="h5" color="primary" >
             <strong>Create a Log </strong>
-        </Typography>
+        </Typography> */}
 
-    <Box maxWidth="sm" align="center"
+    {/* <Box maxWidth="sm" align="center"
     sx={{
         mt: 2,
         // border: 1,
@@ -189,8 +182,10 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         // borderColor: "gray"
         }}
         > 
-    {/* <Stack direction="row" alignItems="center" > */}
-   
+    */}
+    <Box sx={{display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'}}>
     <MapBox align="center" ml={1}
         latitude={latitude}
         longitude={longitude}
@@ -204,16 +199,14 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         }}onClick={getLocation}>
         <AddLocationAltTwoToneIcon mr={3}/>
         Locate Me 
-    </Button>
-        
-    {/* </Stack> */}
+    </Button>   
+   
     </Box> 
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1}}>
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 2}}>
     <FormGroup>
         <label htmlFor="reg-location">
-            {/* <Typography variant="body2">Location: </Typography> */}
             </label>
-        <label htmlFor="reg-title" align="left"><Typography variant="body2">Location*</Typography></label>
+        <label htmlFor="reg-title" align="left"><Typography variant="body2">Location *</Typography></label>
         <TextField id="outlined-basic"
             variant="outlined"
             placeholder= {status} 
@@ -224,9 +217,8 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
             onChange={(e) => setLocation(e.target.value)}
         />
   
-        <label htmlFor="reg-title" align="left"><Typography variant="body2">Log Title* (Keep it short & simple!)</Typography></label>
+        <label htmlFor="reg-title" align="left"><Typography variant="body2">Log Title * </Typography></label>
         <TextField id="outlined-basic"
-            // label="Give your post a shortly and simple title"
             variant="outlined"
             placeholder="Dinner Downtown!"
             multiline
@@ -237,7 +229,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         />
 
 
-        <label htmlFor='reg-details' align="left"><Typography variant="body2">Details* (Tell us more!)</Typography>  </label>
+        <label htmlFor='reg-details' align="left"><Typography variant="body2">Details *</Typography>  </label>
         <TextField id="outlined-basic"
             placeholder="We were so hungry and found this great local BBQ spot..."
             variant="outlined"
@@ -250,7 +242,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         />
     </FormGroup>
     {error && <div className="error">{error}</div>}
-
+{/* 
     <label htmlFor="icon-button-file">
         <Input 
         accept="image/*" 
@@ -258,29 +250,45 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         type="file" 
         ref={imageFileInput}
         onChange={handleFileName}
+        /> */}
+   
+    <label htmlFor="contained-button-file">
+        <Input 
+        accept="image/*" 
+        id="contained-button-file" 
+        type="file" 
+        ref={imageFileInput}
+        onChange={handleFileName}
         />
-        <IconButton color="primary" aria-label="upload picture" component="span">
-            <PhotoCamera />
-        </IconButton>
+        <Button color="primary" variant="outlined" aria-label="upload picture" component="span" sx={{
+            borderRadius: 5,
+        }}>
+            <PhotoCamera mr={3} />
+            Add Photo
+        </Button>
     </label>
+    <h6>
         {fileName}
-    {/* </Stack> */}
+        </h6>
+  
+        
+        
     <Button 
         type='submit'
         fullWidth
         variant="contained"
         sx={{
-            mt: 3,
+            mt: 1,
             mb: 10,
             borderRadius: 5,
         }}
         >
     Submit Log
     </Button>
-    {/* </Card> */}
+  
     </Box>
     </Box>
-    {/* </Grid> */}
+    
     </Container>
     </div>
     }
