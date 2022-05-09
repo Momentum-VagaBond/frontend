@@ -113,157 +113,157 @@ const Profile = ({username, token, loggedUserPk, hasCurrentTrip, contact, firstN
       return <Navigate to="/login" />
   } 
 
-return (
-  <ThemeProvider theme={Theme}>
-
-    <Container
-    sx={{
-       marginTop: 4,
-            // marginBotton: 50,
-            paddingBottom: 15,
-            // display: 'flex',
-            // flexDirection: 'column',
-            // alignItems: 'center',
-            position: 'sticky',
-    
-    }}
-    >
-
-  <Card className='ProfileCard'>
-    <Grid container spacing={2}>
-  <Grid item xs={4}>
-    <CardMedia className='ProfileCardMedia'>
-      {VBLogo}
-    </CardMedia>
-  </Grid>
-  <Grid item xs={8}>
-    <CardContent>
-        <Typography variant="h5" component="div">
-          {username}
-        </Typography>
-        <Typography component="div" color="secondary">
-            <strong>{tripTotal}</strong> trips
+  return (
+    <ThemeProvider theme={Theme}>
+  
+      <Container
+      sx={{
+         marginTop: 4,
+              // marginBotton: 50,
+              paddingBottom: 15,
+              // display: 'flex',
+              // flexDirection: 'column',
+              // alignItems: 'center',
+              position: 'sticky',
+      
+      }}
+      >
+  
+    <Card className='ProfileCard'>
+      <Grid container spacing={2}>
+    <Grid item xs={4}>
+      <CardMedia className='ProfileCardMedia'>
+        {VBLogo}
+      </CardMedia>
+    </Grid>
+    <Grid item xs={8}>
+      <CardContent>
+          <Typography variant="h5" component="div">
+            {username}
+          </Typography>
+          <Typography component="div" color="secondary">
+              <strong>{tripTotal}</strong> trips
+            </Typography>
+          </CardContent>
+    </Grid>
+    </Grid>
+      <CardContent>
+          <Typography gutterBottom variant="h6" component="div">
+            {first} {last}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {bio}
           </Typography>
         </CardContent>
-  </Grid>
-  </Grid>
-    <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
-          {first} {last}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {bio}
-        </Typography>
-      </CardContent>
-      
-      <CardActions >
-            
-      </CardActions>
-    {/* </Box> */}
-    </Card>
-
+        
+        <CardActions >
+              
+        </CardActions>
+      {/* </Box> */}
+      </Card>
   
-    {/* <Box>
-      <h3>{bio}</h3>
-    <h1>
-      {username}'s Trips!
-    </h1>
-    </Box> */}
-    <Container maxWidth="xs">
-    <h5>My trips...</h5>
-    <Container component="main" align="center" maxWidth="xs">
     
-    {trips.map((trip) =>
-        <TripCard
-        username={username}
-        key={trip.pk}
-        title={trip.title}
-        location={trip.location}
-        // duration={trip.duration}
-        trip_user={trip.user}
-        trip_username={trip.username}
-        trip_user_first={trip.user_first_name}
-        trip_user_last={trip.user_last_name}
-        begin={trip.begin}
-        end={trip.end}
-        tripId={trip.pk}
+      {/* <Box>
+        <h3>{bio}</h3>
+      <h1>
+        {username}'s Trips!
+      </h1>
+      </Box> */}
+      <Container maxWidth="xs">
+      <h5>My trips...</h5>
+      <Container component="main" align="center" maxWidth="xs">
+      
+      {trips.map((trip) =>
+          <TripCard
+          username={username}
+          key={trip.pk}
+          title={trip.title}
+          location={trip.location}
+          // duration={trip.duration}
+          trip_user={trip.user}
+          trip_username={trip.username}
+          trip_user_first={trip.user_first_name}
+          trip_user_last={trip.user_last_name}
+          begin={trip.begin}
+          end={trip.end}
+          tripId={trip.pk}
+        />
+          )}
+      </Container>
+      </Container>
+  
+      {/* <Container maxWidth="sm" align="center">
+  {hasCurrentTrip ? (
+  <>
+    {trip.map((log) => 
+      <TripCard
+      sx={{
+        marginTop: 8,
+        paddingLeft: 4,
+        marginBottom: 8,
+      }}
+        logId={log.pk}
+        details={log.details}
+        location={log.location}
+        title={log.title}
+        date={log.date_logged}
       />
-        )}
-    </Container>
-    </Container>
-
-    {/* <Container maxWidth="sm" align="center">
-{hasCurrentTrip ? (
-<>
-  {trip.map((log) => 
-    <TripCard
-    sx={{
-      marginTop: 8,
-      paddingLeft: 4,
-      marginBottom: 8,
-    }}
-      logId={log.pk}
-      details={log.details}
-      location={log.location}
-      title={log.title}
-      date={log.date_logged}
-    />
-//   )}
-//   </>
-//   ) : (
-//   <>  </>
-//   )
-// }
-</Container>
-    <Box
-    sx={{
-      marginBottom: 50,
-    }}
-    >
-      <h3>FutureTripCard</h3>
-      {trips.map((trip, pk) => {
-        return (
-          <FutureTripCard
-            key={pk}
-            tripId={trip.pk}
-            title={trip.title}
-            user={trip.user}
-            location={trip.location}
-            begin={trip.begin}
-            end={trip.end}
-            img={trip.img}
-          />
-        )}
-      )}
-    </Box>
-    <Box
-    sx={{
-      marginBottom: 50,
-    }}
-    >
-    <h3>PastTripCard</h3>
-      {trips.map((trip, pk) => {
-        return (
-          <PastTripCard
-            key={pk}
-            tripId={trip.pk}
-            title={trip.title}
-            location={trip.location}
-            firstName={trip.user_first_name}
-            lastName={trip.user_last_name}
-            trip_username={trip.username}
-            begin={trip.begin}
-            end={trip.end}
-            username={username}
-            />
-        )}
-      )}
-      </Box>
-  </Container> */}
-
+  //   )}
+  //   </>
+  //   ) : (
+  //   <>  </>
+  //   )
+  // }
   </Container>
-</ThemeProvider>
-  )
-};
-
-export default Profile
+      <Box
+      sx={{
+        marginBottom: 50,
+      }}
+      >
+        <h3>FutureTripCard</h3>
+        {trips.map((trip, pk) => {
+          return (
+            <FutureTripCard
+              key={pk}
+              tripId={trip.pk}
+              title={trip.title}
+              user={trip.user}
+              location={trip.location}
+              begin={trip.begin}
+              end={trip.end}
+              img={trip.img}
+            />
+          )}
+        )}
+      </Box>
+      <Box
+      sx={{
+        marginBottom: 50,
+      }}
+      >
+      <h3>PastTripCard</h3>
+        {trips.map((trip, pk) => {
+          return (
+            <PastTripCard
+              key={pk}
+              tripId={trip.pk}
+              title={trip.title}
+              location={trip.location}
+              firstName={trip.user_first_name}
+              lastName={trip.user_last_name}
+              trip_username={trip.username}
+              begin={trip.begin}
+              end={trip.end}
+              username={username}
+              />
+          )}
+        )}
+        </Box>
+    </Container> */}
+  
+    </Container>
+  </ThemeProvider>
+    )
+  };
+  
+  export default Profile

@@ -126,9 +126,10 @@ return (
             height: "100%",
             paddingBottom: 15,
             display: 'flex',
+            flex: 1,
             flexDirection: 'column',
             alignItems: 'center',
-            position: 'sticky',
+            position: 'relative',
             // backgroundImage: `url(${Background5})`,
             // backgroundSize: 'cover',
             // height: "100vh",
@@ -138,16 +139,17 @@ return (
             // position: 'absolute',
         }}>
 {/* header has current trip */}
+<Container>
     {hasCurrentTrip &&
- 
+
   <Box mt={4} mb={4}>
     <Grid container spacing={2}>
-  <Grid item xs={4}>
+  <Grid item xs={6}>
     <CardMedia className='ProfileCardMedia'>
       {VBLogo}
     </CardMedia>
   </Grid>
-  <Grid item xs={8}>
+  <Grid item>
     <CardContent>
         <Typography variant="h5" component="div">
           {username}
@@ -189,7 +191,7 @@ return (
   </Grid>
   </Box>
   }
-
+</Container>
 <Container maxWidth="sm" align="center">
 {hasCurrentTrip ? (
 <>
