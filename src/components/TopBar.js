@@ -21,7 +21,7 @@ const VBLogo = (
   <img src={ColorLogo} alt='VagaBondLogo' height='65'/>
 );
 
-export default function TopBar(isLoggedIn, token, setToken, setUsername) {
+export default function TopBar(isLoggedIn, token, setToken, setUsername, tripTotal) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

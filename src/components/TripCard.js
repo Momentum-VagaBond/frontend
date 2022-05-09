@@ -49,7 +49,7 @@ export const TripCard = ({pk, tripId, title, location, username,  date, user, tr
         </Typography>
         {/* fontFamily="Permanent Marker, cursive" */}
         <Typography  variant="body2" align="center" color="text.secondary">
-            {/* <h3>{title}</h3> */}
+            <h3>{title}</h3>
             {/* <h4>{username}</h4> */}
             {/* {user_first_name} {user_last_name} */}
             <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
@@ -65,3 +65,5 @@ export const TripCard = ({pk, tripId, title, location, username,  date, user, tr
     </Card>
     );
 }
+
+

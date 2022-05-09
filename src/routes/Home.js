@@ -153,14 +153,15 @@ return (
           {username}
         </Typography>
         <Typography component="div" color="secondary">
-            <strong>On Current Trip</strong>
+            <strong>Current Trip in {tripLocation}</strong>
           </Typography>
-          <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography>
+          {/* <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography> */}
         </CardContent>
   </Grid>
   </Grid>
-  <Typography variant="subtitle2" color="primary"> {tripTitle}</Typography>
-  <Typography  variant="subtitle2" color="primary"> {tripLocation}</Typography>
+  <Typography variant="subtitle2" color="primary">{tripTitle}</Typography>
+  <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography>
+  {/* <Typography  variant="subtitle2" color="primary"> {tripLocation}</Typography> */}
   
 
   </Box>
