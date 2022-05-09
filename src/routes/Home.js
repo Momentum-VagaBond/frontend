@@ -76,12 +76,12 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
     })
     .then((response) => {
         console.log("past trips: " + response.data)
-        if (response.data[0]){
+        // if (response.data[0]){
           setPastTripTraveler(response.data[0])
           setTripId(response.data[0].pk)
           console.log(response.data[0].pk)
           console.log("most recent past trip:" + response.data[0].pk)
-        } 
+        // } 
     })
   }
   }, [token, setPastTripTraveler, hasCurrentTrip,  setTripId])
@@ -189,7 +189,7 @@ return (
   </Grid>
   </Box>
   }
-
+{/* </Container> */}
 <Container maxWidth="sm" align="center">
 {hasCurrentTrip ? (
 <>
@@ -228,7 +228,7 @@ return (
 
 
   
-<Container maxWidth="m" align="center">
+<Container maxWidth="l" align="center">
 
 {(!hasCurrentTrip && (pastTripTraveler === null)) ? 
 
