@@ -86,7 +86,7 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, fileName, log
     lineHeight: 2,
   }}
   >
-    <p>{detail_text} at {location}!</p>
+    {detail_text} at {location}!
   </Typography>
   </Card>
     </ImageListItem>

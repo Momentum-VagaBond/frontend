@@ -76,9 +76,9 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
             position: 'relative',
             width: '100%',
         }}>
-        <Typography component="h1" variant="h5" >
+        {/* <Typography component="h1" variant="h5" >
             <strong>Create a Trip</strong>
-        </Typography>
+        </Typography> */}
 
         <Grid container component="main">
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -116,6 +116,7 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
             variant="outlined"
             className='tripTitle'
             required value={title}
+            margin="normal"
             helperText="This is required!"
             onChange={(e) => setTitle(e.target.value)}
         />
@@ -130,6 +131,7 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
             name='Location'
             variant="outlined"
             className='tripLocation'
+            margin="normal"
             required value={location}
             helperText="This is required!"
             onChange={(e) => setLocation(e.target.value)}
@@ -143,6 +145,7 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
         id="start-date"
         type="date"
         name='startDate'
+        margin="normal"
         required value={begin}
         helperText="This is required!"
         onChange={(e) => setBegin(e.target.value)}
@@ -160,6 +163,7 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
         id="end-date"
         type="date"
         name='endDate'
+        margin="normal"
         required value={end}
         onChange={(e) => setEnd(e.target.value)}
         sx={{ width: 220 }}

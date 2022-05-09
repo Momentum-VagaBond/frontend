@@ -177,9 +177,6 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     {/* <Box maxWidth="sm" align="center"
     sx={{
         mt: 2,
-        // border: 1,
-        // borderStyle:"dashed",
-        // borderColor: "gray"
         }}
         > 
     */}
@@ -190,11 +187,11 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         latitude={latitude}
         longitude={longitude}
     />
-     <Button type='submit'
+    <Button type='submit'
         variant="contained"
         sx={{
             mt: 3,
-            borderRadius: 5,
+            // borderRadius: 5,
             backgroundColor: "secondary"
         }}onClick={getLocation}>
         <AddLocationAltTwoToneIcon mr={3}/>
@@ -280,7 +277,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         sx={{
             mt: 1,
             mb: 10,
-            borderRadius: 5,
+            //borderRadius: 5,
         }}
         >
     Submit Log

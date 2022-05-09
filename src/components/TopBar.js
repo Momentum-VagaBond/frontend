@@ -46,59 +46,15 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername, tripTot
     >
       <Container maxWidth="m">
         <Toolbar>
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          > */}
           <Typography
             variant="subtitle2"
             color="secondary"
           >
             VAGABOND
             </Typography>
-            {/* <MenuItem>
-                <Link to="/newtrip">
-                <FlightTwoToneIcon fontSize='inherit' />
-                  New Trip
-                </Link>
-              </MenuItem> */}
 
-              {/* <MenuItem>
-                <Link to="/trips">
-                <CardTravelTwoToneIcon fontSize='inherit' />
-                  All Trips
-                </Link>
-              </MenuItem> */}
-
-              {/* <MenuItem>
-              
-                <AccountCircleTwoToneIcon component={Link} to="/profile" fontSize='inherit' />
-                Profile
-             
-              </MenuItem> */}
-
-              {/* <MenuItem>
-                <Link to="/newlog">
-                <AddLocationAltTwoToneIcon fontSize='inherit' />
-                  New Log
-                </Link>
-              </MenuItem>
-          </Typography> */}
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', mx: 'none' } }}>
             {VBLogo}
-            {/* <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton> */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -122,15 +78,7 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername, tripTot
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {/* {routes.map((route) => (
-              <Button
-                key={route}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {route}
-              </Button>
-            ))} */}
+            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
