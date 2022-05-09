@@ -13,6 +13,7 @@ import TripDetail  from './routes/TripDetail';
 import LogDetail from './routes/LogDetail'
 import MyTrips from './routes/MyTrips';
 import Home from './routes/Home';
+import SubscriberHome from './routes/SubscriberHome';
 import Contacts from './routes/Contacts';
 import LogCard from './components/LogCard';
 import useLocalStorageState from 'use-local-storage-state';
@@ -40,6 +41,7 @@ const App = () => {
   // const [avatar, setAvatar] = useLocalStorageState('Avatar', "");
   const [loggedUserPk, setLoggedUserPk] = useLocalStorageState('UserPk', '');
   const [hasCurrentTrip, setHasCurrentTrip] = useState(null)
+  const [subscriberHasCurrent, setSubscriberHasCurrent] = useState(false)
   const [tripId, setTripId] = useLocalStorageState('TripId', '');
   const [status, setStatus] = useState(null);
   // const [logId, setLogId] = useLocalStorageState('LogId', '');
@@ -118,11 +120,15 @@ if (status === 401) {
         />
         <Route
           path="/profile"
-          element={<Profile setAuth={setAuth} token={token} username={username} />}
+          element={<Profile setAuth={setAuth} hasCurrentTrip={hasCurrentTrip} token={token} username={username} />}
         />
         <Route
           path="/home"
           element={<Home token={token} hasCurrentTrip={hasCurrentTrip} setHasCurrentTrip={setHasCurrentTrip} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} />}
+        />
+        <Route
+          path="/home/subscriber"
+          element={<SubscriberHome token={token} subscriberHasCurrent={subscriberHasCurrent} setSubscriberHasCurrent={setSubscriberHasCurrent} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} />}
         />
         <Route
           path="/trips"

@@ -37,7 +37,7 @@ export default function MyTrips({token, loggedUserPk, pk}) {
         <h1>This is a test list of ALL User trips</h1>
     </Container>
     <Container component="main" maxWidth="xs">
-    {trips.map((trip, key) =>
+    {trips.map((trip) =>
         <Card sx={{
             mt: 8,
             pl: 4,
