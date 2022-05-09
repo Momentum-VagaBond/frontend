@@ -76,15 +76,9 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
             position: 'relative',
             width: '100%',
         }}>
-        <Card
-        sx={{
-            marginBottom: 2,
-        }}
-        >
-        <Typography>
-            New Trip!
+        <Typography component="h1" variant="h5" >
+            <strong>Create a Trip</strong>
         </Typography>
-        </Card>
 
         <Grid container component="main">
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>

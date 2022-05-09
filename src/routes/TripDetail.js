@@ -10,9 +10,14 @@ import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { Link as RouterLink } from 'react-router-dom'
 import { Alert, AlertTitle, Typography } from '@mui/material';
+import MapBox from "../components/MapBox";
+import Geolocate from "../components/Geolocate";
+import Mapbox from "react-map-gl/dist/esm/mapbox/mapbox";
+import { MapboxMap } from "react-map-gl";
 
 
-const TripDetail = ({token, pk, tripId, details, logSuccess, setLogSuccess, location, title, log }) => {
+
+const TripDetail = ({token, pk, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
@@ -72,7 +77,8 @@ const TripDetail = ({token, pk, tripId, details, logSuccess, setLogSuccess, loca
       </Typography>
 
     </Box>
-    
+
+
     {logs.map((log) => (
     <CardActionArea  key={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
     <NEWTripDetailCard

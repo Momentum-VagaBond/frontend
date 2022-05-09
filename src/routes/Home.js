@@ -112,8 +112,7 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
   
 return (
   <ThemeProvider theme={Theme}>
- 
-<Container sx={{
+  <Container sx={{
             // marginTop: 10,
             // marginBotton: 50,
             // paddingBottom: 15,
@@ -139,7 +138,7 @@ return (
         }}>
 {/* header has current trip */}
     {hasCurrentTrip &&
- 
+
   <Box mt={4} mb={4}>
     <Grid container spacing={2}>
   <Grid item xs={4}>
@@ -153,18 +152,20 @@ return (
           {username}
         </Typography>
         <Typography component="div" color="secondary">
-            <strong>On Current Trip</strong>
+            <strong>Current Trip in {tripLocation}</strong>
           </Typography>
-          <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography>
+          {/* <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography> */}
         </CardContent>
   </Grid>
   </Grid>
-  <Typography variant="subtitle2" color="primary"> {tripTitle}</Typography>
-  <Typography  variant="subtitle2" color="primary"> {tripLocation}</Typography>
+  <Typography variant="subtitle2" color="primary">{tripTitle}</Typography>
+  <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography>
+  {/* <Typography  variant="subtitle2" color="primary"> {tripLocation}</Typography> */}
   </Box>
-  }
 
+      }
 {/* header no current trip */}
+
     {!hasCurrentTrip &&
  
   <Box mt={4} mb={4}>
@@ -275,8 +276,6 @@ return (
 }
 </>
   </Container>
-
-
   </Container>
   </ThemeProvider>
   )
