@@ -9,10 +9,11 @@ import { ImageListItemBar } from '@mui/material';
 import Flags from './Flags.jpg';
 import { ThemeProvider } from 'styled-components';
 import { Theme } from '../Theme';
+import Moment from 'react-moment';
 
 
 
-const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) => (
+const LogCard = ({detail_text,location, date_logged, logPk, title, fileName, log_user}) => (
 
   <ThemeProvider theme={Theme}>
   <CssBaseline />
@@ -30,20 +31,18 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) =>
     }}
     > */}
       <h3>{title}</h3>
+      <Moment format="MM/D/YYYY, h:mm a">{date_logged}</Moment>
     {/* </Card> */}
 
   <Container component="main"
     sx={{
-      // marginBottom: 0,
-      // // backgroundColor: '#e9ecef',
-      // position: 'relative',
-      // width: '100%',
-      // border: 1,
+      width: '100%',
       marginBottom: 3,
       margin: 0,
       padding: 0,
       boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
       backgroundColor: 'white',
+      mx: 'auto',
     }}
     >
 
@@ -53,7 +52,7 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) =>
       display: 'flex',
       flexDirection: 'column',
       flex: 1,
-      width: 'auto',
+      width: '40ch',
       height: 'auto',
       marginTop: 0,
       alignContent: 'center',
@@ -66,7 +65,7 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) =>
         width: '100%',
       }}>
       <img
-        src={`${Flags}?w=248&fit=crop&auto=format`}
+        src={fileName}
         srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
         alt={location}
         loading="lazy"
@@ -84,10 +83,10 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, log_user}) =>
   <Typography component="div"
   sx={{
     paddingLeft: 2,
+    lineHeight: 2,
   }}
   >
     <p>{detail_text} at {location}!</p>
-    <p>{date_logged}</p>
   </Typography>
   </Card>
     </ImageListItem>

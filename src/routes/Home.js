@@ -102,25 +102,27 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
 return (
   <ThemeProvider theme={Theme}>
  
-<Container sx={{
-            // marginTop: 10,
-            // marginBotton: 50,
-            paddingBottom: 15,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            position: 'sticky',
-            // backgroundImage: `url(${Background5})`,
-            backgroundSize: 'cover',
-            // height: "100vh",
-            // scrollMarginBottom: 30,
-            // bottom: 5,
-            // backgroundColor: '#e9ecef',
-            // position: 'absolute',
+<Container maxWidth="l"
+  sx={{
+    width: '100%',
+    // border: 1,
+    // marginBottom: 30,
+    margin: 0,
+    padding: 0,
         }}>
 <Typography mb={2} mt={4} variant="h5" align="center"><strong>Welcome, {username}! <br /> How's your trip?</strong></Typography>
   
-<Container maxWidth="sm" align="center">
+<Container maxWidth="l" align="center"
+sx={{
+  marginBottom: 10,
+  // display: 'flex',
+  // flexDirection: 'column',
+  // flex: 1,
+  // width: 'auto',
+  // height: 'auto',
+  // marginTop: 2,
+}}
+>
 {hasCurrentTrip ? (
 <>
   {tripLogs.map((log) => 
@@ -128,9 +130,16 @@ return (
     <CardActionArea component={RouterLink} to={`/trips/${tripId}/${log.pk}`}>
     <NEWTripDetailCard
     sx={{
-      marginTop: 8,
-      paddingLeft: 4,
-      marginBottom: 8,
+      // display: 'flex',
+      // flexDirection: 'column',
+      // flex: 1,
+      // width: 'auto',
+      // height: 'auto',
+      // marginTop: 2,
+      // marginTop: 8,
+      // paddingLeft: 4,
+      // marginBottom: 8,
+      // width: '100%',
     }}
       logId={log.pk}
       details={log.details}
@@ -151,7 +160,7 @@ return (
 
 
   
-<Container maxWidth="sm" align="center">
+<Container maxWidth="l" align="center">
 
 {(!hasCurrentTrip && (pastTripTraveler === null)) ? 
 
@@ -172,7 +181,7 @@ return (
   : '' }
 
   </Container>
-  <Container maxWidth="sm" align="center"> 
+  <Container maxWidth="m" align="center"> 
   <>
   {(!hasCurrentTrip && futureTripsTraveler) ? (
 <>

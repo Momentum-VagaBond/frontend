@@ -109,8 +109,8 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
             setLatitude('')
             setLongitude('')
             setSubmit(logId)
-            // const imageFile = imageFileInput.current.files[0]
-            // console.log(imageFile)
+            const imageFile = imageFileInput.current.files[0]
+            console.log(imageFile)
             // const logId2 = (response.data.pk)
             return axios
 

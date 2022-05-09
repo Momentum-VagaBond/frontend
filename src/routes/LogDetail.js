@@ -59,12 +59,8 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
       sx={{
         width: '100%',
         maxWidth: '100%',
-        marginTop: 2,
-        // display: 'flex',
-        // flex: 1,
-        // flexDirection: 'column',
-        // alignContent: 'center',
-        // justifyContent: 'center',
+        marginTop: 1,
+        mx: 'auto',
       }}
     >
 
@@ -72,7 +68,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
     <LogCard
     sx={{
     }}
-      date_logged={date_logged}
+      date_logged={thisLog.date_logged}
       detail_text={thisLog.details}
       title={thisLog.title}
       latitude={thisLog.latitude}
@@ -85,23 +81,14 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
     )}
 
   <Box sx={{
-    // border: 1,
-    // marginBottom: 5,
-    // margin: 0,
-    // padding: 0,
-    // boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-   // backgroundColor: 'white',
-    // width: '75%',
-    // display: 'flex',
-    // flex: 1,
-    // flexDirection: 'column',
-    // alignContent: 'center',
-    // justifyContent: 'center',
+    width: '100%',
+    mx: 'auto',
+    marginBottom: 3,
+    margin: 0,
+    padding: 0,
   }}
   >
     <CommentBox
-    sx={{
-    }}
         token={token}
         logId={thisLog.pk}
         commentPosted={commentPosted}
@@ -113,26 +100,28 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
 {/* Display comment section */}
   <Container className="responseBox"
     sx={{
-      position: 'relative',
+      width: '100%',
       marginBottom: 3,
-      width: "85%",
+      margin: 0,
+      padding: 0,
     }}
   >
     {comments.map((comment, idx) =>
     <Card
     sx={{
       marginTop: 1,
-      // margin: 1,
+      paddingBottom: 2,
       border: 1,
       width: '100%',
-      height: 150,
-      // borderRadius: 5,
       paddingLeft: 3,
       backgroundColor: 'white',
+      spacing: 1,
+      mx: 'auto',
+      lineHeight: 0.5,
     }}
       key={idx}>
-      <h3>{comment.comments}</h3>
-      <h4>{comment.user}</h4>
+      <h2>{comment.comments}</h2>
+      <h3>{comment.username}</h3>
       <Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment>
     </Card>
     )}
