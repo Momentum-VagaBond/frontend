@@ -39,6 +39,7 @@ export const CurrentTripCard = ({pk, tripId, title, location, trip_username, beg
         backgroundColor: '#e9ecef',
         position: 'absolute',
     }}
+    key={tripId}
     >
 
     <ImageList

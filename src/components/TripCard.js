@@ -20,7 +20,7 @@ export const TripCard = ({pk, tripId, title, location, username,  date, user, tr
     return (
 
     <Card sx={{
-        marginTop: 8,
+        marginTop: 2,
         maxWidth: 300 
     }}
         >
