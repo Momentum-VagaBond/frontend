@@ -118,13 +118,18 @@ return (
 
     <Container
     sx={{
-      marginTop: 4,
-      paddingBottom: 15,
-      position: 'sticky',
+       marginTop: 4,
+            // marginBotton: 50,
+            paddingBottom: 15,
+            // display: 'flex',
+            // flexDirection: 'column',
+            // alignItems: 'center',
+            position: 'sticky',
+    
     }}
-  >
+    >
 
-  {/* <Card className='ProfileCard'> */}
+  <Card className='ProfileCard'>
     <Grid container spacing={2}>
   <Grid item xs={4}>
     <CardMedia className='ProfileCardMedia'>
@@ -132,36 +137,30 @@ return (
     </CardMedia>
   </Grid>
   <Grid item xs={8}>
-  <CardContent>
-        <Typography gutterBottom variant="h3" component="div">
-          {first} {last}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {bio}
-        </Typography>
-      </CardContent>
-
-    {/* <CardContent>
+    <CardContent>
         <Typography variant="h5" component="div">
           {username}
         </Typography>
         <Typography component="div" color="secondary">
             <strong>{tripTotal}</strong> trips
           </Typography>
-    </CardContent> */}
+        </CardContent>
   </Grid>
   </Grid>
-    {/* <CardContent>
+    <CardContent>
         <Typography gutterBottom variant="h6" component="div">
           {first} {last}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {bio}
         </Typography>
-      </CardContent> */}
+      </CardContent>
       
+      <CardActions >
+            
+      </CardActions>
     {/* </Box> */}
-    {/* </Card> */}
+    </Card>
 
   
     {/* <Box>
@@ -170,21 +169,6 @@ return (
       {username}'s Trips!
     </h1>
     </Box> */}
-
-    <Card
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      flex: 1,
-      alignContent: 'center',
-      justifyContent: 'center',
-      mx: 'auto',
-      position: 'absolute',
-    }}
-    >
-    <strong>{tripTotal} trips</strong>
-    </Card>
-
     <Container maxWidth="xs">
     <h5>My trips...</h5>
     <Container component="main" align="center" maxWidth="xs">
@@ -231,8 +215,6 @@ return (
 //   )
 // }
 </Container>
-
-
     <Box
     sx={{
       marginBottom: 50,
@@ -254,7 +236,6 @@ return (
         )}
       )}
     </Box>
-
     <Box
     sx={{
       marginBottom: 50,
@@ -278,7 +259,6 @@ return (
         )}
       )}
       </Box>
-
   </Container> */}
 
   </Container>

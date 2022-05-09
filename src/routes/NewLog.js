@@ -153,107 +153,97 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     <ThemeProvider theme={Theme}>
     {hasCurrentTrip &&
     <div className="newLog">
-    <Container>
-        <Grid container component="main">
+    {/* <Container sx={{
+            paddingBottom: 15,
+            marginBottom:5,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            position: 'sticky',
+            }}> */}
+
+        <Container component="main" maxWidth="sm" align="center" >
         <CssBaseline />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        {/* <Grid item xs={12} sm={8} md={5} > */}
             <Box
                 sx={{
-                marginTop: 2,
-                marginRight: 2,
-                marginBottom: 15,
+                marginTop: 3,
+                // marginRight: 2,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 //position can be removed to create a white box that holds the form
-                position: 'absolute',
+                // position: 'absolute',
                 // backgroundColor: '#e9ecef',
                 }}
             >
-        <Typography component="h1" variant="h5" >
+        <Typography component="h1" variant="h5" color="primary" >
             <strong>Create a Log </strong>
         </Typography>
 
-    <Box
+    <Box maxWidth="sm" align="center"
     sx={{
         mt: 2,
-        border: 1,
-        borderStyle:"dashed",
-        borderColor: "gray"
+        // border: 1,
+        // borderStyle:"dashed",
+        // borderColor: "gray"
         }}
         > 
-    <Stack direction="row" alignItems="center" >
-    <IconButton onClick={getLocation}>
-        <AddLocationAltTwoToneIcon />
-    </IconButton>
-        Find your location!
-    <MapBox 
+    {/* <Stack direction="row" alignItems="center" > */}
+   
+    <MapBox align="center" ml={1}
         latitude={latitude}
         longitude={longitude}
     />
-    </Stack>
+     <Button type='submit'
+        variant="contained"
+        sx={{
+            mt: 3,
+            borderRadius: 5,
+            backgroundColor: "secondary"
+        }}onClick={getLocation}>
+        <AddLocationAltTwoToneIcon mr={3}/>
+        Locate Me 
+    </Button>
+        
+    {/* </Stack> */}
     </Box> 
-    <Box
-    sx={{
-        mt: 1,
-        marginTop: 2,
-        marginBottom: 2,
-        marginRight: 0,
-        display: 'flex',
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        // position: 'absolute',
-        // paddingRight: 2,
-        // paddingBottom: 6,
-        paddingLeft: 0,
-        position: 'relative',
-        width: '40ch',
-        '& .MuiTextField-root': { m: 1, width: '40ch' },
-
-    }}
-    autoComplete="off" noValidate>
-
-    {error && <div className="error">{error}</div>}
-    <form onSubmit={handleSubmit}></form>
-
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1}}>
     <FormGroup>
         <label htmlFor="reg-location">
             {/* <Typography variant="body2">Location: </Typography> */}
             </label>
-        <label htmlFor="reg-title"><Typography variant="body2">Location:</Typography></label>
+        <label htmlFor="reg-title" align="left"><Typography variant="body2">Location*</Typography></label>
         <TextField id="outlined-basic"
             variant="outlined"
             placeholder= {status} 
             multiline
             className='tripLocation'
-            margin='normal'
             value={location}
-            sx={{mb: 2}}
+            sx={{mb: 3}}
             onChange={(e) => setLocation(e.target.value)}
         />
-
-        <label htmlFor="reg-title"><Typography variant="body2">Log Title: (Keep it short & simple!)</Typography></label>
+  
+        <label htmlFor="reg-title" align="left"><Typography variant="body2">Log Title* (Keep it short & simple!)</Typography></label>
         <TextField id="outlined-basic"
             // label="Give your post a shortly and simple title"
             variant="outlined"
             placeholder="Dinner Downtown!"
             multiline
             className='tripTitle'
-            margin='normal'
-            sx={{mb: 2}}
+            sx={{mb: 3}}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
         />
 
 
-        <label htmlFor='reg-details'><Typography variant="body2">Details: (Tell us more!)</Typography>  </label>
+        <label htmlFor='reg-details' align="left"><Typography variant="body2">Details* (Tell us more!)</Typography>  </label>
         <TextField id="outlined-basic"
             placeholder="We were so hungry and found this great local BBQ spot..."
             variant="outlined"
             className='tripDetails'
             multiline
-            margin='normal'
+            sx={{mb: 3}}
             rows={4}
             value={details}
             onChange={(e) => setDetails(e.target.value)}
@@ -281,7 +271,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
         variant="contained"
         sx={{
             mt: 3,
-            mb: 2,
+            mb: 10,
             borderRadius: 5,
         }}
         >
@@ -290,13 +280,12 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     {/* </Card> */}
     </Box>
     </Box>
-    </Grid>
-    </Grid>
+    {/* </Grid> */}
     </Container>
     </div>
     }
     
-    {!hasCurrentTrip &&
+   {!hasCurrentTrip &&
     <>
     <Alert mt={4} severity="error">
         <AlertTitle>Hey you're not on a trip!</AlertTitle>
@@ -309,7 +298,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, set
     </Container>
     </>
     }
-
+   
     </ThemeProvider> 
     )
 }

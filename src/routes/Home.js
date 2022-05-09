@@ -76,12 +76,12 @@ export default function Home ({username, loggedUserPk, token, map, hasCurrentTri
     })
     .then((response) => {
         console.log("past trips: " + response.data)
-        // if (response.data[0]){
+        if (response.data[0]){
           setPastTripTraveler(response.data[0])
           setTripId(response.data[0].pk)
           console.log(response.data[0].pk)
           console.log("most recent past trip:" + response.data[0].pk)
-        // } 
+        } 
     })
   }
   }, [token, setPastTripTraveler, hasCurrentTrip,  setTripId])
@@ -137,8 +137,8 @@ return (
             // backgroundColor: '#e9ecef',
             // position: 'absolute',
         }}>
-<Container mb={2}>
-  {hasCurrentTrip &&
+{/* header has current trip */}
+    {hasCurrentTrip &&
  
   <Box mt={4} mb={4}>
     <Grid container spacing={2}>
@@ -153,20 +153,43 @@ return (
           {username}
         </Typography>
         <Typography component="div" color="secondary">
-            <strong>Current Trip in {tripLocation}</strong>
+            {/* <strong>On Current Trip</strong> */}
+            <Typography variant="subtitle2" color="primary"><strong> {tripTitle}</strong></Typography>
+            <Typography  variant="subtitle2" color="primary"> {tripLocation}</Typography>
           </Typography>
           {/* <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography> */}
         </CardContent>
   </Grid>
   </Grid>
-  <Typography variant="subtitle2" color="primary">{tripTitle}</Typography>
-  <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography>
-  {/* <Typography  variant="subtitle2" color="primary"> {tripLocation}</Typography> */}
   
-
   </Box>
   }
-</Container>
+
+{/* header no current trip */}
+    {!hasCurrentTrip &&
+ 
+  <Box mt={4} mb={4}>
+    <Grid container spacing={2}>
+  <Grid item xs={4}>
+    <CardMedia className='ProfileCardMedia'>
+      {VBLogo}
+    </CardMedia>
+  </Grid>
+  <Grid item xs={8}>
+    <CardContent>
+        <Typography variant="h5" component="div">
+          {username}
+        </Typography>
+        <Typography component="div" color="secondary">
+            <strong>Not Traveling</strong>
+          </Typography>
+          {/* <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography> */}
+        </CardContent>
+  </Grid>
+  </Grid>
+  </Box>
+  }
+
 <Container maxWidth="sm" align="center">
 {hasCurrentTrip ? (
 <>
@@ -205,7 +228,7 @@ return (
 
 
   
-<Container maxWidth="l" align="center">
+<Container maxWidth="m" align="center">
 
 {(!hasCurrentTrip && (pastTripTraveler === null)) ? 
 
