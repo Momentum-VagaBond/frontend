@@ -190,7 +190,6 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         Subscribers
     </Typography>
     </Card>
-    
     {subscribers.map((subscriber, pk) => {
         return(
         <ContactsCard
