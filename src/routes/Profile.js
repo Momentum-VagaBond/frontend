@@ -166,22 +166,29 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
         marginTop: 4,
               // marginBotton: 50,
         paddingBottom: 15,
-              // display: 'flex',
-              // flexDirection: 'column',
-              // alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
         position: 'sticky',
-      
       }}
       >
-  
-    <Card className='ProfileCard'>
+
+    <Card className='ProfileCard'
+    sx={{
+      height: 175,
+      width: '75%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignContent: 'center',
+    }}
+    >
       <Grid container spacing={2}>
     <Grid item xs={4}>
       <CardMedia className='ProfileCardMedia'
       sx={{
-        paddingLeft: 1.5,
-        height: 3,
-        width: 5,
+        paddingLeft: 1,
+        height: 2,
+        width: 2,
       }}
       >
         {VBLogo}
@@ -189,15 +196,20 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
     </Grid>
     <Grid item xs={8}>
       <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" component="div"
+          // sx={{
+          //   paddingTop: 5,
+          // }}
+          >
             {username}
           </Typography>
           <Typography component="div" color="secondary">
               <strong>{tripTotal}</strong> trips
-            </Typography>
-          </CardContent>
+          </Typography>
+      </CardContent>
     </Grid>
     </Grid>
+
       <CardContent>
           <Typography gutterBottom variant="h6" component="div">
             {first} {last}
@@ -206,14 +218,32 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
             {bio}
           </Typography>
         </CardContent>
-        
+
         <CardActions >
               
         </CardActions>
       {/* </Box> */}
       </Card>
 
-      <Box sx={{ width: '100%', alignContent: 'center,' }}>
+  {/* <Container
+  sx={{
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    mx: 'auto',
+  }}
+  > */}
+
+      <Box
+      mt={1}
+      sx={{
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+        alignContent: 'center',
+        }}
+      >
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Past Trips" {...a11yProps(0)} />
@@ -356,6 +386,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
         </Box>
     </Container> */}
   </Box>
+  {/* </Container> */}
     </Container>
   </ThemeProvider>
     )

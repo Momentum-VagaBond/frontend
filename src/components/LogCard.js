@@ -17,11 +17,12 @@ import { Link as RouterLink } from 'react-router-dom'
 
 
 const LogCard = ({detail_text,location, tripId, trip_username, username, date_logged, logPk, title, fileName, log_user}) => (
-   <ThemeProvider theme={Theme}>
-  <CssBaseline />
-      <Typography variant="h5" pt={2} gutterBottom><strong>{title}</strong></Typography>
-      <Typography variant="body1" color="primary">{location}</Typography>
-  <Container sx={{
+<ThemeProvider theme={Theme}>
+    <CssBaseline />
+        <Typography variant="h5" pt={2} gutterBottom><strong>{title}</strong></Typography>
+        <Typography variant="body1" color="primary">{location}</Typography>
+
+    <Container sx={{
     marginTop: 2,
     paddingTop: 2.5,
     boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
@@ -34,43 +35,32 @@ const LogCard = ({detail_text,location, tripId, trip_username, username, date_lo
     >
 {/* <CardActionArea component={RouterLink} to={`/trips/${tripId}`}> */}
 <CardMedia
-    sx={{borderRadius: .25}}
+    sx={{
+        borderRadius: .25,
+    }}
     component="img"
     alt={location}
     height= '100%'
     width='100%'
-    // image="/static/images/cards/contemplative-reptile.jpg"
     src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
     />
 
-<CardContent sx={{ flex: '1 0 auto' }}>
-      <Typography component="div" variant="h6" mb={1.5}>
-      {detail_text}
-      </Typography>
-      <Typography variant="subtitle1" color="text.secondary" component="div">
-      <Moment format="MM/D/YYYY, h:mm a">{date_logged}</Moment>
-      </Typography>
+<CardContent
+    sx={{
+        flex: '1 0 auto',
+    }}>
+        <Typography component="div" variant="h6" mb={1.5}
+        sx={{
+            lineHeight: 1,
+        }}
+        >
+        {detail_text}
+        </Typography>
+        <Typography variant="subtitle1" color="text.secondary" component="div">
+        <Moment format="MM/D/YYYY, h:mm a">{date_logged}</Moment>
+        </Typography>
     </CardContent>
-    
-  
-    {/* {(trip_username === username) ? (
-        <>
-    <strong>{usernameCapital}</strong>
-    ) : (
-    <></>
-    )
-    </>
-    )} */}
 
-
-
-
-
-{/* <CardActions>
-    <Button size="small">Make favorite</Button>
-    <Button size="small">Trip details</Button>
-</CardActions> */}
-    {/* </CardActionArea> */}
 </Container>
 </ThemeProvider>
 );

@@ -77,17 +77,17 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         width: '38ch',
     }}>
 
-    <Grid container component="main">
+    <Grid>
     <Grid>
     {/* item xs={12} sm={8} md={5} component={Paper} elevation={6} square */}
-    <Box
+    <Container
     sx={{
-        marginTop: 4,
+        marginTop: 3,
         //marginRight: 2,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        //position: 'relative',
+        position: 'relative',
     '& .MuiTextField-root': { m: 2, width: '30ch' },
     }}
     noValidate
@@ -96,7 +96,11 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     {error && <div className="error">{error}</div>}
     <form onSubmit={handleSubmit}>
 
-    <FormGroup>
+    <FormGroup
+    sx={{
+        marginBottom: 3,
+    }}
+    >
         <label htmlFor='reg-title'> First Name * </label>
         <TextField
             placeholder='First Name'
@@ -112,7 +116,11 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         />
     </FormGroup>
 
-    <FormGroup>
+    <FormGroup
+    sx={{
+        marginBottom: 3,
+    }}
+    >
         <label htmlFor='reg-location'> Last Name * </label>
         <TextField
             placeholder='Last Name'
@@ -157,14 +165,14 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     </Button>
 
     </form>
-    </Box>
+    </Container>
     </Grid>
     </Grid>
 
 
     <Typography component="h2" variant="h6"
     sx={{
-        marginTop: 6,
+        marginTop: 5,
     }}
     >
         <strong>Subscribers</strong>
@@ -173,6 +181,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     <Container
     sx={{
         overflow: 'hidden',
+        width: '100%',
     }}
     >
     <Box

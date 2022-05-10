@@ -126,15 +126,15 @@ return (
             // alignItems: 'center',
             // position: 'sticky',
             // backgroundImage: `url(${Background2})`,
-            backgroundSize: 'cover',
+            //backgroundSize: 'cover',
             height: "100%",
             paddingBottom: 15,
             display: 'flex',
             flex: 1,
             flexDirection: 'column',
             alignItems: 'center',
-            position: 'relative',
-            backgroundImage: `url(${BG1})`,
+            //position: 'scroll',
+            //backgroundImage: `url(${BG1})`,
             // backgroundSize: 'fitContent',
             // height: "100vh",
             // scrollMarginBottom: 30,
@@ -146,7 +146,7 @@ return (
 <Container>
     {hasCurrentTrip &&
 
-  <Box mt={4} mb={4}>
+  <Box mt={1} mb={2}>
     <Grid container spacing={1}
     sx={{
       display: 'flex',
@@ -155,37 +155,35 @@ return (
       alignContent: 'center',
     }}
     >
-  {/* <Grid item xs={6}>
-    <CardMedia className='ProfileCardMedia'>
-      {VBLogo}
-    </CardMedia>
-  </Grid> */}
   <Grid item>
     <CardContent>
         <Typography variant="h3" component="div">
           {username}
         </Typography>
-        <Typography component="div" color="secondary">
+        {/* <Typography component="div" color="secondary"> */}
             {/* <strong>On Current Trip</strong> */}
             <Typography variant="subtitle2" color="primary"><strong>{tripTitle}</strong></Typography>
-            <Typography  variant="subtitle2" color="primary">{tripLocation}</Typography>          </Typography>
+            <Typography variant="subtitle2" color="primary">{tripLocation}</Typography>
+        {/* </Typography> */}
           {/* <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography> */}
         </CardContent>
   </Grid>
   </Grid>
+
   <Divider variant="middle"
   sx={{
     borderBottomWidth: 2,
     borderColor: 'primary.main'
   }}
   />
+
   </Box>
   }
 
 {/* header no current trip */}
     {!hasCurrentTrip &&
  
-  <Box mt={4} mb={4}>
+  <Box mt={2} mb={2}>
     <Grid container spacing={2}>
   <Grid item xs={4}>
     <CardMedia className='ProfileCardMedia'>
@@ -204,6 +202,14 @@ return (
         </CardContent>
   </Grid>
   </Grid>
+
+  <Divider variant="middle"
+  sx={{
+    borderBottomWidth: 2,
+    borderColor: 'primary.main'
+  }}
+  />
+
   </Box>
   }
 </Container>
