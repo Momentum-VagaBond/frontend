@@ -2,7 +2,8 @@
 
 import axios from "axios";
 import { useEffect, useState } from 'react'
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from "react-router-dom";
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -10,20 +11,21 @@ import Card from '@mui/material/Card'
 import LogCard from "../components/LogCard";
 import CommentBox from "../components/CommentBox";
 import Moment from 'react-moment'
-import { CardHeader, Typography } from "@mui/material";
+import { CardHeader, Typography, Button } from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
 
-const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) => {
+const LogDetail = ({token, isLoggedIn, setLogSuccess, tripId, logSuccess, date_logged}) => {
   // const [logId, setLogId] = useState('')
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
   const [commentPosted, setCommentPosted] = ''
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
-  
+
   const params = useParams()
   const logId2 = (params.logId)
+
 
   useEffect(() => {
     axios
@@ -54,6 +56,11 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
   return (
   <ThemeProvider theme={Theme}>
   <CssBaseline />
+
+  {/* <Button component={RouterLink} to={`/trips/${tripId}/`}
+  >
+  Go Back
+  </Button> */}
 
     <Container component="main"
       sx={{

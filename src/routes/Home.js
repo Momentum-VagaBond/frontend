@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {TripCard} from '../components/TripCard';
+import TripCard from '../components/TripCard';
 import { Container, Card, Box, Grid, CardMedia, CardContent, Typography} from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
