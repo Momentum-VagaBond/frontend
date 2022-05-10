@@ -16,7 +16,9 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link as RouterLink } from 'react-router-dom'
 
 
-const LogCard = ({detail_text,location, tripId, trip_username, username, date_logged, logPk, title, fileName, log_user}) => (
+const LogCard = ({detail_text,location, tripId, trip_username, username, imageUrl, date_logged, logPk, title, fileName, log_user}) => (
+
+
    <ThemeProvider theme={Theme}>
   <CssBaseline />
       <Typography variant="h5" pt={2} gutterBottom><strong>{title}</strong></Typography>
@@ -39,8 +41,9 @@ const LogCard = ({detail_text,location, tripId, trip_username, username, date_lo
     alt={location}
     height= '100%'
     width='100%'
-    // image="/static/images/cards/contemplative-reptile.jpg"
-    src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+
+    src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2`}
+    // src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
     />
 
 <CardContent sx={{ flex: '1 0 auto' }}>

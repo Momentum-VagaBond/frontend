@@ -18,12 +18,14 @@ import { ThemeProvider } from 'styled-components';
 const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) => {
   // const [logId, setLogId] = useState('')
   const [thisLog, setThisLog] = useState([])
+  const [image, setImage] = useState('')
   const [comments, setComments] = useState([])
   const [commentPosted, setCommentPosted] = ''
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
   const logId2 = (params.logId)
+ 
 
   useEffect(() => {
     axios
@@ -34,6 +36,8 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
       })
       .then((res) => {
         setThisLog(res.data)
+        setImage(res.data.images[0].picture)
+        console.log(res.data.images[0].picture)
         setComments(res.data.log_comments)
         // setLogSuccess(false)
         console.log(res.data)
@@ -41,7 +45,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
         console.log(res.data.log_comments)
         console.log("trying to set logId: " + logId2)
       })
-  }, [params.logId,  logId2, token])
+  }, [params.logId, setImage, logId2, token])
 
   const addNewComment = (newComment) => {
     setComments([...comments, newComment])
@@ -69,6 +73,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
     <LogCard
     sx={{
     }}
+      imageUrl={image}
       date_logged={thisLog.date_logged}
       detail_text={thisLog.details}
       title={thisLog.title}

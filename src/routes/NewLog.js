@@ -11,7 +11,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 import { StartTripCard } from "../components/StartTripCard";
 
-export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, logSuccess, isLoggedIn}) {
+export default function NewLog({token, hasCurrentTrip, setLogSuccess, loggedUserPk, tripId, logSuccess, isLoggedIn}) {
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
     const [latitude, setLatitude] = useState("");
@@ -77,22 +77,22 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, log
 
 
     const handleSubmit = (e) => {
-        console.log(imageFile);
-        setConfirm(true);
-        e.preventDefault();
+        console.log(imageFile)
+        e.preventDefault()
         setError('')
-        console.log(location, details, title, latitude, longitude, fileType, fileName, logId);
-        navigate('/home');
+        console.log(location, details, title, latitude, longitude, fileType, fileName, logId)
 
         axios
         .post(
             `https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/${tripId}/log/`,
             {
+                user_id: loggedUserPk,
+                trip: tripId,
                 location: location,
                 title: title,
                 details: details,
-                // latitude: latitude,
-                // longitude: longitude,
+                latitude: latitude,
+                longitude: longitude,
             },
             {
                 headers: { Authorization: `Token ${token}` },
@@ -104,16 +104,15 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, log
             setLogId(response.data.pk)
             console.log("logId" + logId)
             setLocation('')
-            setTitle('')
             setDetails('')
             setLatitude('')
             setLongitude('')
             setSubmit(logId)
-            const imageFile = imageFileInput.current.files[0]
-            console.log(imageFile)
+            // const imageFile = imageFileInput.current.files[0]
+            // console.log(imageFile)
             // const logId2 = (response.data.pk)
             return axios
-
+        
                 .post(
                 `https:/momentum-vagabond.herokuapp.com/api/logs/${(response.data.pk)}/images/`,
                 // "https:/momentum-vagabond.herokuapp.com/api/logs/66/images/",
@@ -129,9 +128,8 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, log
             .then((response) => {
                 console.log(response.data)
                 console.log(logId)
-                // setLogSuccess(true)
-                // console.log(logSuccess)
-                alert("form submitted!")
+                setLogSuccess(true)
+                console.log(logSuccess)
             })
             .catch((e) => setError(e.message))
             }, [token, imageFile, logId, fileName, fileType])
