@@ -14,14 +14,14 @@ import { StartTripCard } from "../components/StartTripCard";
 
 
 
-export default function SubscriberHome ({username, loggedUserPk, token, map, setSubscriberHasCurrent, subscriberHasCurrent, setTripId, tripId, isLoggedIn}) {
+export default function SubscriberHome ({username, loggedUserPk, token, setSubscriberHasCurrent, subscriberHasCurrent, setTripId, tripId, isLoggedIn}) {
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
   // const [tripId, setTripId] = useState([]);
   const [tripLogs, setTripLogs] = useState([]);
   const [currentTripsSubscriber, setCurrentTripsSubscriber] = useState([]);
   const [futureTripsSubscriber, setFutureTripsSubscriber] = useState([]);   //this gives future trips
-  const [pastTripSubscriber, setPastTripSubscriber] = useState([]);   //this gives the 1 Most recent past trip
+  const [pastTripsSubscriber, setPastTripsSubscriber] = useState([]);   //this gives the most recent past trips
   // const [showMyTrips, setShowMyTrips] = useState(false)
   // const [showFollowing, setShowFollowing] = useState(false)
   // const [showFollowingTrips, setShowFollowingTrips] = useState(false)
@@ -35,12 +35,12 @@ export default function SubscriberHome ({username, loggedUserPk, token, map, set
 
   useEffect(() => {
     axios
-    .get(`https://momentum-vagabond.herokuapp.com/api/user/${loggedUserPk}/current/subscribed`,
+    .get(`https://momentum-vagabond.herokuapp.com/api/user/current/subscribed`,
         {headers: {Authorization: `Token ${token}`}
     })
     .then((response) => {
         console.log(response.data)
-        if (response.data){
+        if (response.data.length !== 0){
           setSubscriberHasCurrent(true)
           setCurrentTripsSubscriber(response.data)
           setTripId(response.data.pk)
@@ -54,36 +54,37 @@ export default function SubscriberHome ({username, loggedUserPk, token, map, set
     })
   }, [token, setSubscriberHasCurrent, setCurrentTripsSubscriber, loggedUserPk, setTripLogs, setTripId])
 
+  console.log(subscriberHasCurrent)
 
     //Getting Most recent past trip if one exists
 
   useEffect(() => {
     if (subscriberHasCurrent === false) {
     axios
-    .get(`https://momentum-vagabond.herokuapp.com/api/user/${loggedUserPk}/subscribed/`,
+    .get(`https://momentum-vagabond.herokuapp.com/api/user/past/subscribed/`,
         {headers: {Authorization: `Token ${token}`}
     })
     .then((response) => {
         console.log("past trips: " + response.data)
-        // if (response.data[0]){
-          setPastTripSubscriber(response.data[0])
-          setTripId(response.data[0].pk)
-          console.log(response.data[0].pk)
-          console.log("most recent past trip:" + response.data[0].pk)
-        // } 
+        if (response.data.length !== 0){
+          setPastTripsSubscriber(response.data)
+          setTripId(response.data.pk)
+          console.log(response.data.pk)
+          console.log(subscriberHasCurrent)
+        } 
     })
   }
-  }, [token, setPastTripSubscriber, subscriberHasCurrent, loggedUserPk, setTripId])
+  }, [token, setPastTripsSubscriber, subscriberHasCurrent, loggedUserPk, setTripId])
 
   // get future trips of traveler
   useEffect(() => {
     if (subscriberHasCurrent === false) {
     axios
-    .get(`https://momentum-vagabond.herokuapp.com/api/user/${loggedUserPk}/past/subscribed`,
+    .get(`https://momentum-vagabond.herokuapp.com/api/user/future/subscribed`,
         {headers: {Authorization: `Token ${token}`}
     })
     .then((response) => {  
-        if (response.data){
+        if (response.data.length !== 0){
           setFutureTripsSubscriber(response.data)
           setTripId(response.data.pk)
           console.log("future trips" + response.data)
@@ -123,32 +124,34 @@ return (
             // backgroundColor: '#e9ecef',
             // position: 'absolute',
         }}>
-<Typography mb={2} mt={4} variant="h5" align="center"><strong>Welcome, {username}! <br /> How's your trip?</strong></Typography>
+{/* <Typography mb={2} mt={4} variant="h5" align="center"><strong>Welcome, {username}! <br /> How's your trip?</strong></Typography> */}
   
 <Container maxWidth="sm" align="center">
-{subscriberHasCurrent? (
-<>
-  {tripLogs.map((log) => 
+{subscriberHasCurrent ? (
+  <>
+  <Typography mb={2} mt={4} variant="h5" align="center"><strong>Follow along...</strong></Typography>
+
+  {currentTripsSubscriber.map((current) => 
   
-    <CardActionArea component={RouterLink} to={`/trips/${tripId}/${log.pk}`}>
+    <CardActionArea component={RouterLink} to={`/trips/${tripId}/${current.pk}`}>
     <NEWTripDetailCard
     sx={{
       marginTop: 8,
       paddingLeft: 4,
       marginBottom: 8,
     }}
-      logId={log.pk}
-      details={log.details}
-      location={log.location}
-      title={log.title}
-      date={log.date_logged}
+      logId={current.pk}
+      details={current.details}
+      location={current.location}
+      title={current.title}
+      date={current.date_logged}
     />
     </CardActionArea>
   )}
   </>
   ) : (
   <>
-    <StartTripCard/>  
+    {/* <StartTripCard/>   */}
   </>
   )
 }
@@ -157,9 +160,11 @@ return (
 
   
 <Container maxWidth="sm" align="center">
-
-{(!subscriberHasCurrent && (pastTripSubscriber === null)) ? 
-
+<>
+{pastTripsSubscriber ? (
+<>
+<Typography mb={2} mt={4} variant="h5" align="center"><strong>Great Memories...</strong></Typography>
+{pastTripsSubscriber.map((pastTripSubscriber) => 
     <TripCard
       username={username}
       key={pastTripSubscriber.pk}
@@ -174,13 +179,22 @@ return (
       end={pastTripSubscriber.end}
       tripId={pastTripSubscriber.pk}
     />
-  : '' }
+    )}
+    </>
+    ) : (
+    <></>
+    )
+  }
+  </>
+  
+    </Container>
 
-  </Container>
-  <Container maxWidth="sm" align="center"> 
+   
+<Container maxWidth="sm" align="center"> 
   <>
-  {(!subscriberHasCurrent && futureTripsSubscriber) ? (
+  {futureTripsSubscriber  ? (
 <>
+<Typography mb={2} mt={4} variant="h5" align="center"><strong>Future Adventures...</strong></Typography>
   {futureTripsSubscriber.map((futureTrip) => 
     <TripCard
       username={username}
@@ -204,7 +218,6 @@ return (
 }
 </>
   </Container>
-
 
   </Container>
   </ThemeProvider>

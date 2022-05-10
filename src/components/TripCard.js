@@ -26,6 +26,7 @@ export const TripCard = ({pk, tripId, title, location, username,  date, user, tr
         >
     <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
     <CardMedia
+        
         component="img"
         alt={location}
         height= '100%'
