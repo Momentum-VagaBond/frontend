@@ -36,7 +36,9 @@ const LogCard = ({detail_text,location, tripId, trip_username, username, imageUr
     >
 {/* <CardActionArea component={RouterLink} to={`/trips/${tripId}`}> */}
 <CardMedia
-    sx={{borderRadius: .25}}
+    sx={{
+        borderRadius: .25,
+    }}
     component="img"
     alt={location}
     height= '100%'
@@ -46,34 +48,22 @@ const LogCard = ({detail_text,location, tripId, trip_username, username, imageUr
     // src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
     />
 
-<CardContent sx={{ flex: '1 0 auto' }}>
-      <Typography component="div" variant="h6" mb={1.5}>
-      {detail_text}
-      </Typography>
-      <Typography variant="subtitle1" color="text.secondary" component="div">
-      <Moment format="MM/D/YYYY, h:mm a">{date_logged}</Moment>
-      </Typography>
+<CardContent
+    sx={{
+        flex: '1 0 auto',
+    }}>
+        <Typography component="div" variant="h6" mb={1.5}
+        sx={{
+            lineHeight: 1,
+        }}
+        >
+        {detail_text}
+        </Typography>
+        <Typography variant="subtitle1" color="text.secondary" component="div">
+        <Moment format="MM/D/YYYY, h:mm a">{date_logged}</Moment>
+        </Typography>
     </CardContent>
-    
-  
-    {/* {(trip_username === username) ? (
-        <>
-    <strong>{usernameCapital}</strong>
-    ) : (
-    <></>
-    )
-    </>
-    )} */}
 
-
-
-
-
-{/* <CardActions>
-    <Button size="small">Make favorite</Button>
-    <Button size="small">Trip details</Button>
-</CardActions> */}
-    {/* </CardActionArea> */}
 </Container>
 </ThemeProvider>
 );
