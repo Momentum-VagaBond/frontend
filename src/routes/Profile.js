@@ -207,7 +207,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
       {/* </Box> */}
       </Card>
 
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: '100%', alignContent: 'center,' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Past Trips" {...a11yProps(0)} />

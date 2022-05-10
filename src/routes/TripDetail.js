@@ -14,10 +14,11 @@ import MapBox from "../components/MapBox";
 import Geolocate from "../components/Geolocate";
 import Mapbox from "react-map-gl/dist/esm/mapbox/mapbox";
 import { MapboxMap } from "react-map-gl";
+import { StartTripCard } from "../components/StartTripCard";
 
 
 
-const TripDetail = ({token, pk, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
+const TripDetail = ({token, pk, hasCurrentTrip, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
@@ -96,6 +97,19 @@ const TripDetail = ({token, pk, tripId, details, logSuccess, setLogSuccess, loca
     </CardActionArea>
     ))}
 
+{!hasCurrentTrip &&
+    <>
+    <Alert mt={4} severity="error">
+        <AlertTitle>Hey you're not on a trip!</AlertTitle>
+            Click below to start a current trip. 
+        </Alert>
+        <Container maxWidth="sm" align="center">
+        
+    <StartTripCard>
+    </StartTripCard>
+    </Container>
+    </>
+    }
 
   </Container>
   </ThemeProvider>
