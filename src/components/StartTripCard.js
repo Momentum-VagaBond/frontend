@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Link as RouterLink } from 'react-router-dom'
 import Moment from 'react-moment'
-import Logo from './VBLogo.png';
+import Logo from './VagaBondLogo.png';
 
 
 export const StartTripCard = () => {

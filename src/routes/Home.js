@@ -135,7 +135,7 @@ return (
             alignItems: 'center',
             position: 'relative',
             backgroundImage: `url(${BG1})`,
-            backgroundSize: 'fitContent',
+            // backgroundSize: 'fitContent',
             // height: "100vh",
             // scrollMarginBottom: 30,
             // bottom: 5,

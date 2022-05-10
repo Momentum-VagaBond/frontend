@@ -6,7 +6,7 @@ import { Container, CardMedia, FormGroup, Button, Box, Card, Grid, Paper, CssBas
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-// import VBLogo from './VagaBondLogo.png'
+import MapBG from './MapBG.png'
 
 
 
@@ -73,7 +73,8 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             flex: 1,
             flexDirection: 'column',
             alignItems: 'center',
-            backgroundColor: '#e9ecef',
+            // backgroundImage: `url(${MapBG})`,
+            // backgroundColor: '#e9ecef',
             position: 'relative',
             width: '100%',
         }}>
@@ -85,13 +86,14 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <Box
         sx={{
-            marginTop: 2,
-            marginBottom: 2,
+            marginTop: 0,
+            marginBottom: 0,
             marginRight: 0,
             display: 'flex',
             flex: 1,
             flexDirection: 'column',
             alignItems: 'center',
+            
             // position: 'absolute',
             // paddingRight: 2,
             // paddingBottom: 6,
