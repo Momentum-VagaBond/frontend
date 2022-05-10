@@ -14,7 +14,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Link as RouterLink } from 'react-router-dom'
 
-export const TripCard = ({pk, tripId, title, location, username,  date, user, trip_username, user_first_name, user_last_name, begin, end }) => {
+export const TripCard = ({pk, tripId, title, location, username, trip_username, user_first_name, user_last_name, begin, end }) => {
     // function capitalizeFirst(string) {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     //   }
@@ -44,22 +44,22 @@ export const TripCard = ({pk, tripId, title, location, username,  date, user, tr
         src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
         />
     
-    <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
-          
+    <CardContent sx={{ flex: '1 0 auto' }} key={pk}>
+            <Typography color="text.primary" sx={{typography:'h5.fontSize'}}>
+
         {trip_username === username ? (
-        <>{location}</> 
+        <strong>{location}</strong> 
             ):( 
             <>{usernameCapital}'s trip to {location}</> 
             )
         }
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-          <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
-          </Typography>
+        </Typography>
+            <Typography  sx={{ typography: 'subtitle2' }} color="text.secondary">
+            <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
+        </Typography>
         </CardContent>
         
-      
+
         {/* {(trip_username === username) ? (
             <>
         <strong>{usernameCapital}</strong>
