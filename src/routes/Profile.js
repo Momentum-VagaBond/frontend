@@ -219,7 +219,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
       <TabPanel value={value} index={0}>
       {trips.map((trip, pk) => {
           return (
-            <PastTripCard
+            <TripCard
               // key={pk}
               // tripId={trip.pk}
               title={trip.title}
@@ -236,22 +236,22 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <NEWTripDetailCard
+        <TripCard
               />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
       {trips.map((trip, pk) => {
           return (
-            <FutureTripCard
-              // key={pk}
-              // tripId={trip.pk}
-              // title={trip.title}
-              // user={trip.user}
-              // location={trip.location}
-              // begin={trip.begin}
-              // end={trip.end}
-              // img={trip.img}
+            <TripCard
+              key={pk}
+              tripId={trip.pk}
+              title={trip.title}
+              user={trip.user}
+              location={trip.location}
+              begin={trip.begin}
+              end={trip.end}
+              img={trip.img}
             />
           )}
         )}
