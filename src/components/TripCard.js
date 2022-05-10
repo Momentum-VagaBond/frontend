@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Typography, Card } from '@mui/material';
+import { Container, Typography, Card, Box } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import ImageList from "@mui/material/ImageList";
 import { ImageListItem } from "@mui/material";
@@ -14,76 +14,140 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Link as RouterLink } from 'react-router-dom'
 
-
-const TripCard = ({pk, tripId, title, location, username, fileName, begin, end }) => (
+export const TripCard = ({pk, tripId, title, location, username,  date, user, trip_username, user_first_name, user_last_name, begin, end }) => {
     // function capitalizeFirst(string) {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     //   }
-    // const name = `${trip_username}`;
-    // const str = name;
-    // const usernameCapital= str.charAt(0).toUpperCase() + str.slice(1);
+    const name = `${trip_username}`;
+    const str = name;
+    const usernameCapital= str.charAt(0).toUpperCase() + str.slice(1);
+    // console.log(str2)
 
-<ThemeProvider theme={Theme}>
-<CssBaseline />
+    return (
 
-    <Container component="main"
-    sx={{
-        width: '100%',
-        height: '75%',
-        marginBottom: 3,
-        margin: 0,
-        padding: 0,
+    <Container sx={{
+        marginTop: 2,
+        paddingTop: 2.5,
         boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-        backgroundColor: 'white',
-        // mx: 'auto',
+        borderRadius: 1,
+        // maxWidth: "sm", 
     }}
-    >
-
-<ImageList
-    sx={{
-    display: 'flex',
-    flexDirection: 'column',
-    flex: 1,
-    width: '35ch',
-    // height: '35ch',
-    marginTop: 0,
-    alignContent: 'center',
-    boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-    border: 1,
-    }}
-    >
-    <ImageListItem
-    component='img'
-    key={tripId}
-    sx={{
-        width: '100%',
-        height: 'fitContent',
-    }}>
-    <img
-        src={fileName}
-        srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
-        alt={location}
-        loading="lazy"
-    />
-    <Card>
-        <Typography component="div"
-        sx={{
-            // paddingLeft: 2,
-            lineHeight: 1,
-            marginBottom: 1,
-        }}
         >
-            <h3>{title} in {location}</h3>
-            <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
-        </Typography>
-    </Card>
-    </ImageListItem>
-    </ImageList>
+    <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
+    <CardMedia
+        sx={{borderRadius: .25}}
+        component="img"
+        alt={location}
+        height= '100%'
+        width='100%'
+        // image="/static/images/cards/contemplative-reptile.jpg"
+        src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        />
+    
+    <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography component="div" variant="h5">
+          
+        {trip_username === username ? (
+        <>{location}</> 
+            ):( 
+            <>{usernameCapital}'s trip to {location}</> 
+            )
+        }
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary" component="div">
+          <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
+          </Typography>
+        </CardContent>
+        
+      
+        {/* {(trip_username === username) ? (
+            <>
+        <strong>{usernameCapital}</strong>
+        ) : (
+        <></>
+        )
+        </>
+        )} */}
 
-</Container>
-</ThemeProvider>
-)
+
+
+
+  
+    {/* <CardActions>
+        <Button size="small">Make favorite</Button>
+        <Button size="small">Trip details</Button>
+    </CardActions> */}
+        </CardActionArea>
+    </Container>
+    );
+}
 export default TripCard;
+// const TripCard = ({pk, tripId, title, location, username, fileName, begin, end }) => (
+//     // function capitalizeFirst(string) {
+//     //     return string.charAt(0).toUpperCase() + string.slice(1);
+//     //   }
+//     // const name = `${trip_username}`;
+//     // const str = name;
+//     // const usernameCapital= str.charAt(0).toUpperCase() + str.slice(1);
+
+// <ThemeProvider theme={Theme}>
+// <CssBaseline />
+
+//     <Container component="main"
+//     sx={{
+//         width: '100%',
+//         height: '75%',
+//         marginBottom: 3,
+//         margin: 0,
+//         padding: 0,
+//         boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
+//         backgroundColor: 'white',
+//         // mx: 'auto',
+//     }}
+//     >
+
+// <ImageList
+//     sx={{
+//     display: 'flex',
+//     flexDirection: 'column',
+//     flex: 1,
+//     width: '35ch',
+//     // height: '35ch',
+//     marginTop: 0,
+//     alignContent: 'center',
+//     boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
+//     border: 1,
+//     }}
+//     >
+//     <ImageListItem key={tripId}
+//     sx={{
+//         width: '100%',
+//     }}>
+//     <img
+//         src={fileName}
+//         srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+//         alt={location}
+//         loading="lazy"
+//     />
+//     <Card>
+//         <Typography component="div"
+//         sx={{
+//             // paddingLeft: 2,
+//             lineHeight: 1,
+//             marginBottom: 1,
+//         }}
+//         >
+//             <h3>{title} in {location}</h3>
+//             <Moment format="MM/D/YYYY">{begin}</Moment> to <Moment format="MM/D/YYYY">{end}</Moment>
+//         </Typography>
+//     </Card>
+//     </ImageListItem>
+//     </ImageList>
+
+// </Container>
+// </ThemeProvider>
+// )
+// export default TripCard;
 
 
 
