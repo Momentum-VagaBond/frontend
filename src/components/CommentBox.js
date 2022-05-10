@@ -52,6 +52,7 @@ export default function CommentBox({ token, logId, setNewComment }) {
         marginBottom: 3,
         margin: 0,
         padding: 0,
+        marginTop: 2,
       }}
       >
         <Box
@@ -82,10 +83,10 @@ export default function CommentBox({ token, logId, setNewComment }) {
             variant="contained"
             color='secondary'
             sx={{
-              mt: 0,
+              mt: .25,
               mb: 2,
               // borderRadius: 5,
-              color: 'black',
+              color: 'white',
               // backgroundImage: 'linear-gradient(147deg, #2af1b5 0%, #fd3838 90%)',
             }}>
               Post comment

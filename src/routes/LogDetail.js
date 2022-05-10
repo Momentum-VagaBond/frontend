@@ -2,8 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from 'react'
-import { useParams, Navigate, useNavigate } from 'react-router-dom';
-import { Link as RouterLink } from "react-router-dom";
+import { useParams, Navigate } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -11,21 +10,20 @@ import Card from '@mui/material/Card'
 import LogCard from "../components/LogCard";
 import CommentBox from "../components/CommentBox";
 import Moment from 'react-moment'
-import { CardHeader, Typography, Button } from "@mui/material";
+import { CardHeader, Typography } from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 
 
-const LogDetail = ({token, isLoggedIn, setLogSuccess, tripId, logSuccess, date_logged}) => {
+const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) => {
   // const [logId, setLogId] = useState('')
   const [thisLog, setThisLog] = useState([])
   const [comments, setComments] = useState([])
   const [commentPosted, setCommentPosted] = ''
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
-
+  
   const params = useParams()
   const logId2 = (params.logId)
-
 
   useEffect(() => {
     axios
@@ -57,17 +55,13 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, tripId, logSuccess, date_l
   <ThemeProvider theme={Theme}>
   <CssBaseline />
 
-  {/* <Button component={RouterLink} to={`/trips/${tripId}/`}
-  >
-  Go Back
-  </Button> */}
-
     <Container component="main"
       sx={{
         width: '100%',
         maxWidth: '100%',
         marginTop: 1,
         mx: 'auto',
+        pb: 15,
       }}
     >
 
@@ -117,19 +111,20 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, tripId, logSuccess, date_l
     <Card
     sx={{
       marginTop: 1,
-      paddingBottom: 2,
+      paddingBottom: 1,
       border: 1,
+      borderColor: 'grey.500',
       width: '100%',
       paddingLeft: 3,
       backgroundColor: 'white',
       spacing: 1,
       mx: 'auto',
-      lineHeight: 0.5,
+      // lineHeight: 0.5,
     }}
       key={idx}>
-      <h2>{comment.comments}</h2>
-      <h3>{comment.username}</h3>
-      <Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment>
+      <Typography sx={{ typography: 'body2', marginTop: 2, marginBottom: 2}}>{comment.comments}</Typography>
+      <Typography  sx={{ typography: 'body2' }}color="primary" ><strong>{comment.username}</strong></Typography>
+      <Typography  sx={{ typography: 'subtitle2' }} color="primary" ><Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment></Typography>
     </Card>
     )}
     </Container>
