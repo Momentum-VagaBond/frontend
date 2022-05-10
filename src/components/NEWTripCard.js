@@ -59,8 +59,8 @@ const TripCard = ({pk, tripId, title, location, username, fileName, begin, end }
         width: '100%',
     }}>
     <img
-        src={fileName}
-        srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        component='img'
+        src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
         alt={location}
         loading="lazy"
     />

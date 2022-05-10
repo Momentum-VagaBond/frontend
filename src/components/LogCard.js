@@ -1,8 +1,6 @@
 import * as React from 'react';
-
 import { Container, Typography, Card, Box } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-
 import { ImageListItem , ImageList} from "@mui/material";
 import ListSubheader from "@mui/material/ListSubheader";
 import { ImageListItemBar } from '@mui/material';
@@ -19,33 +17,30 @@ import { Link as RouterLink } from 'react-router-dom'
 const LogCard = ({detail_text,location, tripId, trip_username, username, imageUrl, date_logged, logPk, title, fileName, log_user}) => (
 
 
-   <ThemeProvider theme={Theme}>
-  <CssBaseline />
-      <Typography variant="h5" pt={2} gutterBottom><strong>{title}</strong></Typography>
-      <Typography variant="body1" color="primary">{location}</Typography>
-  <Container sx={{
+<ThemeProvider theme={Theme}>
+<CssBaseline />
+        <Typography variant="h5" pt={2} gutterBottom><strong>{title}</strong></Typography>
+        <Typography variant="body1" color="primary">{location}</Typography>
+    <Container sx={{
     marginTop: 2,
     paddingTop: 2.5,
     boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
     borderRadius: 1,
     backgroundColor: "white",
     bottomMargin: 3,
-
     // maxWidth: "sm", 
-}}
+    }}
     >
 {/* <CardActionArea component={RouterLink} to={`/trips/${tripId}`}> */}
-<CardMedia
+    <CardMedia
     sx={{
         borderRadius: .25,
     }}
     component="img"
     alt={location}
-    height= '100%'
-    width='100%'
-
+    height= '50%'
+    width='50%'
     src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2`}
-    // src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
     />
 
 <CardContent

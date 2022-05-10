@@ -15,7 +15,7 @@ import BG1 from './BG1.png'
 
 
 
-export default function Home ({username, setAuth, loggedUserPk, token, map, hasCurrentTrip, setHasCurrentTrip, setTripId, tripId, isLoggedIn}) {
+export default function Home ({username, token, image, setImage, hasCurrentTrip, setHasCurrentTrip, setTripId, tripId, isLoggedIn}) {
   //const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
   // const [tripId, setTripId] = useState([])
@@ -67,7 +67,7 @@ export default function Home ({username, setAuth, loggedUserPk, token, map, hasC
           setHasCurrentTrip(false)
         }
     })
-  }, [token, setCurrentTripTraveler, setTripLocation, setTripTitle, setHasCurrentTrip, setTripId])
+  }, [token, setCurrentTripTraveler, setTripLocation, setTripTitle, setHasCurrentTrip, setTripId, setImage])
 
 
     //Getting Most recent past trip if one exists
@@ -88,7 +88,7 @@ export default function Home ({username, setAuth, loggedUserPk, token, map, hasC
         } 
     })
   }
-  }, [token, setPastTripTraveler, hasCurrentTrip,  setTripId])
+  }, [token, setPastTripTraveler, hasCurrentTrip, setTripId, setImage])
 
   // get future trips of traveler
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function Home ({username, setAuth, loggedUserPk, token, map, hasC
 
     })
   }
-  }, [token,  hasCurrentTrip, setFutureTripsTraveler, setTripId])
+  }, [token, hasCurrentTrip, setFutureTripsTraveler, setTripId, setImage])
 
 
   if (!isLoggedIn) {
@@ -232,6 +232,7 @@ return (
       // marginBottom: 8,
       // width: '100%',
     }}
+      imageUrl={image}
       logId={log.pk}
       details={log.details}
       location={log.location}
@@ -256,6 +257,7 @@ return (
 {(!hasCurrentTrip && (pastTripTraveler === null)) ? 
 
     <TripCard
+      imageUrl={image}
       username={username}
       key={pastTripTraveler.pk}
       title={pastTripTraveler.title}
@@ -278,6 +280,7 @@ return (
 <>
   {futureTripsTraveler.map((futureTripTraveler) => 
     <TripCard
+      imageUrl={image}
       username={username}
       key={futureTripTraveler.pk}
       title={futureTripTraveler.title}

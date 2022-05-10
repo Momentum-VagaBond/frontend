@@ -75,7 +75,6 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
     setValue(newValue);
   };
 
-
   const VBLogo = (
     <img src={logo} alt='VBLogo' height='100'/>
   );
@@ -257,7 +256,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
           return (
             <TripCard
               // key={pk}
-              // tripId={trip.pk}
+              tripId={trip.pk}
               title={trip.title}
               location={trip.location}
               // firstName={trip.user_first_name}
@@ -273,7 +272,6 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
 
       <TabPanel value={value} index={1}>
         <TripCard
-      
           tripId={trip.pk}
           title={trip.title}
           user={trip.user}
