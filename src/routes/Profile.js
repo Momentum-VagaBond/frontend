@@ -177,7 +177,13 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
     <Card className='ProfileCard'>
       <Grid container spacing={2}>
     <Grid item xs={4}>
-      <CardMedia className='ProfileCardMedia'>
+      <CardMedia className='ProfileCardMedia'
+      sx={{
+        paddingLeft: 1.5,
+        height: 3,
+        width: 5,
+      }}
+      >
         {VBLogo}
       </CardMedia>
     </Grid>

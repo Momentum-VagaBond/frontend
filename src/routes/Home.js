@@ -16,7 +16,7 @@ import BG1 from './BG1.png'
 
 
 export default function Home ({username, setAuth, loggedUserPk, token, map, hasCurrentTrip, setHasCurrentTrip, setTripId, tripId, isLoggedIn}) {
-  // const [trips, setTrips] = useState([]);
+  //const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
   // const [tripId, setTripId] = useState([])
   const [tripTitle, setTripTitle] = useState("");
@@ -135,7 +135,7 @@ return (
             alignItems: 'center',
             position: 'relative',
             backgroundImage: `url(${BG1})`,
-            backgroundSize: 'fitContent',
+            // backgroundSize: 'fitContent',
             // height: "100vh",
             // scrollMarginBottom: 30,
             // bottom: 5,
@@ -168,8 +168,7 @@ return (
         <Typography component="div" color="secondary">
             {/* <strong>On Current Trip</strong> */}
             <Typography variant="subtitle2" color="primary"><strong>{tripTitle}</strong></Typography>
-            <Typography  variant="subtitle2" color="primary">{tripLocation}</Typography>
-          </Typography>
+            <Typography  variant="subtitle2" color="primary">{tripLocation}</Typography>          </Typography>
           {/* <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography> */}
         </CardContent>
   </Grid>
