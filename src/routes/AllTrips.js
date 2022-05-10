@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {TripCard} from '../components/TripCard';
+import TripCard from '../components/TripCard';
 import Moment from 'react-moment'
 import { Container,Grid, Stack, Box, Button, Typography } from "@mui/material";
 import ToggleButton from '@mui/material/ToggleButton';

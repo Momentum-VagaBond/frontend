@@ -18,21 +18,9 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, fileName, log
   <ThemeProvider theme={Theme}>
   <CssBaseline />
 
-  {/* <Card
-    sx={{
-      marginBottom: 2,
-      display: 'flex',
-      flexDirection: 'column',
-      flex: 1,
-      width: '40%',
-      height: 'auto',
-      marginTop: 0,
-      alignContent: 'center',
-    }}
-    > */}
       <h3>{title}</h3>
       <Moment format="MM/D/YYYY, h:mm a">{date_logged}</Moment>
-    {/* </Card> */}
+
 
   <Container component="main"
     sx={{
@@ -65,7 +53,7 @@ const LogCard = ({detail_text,location, date_logged, logPk, title, fileName, log
         width: '100%',
       }}>
       <img
-        src={fileName}
+        src={Flags}
         srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
         alt={location}
         loading="lazy"

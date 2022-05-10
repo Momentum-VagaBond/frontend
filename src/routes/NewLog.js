@@ -11,7 +11,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 import { StartTripCard } from "../components/StartTripCard";
 
-export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, setLogSuccess, logSuccess, isLoggedIn}) {
+export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, logSuccess, isLoggedIn}) {
     const [location, setLocation] = useState("");
     const [details, setDetails] = useState("");
     const [latitude, setLatitude] = useState("");
