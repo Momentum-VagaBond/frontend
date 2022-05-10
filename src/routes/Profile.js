@@ -10,7 +10,7 @@ import { PastTripCard } from '../components/PastTripCard';
 import { ContactsCard } from '../components/ContactsCard';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-import {TripCard} from '../components/TripCard';
+import TripCard from '../components/TripCard';
 import { Link as RouterLink, Navigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
@@ -171,7 +171,7 @@ const Profile = ({username, token, loggedUserPk, hasCurrentTrip, contact, firstN
       </Box> */}
       <Container maxWidth="xs">
       <h5>My trips...</h5>
-      <Container component="main" align="center" maxWidth="xs">
+      <Container component="main" align="center" maxWidth="m">
       
       {trips.map((trip) =>
           <TripCard

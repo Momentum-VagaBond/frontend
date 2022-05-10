@@ -78,18 +78,20 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         flexDirection: 'column',
         alignItems: 'center',
         marginBottom: 10,
+        width: '38ch',
     }}>
 
     <Grid container component="main">
-    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+    <Grid>
+    {/* item xs={12} sm={8} md={5} component={Paper} elevation={6} square */}
     <Box
     sx={{
-        marginTop: 2,
+        marginTop: 4,
         //marginRight: 2,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        //position: 'absolute',
+        //position: 'relative',
     '& .MuiTextField-root': { m: 2, width: '30ch' },
     }}
     noValidate
@@ -109,6 +111,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
             className='firstName'
             required value={firstName}
             helperText="Required"
+            margin="normal"
             onChange={(e) => setFirstName(e.target.value)}
         />
     </FormGroup>
@@ -124,6 +127,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
             className='lastName'
             required value={lastName}
             helperText="Required"
+            margin="normal"
             onChange={(e) => setLastName(e.target.value)}
         />
     </FormGroup>
@@ -138,6 +142,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
             name='email'
             required value={email}
             helperText="Required"
+            margin="normal"
             onChange={(e) => setEmail(e.target.value)}
         />
     </FormGroup>
@@ -147,7 +152,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     fullWidth
     variant="contained"
     sx={{
-        mt: 3,
+        mt: 2,
         mb: 2,
         //borderRadius: 5,
     }}
@@ -169,16 +174,12 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         <strong>Subscribers</strong>
     </Typography>
 
-    <Box
-    component='div'
+    <Container
     sx={{
-        marginLeft: 0,
-        marginBottom: 5,
-        marginTop: 1,
-        marginRight: 0,
-        width: '100%',
-        overflow: 'auto',
+        overflow: 'hidden',
     }}
+    >
+    <Box
     >
     {subscribers.map((subscriber, pk) => {
         return(
@@ -191,6 +192,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     )}
     )}
     </Box>
+    </Container>
     </Container>
     </ThemeProvider>
     )

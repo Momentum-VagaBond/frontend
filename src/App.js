@@ -55,6 +55,7 @@ const App = () => {
     setToken(token)
     setUsername(username)
   }
+  
 const isLoggedIn = username && token
 const style1 = {
   margin: 0,
