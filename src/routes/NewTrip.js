@@ -68,23 +68,17 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             
         <Container
         sx={{
-            marginTop: 3,
+            marginTop: 10,
             align: "center",
             paddingBotton: 15
         }}>
-        {/* <Typography component="h1" variant="h5" >
-            <strong>Create a Trip</strong>
-        </Typography> */}
-
-        {/* <Grid container component="main">
-        <Grid item xs={12} sm={8} md={5} > */}
         <Box
         sx={{
-           mt: 2
-            // display: 'flex',
-            // flexDirection: 'column',
-            // alignItems: 'center',
-            // marginTop: 2,
+            mt: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: 2,
             // marginBottom: 2,
             // marginRight: 0,
             // display: 'flex',
@@ -97,7 +91,7 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             // paddingLeft: 0,
             // position: 'fixed',
             // width: '40ch',
-            // '& .MuiTextField-root': { m: 1, width: '40ch' },
+            '& .MuiTextField-root': { m: 1, width: '40ch' },
         }}
         noValidate
         autoComplete="off"
@@ -106,7 +100,11 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
     <form onSubmit={handleSubmit}>
 
 
-    <FormGroup>
+    <FormGroup
+    sx={{
+        marginBottom: 4,
+    }}
+    >
         <label htmlFor='reg-title' align="left"><Typography variant="body2"> Title *</Typography> </label>
         <TextField
             placeholder='Title'
@@ -123,7 +121,11 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         />
     </FormGroup>
 
-    <FormGroup>
+    <FormGroup
+    sx={{
+        marginBottom: 4,
+    }}
+    >
         <label htmlFor='reg-location' align="left"> <Typography variant="body2">Location * </Typography></label>
         <TextField
             placeholder='Location'
@@ -140,7 +142,11 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         />
     </FormGroup>
 
-    <FormGroup>
+    <FormGroup
+    sx={{
+        marginBottom: 4,
+    }}
+    >
     <label htmlFor='begin' align="left"><Typography variant="body2"> Start Date * </Typography></label>
     <TextField
         placeholder='Start Date'
@@ -149,8 +155,6 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         name='startDate'
         margin="normal"
         required value={begin}
-       
-        // helperText="This is required!"
         onChange={(e) => setBegin(e.target.value)}
         sx={{ width: 220, marginBotton: 3 }}
         InputLabelProps={{
@@ -159,7 +163,10 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
     />
     </FormGroup>
 
-    <FormGroup>
+    <FormGroup
+    sx={{
+        marginBottom: 2,
+    }}>
     <label htmlFor='begin'><Typography variant="body2"> End Date * </Typography></label>
     <TextField
         placeholder='End Date'

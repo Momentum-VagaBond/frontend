@@ -123,8 +123,8 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
     }}
       key={idx}>
       <Typography sx={{ typography: 'body2', marginTop: 2, marginBottom: 2}}>{comment.comments}</Typography>
-      <Typography  sx={{ typography: 'body2' }}color="primary" ><strong>{comment.username}</strong></Typography>
-      <Typography  sx={{ typography: 'subtitle2' }} color="primary" ><Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment></Typography>
+      <Typography sx={{ typography: 'body2' }}color="primary" ><strong>{comment.username}</strong></Typography>
+      <Typography sx={{ typography: 'subtitle2' }} color="primary" ><Moment format="MM/D/YYYY, h:mm a">{comment.date_commented}</Moment></Typography>
     </Card>
     )}
     </Container>
