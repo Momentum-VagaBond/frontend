@@ -70,7 +70,10 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         sx={{
             marginTop: 10,
             align: "center",
-            paddingBotton: 15
+            paddingBotton: 15,
+            backgroundImage: `url(${MapBG})`,
+            backgroundAttachment: "scroll",
+            backgroundSize: 'stretched',
         }}>
         <Box
         sx={{
@@ -79,6 +82,9 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             flexDirection: 'column',
             alignItems: 'center',
             marginTop: 2,
+            // backgroundImage: `url(${MapBG})`,
+            // backgroundAttachment: "scroll",
+            // backgroundSize: 'stretched',
             // marginBottom: 2,
             // marginRight: 0,
             // display: 'flex',
