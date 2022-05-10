@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Register } from './routes/Register';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Login } from './routes/Login';
 import { Logout } from './routes/Logout';
 import NewTrip from './routes/NewTrip';
@@ -21,13 +21,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Theme } from './Theme';
 import  Geolocate  from './components/Geolocate';
 import MapBox from './components/MapBox';
-import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
-import EditIcon from '@mui/icons-material/Edit';
 import AllTrips from './routes/AllTrips';
-import { FlashOffTwoTone } from '@mui/icons-material';
-
-
 
 
 
@@ -44,6 +38,7 @@ const App = () => {
   const [subscriberHasCurrent, setSubscriberHasCurrent] = useState(false)
   const [tripId, setTripId] = useLocalStorageState('TripId', '');
   const [status, setStatus] = useState(null);
+
   // const [logId, setLogId] = useLocalStorageState('LogId', '');
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
@@ -55,7 +50,19 @@ const App = () => {
     setToken(token)
     setUsername(username)
   }
-  
+
+  // const [isLogged, setIsLogged] = useState(Boolean)(
+  //   () => localStorage.getItem('loggedUserPk') !== null
+  // );
+
+  // useEffect(() => {
+  //   localStorage.setItem('logged_user', JSON.stringify(isLogged));
+  // }, [isLogged]);
+
+  // const logIn = () => setIsLogged(true);
+  // const logOut = () => setIsLogged(false);
+
+
 const isLoggedIn = username && token
 const style1 = {
   margin: 0,

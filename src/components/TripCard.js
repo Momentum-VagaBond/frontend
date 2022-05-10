@@ -52,9 +52,12 @@ const TripCard = ({pk, tripId, title, location, username, fileName, begin, end }
     border: 1,
     }}
     >
-    <ImageListItem key={tripId}
+    <ImageListItem
+    component='img'
+    key={tripId}
     sx={{
         width: '100%',
+        height: 'fitContent',
     }}>
     <img
         src={fileName}
