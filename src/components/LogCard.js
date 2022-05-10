@@ -32,7 +32,7 @@ const LogCard = ({detail_text,location, tripId, trip_username, username, date_lo
     // maxWidth: "sm", 
 }}
     >
-<CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
+{/* <CardActionArea component={RouterLink} to={`/trips/${tripId}`}> */}
 <CardMedia
     sx={{borderRadius: .25}}
     component="img"
@@ -70,7 +70,7 @@ const LogCard = ({detail_text,location, tripId, trip_username, username, date_lo
     <Button size="small">Make favorite</Button>
     <Button size="small">Trip details</Button>
 </CardActions> */}
-    </CardActionArea>
+    {/* </CardActionArea> */}
 </Container>
 </ThemeProvider>
 );
