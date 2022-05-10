@@ -273,7 +273,14 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
 
       <TabPanel value={value} index={1}>
         <TripCard
-              />
+      
+          tripId={trip.pk}
+          title={trip.title}
+          user={trip.user}
+          location={trip.location}
+          begin={trip.begin}
+          end={trip.end}
+          img={trip.img}    />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
