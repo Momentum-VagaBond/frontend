@@ -68,39 +68,36 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             
         <Container
         sx={{
-            marginTop: 5,
-            display: 'flex',
-            flex: 1,
-            flexDirection: 'column',
-            alignItems: 'center',
-            // backgroundImage: `url(${MapBG})`,
-            // backgroundColor: '#e9ecef',
-            position: 'relative',
-            width: '100%',
+            marginTop: 3,
+            align: "center",
+            paddingBotton: 15
         }}>
         {/* <Typography component="h1" variant="h5" >
             <strong>Create a Trip</strong>
         </Typography> */}
 
-        <Grid container component="main">
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        {/* <Grid container component="main">
+        <Grid item xs={12} sm={8} md={5} > */}
         <Box
         sx={{
-            marginTop: 0,
-            marginBottom: 0,
-            marginRight: 0,
-            display: 'flex',
-            flex: 1,
-            flexDirection: 'column',
-            alignItems: 'center',
-            
-            // position: 'absolute',
-            // paddingRight: 2,
-            // paddingBottom: 6,
-            paddingLeft: 0,
-            position: 'fixed',
-            width: '40ch',
-            '& .MuiTextField-root': { m: 1, width: '40ch' },
+           mt: 2
+            // display: 'flex',
+            // flexDirection: 'column',
+            // alignItems: 'center',
+            // marginTop: 2,
+            // marginBottom: 2,
+            // marginRight: 0,
+            // display: 'flex',
+            // flex: 1,
+            // flexDirection: 'column',
+            // alignItems: 'center',
+            // // position: 'absolute',
+            // // paddingRight: 2,
+            // // paddingBottom: 6,
+            // paddingLeft: 0,
+            // position: 'fixed',
+            // width: '40ch',
+            // '& .MuiTextField-root': { m: 1, width: '40ch' },
         }}
         noValidate
         autoComplete="off"
@@ -110,7 +107,7 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
 
 
     <FormGroup>
-        <label htmlFor='reg-title'> Title * </label>
+        <label htmlFor='reg-title' align="left"><Typography variant="body2"> Title *</Typography> </label>
         <TextField
             placeholder='Title'
             id="title"
@@ -120,13 +117,14 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             className='tripTitle'
             required value={title}
             margin="normal"
-            helperText="This is required!"
+            sx={{mb: 3}}
+            // helperText="This is required!"
             onChange={(e) => setTitle(e.target.value)}
         />
     </FormGroup>
 
     <FormGroup>
-        <label htmlFor='reg-location'> Location * </label>
+        <label htmlFor='reg-location' align="left"> <Typography variant="body2">Location * </Typography></label>
         <TextField
             placeholder='Location'
             id="location"
@@ -135,14 +133,15 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             variant="outlined"
             className='tripLocation'
             margin="normal"
+            sx={{mb: 3}}
             required value={location}
-            helperText="This is required!"
+            // helperText="This is required!"
             onChange={(e) => setLocation(e.target.value)}
         />
     </FormGroup>
 
     <FormGroup>
-    <label htmlFor='begin'> Start Date * </label>
+    <label htmlFor='begin' align="left"><Typography variant="body2"> Start Date * </Typography></label>
     <TextField
         placeholder='Start Date'
         id="start-date"
@@ -150,9 +149,10 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         name='startDate'
         margin="normal"
         required value={begin}
-        helperText="This is required!"
+       
+        // helperText="This is required!"
         onChange={(e) => setBegin(e.target.value)}
-        sx={{ width: 220 }}
+        sx={{ width: 220, marginBotton: 3 }}
         InputLabelProps={{
             shrink: true,
         }}
@@ -160,7 +160,7 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
     </FormGroup>
 
     <FormGroup>
-    <label htmlFor='begin'> End Date * </label>
+    <label htmlFor='begin'><Typography variant="body2"> End Date * </Typography></label>
     <TextField
         placeholder='End Date'
         id="end-date"
@@ -169,7 +169,7 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         margin="normal"
         required value={end}
         onChange={(e) => setEnd(e.target.value)}
-        sx={{ width: 220 }}
+        sx={{ width: 220, marginBottom: 3 }}
         InputLabelProps={{
             shrink: true,
         }}
@@ -182,7 +182,7 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         variant="contained"
         sx={{
             mt: 3,
-            mb: 2,
+            mb: 10,
             borderRadius: 5,
         }}
         >
@@ -191,8 +191,8 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
     </form>
     
     </Box>
-    </Grid>
-    </Grid>
+    {/* </Grid>
+    </Grid> */}
     </Container>
 
     {/* <Card  sx={{
