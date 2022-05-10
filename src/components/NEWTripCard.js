@@ -15,7 +15,7 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link as RouterLink } from 'react-router-dom'
 
 
-const TripCard = ({pk, tripId, title, location, username, fileName, begin, end }) => {
+const TripCard = ({pk, tripId, imageUrl, title, location, username, fileName, begin, end }) => {
     // function capitalizeFirst(string) {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     //   }
@@ -60,9 +60,10 @@ const TripCard = ({pk, tripId, title, location, username, fileName, begin, end }
     }}>
     <img
         component='img'
-        src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        height= '50%'
+        width='50%'
+        src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
         alt={location}
-        loading="lazy"
     />
         {/* <ImageListItemBar
         sx={{

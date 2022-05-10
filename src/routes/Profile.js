@@ -19,6 +19,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import BG2 from './BG2.png'
 
 
 function TabPanel(props) {
@@ -56,7 +57,7 @@ function a11yProps(index) {
 
 
 
-const Profile = ({username, token, location, futureTripsTraveler, futureTripTraveler, loggedUserPk, tripLogs, hasCurrentTrip, contact, firstName, lastName, email, id, isLoggedIn }) => {
+const Profile = ({username, token, image, setImage, location, futureTripsTraveler, futureTripTraveler, loggedUserPk, tripLogs, hasCurrentTrip, contact, firstName, lastName, email, id, isLoggedIn }) => {
 
   const [trip, setTrip] = useState([]);
   const [begin, setBegin] = useState([]);
@@ -92,7 +93,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
         console.log(response.data)
         setTrips(response.data.trips)
       })
-    }, [token, loggedUserPk, setTripTotal, setBio, setLast, setFirst, setTrips])
+    }, [token, loggedUserPk, setImage, setTripTotal, setBio, setLast, setFirst, setTrips])
 
     // useEffect(() => {
     //   axios
@@ -160,6 +161,25 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
   return (
     <ThemeProvider theme={Theme}>
   
+  <Container
+  sx={{
+    backgroundImage: `url(${BG2})`,
+    backgroundSize: '100% 100%',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    maxWidth: '100%',
+    width: '100vh',
+    minHeight: '100vw',
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    position: "relative",
+    overflow: 'scroll',
+    //zIndex: 1,
+  }}
+  >
       <Container
       sx={{
         marginTop: 4,
@@ -256,6 +276,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
           return (
             <TripCard
               // key={pk}
+              imageUrl={image}
               tripId={trip.pk}
               title={trip.title}
               location={trip.location}
@@ -278,7 +299,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
           location={trip.location}
           begin={trip.begin}
           end={trip.end}
-          img={trip.img}    />
+          imageUrl={image}    />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
@@ -292,7 +313,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
               location={trip.location}
               begin={trip.begin}
               end={trip.end}
-              img={trip.img}
+              imageUrl={image}
             />
           )}
         )}
@@ -392,6 +413,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
     </Container> */}
   </Box>
   {/* </Container> */}
+    </Container>
     </Container>
   </ThemeProvider>
     )

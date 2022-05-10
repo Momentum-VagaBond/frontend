@@ -125,11 +125,11 @@ if (status === 401) {
         />
         <Route
           path="/profile"
-          element={<Profile setAuth={setAuth} hasCurrentTrip={hasCurrentTrip} token={token} username={username} />}
+          element={<Profile setAuth={setAuth} hasCurrentTrip={hasCurrentTrip} token={token} username={username} setImage={setImage} image={image} />}
         />
         <Route
           path="/home"
-          element={<Home token={token} hasCurrentTrip={hasCurrentTrip} setHasCurrentTrip={setHasCurrentTrip} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} setImage={setImage} />}
+          element={<Home token={token} hasCurrentTrip={hasCurrentTrip} setHasCurrentTrip={setHasCurrentTrip} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} setImage={setImage} image={setImage} />}
         />
         <Route
           path="/home/subscriber"
@@ -169,7 +169,7 @@ if (status === 401) {
         />
         <Route
           path="/trips/current/user/"
-          element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId}  />}
+          element={<Profile setAuth={setAuth} loggedUserPk={loggedUserPk} token={token} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} setImage={setImage} />}
         />
         <Route
           path="/trip/future/user/"

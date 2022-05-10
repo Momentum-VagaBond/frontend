@@ -116,7 +116,27 @@ export default function Home ({username, token, image, setImage, hasCurrentTrip,
   
 return (
   <ThemeProvider theme={Theme}>
- 
+
+<Container
+sx={{
+  backgroundImage: `url(${BG1})`,
+  backgroundSize: '100% 100%',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed',
+  maxWidth: '100%',
+  width: '100vh',
+  minHeight: '100vw',
+  height: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+  position: "relative",
+  overflow: 'scroll',
+  //zIndex: 1,
+}}
+>
+
 <Container sx={{
             // marginTop: 10,
             // marginBotton: 50,
@@ -128,14 +148,15 @@ return (
             // backgroundImage: `url(${Background2})`,
             //backgroundSize: 'cover',
             height: "100%",
-            paddingBottom: 15,
+            paddingBottom: 0,
             display: 'flex',
             flex: 1,
             flexDirection: 'column',
             alignItems: 'center',
+            marginBottom: 0,
             //position: 'scroll',
-            //backgroundImage: `url(${BG1})`,
-            // backgroundSize: 'fitContent',
+            backgroundImage: `url(${BG1})`,
+            backgroundSize: 'cover',
             // height: "100vh",
             // scrollMarginBottom: 30,
             // bottom: 5,
@@ -304,6 +325,7 @@ return (
   </Container>
 
 
+  </Container>
   </Container>
   </ThemeProvider>
   )

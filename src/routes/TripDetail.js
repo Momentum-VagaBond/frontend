@@ -18,13 +18,13 @@ import { StartTripCard } from "../components/StartTripCard";
 
 
 
-const TripDetail = ({token, pk, hasCurrentTrip, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
+const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
   const [logs, setLogs] = useState([])
   const [tripPk, setTripPk] = useState([])
-  const [image, setImage] = useState('')
+  //const [image, setImage] = useState('')
   // const [selectedId, setSelectedId] = useState(null)
   // const [acceptedResponse, setAcceptedResponse] = useState(null)
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)

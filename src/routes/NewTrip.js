@@ -68,20 +68,27 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             
         <Container
         sx={{
-            marginTop: 10,
-            align: "center",
-            paddingBotton: 15,
             backgroundImage: `url(${MapBG})`,
-            backgroundAttachment: "scroll",
-            backgroundSize: 'stretched',
+            backgroundSize: '100% 100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed',
+            maxWidth: '100%',
+            width: '100vh',
+            minHeight: '100vw',
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            flex: 1,
+            position: "relative",
+            overflow: 'scroll',
         }}>
         <Box
         sx={{
-            mt: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginTop: 2,
+            marginTop: 10,
             // backgroundImage: `url(${MapBG})`,
             // backgroundAttachment: "scroll",
             // backgroundSize: 'stretched',
