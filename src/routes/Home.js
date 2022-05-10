@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TripCard from '../components/TripCard';
-import { Container, Card, Box, Grid, CardMedia, CardContent, Typography} from "@mui/material";
+import { Container, Card, Box, Grid, CardMedia, CardContent, Divider, Typography} from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import { Link as RouterLink, Navigate } from 'react-router-dom'
@@ -11,7 +11,7 @@ import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { StartTripCard } from "../components/StartTripCard";
 import logo from './VagaBondLogo.png';
-// import Background5 from './Background5.png'
+import BG1 from './BG1.png'
 
 
 
@@ -38,6 +38,10 @@ export default function Home ({username, setAuth, loggedUserPk, token, map, hasC
   const VBLogo = (
     <img src={logo} alt='VBLogo' height='100'/>
   );
+
+  // const Background = (
+  //   <img src={BG1} alt='background' height='100' />
+  // );
 
   //Getting current trip if one exists
 
@@ -130,8 +134,8 @@ return (
             flexDirection: 'column',
             alignItems: 'center',
             position: 'relative',
-            // backgroundImage: `url(${Background5})`,
-            // backgroundSize: 'cover',
+            backgroundImage: `url(${BG1})`,
+            backgroundSize: 'fitContent',
             // height: "100vh",
             // scrollMarginBottom: 30,
             // bottom: 5,
@@ -143,27 +147,39 @@ return (
     {hasCurrentTrip &&
 
   <Box mt={4} mb={4}>
-    <Grid container spacing={2}>
-  <Grid item xs={6}>
+    <Grid container spacing={1}
+    sx={{
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
+      alignContent: 'center',
+    }}
+    >
+  {/* <Grid item xs={6}>
     <CardMedia className='ProfileCardMedia'>
       {VBLogo}
     </CardMedia>
-  </Grid>
+  </Grid> */}
   <Grid item>
     <CardContent>
-        <Typography variant="h5" component="div">
+        <Typography variant="h3" component="div">
           {username}
         </Typography>
         <Typography component="div" color="secondary">
             {/* <strong>On Current Trip</strong> */}
-            <Typography variant="subtitle2" color="primary"><strong> {tripTitle}</strong></Typography>
-            <Typography  variant="subtitle2" color="primary"> {tripLocation}</Typography>
+            <Typography variant="subtitle2" color="primary"><strong>{tripTitle}</strong></Typography>
+            <Typography  variant="subtitle2" color="primary">{tripLocation}</Typography>
           </Typography>
           {/* <Typography variant="body2" color="secondary"> <strong>{logNumber}</strong> log(s)</Typography> */}
         </CardContent>
   </Grid>
   </Grid>
-  
+  <Divider variant="middle"
+  sx={{
+    borderBottomWidth: 2,
+    borderColor: 'primary.main'
+  }}
+  />
   </Box>
   }
 

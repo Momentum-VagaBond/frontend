@@ -157,6 +157,7 @@ export default function NewLog({token, hasCurrentTrip, loggedUserPk, tripId, log
 
         <Container component="main" maxWidth="sm" align="center" >
         <CssBaseline />
+
             <Box
                 sx={{
                 marginTop: 3,

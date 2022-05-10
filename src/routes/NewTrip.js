@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 
 
 
-export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
+export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [begin, setBegin] = useState("");
@@ -191,6 +191,8 @@ export default function NewTrip({token, isLoggedIn, loggedUserPk}) {
     </Grid>
     </Grid>
     </Container>
+
+
     </ThemeProvider>
     );
 }

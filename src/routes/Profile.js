@@ -14,10 +14,49 @@ import TripCard from '../components/TripCard';
 import { Link as RouterLink, Navigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
+import { StartTripCard } from '../components/StartTripCard';
 import CardActionArea from '@mui/material/CardActionArea';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 
-const Profile = ({username, token, loggedUserPk, hasCurrentTrip, contact, firstName, lastName, email, id, isLoggedIn }) => {
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+
+
+const Profile = ({username, token, location, futureTripsTraveler, futureTripTraveler, loggedUserPk, tripLogs, hasCurrentTrip, contact, firstName, lastName, email, id, isLoggedIn }) => {
 
   const [trip, setTrip] = useState([]);
   const [begin, setBegin] = useState([]);
@@ -29,6 +68,12 @@ const Profile = ({username, token, loggedUserPk, hasCurrentTrip, contact, firstN
   const [last, setLast] = useState("")
   const [bio, setBio] = useState("")
   const [tripTotal, setTripTotal] = useState("")
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
 
   const VBLogo = (
@@ -118,13 +163,13 @@ const Profile = ({username, token, loggedUserPk, hasCurrentTrip, contact, firstN
   
       <Container
       sx={{
-         marginTop: 4,
+        marginTop: 4,
               // marginBotton: 50,
-              paddingBottom: 15,
+        paddingBottom: 15,
               // display: 'flex',
               // flexDirection: 'column',
               // alignItems: 'center',
-              position: 'sticky',
+        position: 'sticky',
       
       }}
       >
@@ -161,19 +206,63 @@ const Profile = ({username, token, loggedUserPk, hasCurrentTrip, contact, firstN
         </CardActions>
       {/* </Box> */}
       </Card>
-  
-    
-      {/* <Box>
-        <h3>{bio}</h3>
-      <h1>
-        {username}'s Trips!
-      </h1>
-      </Box> */}
-      <Container maxWidth="xs">
+
+      <Box sx={{ width: '100%', alignContent: 'center,' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Past Trips" {...a11yProps(0)} />
+          <Tab label="Current Trip" {...a11yProps(1)} />
+          <Tab label="Future Trips" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+
+      <TabPanel value={value} index={0}>
+      {trips.map((trip, pk) => {
+          return (
+            <PastTripCard
+              // key={pk}
+              // tripId={trip.pk}
+              title={trip.title}
+              location={trip.location}
+              // firstName={trip.user_first_name}
+              // lastName={trip.user_last_name}
+              // trip_username={trip.username}
+              begin={trip.begin}
+              end={trip.end}
+              // username={username}
+              />
+          )}
+        )}
+      </TabPanel>
+
+      <TabPanel value={value} index={1}>
+        <NEWTripDetailCard
+              />
+      </TabPanel>
+
+      <TabPanel value={value} index={2}>
+      {trips.map((trip, pk) => {
+          return (
+            <FutureTripCard
+              // key={pk}
+              // tripId={trip.pk}
+              // title={trip.title}
+              // user={trip.user}
+              // location={trip.location}
+              // begin={trip.begin}
+              // end={trip.end}
+              // img={trip.img}
+            />
+          )}
+        )}
+      </TabPanel>
+
+
+      {/* <Container maxWidth="xs">
       <h5>My trips...</h5>
-      <Container component="main" align="center" maxWidth="m">
+      <Container component="main" align="center" maxWidth="m"> */}
       
-      {trips.map((trip) =>
+      {/* {trips.map((trip) =>
           <TripCard
           username={username}
           key={trip.pk}
@@ -188,9 +277,9 @@ const Profile = ({username, token, loggedUserPk, hasCurrentTrip, contact, firstN
           end={trip.end}
           tripId={trip.pk}
         />
-          )}
-      </Container>
-      </Container>
+          )} */}
+      {/* </Container>
+      </Container> */}
   
       {/* <Container maxWidth="sm" align="center">
   {hasCurrentTrip ? (
@@ -260,7 +349,7 @@ const Profile = ({username, token, loggedUserPk, hasCurrentTrip, contact, firstN
         )}
         </Box>
     </Container> */}
-  
+  </Box>
     </Container>
   </ThemeProvider>
     )
