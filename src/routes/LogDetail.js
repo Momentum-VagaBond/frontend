@@ -1,5 +1,3 @@
-// /api/trips/trippk/log/logpk/
-
 import axios from "axios";
 import { useEffect, useState } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
@@ -13,6 +11,7 @@ import Moment from 'react-moment'
 import { CardHeader, Typography } from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
+import BG6 from './BG6.png'
 
 
 const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) => {
@@ -25,7 +24,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
   
   const params = useParams()
   const logId2 = (params.logId)
- 
+
 
   useEffect(() => {
     axios
@@ -57,6 +56,27 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
 
   return (
   <ThemeProvider theme={Theme}>
+
+  <Container
+    sx={{
+      backgroundImage: `url(${BG6})`,
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundAttachment: 'fixed',
+      maxWidth: '100%',
+      width: '100vh',
+      minHeight: '100vw',
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+      position: "relative",
+      overflow: 'scroll',
+      //zIndex: 1,
+    }}
+  >
+
   <CssBaseline />
 
     <Container component="main"
@@ -133,7 +153,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
     </Card>
     )}
     </Container>
-    {/* </Container> */}
+    </Container>
   </Container>
   </ThemeProvider>
   )

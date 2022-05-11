@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
-import { Card } from '@mui/material/';
+import { Card, CardContent, Box, Typography } from '@mui/material/';
 import Container from '@mui/material/Container';
 import { ThemeProvider } from "styled-components";
 import { Theme } from "../Theme";
@@ -32,30 +32,71 @@ export const NEWTripDetailCard = ({pk, tripId, title, imageUrl, setImage, detail
 
     return (
       <Container
-      sx={{
-        width: '100%',
-        // border: 1,
-        marginBottom: 3,
-        margin: 0,
-        padding: 0,
-        //boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-        //backgroundColor: 'white',
-      }}
+      // sx={{
+      //   width: '100%',
+      //   // border: 1,
+      //   marginBottom: 5,
+      //   margin: 0,
+      //   padding: 0,
+      //   display: 'flex',
+      //   flexDirection: 'column',
+      //   alignContent: 'center',
+      //   //boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
+      //   //backgroundColor: 'white',
+      // }}
       >
-      <ImageListItem>
-      <img
+        <Box
+        sx={{
+          width: '100%',
+          // border: 1,
+          marginBottom: 8,
+          margin: 0,
+          padding: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignContent: 'center',
+        }}
+        >
+        <Card
+            sx={{
+              display: 'flex',
+              flex: 1,
+              flexDirection: 'column',
+              alignContent: 'center',
+              width: '100%',
+              //margin: 2,
+              marginBottom: 1.5,
+              marginTop: 1.5,
+              boxShadow: '0 30px 30px -12.125px rgba(0,0,0,0.3)',
+              }}
+        >
+        <CardContent>
+      {/* <ImageListItem> */}
+      {/* <img
         component="img"
         alt={title}
         height= '50%'
         width='50%'
         src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2`}
-      />
-      <ImageListItemBar
-        title={title}
-        subtitle={dateFormatted}
-        >
+      /> */}
+      {/* <ImageListItemBar */}
+      <Typography variant="h5">
+        {title}
+        </Typography>
+        <Typography variant="h7">
+        {dateFormatted}
+      </Typography>
+
+        {/* >
       </ImageListItemBar>
-      </ImageListItem>
+      </ImageListItem> */}
+      </CardContent>
+      </Card>
+      </Box>
       </Container>
     )
     }
+
+      // <CardActions>
+      //   <Button>share</Button>
+      // </CardActions>

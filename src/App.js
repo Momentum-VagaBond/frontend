@@ -48,9 +48,8 @@ const App = () => {
     setUsername(username)
   }
 
-  // const [isLogged, setIsLogged] = useState(Boolean)(
-  //   () => localStorage.getItem('loggedUserPk') !== null
-  // );
+  // const [isLogged, setIsLogged] = (null) => 
+  // localStorage.getItem('loggedUserPk') !== null
 
   // useEffect(() => {
   //   localStorage.setItem('logged_user', JSON.stringify(isLogged));

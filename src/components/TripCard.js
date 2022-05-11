@@ -25,22 +25,37 @@ export const TripCard = ({pk, tripId, title, imageUrl, location, username,  date
 
     return (
 
-    <Container sx={{
+<Container>
+
+    <Box sx={{
         marginTop: 2,
         paddingTop: 2.5,
-        boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-        borderRadius: 1,
+        boxShadow: '0 30px 30px -2.125px rgba(0,0,0,0.3)',
+        //borderRadius: 1,
         // maxWidth: "sm", 
     }}
         >
+            <Card
+            sx={{
+              display: 'flex',
+              flex: 1,
+              flexDirection: 'column',
+              alignContent: 'center',
+              width: '100%',
+              //margin: 2,
+              marginBottom: 1.5,
+              marginTop: 1.5,
+              boxShadow: '0 30px 30px -12.125px rgba(0,0,0,0.3)',
+              }}
+                >
     <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
     <CardMedia
         sx={{borderRadius: .25}}
-        component="img"
-        alt={location}
-        height= '50%'
-        width='50%'
-        src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        // component="img"
+        // alt={location}
+        // height= '50%'
+        // width='50%'
+        // src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
         />
     
     <CardContent sx={{ flex: '1 0 auto' }} key={pk}>
@@ -77,6 +92,8 @@ export const TripCard = ({pk, tripId, title, imageUrl, location, username,  date
         <Button size="small">Trip details</Button>
     </CardActions> */}
         </CardActionArea>
+        </Card>
+    </Box>
     </Container>
     );
 }
