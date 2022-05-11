@@ -48,10 +48,10 @@ function a11yProps(index) {
   };
 }
 
-export default function Home ({username, token, setImage, location, hasCurrentTrip, setHasCurrentTrip, isLoggedIn, futureTrips, futureTripTraveler, loggedUserPk, firstName, lastName, }) {
+export default function Home ({username, token, setImage, setTripId, tripId, location, hasCurrentTrip, setHasCurrentTrip, isLoggedIn, futureTrips, futureTripTraveler, loggedUserPk, firstName, lastName, }) {
 
   const [usernamePk, setUsernamePk] = useState([]);
-  const [tripId, setTripId] = useState("")
+  // const [tripId, setTripId] = useState("")
   const [tripUsername, setTripUsername] = useState([])
   const [first, setFirst] = useState("")
   const [last, setLast] = useState("")
@@ -87,6 +87,7 @@ export default function Home ({username, token, setImage, location, hasCurrentTr
           setHasCurrentTrip(true)
           setCurrentTripTraveler(response.data[0])
           setTripId(response.data[0].pk)
+          console.log(response.data[0].pk)
           // setTripLogs(response.data[0].trip_logs)
           setLogNumber(response.data[0].trip_logs.length)
           setTripLocation(response.data[0].location)

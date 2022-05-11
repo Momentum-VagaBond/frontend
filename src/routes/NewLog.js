@@ -86,14 +86,15 @@ export default function NewLog({token, hasCurrentTrip, setLogSuccess, loggedUser
         axios
         .post(
             `https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/${tripId}/log/`,
+            // `https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/32/log/`,
             {
-                user_id: loggedUserPk,
-                trip: tripId,
+                // user_id: loggedUserPk,
+                // trip: tripId,
                 location: location,
                 title: title,
                 details: details,
-                latitude: latitude,
-                longitude: longitude,
+                // latitude: latitude,
+                // longitude: longitude,
             },
             {
                 headers: { Authorization: `Token ${token}` },
@@ -150,7 +151,7 @@ export default function NewLog({token, hasCurrentTrip, setLogSuccess, loggedUser
     return (
 
     <ThemeProvider theme={Theme}>
-
+{/* {tripId} */}
     <Container
     sx={{
         backgroundImage: `url(${BG3})`,
