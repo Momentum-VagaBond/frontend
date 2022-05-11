@@ -193,6 +193,7 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
       alignContent: 'center',
     }}
     >
+
       <Grid container spacing={2}>
     <Grid item xs={4}>
       <CardMedia className='ProfileCardMedia'
@@ -222,8 +223,8 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
     </Grid>
 
       <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {first} {last}
+          <Typography gutterBottom variant="body2" component="div">
+            {first} {last} <br />
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {bio}
