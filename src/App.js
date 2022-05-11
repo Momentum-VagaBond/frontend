@@ -38,7 +38,7 @@ const App = () => {
   const [tripId, setTripId] = useLocalStorageState('TripId', '')
   const [image, setImage] = useLocalStorageState('Image', '')
   const [status, setStatus] = useState(null);
-  const [trips, setTrips] = useState([])
+  // const [trips, setTrips] = useState([])
   const [imageUrl, setImageUrl] = useState('')
   const [imageDetailUrl, setImageDetailUrl] = useState([])
 
