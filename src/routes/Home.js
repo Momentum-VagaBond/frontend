@@ -171,7 +171,6 @@ sx={{
 
 {/* header has current trip */}
   <Container>
-    {hasCurrentTrip &&
   
       <Container
       sx={{
@@ -346,7 +345,6 @@ sx={{
 
   </Box>
   </Container>
-}
   </Container>
   </Container>
   </ThemeProvider>
