@@ -16,7 +16,7 @@ import { Luggage, Visibility} from "@mui/icons-material";
 export default function AllTrips ({username, loggedUserPk, token, image, setImage, id}) {
   const [trips, setTrips] = useState([]);
   const [usernamePk, setUsernamePk] = useState([]);
-  const [tripId, setTripId] = useState("")
+  //const [tripId, setTripId] = useState("")
   const [tripUsername, setTripUsername] = useState([])
   const [showMyTrips, setShowMyTrips] = useState(false)
   const [showFollowing, setShowFollowing] = useState(false)
@@ -26,23 +26,23 @@ export default function AllTrips ({username, loggedUserPk, token, image, setImag
   const [alignment, setAlignment] = React.useState('left');
 
 
-  useEffect(() => {
-    axios
-      .get("https://momentum-vagabond.herokuapp.com/api/trips",
-      {headers: {Authorization: `Token ${token}`}
-      })
+  // useEffect(() => {
+  //   axios
+  //     .get("https://momentum-vagabond.herokuapp.com/api/trips",
+  //     {headers: {Authorization: `Token ${token}`}
+  //     })
 
-      .then((response) => {
-        console.log(response.data)
-        setTrips(response.data)
-        setUsernamePk(response.data.pk)
-        setTripId(response.data.pk)
-        setTripUsername(response.data.username)
-        console.log("loggedUserPk: " + loggedUserPk)
-        console.log(response.data.username)
-        // console.log("tripId" + setTripId)
-      })
-  }, [loggedUserPk, setTripId, token, tripUsername])
+  //     .then((response) => {
+  //       console.log(response.data)
+  //       setTrips(response.data)
+  //       setUsernamePk(response.data.pk)
+  //       setTripId(response.data.pk)
+  //       setTripUsername(response.data.username)
+  //       console.log("loggedUserPk: " + loggedUserPk)
+  //       console.log(response.data.username)
+  //       // console.log("tripId" + setTripId)
+  //     })
+  // }, [loggedUserPk, tripId, token, tripUsername])
 
 
 
