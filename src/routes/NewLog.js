@@ -88,13 +88,13 @@ export default function NewLog({token, hasCurrentTrip, setLogSuccess, loggedUser
             `https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/${tripId}/log/`,
             // `https://momentum-vagabond.herokuapp.com/api/users/${loggedUserPk}/32/log/`,
             {
-                // user_id: loggedUserPk,
-                // trip: tripId,
+                user_id: loggedUserPk,
+                trip: tripId,
                 location: location,
                 title: title,
                 details: details,
-                // latitude: latitude,
-                // longitude: longitude,
+                latitude: latitude,
+                longitude: longitude,
             },
             {
                 headers: { Authorization: `Token ${token}` },
