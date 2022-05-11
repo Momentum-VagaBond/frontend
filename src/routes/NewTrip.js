@@ -88,7 +88,7 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginTop: 10,
+            marginTop: 8,
             // backgroundImage: `url(${MapBG})`,
             // backgroundAttachment: "scroll",
             // backgroundSize: 'stretched',
@@ -203,7 +203,7 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
         sx={{
             mt: 3,
             mb: 10,
-            borderRadius: 5,
+            //borderRadius: 5,
         }}
         >
     Start Trip
