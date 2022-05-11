@@ -33,7 +33,7 @@ const MapBox2 = ({latitude, longitude}) => {
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v11",
       center: [lng, lat],
-      zoom: 16,
+      zoom: 14,
       marker: false
         
     })
@@ -65,7 +65,7 @@ const MapBox2 = ({latitude, longitude}) => {
     return () => map.remove()
   }, [lng, lat])
 
-  return <div ref={mapContainer} style={{ width: "15vh", height: "15vh", borderColor: "white" }} />
+  return <div ref={mapContainer} style={{ width: "40vh", height: "40vh", borderColor: "white" }} />
 }
 // import * as React from 'react';
 // import Map from 'react-map-gl';
