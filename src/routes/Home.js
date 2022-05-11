@@ -170,7 +170,7 @@ sx={{
 {/* header has current trip */}
   <Container>
     {hasCurrentTrip &&
-
+  
       <Container
       sx={{
         marginTop: 4,
@@ -252,7 +252,12 @@ sx={{
         </Tabs>
       </Box>
 {/* CURRENT */}
-    <TabPanel value={value} index={0}>
+    <TabPanel value={value} index={0}
+    sx={{
+      border: 1,
+    }}
+    
+    >
     {/* <Container align="center">  */}
   {hasCurrentTrip ? (
     <>
@@ -260,13 +265,16 @@ sx={{
   
     // <CardActionArea component={RouterLink} to={`/trips/${tripId}`}>
     <TripCard
+    sx={{
+      border: 2,
+    }}
     tripId={currentTripTraveler.pk}
     title={currentTripTraveler.title}
     user={currentTripTraveler.user}
     location={currentTripTraveler.location}
     begin={currentTripTraveler.begin}
     end={currentTripTraveler.end}
-    img={currentTripTraveler.img}
+    //img={currentTripTraveler.img}
     />
     // </CardActionArea>
   }
