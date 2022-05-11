@@ -136,7 +136,11 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         />
     </FormGroup>
 
-    <FormGroup>
+    <FormGroup
+        sx={{
+            marginBottom: 2,
+        }}
+    >
         <label htmlFor='begin'> Email * </label>
         <TextField
             placeholder='Email'
@@ -179,12 +183,10 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     </Typography>
 
     <Container
-    sx={{
-        overflow: 'hidden',
-        width: '100%',
-    }}
-    >
-    <Box
+        sx={{
+            overflow: 'scroll',
+            //width: '100%',
+        }}
     >
     {subscribers.map((subscriber, pk) => {
         return(
@@ -196,7 +198,6 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         />
     )}
     )}
-    </Box>
     </Container>
     </Container>
     </ThemeProvider>
