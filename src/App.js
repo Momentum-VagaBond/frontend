@@ -143,7 +143,7 @@ if (status === 401) {
         />
         <Route
           path="/home"
-          element={<Home token={token} hasCurrentTrip={hasCurrentTrip} setHasCurrentTrip={setHasCurrentTrip} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} setImage={setImage} image={setImage} />}
+          element={<Home token={token} hasCurrentTrip={hasCurrentTrip} setHasCurrentTrip={setHasCurrentTrip} tripId={tripId} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} setTripId={setTripId} setImage={setImage} image={image} />}
         />
         <Route
           path="/home/subscriber"
