@@ -87,6 +87,7 @@ export default function Home ({username, token, setImage, setTripId, tripId, loc
           setHasCurrentTrip(true)
           setCurrentTripTraveler(response.data[0])
           setTripId(response.data[0].pk)
+          console.log(tripId)
           console.log(response.data[0].pk)
           // setTripLogs(response.data[0].trip_logs)
           setLogNumber(response.data[0].trip_logs.length)
@@ -99,7 +100,7 @@ export default function Home ({username, token, setImage, setTripId, tripId, loc
           setHasCurrentTrip(false)
         }
     })
-  }, [token, setCurrentTripTraveler, setTripLocation, setTripTitle, setHasCurrentTrip, setTripId, setImage])
+  }, [token, setCurrentTripTraveler, setTripLocation, setTripTitle, tripId, setHasCurrentTrip, setTripId, setImage])
 
 
 
