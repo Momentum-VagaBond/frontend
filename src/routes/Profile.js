@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Card, CardMedia, CardContent, Box, CardActions, Avatar, Typography, Grid, CardItem, ImageList, ImageListItem } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Container from '@mui/material/Container';
 import logo from './VagaBondLogo.png';
 import { Theme } from '../Theme';
@@ -174,7 +174,7 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
   >
       <Container
       sx={{
-        marginTop: 4,
+        marginTop: 3,
               // marginBotton: 50,
         paddingBottom: 15,
         display: 'flex',
@@ -184,19 +184,30 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
       }}
       >
 
-    <Card className='ProfileCard'
+          <Typography variant="h3" component="div">
+            {username}
+          </Typography>
+          <Typography component="div" variant="subtitle1" color="secondary">
+              <strong><u>{tripTotal}</u></strong> trips and counting!
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {bio}
+          </Typography>
+
+    {/* <Card className='ProfileCard'
     sx={{
       height: 175,
       width: '75%',
       display: 'flex',
+      flex: 3,
       flexDirection: 'column',
       alignContent: 'center',
     }}
-    >
+    > */}
 
-      <Grid container spacing={2}>
-    <Grid item xs={4}>
-      <CardMedia className='ProfileCardMedia'
+      {/* <Grid container spacing={5}>
+    <Grid item xs={4}> */}
+      {/* <CardMedia className='ProfileCardMedia'
       sx={{
         paddingLeft: 1,
         height: 2,
@@ -204,11 +215,12 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
       }}
       >
         {VBLogo}
-      </CardMedia>
-    </Grid>
+      </CardMedia> */}
+    {/* </Grid>
     <Grid item xs={8}>
+      
       <CardContent>
-          <Typography variant="h5" component="div"
+          {/* <Typography variant="h5" component="div"
           // sx={{
           //   paddingTop: 5,
           // }}
@@ -216,26 +228,26 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
             {username}
           </Typography>
           <Typography component="div" color="secondary">
-              <strong>{tripTotal}</strong> trips
-          </Typography>
-      </CardContent>
-    </Grid>
-    </Grid>
+              <strong>{tripTotal}</strong> trips and counting!
+          </Typography> */}
+      {/* </CardContent>
+  </Container></Grid> */}
+    {/* </Grid> */}
 
-      <CardContent>
-          <Typography gutterBottom variant="body2" component="div">
+      {/* <CardContent>
+          {/* <Typography gutterBottom variant="body2" component="div">
             {first} {last} <br />
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
+          </Typography> */}
+          {/* <Typography variant="body2" color="text.secondary">
             {bio}
-          </Typography>
-        </CardContent>
+          </Typography> */}
+        {/* </CardContent> */} 
 
-        <CardActions >
+        {/* <CardActions >
               
-        </CardActions>
+        </CardActions> */}
       {/* </Box> */}
-      </Card>
+      {/* </Card> */}
 
   {/* <Container
   sx={{
@@ -244,7 +256,6 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
     flexDirection: 'column',
     flex: 1,
     mx: 'auto',
-  }}
   > */}
 
       <Box
