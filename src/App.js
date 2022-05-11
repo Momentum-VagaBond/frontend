@@ -38,7 +38,7 @@ const App = () => {
   const [tripId, setTripId] = useLocalStorageState('TripId', '')
   const [image, setImage] = useLocalStorageState('Image', '')
   const [status, setStatus] = useState(null);
-  const [trips, setTrips] = useState([])
+  // const [trips, setTrips] = useState([])
   const [imageUrl, setImageUrl] = useState('')
   const [imageDetailUrl, setImageDetailUrl] = useState([])
 
@@ -60,18 +60,18 @@ const App = () => {
   // const logIn = () => setIsLogged(true);
   // const logOut = () => setIsLogged(false);
 
-  useEffect(() => {
-    axios
-    .get("https://momentum-vagabond.herokuapp.com/api/trips/",
-    {
-        headers: {Authorization: `Token ${token}`}}
-    )
-    .then((response) => {
-        console.log("all trips" + response.data)
-        console.log(response.data[0])
-    setTrips(response.data)
-    })
-}, [token, loggedUserPk])
+//   useEffect(() => {
+//     axios
+//     .get("https://momentum-vagabond.herokuapp.com/api/trips/",
+//     {
+//         headers: {Authorization: `Token ${token}`}}
+//     )
+//     .then((response) => {
+//         console.log("all trips" + response.data)
+//         console.log(response.data[0])
+//     setTrips(response.data)
+//     })
+// }, [token, loggedUserPk])
 
 
 const isLoggedIn = username && token
