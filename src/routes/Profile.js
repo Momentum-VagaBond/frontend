@@ -276,20 +276,20 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
       </Box>
 
       <TabPanel value={value} index={0}>
-      {trips.map((trip, pk) => {
+      {trips.map((trip) => {
           return (
             <TripCard
-              // key={pk}
+              key={trip.pk}
               imageUrl={image}
               tripId={trip.pk}
               title={trip.title}
               location={trip.location}
               // firstName={trip.user_first_name}
               // lastName={trip.user_last_name}
-              // trip_username={trip.username}
+              trip_username={trip.username}
               begin={trip.begin}
               end={trip.end}
-              // username={username}
+              username={username}
               />
           )}
         )}

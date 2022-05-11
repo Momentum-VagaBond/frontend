@@ -51,7 +51,7 @@ function a11yProps(index) {
 export default function Home ({username, token, setImage, setTripId, tripId, location, hasCurrentTrip, setHasCurrentTrip, isLoggedIn, futureTrips, futureTripTraveler, loggedUserPk, firstName, lastName, }) {
 
   const [usernamePk, setUsernamePk] = useState([]);
-  // const [tripId, setTripId] = useState("")
+  //const [tripId, setTripId] = useState("")
   const [tripUsername, setTripUsername] = useState([])
   const [first, setFirst] = useState("")
   const [last, setLast] = useState("")
@@ -89,7 +89,7 @@ export default function Home ({username, token, setImage, setTripId, tripId, loc
           setTripId(response.data[0].pk)
           console.log(tripId)
           console.log(response.data[0].pk)
-          // setTripLogs(response.data[0].trip_logs)
+          setTripLogs(response.data[0].trip_logs)
           setLogNumber(response.data[0].trip_logs.length)
           setTripLocation(response.data[0].location)
           setTripTitle(response.data[0].title)
@@ -100,7 +100,7 @@ export default function Home ({username, token, setImage, setTripId, tripId, loc
           setHasCurrentTrip(false)
         }
     })
-  }, [token, setCurrentTripTraveler, setTripLocation, setTripTitle, tripId, setHasCurrentTrip, setTripId, setImage])
+  }, [token, setCurrentTripTraveler, tripId, setTripLocation, setTripTitle, setHasCurrentTrip, setTripId, setImage])
 
 
 
@@ -108,6 +108,7 @@ export default function Home ({username, token, setImage, setTripId, tripId, loc
     //Getting Most recent past trip if one exists
 
   useEffect(() => {
+    if (hasCurrentTrip === false) {
     axios
     .get("https://momentum-vagabond.herokuapp.com/api/trips/past/user/",
         {headers: {Authorization: `Token ${token}`}
@@ -121,11 +122,12 @@ export default function Home ({username, token, setImage, setTripId, tripId, loc
           console.log("most recent past trip:" + response.data.pk)
         } 
     })
+  }
   }, [token, setPastTripsTraveler, hasCurrentTrip, setTripId, setImage])
 
   // get future trips of traveler
   useEffect(() => {
-
+    if (hasCurrentTrip === false) {
     axios
     .get("https://momentum-vagabond.herokuapp.com/api/trips/future/user/",
         {headers: {Authorization: `Token ${token}`}
@@ -138,6 +140,7 @@ export default function Home ({username, token, setImage, setTripId, tripId, loc
           // console.log("most recent past trip:" + response.data[0].pk)
         } 
     })
+  }
   }, [token, hasCurrentTrip, setFutureTripsTraveler, setTripId, setImage])
 
 
