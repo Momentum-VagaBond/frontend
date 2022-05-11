@@ -18,12 +18,13 @@ import { StartTripCard } from "../components/StartTripCard";
 
 
 
-const TripDetail = ({token, pk, hasCurrentTrip, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
+const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
   const [logs, setLogs] = useState([])
   const [tripPk, setTripPk] = useState([])
+  //const [image, setImage] = useState('')
   // const [selectedId, setSelectedId] = useState(null)
   // const [acceptedResponse, setAcceptedResponse] = useState(null)
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
@@ -40,17 +41,19 @@ const TripDetail = ({token, pk, hasCurrentTrip, tripId, details, logSuccess, set
       .then((res) => {
         setTrip(res.data)
         setLogs(res.data.trip_logs)
+        // setImage(res.data.images[0].picture)
         setTripPk(res.data.pk)
         setTripLocation(res.data.location)
         // setTripId(res.data.pk)
         console.log("logpk", res.data.trip_logs.pk)
+        console.log(res.data.images)
         // setAcceptedResponse(res.data.accepted_response)
         console.log("trip detail request fired")
         console.log("trip logs" + res.data.trip_logs)
         console.log(res.data)
         setLogSuccess(false)
       })
-  }, [params.tripId, setLogSuccess, token])
+  }, [params.tripId, setLogSuccess, setImage, token])
 
 
   return (
@@ -88,6 +91,7 @@ const TripDetail = ({token, pk, hasCurrentTrip, tripId, details, logSuccess, set
       marginTop: 8,
       paddingLeft: 4,
     }}
+      imageUrl={image}
       logId={log.pk}
       details={log.details}
       location={log.location}

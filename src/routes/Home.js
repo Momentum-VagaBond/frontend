@@ -12,6 +12,7 @@ import { StartTripCard } from '../components/StartTripCard';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import BG1 from "./BG1.png";
 
 
 function TabPanel(props) {
@@ -47,7 +48,7 @@ function a11yProps(index) {
   };
 }
 
-export default function Home ({username, token, location, hasCurrentTrip, setHasCurrentTrip, isLoggedIn, futureTrips, futureTripTraveler, loggedUserPk, firstName, lastName, }) {
+export default function Home ({username, token, setImage, location, hasCurrentTrip, setHasCurrentTrip, isLoggedIn, futureTrips, futureTripTraveler, loggedUserPk, firstName, lastName, }) {
 
   const [trip, setTrip] = useState([]);
   const [trips, setTrips] = useState([]);
@@ -99,7 +100,7 @@ export default function Home ({username, token, location, hasCurrentTrip, setHas
           setHasCurrentTrip(false)
         }
     })
-  }, [token, setCurrentTripTraveler, setTripLocation, setTripTitle, setHasCurrentTrip, setTripId])
+  }, [token, setCurrentTripTraveler, setTripLocation, setTripTitle, setHasCurrentTrip, setTripId, setImage])
 
 
 
@@ -120,7 +121,7 @@ export default function Home ({username, token, location, hasCurrentTrip, setHas
           console.log("most recent past trip:" + response.data.pk)
         } 
     })
-  }, [token, setPastTripsTraveler, hasCurrentTrip,  setTripId])
+  }, [token, setPastTripsTraveler, hasCurrentTrip, setTripId, setImage])
 
   // get future trips of traveler
   useEffect(() => {
@@ -137,22 +138,42 @@ export default function Home ({username, token, location, hasCurrentTrip, setHas
           // console.log("most recent past trip:" + response.data[0].pk)
         } 
     })
-  }, [token,  hasCurrentTrip, setFutureTripsTraveler, setTripId])
+  }, [token, hasCurrentTrip, setFutureTripsTraveler, setTripId, setImage])
 
 
   if (!isLoggedIn) {
     return <Navigate to="/login" />
-  }
-
-
-    if (!token) {
-      return <Navigate to="/login" />
-  } 
-
-
-
+} 
+  
   return (
-    <ThemeProvider theme={Theme}>
+
+  <ThemeProvider theme={Theme}>
+
+<Container
+sx={{
+  backgroundImage: `url(${BG1})`,
+  backgroundSize: '100% 100%',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed',
+  maxWidth: '100%',
+  width: '100vh',
+  minHeight: '100vw',
+  height: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+  position: "relative",
+  overflow: 'scroll',
+  //zIndex: 1,
+}}
+>
+
+{/* header has current trip */}
+  <Container>
+    {hasCurrentTrip &&
+
+
   
       <Container
       sx={{
@@ -259,7 +280,6 @@ export default function Home ({username, token, location, hasCurrentTrip, setHas
   </>
   )
 }
-{/* </Container> */}
 
       </TabPanel>
 {/* PAST */}
@@ -302,101 +322,11 @@ export default function Home ({username, token, location, hasCurrentTrip, setHas
         )}
       </TabPanel>
 
-
-      {/* <Container maxWidth="xs">
-      <h5>My trips...</h5>
-      <Container component="main" align="center" maxWidth="m"> */}
-      
-      {/* {trips.map((trip) =>
-          <TripCard
-          username={username}
-          key={trip.pk}
-          title={trip.title}
-          location={trip.location}
-          // duration={trip.duration}
-          trip_user={trip.user}
-          trip_username={trip.username}
-          trip_user_first={trip.user_first_name}
-          trip_user_last={trip.user_last_name}
-          begin={trip.begin}
-          end={trip.end}
-          tripId={trip.pk}
-        />
-          )} */}
-      {/* </Container>
-      </Container> */}
-  
-      {/* <Container maxWidth="sm" align="center">
-  {hasCurrentTrip ? (
-  <>
-    {trip.map((log) => 
-      <TripCard
-      sx={{
-        marginTop: 8,
-        paddingLeft: 4,
-        marginBottom: 8,
-      }}
-        logId={log.pk}
-        details={log.details}
-        location={log.location}
-        title={log.title}
-        date={log.date_logged}
-      />
-  //   )}
-  //   </>
-  //   ) : (
-  //   <>  </>
-  //   )
-  // }
-  </Container>
-      <Box
-      sx={{
-        marginBottom: 50,
-      }}
-      >
-        <h3>FutureTripCard</h3>
-        {trips.map((trip, pk) => {
-          return (
-            <FutureTripCard
-              key={pk}
-              tripId={trip.pk}
-              title={trip.title}
-              user={trip.user}
-              location={trip.location}
-              begin={trip.begin}
-              end={trip.end}
-              img={trip.img}
-            />
-          )}
-        )}
-      </Box>
-      <Box
-      sx={{
-        marginBottom: 50,
-      }}
-      >
-      <h3>PastTripCard</h3>
-        {trips.map((trip, pk) => {
-          return (
-            <PastTripCard
-              key={pk}
-              tripId={trip.pk}
-              title={trip.title}
-              location={trip.location}
-              firstName={trip.user_first_name}
-              lastName={trip.user_last_name}
-              trip_username={trip.username}
-              begin={trip.begin}
-              end={trip.end}
-              username={username}
-              />
-          )}
-        )}
-        </Box>
-    </Container> */}
   </Box>
-  {/* </Container> */}
-    </Container>
+  </Container>
+}
+  </Container>
+  </Container>
   </ThemeProvider>
     )
-  };
+  }

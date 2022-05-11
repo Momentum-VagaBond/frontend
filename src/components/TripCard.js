@@ -14,7 +14,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Link as RouterLink } from 'react-router-dom'
 
-export const TripCard = ({pk, tripId, title, location, username, trip_username, user_first_name, user_last_name, begin, end }) => {
+export const TripCard = ({pk, tripId, title, imageUrl, location, username,  date, user, trip_username, user_first_name, user_last_name, begin, end }) => {
     // function capitalizeFirst(string) {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     //   }
@@ -38,10 +38,9 @@ export const TripCard = ({pk, tripId, title, location, username, trip_username, 
         sx={{borderRadius: .25}}
         component="img"
         alt={location}
-        height= '100%'
-        width='100%'
-        // image="/static/images/cards/contemplative-reptile.jpg"
-        src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        height= '50%'
+        width='50%'
+        src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
         />
     
     <CardContent sx={{ flex: '1 0 auto' }} key={pk}>

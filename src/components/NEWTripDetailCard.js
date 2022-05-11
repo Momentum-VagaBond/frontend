@@ -17,7 +17,9 @@ import Flags from './Flags.jpg';
 // import CardActionArea from '@mui/material/CardActionArea';
 import Moment from 'react-moment'
 
-export const NEWTripDetailCard = ({pk, tripId, title, details, logId, date, location, username, user, trip_username, user_first_name, user_last_name, begin, end }) => {
+
+
+export const NEWTripDetailCard = ({pk, tripId, title, imageUrl, setImage, details, logId, date, location, username, user, trip_username, user_first_name, user_last_name, begin, end }) => {
     // function capitalizeFirst(string) {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     //   }
@@ -42,10 +44,11 @@ export const NEWTripDetailCard = ({pk, tripId, title, details, logId, date, loca
       >
       <ImageListItem>
       <img
-        src={`${Flags}?w=248&fit=crop&auto=format`}
-        srcSet={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        component="img"
         alt={title}
-        loading="lazy"
+        height= '50%'
+        width='50%'
+        src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2`}
       />
       <ImageListItemBar
         title={title}
