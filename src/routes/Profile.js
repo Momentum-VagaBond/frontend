@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Card, CardMedia, CardContent, Box, CardActions, Avatar, Typography, Grid, CardItem, ImageList, ImageListItem } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Container from '@mui/material/Container';
 import logo from './VagaBondLogo.png';
 import { Theme } from '../Theme';

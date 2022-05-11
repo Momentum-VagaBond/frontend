@@ -173,54 +173,33 @@ sx={{
   
       <Container
       sx={{
-        marginTop: 3,
+        marginTop: 4,
               // marginBotton: 50,
-        //paddingBottom: 15,
+        paddingBottom: 15,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         position: 'sticky',
       }}
       >
-              {/* <Typography
-    variant="h3"
-    color="secondary"
-  >
-    VAGABOND
-    </Typography> */}
 
-    <Container>
-
-    <Typography
-    variant="h3"
-    color="secondary"
-  >
-    VAGABOND
-    </Typography>
-
-    </Container>
-
-{/* <Box 
-    className='ProfileCard'
-    spacing
+<Box className='ProfileCard'
     sx={{
       height: 50,
       width: '80%',
       display: 'flex',
       flexDirection: 'column',
       alignContent: 'center',
-      
     }}
-    
-    > */}
-      {/* <Typography
+    >
+      <Typography
     variant="h3"
     color="secondary"
   >
     VAGABOND
-    </Typography> */}
-      {/* <Grid container spacing={0}>
-    <Grid item xs={0}> */}
+    </Typography>
+      <Grid container spacing={2}>
+    <Grid item xs={2}>
       {/* <CardMedia className='ProfileCardMedia'
       sx={{
         paddingLeft: 1,
@@ -230,9 +209,9 @@ sx={{
       >
         {VBLogo}
       </CardMedia> */}
-    {/* </Grid>
-    <Grid item xs={0}>
-      <CardContent> */}
+    </Grid>
+    <Grid item xs={1}>
+      <CardContent>
       {/* <Typography
             variant="h5"
             color="primary"
@@ -251,11 +230,11 @@ sx={{
           {/* <Typography component="div" color="secondary">
               <strong>{tripTotal}</strong> trips
           </Typography> */}
-      {/* </CardContent>
+      </CardContent>
     </Grid>
-    </Grid> */}
+    </Grid>
 
-      {/* <CardContent> */}
+      <CardContent>
           {/* <Typography gutterBottom variant="h9" component="div">
             <i>"People don't take trips. Trips take people."</i> <br />
             - John Steinbeck
@@ -263,18 +242,18 @@ sx={{
           {/* <Typography gutterBottom variant="h6" component="div">
             {username}, here are your travels
           </Typography> */}
-        {/* </CardContent> */}
+        </CardContent>
 
-        {/* <CardActions >
+        <CardActions >
               
-        </CardActions> */}
-      {/* </Box> */}
+        </CardActions>
+      </Box>
       {/* </Card> */}
       <Box
       mt={1}
       sx={{
         display: 'flex',
-        flex: 0,
+        flex: 1,
         flexDirection: 'column',
         alignContent: 'center',
         width: '120%'
