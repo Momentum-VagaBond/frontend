@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Card, CardMedia, CardContent, Box, CardActions, Typography, Grid} from "@mui/material";
+import { CardContent, Box, CardActions, Typography, Grid} from "@mui/material";
 import Container from '@mui/material/Container';
 import logo from './VagaBondLogo.png';
 import { Theme } from '../Theme';
@@ -71,9 +71,9 @@ export default function Home ({username, token, setImage, location, hasCurrentTr
     setValue(newValue);
   };
 
-  const VBLogo = (
-    <img src={logo} alt='VBLogo' height='100'/>
-  );
+  // const VBLogo = (
+  //   <img src={logo} alt='VBLogo' height='100'/>
+  // );
 
   //getting current trip if one exists
   useEffect(() => {
@@ -150,7 +150,7 @@ export default function Home ({username, token, setImage, location, hasCurrentTr
 <Container
 sx={{
   backgroundImage: `url(${BG1})`,
-  backgroundSize: '100%',
+  backgroundSize: '100% 100%',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundAttachment: 'fixed',
@@ -183,18 +183,24 @@ sx={{
       }}
       >
 
-    <Card className='ProfileCard'
+<Box className='ProfileCard'
     sx={{
-      height: 175,
-      width: '100%',
+      height: 50,
+      width: '80%',
       display: 'flex',
       flexDirection: 'column',
       alignContent: 'center',
     }}
     >
+      <Typography
+    variant="h3"
+    color="secondary"
+  >
+    VAGABOND
+    </Typography>
       <Grid container spacing={2}>
-    <Grid item xs={4}>
-      <CardMedia className='ProfileCardMedia'
+    <Grid item xs={2}>
+      {/* <CardMedia className='ProfileCardMedia'
       sx={{
         paddingLeft: 1,
         height: 2,
@@ -202,38 +208,47 @@ sx={{
       }}
       >
         {VBLogo}
-      </CardMedia>
+      </CardMedia> */}
     </Grid>
-    <Grid item xs={8}>
+    <Grid item xs={1}>
       <CardContent>
-          <Typography variant="h5" component="div"
-          // sx={{
-          //   paddingTop: 5,
-          // }}
+      {/* <Typography
+            variant="h5"
+            color="primary"
+            sx={{
+              paddingLeft: 2,
+            }}
           >
-              {first} {last}
-          </Typography>
-          <Typography component="div" color="secondary">
+          {username}, where are we going next? 
+            </Typography> */}
+      {/* <Typography
+            variant="h2"
+            color="secondary"
+          >
+            VAGABOND
+            </Typography> */}
+          {/* <Typography component="div" color="secondary">
               <strong>{tripTotal}</strong> trips
-          </Typography>
+          </Typography> */}
       </CardContent>
     </Grid>
     </Grid>
 
       <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-     
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            
-          </Typography>
+          {/* <Typography gutterBottom variant="h9" component="div">
+            <i>"People don't take trips. Trips take people."</i> <br />
+            - John Steinbeck
+          </Typography> */}
+          {/* <Typography gutterBottom variant="h6" component="div">
+            {username}, here are your travels
+          </Typography> */}
         </CardContent>
 
         <CardActions >
               
         </CardActions>
-      {/* </Box> */}
-      </Card>
+      </Box>
+      {/* </Card> */}
       <Box
       mt={1}
       sx={{
