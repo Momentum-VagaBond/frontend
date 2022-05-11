@@ -29,6 +29,7 @@ export const TripCard = ({pk, tripId, title, imageUrl, location, username,  date
         marginTop: 2,
         paddingTop: 2.5,
         boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
+        backgroundColor: "white",
         borderRadius: 1,
         // maxWidth: "sm", 
     }}
@@ -40,7 +41,8 @@ export const TripCard = ({pk, tripId, title, imageUrl, location, username,  date
         alt={location}
         height= '50%'
         width='50%'
-        src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        src={`${Flags}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        // src={"https://parade.com/wp-content/uploads/2021/02/family-beach-vacations-2021-1024x767.jpg"}
         />
     
     <CardContent sx={{ flex: '1 0 auto' }} key={pk}>

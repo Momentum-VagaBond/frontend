@@ -18,12 +18,13 @@ import { StartTripCard } from "../components/StartTripCard";
 
 
 
-const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
+const TripDetail = ({token, pk, hasCurrentTrip, image, imageUrl, setImage, imageDetailUrl, setImageDetailUrl, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
   const [logs, setLogs] = useState([])
   const [tripPk, setTripPk] = useState([])
+  const [photos, setPhotos] = useState([])
   //const [image, setImage] = useState('')
   // const [selectedId, setSelectedId] = useState(null)
   // const [acceptedResponse, setAcceptedResponse] = useState(null)
@@ -46,7 +47,8 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details
         setTripLocation(res.data.location)
         // setTripId(res.data.pk)
         console.log("logpk", res.data.trip_logs.pk)
-        console.log(res.data.images)
+        // setPhotos(logs.images)
+        // console.log(photos)
         // setAcceptedResponse(res.data.accepted_response)
         console.log("trip detail request fired")
         console.log("trip logs" + res.data.trip_logs)
@@ -81,8 +83,6 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details
       </Typography>
 
     </Box>
-
-
     {logs.map((log) => (
     <CardActionArea  key={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
     <NEWTripDetailCard
@@ -91,7 +91,7 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details
       marginTop: 8,
       paddingLeft: 4,
     }}
-      imageUrl={image}
+      imageUrl={imageUrl}
       logId={log.pk}
       details={log.details}
       location={log.location}
@@ -101,7 +101,9 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details
     </CardActionArea>
     ))}
 
-{!hasCurrentTrip &&
+
+  
+{/* {!hasCurrentTrip &&
     <>
     <Alert mt={4} severity="error">
         <AlertTitle>Hey you're not on a trip!</AlertTitle>
@@ -113,7 +115,7 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details
     </StartTripCard>
     </Container>
     </>
-    }
+    } */}
 
   </Container>
   </ThemeProvider>
