@@ -4,21 +4,14 @@ import { useEffect, useState } from "react";
 import { Card, CardMedia, CardContent, Box, CardActions, Avatar, Typography, Grid, CardItem, ImageList, ImageListItem } from "@mui/material";
 import Container from '@mui/material/Container';
 import logo from './VagaBondLogo.png';
-import { CurrentTripCard } from '../components/CurrentTripCard';
-import { FutureTripCard } from '../components/FutureTripCard';
-import { PastTripCard } from '../components/PastTripCard';
-import { ContactsCard } from '../components/ContactsCard';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import TripCard from '../components/TripCard';
-import { Link as RouterLink, Navigate } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
-import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
-import { StartTripCard } from '../components/StartTripCard';
-import CardActionArea from '@mui/material/CardActionArea';
+import { Link as Navigate } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import BG2 from './BG2.png'
 
 
 function TabPanel(props) {
@@ -56,7 +49,7 @@ function a11yProps(index) {
 
 
 
-const Profile = ({username, token, location, futureTripsTraveler, futureTripTraveler, loggedUserPk, tripLogs, hasCurrentTrip, contact, firstName, lastName, email, id, isLoggedIn }) => {
+const Profile = ({username, token, image, setImage, location, futureTripsTraveler, futureTripTraveler, loggedUserPk, tripLogs, hasCurrentTrip, contact, firstName, lastName, email, id, isLoggedIn }) => {
 
   const [trip, setTrip] = useState([]);
   const [begin, setBegin] = useState([]);
@@ -75,7 +68,6 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
     setValue(newValue);
   };
 
-
   const VBLogo = (
     <img src={logo} alt='VBLogo' height='100'/>
   );
@@ -93,7 +85,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
         console.log(response.data)
         setTrips(response.data.trips)
       })
-    }, [token, loggedUserPk, setTripTotal, setBio, setLast, setFirst, setTrips])
+    }, [token, loggedUserPk, setImage, setTripTotal, setBio, setLast, setFirst, setTrips])
 
     // useEffect(() => {
     //   axios
@@ -161,9 +153,28 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
   return (
     <ThemeProvider theme={Theme}>
   
+  <Container
+  sx={{
+    backgroundImage: `url(${BG2})`,
+    backgroundSize: '100% 100%',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    maxWidth: '100%',
+    width: '100vh',
+    minHeight: '100vw',
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    position: "relative",
+    overflow: 'scroll',
+    //zIndex: 1,
+  }}
+  >
       <Container
       sx={{
-        marginTop: 6,
+        marginTop: 4,
               // marginBotton: 50,
         paddingBottom: 15,
         display: 'flex',
@@ -174,20 +185,19 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
       >
 
     <Card className='ProfileCard'
-    // sx={{
-    //   height: 175,
-    //   width: '75%',
-    //   display: 'flex',
-    //   flexDirection: 'column',
-    //   alignContent: 'center',
-    // }}
+    sx={{
+      height: 175,
+      width: '75%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignContent: 'center',
+    }}
     >
       <Grid container spacing={2}>
     <Grid item xs={4}>
       <CardMedia className='ProfileCardMedia'
       sx={{
         paddingLeft: 1,
-        marginRight: 2,
         height: 2,
         width: 2,
       }}
@@ -197,14 +207,14 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
     </Grid>
     <Grid item xs={8}>
       <CardContent>
-          <Typography variant="h5" 
+          <Typography variant="h5" component="div"
           // sx={{
           //   paddingTop: 5,
           // }}
           >
-            {first} {last}
+            {username}
           </Typography>
-          <Typography  color="secondary">
+          <Typography component="div" color="secondary">
               <strong>{tripTotal}</strong> trips
           </Typography>
       </CardContent>
@@ -213,7 +223,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
 
       <CardContent>
           <Typography gutterBottom variant="h6" component="div">
-            
+            {first} {last}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {bio}
@@ -236,7 +246,7 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
   }}
   > */}
 
-      {/* <Box
+      <Box
       mt={1}
       sx={{
         display: 'flex',
@@ -253,21 +263,13 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
         </Tabs>
       </Box>
 
-      <TabPanel value={value} index={0}
-      sx={{
-        border: 1,
-      }}
-      >
+      <TabPanel value={value} index={0}>
       {trips.map((trip, pk) => {
           return (
             <TripCard
               // key={pk}
-<<<<<<< HEAD
-              // tripId={trip.pk}
-=======
-              //imageUrl={image}
+              imageUrl={image}
               tripId={trip.pk}
->>>>>>> main
               title={trip.title}
               location={trip.location}
               // firstName={trip.user_first_name}
@@ -283,14 +285,13 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
 
       <TabPanel value={value} index={1}>
         <TripCard
-      
           tripId={trip.pk}
           title={trip.title}
           user={trip.user}
           location={trip.location}
           begin={trip.begin}
           end={trip.end}
-          img={trip.img}    />
+          imageUrl={image}    />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
@@ -304,11 +305,11 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
               location={trip.location}
               begin={trip.begin}
               end={trip.end}
-              img={trip.img}
+              imageUrl={image}
             />
           )}
         )}
-      </TabPanel> */}
+      </TabPanel>
 
 
       {/* <Container maxWidth="xs">
@@ -402,8 +403,9 @@ const Profile = ({username, token, location, futureTripsTraveler, futureTripTrav
         )}
         </Box>
     </Container> */}
-  {/* </Box> */}
+  </Box>
   {/* </Container> */}
+    </Container>
     </Container>
   </ThemeProvider>
     )

@@ -46,12 +46,12 @@ export default function TopBar(isLoggedIn, token, setToken, setUsername, tripTot
     >
       <Container maxWidth="m">
         <Toolbar>
-          <Typography
+          {/* <Typography
             variant="subtitle2"
             color="secondary"
           >
             VAGABOND
-            </Typography>
+            </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', mx: 'none' } }}>
             {VBLogo}

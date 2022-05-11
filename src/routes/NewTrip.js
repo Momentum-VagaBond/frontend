@@ -104,7 +104,7 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
             // paddingLeft: 0,
             // position: 'fixed',
             // width: '40ch',
-            '& .MuiTextField-root': { m: 1, width: '40ch' },
+            '& .MuiTextField-root': { m: 1, width: '30ch' },
         }}
         noValidate
         autoComplete="off"
