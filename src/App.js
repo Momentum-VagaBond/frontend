@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import axios from "axios";
 import { Link, Navigate } from 'react-router-dom';
 import { Register } from './routes/Register';
 import { useState, useEffect } from 'react';
@@ -24,7 +25,6 @@ import MapBox from './components/MapBox';
 import AllTrips from './routes/AllTrips';
 
 
-
 const App = () => {
   //use local storage to keep this token hanging around
   const [token, setToken] = useLocalStorageState('Token', '')
@@ -39,6 +39,9 @@ const App = () => {
   const [tripId, setTripId] = useLocalStorageState('TripId', '')
   const [image, setImage] = useLocalStorageState('Image', '')
   const [status, setStatus] = useState(null);
+  const [trips, setTrips] = useState([])
+  const [imageUrl, setImageUrl] = useState('')
+  const [imageDetailUrl, setImageDetailUrl] = useState([])
 
   const getLoggedUserPk = (pk) =>
     setLoggedUserPk(pk)
@@ -57,6 +60,19 @@ const App = () => {
 
   // const logIn = () => setIsLogged(true);
   // const logOut = () => setIsLogged(false);
+
+  useEffect(() => {
+    axios
+    .get("https://momentum-vagabond.herokuapp.com/api/trips/",
+    {
+        headers: {Authorization: `Token ${token}`}}
+    )
+    .then((response) => {
+        console.log("all trips" + response.data)
+        console.log(response.data[0])
+    setTrips(response.data)
+    })
+}, [token, loggedUserPk])
 
 
 const isLoggedIn = username && token
@@ -140,11 +156,11 @@ if (status === 401) {
         />
       <Route
           path="/trips/:tripId"
-          element={<TripDetail token={token} setLogSuccess={setLogSuccess} logSuccess={logSuccess}  newTripSuccess={newTripSuccess} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} image={image} setImage={setImage} />}
+          element={<TripDetail token={token} imageUrl={imageUrl} imageDetailUrl={imageDetailUrl} setImageDetailUrl={setImageDetailUrl} setLogSuccess={setLogSuccess} logSuccess={logSuccess}  newTripSuccess={newTripSuccess} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} image={image} setImage={setImage} />}
         />
       <Route
           path="/trips/:tripId/:logId"
-          element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} image={image} setImage={setImage} />}
+          element={<LogDetail token={token} loggedUserPk={loggedUserPk} isLoggedIn={isLoggedIn} username={username} imageUrl={imageUrl} setImageUrl={setImageUrl} image={image} setImage={setImage} />}
         />
         <Route
           path="/newtrip"

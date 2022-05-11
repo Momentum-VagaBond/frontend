@@ -14,10 +14,9 @@ import { ThemeProvider } from 'styled-components';
 import BG6 from './BG6.png'
 
 
-const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) => {
+const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged, imageUrl, setImageUrl}) => {
   // const [logId, setLogId] = useState('')
   const [thisLog, setThisLog] = useState([])
-  const [image, setImage] = useState('')
   const [comments, setComments] = useState([])
   const [commentPosted, setCommentPosted] = ''
   // const [questionSubmitted, setQuestionSubmitted] = useState(false)
@@ -35,7 +34,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
       })
       .then((res) => {
         setThisLog(res.data)
-        setImage(res.data.images[0].picture)
+        setImageUrl(res.data.images[0].picture)
         console.log(res.data.images[0].picture)
         setComments(res.data.log_comments)
         // setLogSuccess(false)
@@ -44,7 +43,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
         console.log(res.data.log_comments)
         console.log("trying to set logId: " + logId2)
       })
-  }, [params.logId, setImage, logId2, token])
+  }, [params.logId, setImageUrl, logId2, token])
 
   const addNewComment = (newComment) => {
     setComments([...comments, newComment])
@@ -93,7 +92,7 @@ const LogDetail = ({token, isLoggedIn, setLogSuccess, logSuccess, date_logged}) 
     <LogCard
     sx={{
     }}
-      imageUrl={image}
+      imageUrl={imageUrl}
       date_logged={thisLog.date_logged}
       detail_text={thisLog.details}
       title={thisLog.title}

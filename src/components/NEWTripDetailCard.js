@@ -77,6 +77,14 @@ export const NEWTripDetailCard = ({pk, tripId, title, imageUrl, setImage, detail
         alt={title}
         height= '50%'
         width='50%'
+<<<<<<< HEAD
+        src={`${Flags}?w=248&fit=crop&auto=format&dpr=2`}
+      />
+      <ImageListItemBar lineHeight={1.5}
+        title={title}
+        subtitle={dateFormatted}
+        >
+=======
         src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2`}
       /> */}
       {/* <ImageListItemBar */}
@@ -88,6 +96,7 @@ export const NEWTripDetailCard = ({pk, tripId, title, imageUrl, setImage, detail
       </Typography>
 
         {/* >
+>>>>>>> main
       </ImageListItemBar>
       </ImageListItem> */}
       </CardContent>

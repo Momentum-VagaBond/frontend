@@ -50,8 +50,6 @@ function a11yProps(index) {
 
 export default function Home ({username, token, setImage, location, hasCurrentTrip, setHasCurrentTrip, isLoggedIn, futureTrips, futureTripTraveler, loggedUserPk, firstName, lastName, }) {
 
-  const [trip, setTrip] = useState([]);
-  const [trips, setTrips] = useState([]);
   const [usernamePk, setUsernamePk] = useState([]);
   const [tripId, setTripId] = useState("")
   const [tripUsername, setTripUsername] = useState([])
@@ -152,7 +150,7 @@ export default function Home ({username, token, setImage, location, hasCurrentTr
 <Container
 sx={{
   backgroundImage: `url(${BG1})`,
-  backgroundSize: '100% 100%',
+  backgroundSize: '100%',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundAttachment: 'fixed',
@@ -188,7 +186,7 @@ sx={{
     <Card className='ProfileCard'
     sx={{
       height: 175,
-      width: '75%',
+      width: '100%',
       display: 'flex',
       flexDirection: 'column',
       alignContent: 'center',
@@ -243,6 +241,7 @@ sx={{
         flex: 1,
         flexDirection: 'column',
         alignContent: 'center',
+        width: '120%'
         }}
       >
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
