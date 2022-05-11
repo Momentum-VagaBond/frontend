@@ -271,12 +271,16 @@ const Profile = ({username, token, image, setImage, location, futureTripsTravele
         </Tabs>
       </Box>
 
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0}
+      sx={{
+        border: 1,
+      }}
+      >
       {trips.map((trip, pk) => {
           return (
             <TripCard
               // key={pk}
-              imageUrl={image}
+              //imageUrl={image}
               tripId={trip.pk}
               title={trip.title}
               location={trip.location}

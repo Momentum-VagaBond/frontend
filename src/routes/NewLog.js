@@ -10,6 +10,7 @@ import { ThemeProvider } from 'styled-components';
 import { Navigate, useNavigate } from 'react-router-dom';
 import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
 import { StartTripCard } from "../components/StartTripCard";
+import BG3 from './BG3.png';
 
 export default function NewLog({token, hasCurrentTrip, setLogSuccess, loggedUserPk, tripId, logSuccess, isLoggedIn}) {
     const [location, setLocation] = useState("");
@@ -149,6 +150,28 @@ export default function NewLog({token, hasCurrentTrip, setLogSuccess, loggedUser
     return (
 
     <ThemeProvider theme={Theme}>
+
+    <Container
+    sx={{
+        backgroundImage: `url(${BG3})`,
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        maxWidth: '100%',
+        width: '100vh',
+        minHeight: '100vw',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        position: "relative",
+        overflow: 'scroll',
+        //zIndex: 1,
+    }}
+    >     
+
+
     {hasCurrentTrip &&
     <div className="newLog">
  
@@ -302,7 +325,8 @@ export default function NewLog({token, hasCurrentTrip, setLogSuccess, loggedUser
     </Container>
     </>
     }
-   
+
+    </Container>
     </ThemeProvider> 
     )
 }

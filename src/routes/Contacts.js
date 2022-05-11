@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import ContactsCard from '../components/ContactsCard';
+import BG4 from './BG4.png';
 
 
 export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
@@ -66,6 +67,26 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     return(
     <ThemeProvider theme={Theme}>
     <CssBaseline />
+
+    <Container
+    sx={{
+        backgroundImage: `url(${BG4})`,
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        maxWidth: '100%',
+        width: '100vh',
+        minHeight: '100vw',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        position: "relative",
+        overflow: 'scroll',
+        //zIndex: 1,
+    }}
+    >
 
     <Container
     sx={{
@@ -173,7 +194,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     </Grid>
     </Grid>
 
-
+    
     <Typography component="h2" variant="h6"
     sx={{
         marginTop: 5,
@@ -198,6 +219,7 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         />
     )}
     )}
+    </Container>
     </Container>
     </Container>
     </ThemeProvider>

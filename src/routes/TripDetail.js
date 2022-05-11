@@ -15,6 +15,7 @@ import Geolocate from "../components/Geolocate";
 import Mapbox from "react-map-gl/dist/esm/mapbox/mapbox";
 import { MapboxMap } from "react-map-gl";
 import { StartTripCard } from "../components/StartTripCard";
+import BG5 from './BG5.png'
 
 
 
@@ -58,11 +59,32 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details
 
   return (
     <ThemeProvider theme={Theme}>
-<Container component="main" 
-  sx={{
-    marginBottom: 10,
-  }}
-  >
+
+    <Container
+      sx={{
+        backgroundImage: `url(${BG5})`,
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        maxWidth: '100%',
+        width: '100vh',
+        minHeight: '100vw',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        position: "relative",
+        overflow: 'scroll',
+        //zIndex: 1,
+      }}
+    >
+
+  <Container component="main" 
+    sx={{
+      marginBottom: 10,
+    }}
+    >
   <CssBaseline />
   {logSuccess && 
         <Alert severity="success" autoHideDuration={100} mt={1}>
@@ -89,7 +111,7 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details
     key={log.pk}
     sx={{
       marginTop: 8,
-      paddingLeft: 4,
+      //paddingLeft: 4,
     }}
       imageUrl={image}
       logId={log.pk}
@@ -115,6 +137,7 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, setImage, tripId, details
     </>
     }
 
+  </Container>
   </Container>
   </ThemeProvider>
   )
