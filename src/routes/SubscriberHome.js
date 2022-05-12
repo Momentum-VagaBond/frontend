@@ -2,54 +2,22 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TripCard from '../components/TripCard';
-import { Card, Container, CardMedia, CardContent, Box, CardActions, Typography, Grid} from "@mui/material";
+import { Container, Card, Box, Grid, CardContent, CardActions, Typography} from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import { Link as RouterLink, Navigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
+import CardActionArea from '@mui/material/CardActionArea';
 import { StartTripCard } from "../components/StartTripCard";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import BG1 from "./BG1.png";
-import logo from './VagaBondLogo.png';
 
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
-
-export default function SubscriberHome ({username, loggedUserPk, token, setImage, hasCurrentTrip, setSubscriberHasCurrent, subscriberHasCurrent, setTripId, isLoggedIn}) {
+export default function SubscriberHome ({username, loggedUserPk, token, setSubscriberHasCurrent, subscriberHasCurrent, setTripId, tripId, isLoggedIn}) {
   // const [trips, setTrips] = useState([]);
   // const [usernamePk, setUsernamePk] = useState([]);
   // const [tripId, setTripId] = useState([]);
@@ -64,20 +32,13 @@ export default function SubscriberHome ({username, loggedUserPk, token, setImage
   // let[userFollowNumber, setUserFollowNumber] = useState(0)
   // const [alignment, setAlignment] = React.useState('left');
 
-  const [first, setFirst] = useState("")
-  const [last, setLast] = useState("")
-  const [tripTotal, setTripTotal] = useState("")
+  const params = useParams()
 
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const VBLogo = (
-    <img src={logo} alt='VBLogo' height='100'/>
-  );
-
 
   //Getting current trip if one exists
 
@@ -100,7 +61,7 @@ export default function SubscriberHome ({username, loggedUserPk, token, setImage
           setSubscriberHasCurrent(false)
         }
     })
-  }, [token, setSubscriberHasCurrent, setCurrentTripsSubscriber, loggedUserPk, setTripLogs, setImage, setTripId])
+  }, [token, setSubscriberHasCurrent, setCurrentTripsSubscriber, loggedUserPk, setTripLogs, setTripId])
 
   console.log(subscriberHasCurrent)
 
@@ -147,7 +108,44 @@ export default function SubscriberHome ({username, loggedUserPk, token, setImage
   if (!isLoggedIn) {
     return <Navigate to="/login" />
 } 
-  
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+
+
+
+
 return (
   <ThemeProvider theme={Theme}>
 
@@ -173,7 +171,6 @@ sx={{
 
 {/* header has current trip */}
   <Container>
-    {hasCurrentTrip &&
   
       <Container
       sx={{
@@ -187,81 +184,49 @@ sx={{
       }}
       >
 
-    <Card className='ProfileCard'
+<Box className='ProfileCard'
     sx={{
-      height: 175,
-      width: '75%',
+      height: 50,
+      width: '80%',
       display: 'flex',
       flexDirection: 'column',
       alignContent: 'center',
     }}
     >
+      <Typography
+    variant="h3"
+    color="secondary"
+  >
+    VAGABOND
+    </Typography>
       <Grid container spacing={2}>
-    <Grid item xs={4}>
-      <CardMedia className='ProfileCardMedia'
-      sx={{
-        paddingLeft: 1,
-        height: 2,
-        width: 2,
-      }}
-      >
-        {VBLogo}
-      </CardMedia>
-    </Grid>
-    <Grid item xs={8}>
-      <CardContent>
-          <Typography variant="h5" component="div"
-          // sx={{
-          //   paddingTop: 5,
-          // }}
-          >
-              {first} {last}
-          </Typography>
-          <Typography component="div" color="secondary">
-              <strong>{tripTotal}</strong> trips
-          </Typography>
-      </CardContent>
+    <Grid item xs={2}>
+
     </Grid>
     </Grid>
 
-      <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            
-          </Typography>
-        </CardContent>
+      </Box>
 
-        <CardActions >
-              
-        </CardActions>
-      {/* </Box> */}
-      </Card>
-      <Box
-      mt={1}
-      sx={{
-        display: 'flex',
-        flex: 1,
-        flexDirection: 'column',
-        alignContent: 'center',
-        }}
-      >
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Current Trip" {...a11yProps(0)} />
           <Tab label="Past Trips" {...a11yProps(1)} />
           <Tab label="Future Trips" {...a11yProps(2)} />
         </Tabs>
       </Box>
+{/* CURRENT */}
+    <TabPanel value={value} index={0}
+    sx={{
+      border: 1,
+    }}
+    >
 
-  <TabPanel value={value} index={0}>
-    {subscriberHasCurrent ? (
+{subscriberHasCurrent ? (
   <>
-  {/* <Typography mb={2} mt={4} variant="h5" align="center"><strong>Follow along...</strong></Typography> */}
-
+<Typography mb={2} variant="h5" align="center"><strong>Current Subscriptions</strong></Typography>
   {currentTripsSubscriber.map((current) => 
   
-    // <CardActionArea component={RouterLink} to={`/trips/${tripId}/${current.pk}`}>
+    <CardActionArea component={RouterLink} to={`/trips/${tripId}/${current.pk}`}>
     <NEWTripDetailCard
     sx={{
       marginTop: 8,
@@ -274,21 +239,25 @@ sx={{
       title={current.title}
       date={current.date_logged}
     />
-    // </CardActionArea>
+    </CardActionArea>
   )}
-    </>
+  </>
   ) : (
-    <>
-    <StartTripCard/>
-    </>
-  )}
-  </TabPanel>
-  
-  <TabPanel value={value} index={1}>
-    <>
-  {pastTripsSubscriber ? (
-    <>
-  {pastTripsSubscriber.map((pastTripSubscriber) => 
+  <>
+  </>
+  )
+}
+</TabPanel>
+{/* </Container> */}
+
+
+{/* <Container maxWidth="sm" align="center"> */}
+<TabPanel value={value} index={1}>
+<>
+{pastTripsSubscriber ? (
+<>
+<Typography mb={2} variant="h5" align="center"><strong>Past Subscriptions</strong></Typography>
+{pastTripsSubscriber.map((pastTripSubscriber) => 
     <TripCard
       username={username}
       key={pastTripSubscriber.pk}
@@ -307,14 +276,19 @@ sx={{
     </>
     ) : (
     <></>
-    )}
+    )
+  }
   </>
   </TabPanel>
+    {/* </Container> */}
 
-  <TabPanel value={value} index={2}> 
-    <>
+
+{/* <Container maxWidth="sm" align="center">  */}
+<TabPanel value={value} index={2}>
+  <>
   {futureTripsSubscriber  ? (
-    <>
+<>
+<Typography mb={2} mt={4} variant="h5" align="center"><strong>Future Subscriptions</strong></Typography>
   {futureTripsSubscriber.map((futureTrip) => 
     <TripCard
       username={username}
@@ -334,17 +308,14 @@ sx={{
   </>
   ) : (
   <></>
-  )}
-  </>
-  </TabPanel>
-  </Box>
+  )
+}
+</>
+</TabPanel>
+  {/* </Container> */}
   </Container>
-  }
   </Container>
   </Container>
   </ThemeProvider>
   )
 }
-
-
-// export default AllTrips;

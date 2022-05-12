@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
+import { Card } from "@mui/material";
 import Container from '@mui/material/Container';
 import { ThemeProvider } from "styled-components";
 import { Theme } from "../Theme";
@@ -19,7 +20,7 @@ import BG5 from './BG5.png'
 
 
 
-const TripDetail = ({token, pk, hasCurrentTrip, image, imageUrl, setImage, imageDetailUrl, setImageDetailUrl, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
+const TripDetail = ({token, pk, dateFormatted, hasCurrentTrip, image, imageUrl, setImage, imageDetailUrl, setImageDetailUrl, tripId, details, logSuccess, setLogSuccess, location, title, log, latitude, longitude }) => {
 
   const [trip, setTrip] = useState(null)
   const [tripLocation, setTripLocation] = useState("")
@@ -106,20 +107,71 @@ const TripDetail = ({token, pk, hasCurrentTrip, image, imageUrl, setImage, image
 
     </Box>
     {logs.map((log) => (
-    <CardActionArea  key={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}>
+    <CardActionArea  key={log.pk} component={RouterLink} to={`/trips/${params.tripId}/${log.pk}`}
+    sx={{
+      flexDirection: 'column',
+      flex: 1,
+      position: "relative",
+      marginRight: 0,
+    }}
+    >
     <NEWTripDetailCard
     key={log.pk}
     sx={{
       marginTop: 8,
+      //width: '10%',
       //paddingLeft: 4,
     }}
-      imageUrl={imageUrl}
+      //imageUrl={imageUrl}
       logId={log.pk}
       details={log.details}
       location={log.location}
       title={log.title}
       date={log.date_logged}
+      height='10%'
+      width='10%'
     />
+    <Box
+    // sx={{
+    //   width: '70%'
+    // }}
+    >
+{log.images.map((img, idx) => (
+      <Container
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'left',
+        width: '100%',
+        height: '100%',
+        marginTop: 0,
+      }}
+      ><ul>
+      <img
+      key={img.idx}
+      imageUrl={imageUrl}
+      src={log.images[idx].picture}
+      alt={location}
+      height='50%'
+      width='50%'
+      sx={{
+
+        // display: 'flex',
+        // flex: 1,
+        // flexDirection: 'column',
+        // alignItems: 'center',
+      }}
+      /></ul>
+      </Container>
+    ))}
+            {/* <Typography variant="h6">
+        {title}
+        </Typography>
+        <Typography variant="h7">
+        {dateFormatted}
+      </Typography> */}
+      </Box>
+
     </CardActionArea>
     ))}
 
