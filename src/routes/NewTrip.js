@@ -6,28 +6,29 @@ import { Container, CardMedia, FormGroup, Button, Box, Card, Grid, Paper, CssBas
 import TextField from '@mui/material/TextField';
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
-import MapBG from './MapBG.png'
+import MapBG from './MapBG.png';
+import ContactsCard from '../components/ContactsCard';
 
 
 
-export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
+export default function NewTrip({token, isLoggedIn, subscribe, subscribers, setSubscribers, contacts, setContacts, VBLogo, loggedUserPk}) {
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [begin, setBegin] = useState("");
     const [end, setEnd] = useState("");
-    const [subscribers, setSubscribers] = useState([]);
+    //const [subscribers, setSubscribers] = useState([]);
     const [error, setError] = useState("");
     const [submit, setSubmit] = useState();
     const [confirm, setConfirm] = useState(false);
     const navigate = useNavigate();
 
-
+// const addSubscribers = 
 
     const handleSubmit = (e) => {
     e.preventDefault();
     setConfirm(true);
     setError("");
-        console.log(location, title, begin, end);
+        console.log(location, title, begin, end, subscribers);
     navigate('/home')
 
 
@@ -46,6 +47,8 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
     )
     .then((response) => {
         console.log(response.data);
+        console.log(response.data.subscribers)
+        console.log(response.data.contacts)
     setTitle('')
     setLocation('')
     setBegin('')
@@ -214,6 +217,8 @@ export default function NewTrip({token, isLoggedIn, VBLogo, loggedUserPk}) {
     {/* </Grid>
     </Grid> */}
     </Container>
+
+    <ContactsCard />
 
     {/* <Card  sx={{
         marginTop: 4,

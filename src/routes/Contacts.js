@@ -37,10 +37,11 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
     )
     .then(response => {
         console.log(response.data);
-    setSubscriber(response.data)
+    setSubscribers(response.data.id)
     setFirstName('')
     setLastName('')
     setEmail('')
+    setSubscriber('')
     alert("Contact submitted!")
     })
     .catch((e) => setError(e.message))
@@ -55,9 +56,10 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
         .then((response) => {
             console.log(response.data)
             setSubscribers(response.data)
+            setSubscriber(response.data)
 
         })
-    }, [token, loggedUserPk, setSubscribers])
+    }, [token, loggedUserPk, setSubscribers, setSubscriber])
 
 
     if (!isLoggedIn) {
@@ -209,10 +211,11 @@ export default function AddContacts({token, isLoggedIn, loggedUserPk}) {
             //width: '100%',
         }}
     >
-    {subscribers.map((subscriber, pk) => {
+    {subscribers.map((subscriber, pk ,id) => {
         return(
         <ContactsCard
-            contactId={pk}
+            subscriberPk={subscriber.pk}
+            subscriberId={subscriber.id}
             firstName={subscriber.first_name}
             lastName={subscriber.last_name}
             email={subscriber.email}

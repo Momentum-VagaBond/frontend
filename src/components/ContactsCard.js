@@ -9,7 +9,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ForkLeft } from '@mui/icons-material';
 
-export default function ContactsCard({firstName, contactId, lastName, email, key}) {
+export default function ContactsCard({firstName, subscriberId, subscriberPk, lastName, email, key}) {
 
     return(
 <ThemeProvider theme={Theme}>
