@@ -112,7 +112,7 @@ const TripDetail = ({token, pk, dateFormatted, hasCurrentTrip, image, imageUrl, 
       flexDirection: 'column',
       flex: 1,
       position: "relative",
-      overflow: 'hidden',
+      marginRight: 0,
     }}
     >
     <NEWTripDetailCard
@@ -132,18 +132,19 @@ const TripDetail = ({token, pk, dateFormatted, hasCurrentTrip, image, imageUrl, 
       width='10%'
     />
     <Box
-    sx={{
-      width: '70%'
-    }}
+    // sx={{
+    //   width: '70%'
+    // }}
     >
 {log.images.map((img, idx) => (
-      <Card
+      <Container
       sx={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'left',
         width: '100%',
         height: '100%',
+        marginTop: 0,
       }}
       ><ul>
       <img
@@ -151,8 +152,8 @@ const TripDetail = ({token, pk, dateFormatted, hasCurrentTrip, image, imageUrl, 
       imageUrl={imageUrl}
       src={log.images[idx].picture}
       alt={location}
-      height='100'
-      width='150'
+      height='50%'
+      width='50%'
       sx={{
 
         // display: 'flex',
@@ -161,14 +162,14 @@ const TripDetail = ({token, pk, dateFormatted, hasCurrentTrip, image, imageUrl, 
         // alignItems: 'center',
       }}
       /></ul>
-      </Card>
+      </Container>
     ))}
-            <Typography variant="h6">
+            {/* <Typography variant="h6">
         {title}
         </Typography>
         <Typography variant="h7">
         {dateFormatted}
-      </Typography>
+      </Typography> */}
       </Box>
 
     </CardActionArea>

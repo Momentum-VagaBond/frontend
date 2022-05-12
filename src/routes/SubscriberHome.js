@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TripCard from '../components/TripCard';
-import { Container, Card, Box, Typography} from "@mui/material";
+import { Container, Card, Box, Grid, CardContent, CardActions, Typography} from "@mui/material";
 import { Theme } from '../Theme';
 import { ThemeProvider } from 'styled-components';
 import { Link as RouterLink, Navigate } from 'react-router-dom'
@@ -10,7 +10,10 @@ import { useParams } from 'react-router-dom'
 import { NEWTripDetailCard } from "../components/NEWTripDetailCard";
 import CardActionArea from '@mui/material/CardActionArea';
 import { StartTripCard } from "../components/StartTripCard";
-// import Background2 from './Background2.png'
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import BG1 from "./BG1.png";
 
 
 
@@ -30,6 +33,12 @@ export default function SubscriberHome ({username, loggedUserPk, token, setSubsc
   // const [alignment, setAlignment] = React.useState('left');
 
   const params = useParams()
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   //Getting current trip if one exists
 
@@ -99,38 +108,122 @@ export default function SubscriberHome ({username, loggedUserPk, token, setSubsc
   if (!isLoggedIn) {
     return <Navigate to="/login" />
 } 
-  
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+
+
+
+
 return (
   <ThemeProvider theme={Theme}>
- 
-<Container sx={{
-            // marginTop: 10,
-            // marginBotton: 50,
-            // paddingBottom: 15,
-            // display: 'flex',
-            // flexDirection: 'column',
-            // alignItems: 'center',
-            // position: 'sticky',
-            // backgroundImage: `url(${Background2})`,
-            backgroundSize: 'cover',
-            height: "100%",
-            paddingBottom: 15,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            position: 'sticky',
-            // scrollMarginBottom: 30,
-            // bottom: 5,
-            // backgroundColor: '#e9ecef',
-            // position: 'absolute',
-        }}>
-{/* <Typography mb={2} mt={4} variant="h5" align="center"><strong>Welcome, {username}! <br /> How's your trip?</strong></Typography> */}
+
+<Container
+sx={{
+  backgroundImage: `url(${BG1})`,
+  backgroundSize: '100% 100%',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed',
+  maxWidth: '100%',
+  width: '100vh',
+  minHeight: '100vw',
+  height: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+  position: "relative",
+  overflow: 'scroll',
+  //zIndex: 1,
+}}
+>
+
+{/* header has current trip */}
+  <Container>
   
-<Container maxWidth="sm" align="center">
+      <Container
+      sx={{
+        marginTop: 4,
+              // marginBotton: 50,
+        paddingBottom: 15,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        position: 'sticky',
+      }}
+      >
+
+<Box className='ProfileCard'
+    sx={{
+      height: 50,
+      width: '80%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignContent: 'center',
+    }}
+    >
+      <Typography
+    variant="h3"
+    color="secondary"
+  >
+    VAGABOND
+    </Typography>
+      <Grid container spacing={2}>
+    <Grid item xs={2}>
+
+    </Grid>
+    </Grid>
+
+      </Box>
+
+<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Current Trip" {...a11yProps(0)} />
+          <Tab label="Past Trips" {...a11yProps(1)} />
+          <Tab label="Future Trips" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+{/* CURRENT */}
+    <TabPanel value={value} index={0}
+    sx={{
+      border: 1,
+    }}
+    >
+
 {subscriberHasCurrent ? (
   <>
-  <Typography mb={2} mt={4} variant="h5" align="center"><strong>Follow along...</strong></Typography>
-
+<Typography mb={2} variant="h5" align="center"><strong>Current Subscriptions</strong></Typography>
   {currentTripsSubscriber.map((current) => 
   
     <CardActionArea component={RouterLink} to={`/trips/${tripId}/${current.pk}`}>
@@ -151,19 +244,19 @@ return (
   </>
   ) : (
   <>
-    {/* <StartTripCard/>   */}
   </>
   )
 }
-</Container>
+</TabPanel>
+{/* </Container> */}
 
 
-  
-<Container maxWidth="sm" align="center">
+{/* <Container maxWidth="sm" align="center"> */}
+<TabPanel value={value} index={1}>
 <>
 {pastTripsSubscriber ? (
 <>
-<Typography mb={2} mt={4} variant="h5" align="center"><strong>Great Memories...</strong></Typography>
+<Typography mb={2} variant="h5" align="center"><strong>Past Subscriptions</strong></Typography>
 {pastTripsSubscriber.map((pastTripSubscriber) => 
     <TripCard
       username={username}
@@ -186,15 +279,16 @@ return (
     )
   }
   </>
-  
-    </Container>
+  </TabPanel>
+    {/* </Container> */}
 
-   
-<Container maxWidth="sm" align="center"> 
+
+{/* <Container maxWidth="sm" align="center">  */}
+<TabPanel value={value} index={2}>
   <>
   {futureTripsSubscriber  ? (
 <>
-<Typography mb={2} mt={4} variant="h5" align="center"><strong>Future Adventures...</strong></Typography>
+<Typography mb={2} mt={4} variant="h5" align="center"><strong>Future Subscriptions</strong></Typography>
   {futureTripsSubscriber.map((futureTrip) => 
     <TripCard
       username={username}
@@ -217,8 +311,10 @@ return (
   )
 }
 </>
+</TabPanel>
+  {/* </Container> */}
   </Container>
-
+  </Container>
   </Container>
   </ThemeProvider>
   )

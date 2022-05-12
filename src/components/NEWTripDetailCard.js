@@ -1,25 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import CssBaseline from '@mui/material/CssBaseline';
-import { Card, CardContent, Box, Typography } from '@mui/material/';
+import React from 'react';
+import { Box, Typography } from '@mui/material/';
 import Container from '@mui/material/Container';
-import { ThemeProvider } from "styled-components";
-import { Theme } from "../Theme";
-import ImageList from "@mui/material/ImageList";
-import { ImageListItem } from "@mui/material";
-import ListSubheader from "@mui/material/ListSubheader";
-import LaunchTwoToneIcon from '@mui/icons-material/LaunchTwoTone';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import Button from "@mui/material/Button";
-// import { Link as RouterLink } from 'react-router-dom'
-import Flags from './Flags.jpg';
-// import CardActionArea from '@mui/material/CardActionArea';
 import Moment from 'react-moment'
 
 
-
-export const NEWTripDetailCard = ({pk, src, detailImg, img, tripId, title, imageUrl, setImage, details, logId, date, location, username, user, trip_username, user_first_name, user_last_name, begin, end }) => {
+export const NEWTripDetailCard = ({ title, date }) => {
     // function capitalizeFirst(string) {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     //   }
@@ -31,20 +16,20 @@ export const NEWTripDetailCard = ({pk, src, detailImg, img, tripId, title, image
     const dateFormatted = <Moment format="MM/D/YYYY">{date}</Moment>
 
     return (
-      <Container
-      // sx={{
-      //   width: '100%',
-      //   // border: 1,
-      //   marginBottom: 5,
-      //   margin: 0,
-      //   padding: 0,
-      //   display: 'flex',
-      //   flexDirection: 'column',
-      //   alignContent: 'center',
-      //   //boxShadow: '0 16px 40px -12.125px rgba(0,0,0,0.3)',
-      //   //backgroundColor: 'white',
-      // }}
+      <Container>
+              <Typography variant="h6"
+      sx={{
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+        alignContent: 'center',
+      }}
       >
+        {title}
+        </Typography>
+        <Typography variant="h7">
+        {dateFormatted}
+      </Typography>
         <Box
         sx={{
           width: 'auto',
@@ -89,7 +74,7 @@ export const NEWTripDetailCard = ({pk, src, detailImg, img, tripId, title, image
         src={`${imageUrl}?w=248&fit=crop&auto=format&dpr=2`}
       /> */}
       {/* <ImageListItemBar */}
-      <Typography variant="h6"
+      {/* <Typography variant="h6"
       sx={{
         display: 'flex',
         flex: 1,
@@ -101,17 +86,9 @@ export const NEWTripDetailCard = ({pk, src, detailImg, img, tripId, title, image
         </Typography>
         <Typography variant="h7">
         {dateFormatted}
-      </Typography>
+      </Typography> */}
 
-        {/* >
-      </ImageListItemBar>
-      </ImageListItem> */}
       </Box>
       </Box>
       </Container>
-    )
-    }
-
-      // <CardActions>
-      //   <Button>share</Button>
-      // </CardActions>
+)}

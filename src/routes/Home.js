@@ -201,53 +201,10 @@ sx={{
     </Typography>
       <Grid container spacing={2}>
     <Grid item xs={2}>
-      {/* <CardMedia className='ProfileCardMedia'
-      sx={{
-        paddingLeft: 1,
-        height: 2,
-        width: 2,
-      }}
-      >
-        {VBLogo}
-      </CardMedia> */}
     </Grid>
     <Grid item xs={1}>
-      <CardContent>
-      {/* <Typography
-            variant="h5"
-            color="primary"
-            sx={{
-              paddingLeft: 2,
-            }}
-          >
-          {username}, where are we going next? 
-            </Typography> */}
-      {/* <Typography
-            variant="h2"
-            color="secondary"
-          >
-            VAGABOND
-            </Typography> */}
-          {/* <Typography component="div" color="secondary">
-              <strong>{tripTotal}</strong> trips
-          </Typography> */}
-      </CardContent>
     </Grid>
     </Grid>
-
-      <CardContent>
-          {/* <Typography gutterBottom variant="h9" component="div">
-            <i>"People don't take trips. Trips take people."</i> <br />
-            - John Steinbeck
-          </Typography> */}
-          {/* <Typography gutterBottom variant="h6" component="div">
-            {username}, here are your travels
-          </Typography> */}
-        </CardContent>
-
-        <CardActions >
-              
-        </CardActions>
       </Box>
       {/* </Card> */}
       <Box
@@ -272,7 +229,6 @@ sx={{
     sx={{
       border: 1,
     }}
-    
     >
     {/* <Container align="center">  */}
   {hasCurrentTrip ? (
